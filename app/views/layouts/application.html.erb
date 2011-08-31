@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>École Vinet</title>
+    <%= stylesheet_link_tag "screen" %>
+    <%= javascript_include_tag :defaults %>
+    <%= csrf_meta_tag %>
+  </head>
+  <body>
+    <div id="header">
+      <%= link_to(image_tag("logo_vinet.png", :alt => ""), "/accueil") %>
+    </div>
+
+    <div id="page">
+      <div id="content">
+
+        <div id="nav">
+          <%= render :partial => '/shared/lc_menu', :locals => { :page => @page} %>
+          <%= image_tag("nav_picture.jpg", :id => "nav_picture", :alt => "" ) %>
+          <p id="nav_text">« L'ÉDUCATION DE L'ESPRIT ET DU COEUR DOIT ÊTRE<br/> LE PREMIER OBJET DE TOUT SYSTÈME D'ÉTUDE. » <span id="citation">Alexandre Vinet</span></p>
+        </div>
+
+        <div id="left_col">
+          <%= yield %>
+          <h1>
+            <%= link_to("Espace professeur",'/espace_professeur/', {:onClick => "window.open(this.href,'_blank');return false;"}) %>
+          </h1>
+          <p>
+          <%= link_to(image_tag("Facebook-Icon.jpg", :alt => "", :style => "position:relative; top:10px; margin-right:5px;"),"http://www.facebook.com/group.php?gid=21310185688", {:onClick => "window.open(this.href,'_blank');return false;" }) %>
+
+          Rejoignez-nous sur <%=link_to("Facebook","http://www.facebook.com/group.php?gid=21310185688",{:onClick => "window.open(this.href,'_blank');return false;"}) -%> !
+          </p>
+        </div>
+        <div id="right_col">
+
+          <%= link_to(image_tag("google.jpg",:alt => "", :style => "float:right"),"http://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=%C3%A9cole+vinet+lausanne&amp;aq=&amp;sll=37.0625,-95.677068&amp;sspn=69.476188,177.451172&amp;vpsrc=6&amp;ie=UTF8&amp;hq=%C3%A9cole+vinet&amp;hnear=Lausanne,+Vaud,+Switzerland&amp;cid=5096095572938173010&amp;ll=46.519894,6.637373&amp;spn=0.011812,0.018368&amp;z=14&amp;iwloc=A",{ :onClick => "window.open(this.href,'_blank');return false;"}) %>
+          <h1/>Contact</h1>
+          <p>Ecole Vinet<br />
+          Rue de l’Ecole-Supérieur 2<br />
+          C.P. 5987<br />
+          1002 Lausanne</p>
+          <p>Tel: 021 312 44 70<br />Fax:	021 311 81 12</p>
+          <%= link_to("Agrandir la carte","http://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=%C3%A9cole+vinet+lausanne&amp;aq=&amp;sll=37.0625,-95.677068&amp;sspn=69.476188,177.451172&amp;vpsrc=6&amp;ie=UTF8&amp;hq=%C3%A9cole+vinet&amp;hnear=Lausanne,+Vaud,+Switzerland&amp;cid=5096095572938173010&amp;ll=46.519894,6.637373&amp;spn=0.011812,0.018368&amp;z=14&amp;iwloc=A", {:onClick => "window.open(this.href,'_blank');return false;" } ) %>
+
+        </div>
+
+        <div id="clear"></div>
+
+      </div>
+    </div>
+
+    <div id="footer"></div>
+
+  </body>
+</html>

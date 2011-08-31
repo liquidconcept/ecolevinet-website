@@ -3,13 +3,16 @@ namespace :maintenance do
 
   desc "set default page part"
   task :set_default_page_parts  => :environment do
+
     RefinerySetting.set(:default_page_parts, ConfigSite[:default_page_parts])
 
   end
 
   desc "set site name"
   task :set_site_name  => :environment do
+
     RefinerySetting.set('site_name', ConfigSite[:site_name])
+
   end
 
   desc  "set site to french (Allez les frouses)"
@@ -25,13 +28,25 @@ namespace :maintenance do
   desc "toogle page part creation (default is set to false)"
   task :toggle_page_part_creation  => :environment do
 
-    RefinerySetting.find_or_set(:new_page_parts, !RefinerySetting.find_or_set(:new_page_parts))
+    RefinerySetting.set(:new_page_parts, !RefinerySetting.get(:new_page_parts))
 
   end
 
   desc "populate english seed data for french locale"
   task :seed_for_french  => :environment do
+
     ::I18n.locale = :fr
     load Rails.root.join('db', 'seeds', 'pages.rb').to_s
+
   end
+  
+  desc "populate data pages (lc)"
+  task :seed_for_pages  => :environment do
+
+    ::I18n.locale = :fr
+    load Rails.root.join('db', 'seeds', 'lc', 'pages.rb').to_s
+
+  end
+
+
 end
