@@ -8,6 +8,7 @@
     <%= csrf_meta_tag %>
   </head>
   <body>
+
     <div id="header">
       <%= link_to(image_tag("logo_vinet.png", :alt => ""), "/accueil") %>
     </div>
@@ -16,7 +17,7 @@
       <div id="content">
 
         <div id="nav">
-          <%= render :partial => '/shared/lc_menu', :locals => { :page => @page} %>
+          <%= render :partial => '/shared/menu', :locals => { :page => @page} %>
           <%= image_tag("nav_picture.jpg", :id => "nav_picture", :alt => "" ) %>
           <p id="nav_text">« L'ÉDUCATION DE L'ESPRIT ET DU COEUR DOIT ÊTRE<br/> LE PREMIER OBJET DE TOUT SYSTÈME D'ÉTUDE. » <span id="citation">Alexandre Vinet</span></p>
         </div>
