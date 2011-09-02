@@ -1,4 +1,5 @@
 # encoding: UTF-8
+::I18n.locale = :fr
 if defined?(User)
   User.all.each do |user|
     if user.plugins.where(:name => 'sections').blank?

@@ -1,4 +1,5 @@
 # encoding: UTF-8
+::I18n.locale = :fr
 ::Page.reset_column_information
 # Check whether all columns are applied yet by seo_meta.
 unless !defined?(::SeoMeta) || ::SeoMeta.attributes.keys.all? { |k|

@@ -25,6 +25,14 @@ namespace :maintenance do
 
   end
 
+
+  desc "general maintenance task"
+  task :setup => [ :environment, :set_default_page_parts, :set_site_name, :set_site_to_french ] do
+    Rake::Task['maintenance:set_default_page_parts'].invoke
+    Rake::Task['maintenance:set_site_name'].invoke
+    Rake::Task['maintenance:set_site_to_french'].invoke
+  end
+
   desc "toogle page part creation (default is set to false)"
   task :toggle_page_part_creation  => :environment do
 
