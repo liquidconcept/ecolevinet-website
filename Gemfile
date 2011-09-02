@@ -40,6 +40,11 @@ group :development, :test do
   # Then, run 'rails generate refinerycms_testing' which will copy its support files.
   # Finally, run 'rake' to run the tests.
   # gem 'refinerycms-testing',    '~> 1.0.4'
+  gem 'guard'
+  gem 'guard-bundler'
+  gem 'guard-pow'
+  gem 'rb-fsevent'
+  gem 'growl'
 end
 
 # END REFINERY CMS ============================================================
@@ -57,3 +62,5 @@ end
 gem 'refinerycms-i18n',         '~> 1.0.0'
 
 # END USER DEFINED
+
+gem 'refinerycms-sections', '1.0', :path => 'vendor/engines'

@@ -32,21 +32,4 @@ namespace :maintenance do
 
   end
 
-  desc "populate english seed data for french locale"
-  task :seed_for_french  => :environment do
-
-    ::I18n.locale = :fr
-    load Rails.root.join('db', 'seeds', 'pages.rb').to_s
-
-  end
-  
-  desc "populate data pages (lc)"
-  task :seed_for_pages  => :environment do
-
-    ::I18n.locale = :fr
-    load Rails.root.join('db', 'seeds', 'lc', 'pages.rb').to_s
-
-  end
-
-
 end

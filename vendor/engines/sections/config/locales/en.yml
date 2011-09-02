@@ -1,0 +1,25 @@
+en:
+  shared:
+    admin:
+      image_picker:
+        image: image
+  plugins:
+    sections:
+      title: Sections
+  admin:
+    sections:
+      actions:
+        create_new: Add New Section
+        reorder: Reorder Sections
+        reorder_done: Done Reordering Sections
+      records:
+        title: Sections
+        sorry_no_results: Sorry! There are no results found.
+        no_items_yet: There are no Sections yet. Click "Add New Section" to add your first section.
+      section:
+        view_live_html: View this section live <br/><em>(opens in a new window)</em>
+        edit: Edit this section
+        delete: Remove this section forever
+  sections:
+    show:
+      other: Other Sections
