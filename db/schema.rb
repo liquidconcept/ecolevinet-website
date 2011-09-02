@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110831120912) do
+ActiveRecord::Schema.define(:version => 20110901100627) do
 
   create_table "image_pages", :id => false, :force => true do |t|
     t.integer "image_id"
@@ -137,6 +137,7 @@ ActiveRecord::Schema.define(:version => 20110831120912) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "page_id"
+    t.string   "lien"
   end
 
   add_index "sections", ["id"], :name => "index_sections_on_id"

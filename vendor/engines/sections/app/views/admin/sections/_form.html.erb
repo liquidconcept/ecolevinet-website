@@ -11,14 +11,19 @@
   
   <div class='field'>
     <%= f.label :titre -%>
-    <%= f.text_field :titre  -%>
+    <%= f.text_field :titre , :class => 'widest'  -%>
   </div>
   
   <div class='field'>
     <%= f.label :chapeau -%>
-    <%= f.text_field :chapeau  -%>
+    <%= f.text_field :chapeau , :class => 'widest'  -%>
   </div>
   
+  <div class='field'>
+    <%= f.label :lien -%>
+    <%= f.text_field :lien , :class => 'widest' -%>
+  </div>
+   
   <div class='field'>
     <%= f.label :image -%>
     <%= render :partial => "/shared/admin/image_picker", :locals => {
