@@ -1,11 +1,44 @@
 namespace :maintenance do
-  ConfigSite={:site_name => "Ecole Vinet", :default_page_parts => ["Contenu"]}
+
+  ConfigSite={:site_name => "Ecole Vinet", :default_page_parts => ["Contenu"],
+  :plugins_order => {
+#user related plugins
+  "refinery_pages"      => 1,
+  "sections"            => 2,
+  "refinery_images"     => 3,
+  "refinery_files"      => 4,
+  "refinery_users"      => 5,
+#superuser related plugins
+  "refinery_settings"   => 6,
+  "refinery_dashboard"  => 7,
+#base plugins
+  "refinerycms_base"    => 8,
+  "refinery_core"       => 9,
+  "refinery_dialogs"    => 10,
+  "refinery_i18n"       => 11,
+  "refinery_generators" => 12,
+  "page_images"         => 13},
+  :default_image_sizes =>  {:small  => '110x110', :medium => '225x255', :large => '870x328'}
+  }
 
   desc "set default page part"
   task :set_default_page_parts  => :environment do
 
     RefinerySetting.set(:default_page_parts, ConfigSite[:default_page_parts])
 
+  end
+  
+  desc "set default image sizes"
+  task :set_default_image_sizes  => :environment do
+
+    RefinerySetting.set(:default_image_sizes, ConfigSite[:default_image_sizes])
+
+  end
+
+
+  desc "set default plugins order"
+  task :set_default_plugins_order => :environment do
+    ConfigSite[:plugins_order].each {| k, v | up = UserPlugin.find_by_name(k);up.position=v; up.save; }
   end
 
   desc "set site name"
@@ -27,10 +60,14 @@ namespace :maintenance do
 
 
   desc "general maintenance task"
-  task :setup => [ :environment, :set_default_page_parts, :set_site_name, :set_site_to_french ] do
+  task :setup => [ :environment, :set_default_page_parts, :set_site_name, :set_site_to_french, :set_default_plugins_order, :set_default_image_sizes ] do
+
     Rake::Task['maintenance:set_default_page_parts'].invoke
     Rake::Task['maintenance:set_site_name'].invoke
     Rake::Task['maintenance:set_site_to_french'].invoke
+    Rake::Task['maintenance:set_default_plugins_order'].invoke
+    Rake::Task['maintenance:set_default_image_sizes'].invoke
+
   end
 
   desc "toogle page part creation (default is set to false)"

@@ -18,7 +18,7 @@ home_page = Page.create(:title => "Accueil",
             :position => (page_position += 1))
 home_page.parts.create({
               :title => "Contenu",
-              :body => "<p>Merci de remplir du contenu</p>",
+              :body => "<p>Bienvenu sur le site de l'école Vinet.</p>",
               :position => 0
             })
 

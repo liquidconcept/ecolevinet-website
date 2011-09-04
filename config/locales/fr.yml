@@ -1,0 +1,4 @@
+fr:
+  devise:
+    failure:
+      already_authenticated: "Vous êtes déjà authentifié"
