@@ -6,7 +6,14 @@ class Section < ActiveRecord::Base
   validates :titre,   :presence => true
   validates :chapeau, :presence => true
   validates :lien, :format => /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$/ix, :allow_blank => true
+
   belongs_to :image
+
+  belongs_to :page
+
+  has_many :actualite_categorizations
+  has_many :actualites, :through => :actualite_categorizations
+
 
   #Create a page if section not linked to a page
   def after_save

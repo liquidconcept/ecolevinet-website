@@ -1,0 +1,25 @@
+fr:
+  shared:
+    admin:
+      image_picker:
+        image: image
+  plugins:
+    actualites:
+      title: Actualites
+  admin:
+    actualites:
+      actions:
+        create_new: Créer un(e) nouve(au/l/lle) Actualite
+        reorder: Réordonner les Actualites
+        reorder_done: Fin de réordonnancement des Actualites
+      records:
+        title: Actualites
+        sorry_no_results: "Désolé ! Aucun résultat."
+        no_items_yet: 'Il n''y a actuellement aucun(e) Actualite. Cliquer sur "Créer un(e) nouve(au/l/lle) Actualite" pour créer votre premi(er/ère) actualite.'
+      actualite:
+        view_live_html: Voir ce(t/tte) actualite <br/><em>(Ouvre une nouvelle fenêtre)</em>
+        edit: Modifier ce(t/tte) actualite
+        delete: Supprimer définitivement ce(t/tte) actualite
+  actualites:
+    show:
+      other: Autres Actualites

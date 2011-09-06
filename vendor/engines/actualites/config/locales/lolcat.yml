@@ -1,0 +1,25 @@
+lolcat:
+  shared:
+    admin:
+      image_picker:
+        image: IMAGE
+  plugins:
+    actualites:
+      title: Actualites
+  admin:
+    actualites:
+      actions:
+        create_new: CREATE NEW Actualite
+        reorder: REORDR Actualites
+        reorder_done: DUN REORDERIN Actualites
+      records:
+        title: Actualites
+        sorry_no_results: SRY! THAR R NO RESULTS FINDZ.
+        no_items_yet: THAR R NO Actualites YET. CLICK "CREATE NEW Actualite" 2 ADD UR FURST actualite.
+      actualite:
+        view_live_html: VIEW DIS actualite LIV <BR/><EM>(OPENS IN NEW WINDOW)</EM>
+        edit: EDIT DIS actualite
+        delete: REMOOV DIS actualite FOREVR
+  actualites:
+    show:
+      other: OTHR Actualites
