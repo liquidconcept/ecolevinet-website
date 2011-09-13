@@ -22,27 +22,26 @@
         <%= render :partial => '/shared/menu', :locals => { :page => @page} %>
       </div>
 
+      <%= image_tag("nav_picture.jpg", :id => "nav_picture", :alt => "" ) %>
+      <p id='nav_text'>« L'ÉDUCATION DE L'ESPRIT ET DU COEUR DOIT ÊTRE<br/> LE PREMIER OBJET DE TOUT SYSTÈME D'ÉTUDE. »
+      <span id="citation">Alexandre Vinet</span>
+      </p>
+      
       <div class='horizontalaccordion'>
         <ul>
           <li class='current'>
-          <h3>Accueil</h3>
-          <div>
-            <%= image_tag("nav_picture.jpg", :id => "nav_picture", :alt => "" ) %>
-            <p id='nav_text'>« L'ÉDUCATION DE L'ESPRIT ET DU COEUR DOIT ÊTRE<br/> LE PREMIER OBJET DE TOUT SYSTÈME D'ÉTUDE. »
-            <span id="citation">Alexandre Vinet</span>
-            </p>
-          </div>
+            <h3>Accueil</h3>
           </li>
           <% Section.all.each do |s| %>
             <li>
             <h3><%=raw s.nom %></h3>
-            <div>
-              <%= image_tag("nav_picture.jpg", :id => "nav_picture", :alt => "" ) %>
+         <div>
+            <!--     <%= image_tag("nav_picture.jpg", :id => "nav_picture", :alt => "" ) %>
               <p id="nav_text">
               <p><%=raw s.titre   %></p>
-              <p><%=raw s.chapeau %></p>
-            </div>
-            </li>
+              <p><%=raw s.chapeau %></p>-->
+
+            </div>             </li>
           <% end %>
         </ul>
       </div>

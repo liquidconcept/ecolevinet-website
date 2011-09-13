@@ -166,43 +166,46 @@ html{
 }
 
 /*---------accordion---------*/
-
+#nav_picture{
+  display:block;
+}
+#nav_text{
+  position:absolute;
+  top:282px;
+  width:850px;
+  padding:5px 20px;
+  background-image:url(../images/nav_fond.png);
+  background-repeat:no-repeat;
+  background-position:bottom left;
+  color: $white;
+  font-size:18px;
+  text-align:center;
+  #citation{
+    font-size:13px;
+  }
+}
 
 .horizontalaccordion{
 
-  #nav_picture{
-    display:block;
-  }
-  #nav_text{
-    position:absolute;
-    top:282px;
-    width:850px;
-    padding:5px 20px;
-    background-image:url(../images/nav_fond.png);
-    background-repeat:no-repeat;
-    background-position:bottom left;
-    color: $white;
-    font-size:18px;
-    text-align:center;
-    #citation{
-      font-size:13px;
-    }
-  }
-  &>ul {
+  position:absolute;
+  top: 0px;
+  left: 40px;
+
+ &>ul {
     margin: 0;
     padding: 0;
     list-style:none;
     height: 328px;
     &>li {
-      display:block;
+      display:inline;
       overflow: hidden;
       float:left;
       margin: 0;
       padding: 0;
       list-style:none;
-      width:40px;
+      width:35px;
       height: 328px;
-      background:#f0f0f0;
+   //   background:#f0f0f0;
       transition: width 0.3s ease-in-out;
       -moz-transition: width 0.3s ease-in-out;
       -webkit-transition: width 0.3s ease-in-out;
@@ -242,7 +245,7 @@ html{
          *top:0px;       /* IE7 Hack */
          *left:0px;      /* IE7 Hack */
          margin:0;
-         width:870px;
+         width:735px;
          height:328px;
          display:none;
          float:left;
@@ -254,7 +257,7 @@ html{
  }
   .current {
          overflow: hidden;
-         width: 870px;
+         width: 735px;
          div {
            display:block;
          }

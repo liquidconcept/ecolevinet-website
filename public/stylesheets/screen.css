@@ -235,12 +235,13 @@ html {
 }
 
 /*---------accordion---------*/
-/* line 173, ../../app/stylesheets/screen.scss */
-.horizontalaccordion #nav_picture {
+/* line 169, ../../app/stylesheets/screen.scss */
+#nav_picture {
   display: block;
 }
-/* line 176, ../../app/stylesheets/screen.scss */
-.horizontalaccordion #nav_text {
+
+/* line 172, ../../app/stylesheets/screen.scss */
+#nav_text {
   position: absolute;
   top: 282px;
   width: 850px;
@@ -252,34 +253,40 @@ html {
   font-size: 18px;
   text-align: center;
 }
-/* line 187, ../../app/stylesheets/screen.scss */
-.horizontalaccordion #nav_text #citation {
+/* line 183, ../../app/stylesheets/screen.scss */
+#nav_text #citation {
   font-size: 13px;
 }
-/* line 191, ../../app/stylesheets/screen.scss */
+
+/* line 188, ../../app/stylesheets/screen.scss */
+.horizontalaccordion {
+  position: absolute;
+  top: 0px;
+  left: 40px;
+}
+/* line 194, ../../app/stylesheets/screen.scss */
 .horizontalaccordion > ul {
   margin: 0;
   padding: 0;
   list-style: none;
   height: 328px;
 }
-/* line 196, ../../app/stylesheets/screen.scss */
+/* line 199, ../../app/stylesheets/screen.scss */
 .horizontalaccordion > ul > li {
-  display: block;
+  display: inline;
   overflow: hidden;
   float: left;
   margin: 0;
   padding: 0;
   list-style: none;
-  width: 40px;
+  width: 35px;
   height: 328px;
-  background: #f0f0f0;
   transition: width 0.3s ease-in-out;
   -moz-transition: width 0.3s ease-in-out;
   -webkit-transition: width 0.3s ease-in-out;
   -o-transition: width 0.3s ease-in-out;
 }
-/* line 211, ../../app/stylesheets/screen.scss */
+/* line 214, ../../app/stylesheets/screen.scss */
 .horizontalaccordion > ul > li > h3 {
   display: block;
   float: left;
@@ -311,7 +318,7 @@ html {
   -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=1.0)"         "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff999999, endColorstr=#ffcccccc)";
   /* IE8 */
 }
-/* line 239, ../../app/stylesheets/screen.scss */
+/* line 242, ../../app/stylesheets/screen.scss */
 .horizontalaccordion > ul > li > div {
   top: -29px;
   left: 35px;
@@ -320,34 +327,34 @@ html {
   *left: 0px;
   /* IE7 Hack */
   margin: 0;
-  width: 870px;
+  width: 735px;
   height: 328px;
   display: none;
   float: left;
   overflow: auto;
   position: relative;
 }
-/* line 255, ../../app/stylesheets/screen.scss */
+/* line 258, ../../app/stylesheets/screen.scss */
 .horizontalaccordion .current {
   overflow: hidden;
-  width: 870px;
+  width: 735px;
 }
-/* line 258, ../../app/stylesheets/screen.scss */
+/* line 261, ../../app/stylesheets/screen.scss */
 .horizontalaccordion .current div {
   display: block;
 }
-/* line 263, ../../app/stylesheets/screen.scss */
+/* line 266, ../../app/stylesheets/screen.scss */
 .horizontalaccordion:hover > ul > li:hover > h3 {
   color: #fff;
   background: #000000;
 }
-/* line 267, ../../app/stylesheets/screen.scss */
+/* line 270, ../../app/stylesheets/screen.scss */
 .horizontalaccordion > ul > li > h3:hover {
   cursor: pointer;
 }
 
 /*---------footer---------*/
-/* line 273, ../../app/stylesheets/screen.scss */
+/* line 276, ../../app/stylesheets/screen.scss */
 #footer {
   clear: both;
   margin: auto;
