@@ -11,3 +11,28 @@ fr:
       tabs:
         images_bar:
           add: Ajouter une image
+  plugins:
+    portfolio:
+      title: Galeries
+      description: Gestion des galeries
+  admin:
+    portfolio:
+      index:
+        actions: Actions
+        create_new_portfolio_entry: "Ajouter un élément dans la galerie"
+        reorder_portfolio: "Réordonner la galerie"
+        reorder_portfolio_done: "Fin de réordonnancement de la galerie"
+        portfolio: Portfolio
+        no_portfolio_entries_yet: "Il n'y a pas encore d'élément dans la galerie. Cliquez sur \"Ajouter un élément dans la galerie\" pour ajouter un premier élément."
+      list:
+        view_live_html: "Voir cet élément<br/><em>(Ouvre une nouvelle fenêtre)</em>"
+        edit_this_entry: "Modifier cet élément"
+        move_this_entry_up: "Déplacer cet élément d'un niveau"
+        confirm_delete_entry_title: "Supprimer définitivement cet élément"
+      form:
+        title: Titre
+        images: Images
+        add: Ajouter
+        add_another_image: "Ajouter une autre image"
+        content: Contenu
+        parent: Parent

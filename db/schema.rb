@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110907075900) do
+ActiveRecord::Schema.define(:version => 20110913095341) do
 
   create_table "actualite_categorizations", :force => true do |t|
     t.integer  "actualite_id"
@@ -140,6 +140,16 @@ ActiveRecord::Schema.define(:version => 20110907075900) do
   add_index "portfolio_entries", ["lft"], :name => "index_portfolio_entries_on_lft"
   add_index "portfolio_entries", ["parent_id"], :name => "index_portfolio_entries_on_parent_id"
   add_index "portfolio_entries", ["rgt"], :name => "index_portfolio_entries_on_rgt"
+
+  create_table "portfolio_entry_categorizations", :force => true do |t|
+    t.integer  "portfolio_entry_id"
+    t.integer  "section_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "portfolio_entry_categorizations", ["portfolio_entry_id"], :name => "index_portfolio_entry_categorizations_on_portfolio_entry_id"
+  add_index "portfolio_entry_categorizations", ["section_id"], :name => "index_portfolio_entry_categorizations_on_section_id"
 
   create_table "portfolio_entry_translations", :force => true do |t|
     t.integer  "portfolio_entry_id"

@@ -14,6 +14,8 @@ class Section < ActiveRecord::Base
   has_many :actualite_categorizations
   has_many :actualites, :through => :actualite_categorizations
 
+  has_many :portfolio_entry_categorizations
+  has_many :portfolio_entries, :through => :portfolio_entry_categorizations
 
   #Create a page if section not linked to a page
   def after_save

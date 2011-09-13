@@ -286,7 +286,7 @@ html {
   -webkit-transition: width 0.3s ease-in-out;
   -o-transition: width 0.3s ease-in-out;
 }
-/* line 214, ../../app/stylesheets/screen.scss */
+/* line 213, ../../app/stylesheets/screen.scss */
 .horizontalaccordion > ul > li > h3 {
   display: block;
   float: left;
@@ -318,7 +318,7 @@ html {
   -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=1.0)"         "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff999999, endColorstr=#ffcccccc)";
   /* IE8 */
 }
-/* line 242, ../../app/stylesheets/screen.scss */
+/* line 241, ../../app/stylesheets/screen.scss */
 .horizontalaccordion > ul > li > div {
   top: -29px;
   left: 35px;
@@ -334,27 +334,27 @@ html {
   overflow: auto;
   position: relative;
 }
-/* line 258, ../../app/stylesheets/screen.scss */
+/* line 257, ../../app/stylesheets/screen.scss */
 .horizontalaccordion .current {
   overflow: hidden;
   width: 735px;
 }
-/* line 261, ../../app/stylesheets/screen.scss */
+/* line 260, ../../app/stylesheets/screen.scss */
 .horizontalaccordion .current div {
   display: block;
 }
-/* line 266, ../../app/stylesheets/screen.scss */
+/* line 265, ../../app/stylesheets/screen.scss */
 .horizontalaccordion:hover > ul > li:hover > h3 {
   color: #fff;
   background: #000000;
 }
-/* line 270, ../../app/stylesheets/screen.scss */
+/* line 269, ../../app/stylesheets/screen.scss */
 .horizontalaccordion > ul > li > h3:hover {
   cursor: pointer;
 }
 
 /*---------footer---------*/
-/* line 276, ../../app/stylesheets/screen.scss */
+/* line 275, ../../app/stylesheets/screen.scss */
 #footer {
   clear: both;
   margin: auto;
