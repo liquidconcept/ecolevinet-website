@@ -1,0 +1,13 @@
+<% content_for :javascripts do %>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.horizontalaccordion>ul>li').click(function(){
+        $(this).siblings().removeClass('current');
+        $(this).addClass('current');
+        $('#page_content').fadeTo('slow',0);
+        //Ajout de la mise à jour Ajax;
+        $('#page_content').fadeTo('slow',1);
+      });
+    });
+  </script>
+<% end %>

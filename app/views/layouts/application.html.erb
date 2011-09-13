@@ -26,37 +26,39 @@
       <p id='nav_text'>« L'ÉDUCATION DE L'ESPRIT ET DU COEUR DOIT ÊTRE<br/> LE PREMIER OBJET DE TOUT SYSTÈME D'ÉTUDE. »
       <span id="citation">Alexandre Vinet</span>
       </p>
-      
+
       <div class='horizontalaccordion'>
         <ul>
           <li class='current'>
-            <h3>Accueil</h3>
+          <h3>Accueil</h3>
           </li>
           <% Section.all.each do |s| %>
             <li>
             <h3><%=raw s.nom %></h3>
-         <div>
-            <!--     <%= image_tag("nav_picture.jpg", :id => "nav_picture", :alt => "" ) %>
+            <div>
+              <!--     <%= image_tag("nav_picture.jpg", :id => "nav_picture", :alt => "" ) %>
               <p id="nav_text">
               <p><%=raw s.titre   %></p>
               <p><%=raw s.chapeau %></p>-->
 
-            </div>             </li>
+            </div>
+            </li>
           <% end %>
         </ul>
       </div>
 
-    <%= yield %>
+      <div id="page_content">
+        <%= yield %>
+      </div>
+      <div id="clear"></div>
 
-    <div id="clear"></div>
-
+    </div>
   </div>
-</div>
 
-<div id="footer">
-</div>
+  <div id="footer">
+  </div>
 
-<%= render :partial => "/shared/javascripts" %>
-
-  </body>
+  <%= render :partial => "/shared/action" %>
+  <%= render :partial => "/shared/javascripts" %>
+</body>
 </html>

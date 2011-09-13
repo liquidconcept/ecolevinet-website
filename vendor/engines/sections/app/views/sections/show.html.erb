@@ -1,45 +1,35 @@
-<% content_for :body_content_title do %>
-  <%= @section.nom %>
+<% if @section.actualites.brulantes.any? %>
+  <div id="block">
+    <h3>A la une</h3>
+    <% @section.actualites.brulantes.each do |actualite| %>
+      <%= link_to actualite.title, '/actualites/' + actualite.id.to_s %>
+    <% end %>
+  </div>
+<% end %>
+<% if @section.portfolio_entries.any? %>
+  <div id="block">
+    <h3> Galeries Photo</h3>
+    <% @section.portfolio_entries.each do |portfolio_entry| %>
+      <%= link_to portfolio_entry.title, '/portfolio/' + portfolio_entry.title %> :
+      <%= raw portfolio_entry.body %>
+    <% end %>
+  </div>
 <% end %>
 
-<% content_for :body_content_left do %>
-  <section>
-    <h1>Nom</h1>
-    <p>
-      <%=raw @section.nom %>
-    </p>
-  </section>
-  <section>
-    <h1>Titre</h1>
-    <p>
-      <%=raw @section.titre %>
-    </p>
-  </section>
-  <section>
-    <h1>Chapeau</h1>
-    <p>
-      <%=raw @section.chapeau %>
-    </p>
-  </section>
-  <section>
-    <h1>Image</h1>
-    <p>
-      <%= image_fu @section.image, nil %>
-    </p>
-  </section>
+<% if @section.page.children.any? %>
+  <% @section.page.children.each do |child| %>
+    <% if child.title == "Actualites" &&  @section.actualites.normales.any? %>
+        <div id="block">
+          <h3> Actualités</h3>
+          <% @section.actualites.normales.each do |actualite| %>
+            <%= link_to actualite.titre, '/actualites/' + actualite.id.to_s %>
+          <% end %>
+        </div>
+    <% else %>
+        <div id="block">
+          <h3><%= child.title %> </h3>
+          <%= link_to child.title, child.url %>
+        </div>
+    <% end %>
+  <% end %>
 <% end %>
-
-<% content_for :body_content_right do %>
-  <aside>
-    <h2><%= t('.other') %></h2>
-    <ul id="sections">
-      <% @sections.each do |section| %>
-        <li>
-          <%= link_to section.nom, section_path(section) %>
-        </li>
-      <% end %>
-    </ul>
-  </aside>
-<% end %>
-
-<%= render :partial => "/shared/content_page" %>

@@ -94,6 +94,9 @@ html{
         padding-left:5px;
         font-weight:normal;
       }
+      img.right{
+        float: right;
+      }
     }
     #clear{
       clear:both;
@@ -161,6 +164,15 @@ html{
     }
     p{
       margin-bottom:20px;
+    }
+    #block{
+      width: 300px;
+      height: 40px;
+      background-color: $grey;
+      margin: 10px 0px;
+      display:inline-block;
+      padding: 10px 10px;
+      @include border-radius(4px, 4px);
     }
   }
 }

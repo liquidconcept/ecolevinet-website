@@ -14,7 +14,7 @@ class SectionsController < ApplicationController
 
     # you can use meta fields from your model instead (e.g. browser_title)
     # by swapping @page for @section in the line below:
-    present(@page)
+    present(@section)
   end
 
 protected
@@ -24,7 +24,7 @@ protected
   end
 
   def find_page
-    @page = Page.where(:link_url => "/sections").first
+    @page = Section.find(params[:id]).page
   end
 
 end
