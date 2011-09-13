@@ -34,6 +34,7 @@ gem 'sqlite3'
 # Anything you put in here will be overridden when the app gets updated.
 
 gem 'refinerycms',              '~> 1.0.4'
+gem "compass", ">= 0.11.5"
 
 group :development, :test do
   # To use refinerycms-testing, uncomment it (if it's commented out) and run 'bundle install'
@@ -43,6 +44,8 @@ group :development, :test do
   gem 'guard'
   gem 'guard-bundler'
   gem 'guard-pow'
+  gem 'guard-sass'
+
   gem 'rb-fsevent'
   gem 'growl'
 end

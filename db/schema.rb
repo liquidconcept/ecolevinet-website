@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110905124048) do
+ActiveRecord::Schema.define(:version => 20110907075900) do
 
   create_table "actualite_categorizations", :force => true do |t|
     t.integer  "actualite_id"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(:version => 20110905124048) do
     t.datetime "updated_at"
     t.string   "titre"
     t.string   "lien"
+    t.boolean  "brulante"
   end
 
   add_index "actualites", ["id"], :name => "index_actualites_on_id"

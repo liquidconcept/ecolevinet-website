@@ -71,7 +71,7 @@ contact_page.parts.create({
 #last home page children
 
 #Page not found
-page_not_found_page = Page.create(:title => "Page not found",
+page_not_found_page = Page.create(:title => "Page inconnue",
             :menu_match => "^/404$",
             :show_in_menu => false,
             :deletable => false,

@@ -9,8 +9,8 @@ class Actualite < ActiveRecord::Base
 
   belongs_to :image
 
-  scope :brulantes, where(['date_limite >  ?', Date.today])
-  scope :normales,  where(['date_limite <= ?', Date.today])
+  scope :brulantes, where(['date_limite >  ? and brulante = ?', Date.today, true])
+  scope :normales,  where(['date_limite <= ? ', Date.today])
 
   def title
     titre

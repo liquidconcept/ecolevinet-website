@@ -2,38 +2,62 @@
 <%= render :partial => "/shared/html_tag" %>
 <% site_bar = render(:partial => "/shared/site_bar", :locals => {:head => true}) -%>
 
-<html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>École Vinet</title>
-    <%= stylesheet_link_tag "screen", "refinery/site_bar" %>
-    <%= javascript_include_tag :defaults %>
-    <%= csrf_meta_tag %>
-  </head>
-  <body>
+<% content_for :stylesheets do %>
+  <%= stylesheet_link_tag "screen", "refinery/site_bar" %>
+<% end %>
+
+<%= render :partial => "/shared/head" %>
+
+<body>
   <%= site_bar -%>
 
-    <div id="header">
-      <%= link_to(image_tag("logo_vinet.png", :alt => ""), "/accueil") %>
-    </div>
+  <div id="header">
+    <%= link_to(image_tag("logo_vinet.png", :alt => ""), "/accueil") %>
+  </div>
 
-    <div id="page">
-      <div id="content">
+  <div id="page">
+    <div id="content">
 
-        <div id="nav">
-          <%= render :partial => '/shared/menu', :locals => { :page => @page} %>
-          <%= image_tag("nav_picture.jpg", :id => "nav_picture", :alt => "" ) %>
-          <p id="nav_text">« L'ÉDUCATION DE L'ESPRIT ET DU COEUR DOIT ÊTRE<br/> LE PREMIER OBJET DE TOUT SYSTÈME D'ÉTUDE. » <span id="citation">Alexandre Vinet</span></p>
-        </div>
-
-        <%= yield %>
-
-        <div id="clear"></div>
-
+      <div id="nav">
+        <%= render :partial => '/shared/menu', :locals => { :page => @page} %>
       </div>
-    </div>
 
-    <div id="footer"></div>
+      <div class='horizontalaccordion'>
+        <ul>
+          <li class='current'>
+          <h3>Accueil</h3>
+          <div>
+            <%= image_tag("nav_picture.jpg", :id => "nav_picture", :alt => "" ) %>
+            <p id='nav_text'>« L'ÉDUCATION DE L'ESPRIT ET DU COEUR DOIT ÊTRE<br/> LE PREMIER OBJET DE TOUT SYSTÈME D'ÉTUDE. »
+            <span id="citation">Alexandre Vinet</span>
+            </p>
+          </div>
+          </li>
+          <% Section.all.each do |s| %>
+            <li>
+            <h3><%=raw s.nom %></h3>
+            <div>
+              <%= image_tag("nav_picture.jpg", :id => "nav_picture", :alt => "" ) %>
+              <p id="nav_text">
+              <p><%=raw s.titre   %></p>
+              <p><%=raw s.chapeau %></p>
+            </div>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
+    <%= yield %>
+
+    <div id="clear"></div>
+
+  </div>
+</div>
+
+<div id="footer">
+</div>
+
+<%= render :partial => "/shared/javascripts" %>
 
   </body>
 </html>
