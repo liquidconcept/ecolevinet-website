@@ -5,19 +5,21 @@ namespace :maintenance do
 #user related plugins
   "refinery_pages"      => 1,
   "sections"            => 2,
-  "refinery_images"     => 3,
-  "refinery_files"      => 4,
-  "refinery_users"      => 5,
+  "actualites"          => 3,
+  "portfolio"           => 4,
+  "refinery_images"     => 5,
+  "refinery_files"      => 6,
+  "refinery_users"      => 7,
 #superuser related plugins
-  "refinery_settings"   => 6,
-  "refinery_dashboard"  => 7,
+  "refinery_settings"   => 8,
+  "refinery_dashboard"  => 9,
 #base plugins
-  "refinerycms_base"    => 8,
-  "refinery_core"       => 9,
-  "refinery_dialogs"    => 10,
-  "refinery_i18n"       => 11,
-  "refinery_generators" => 12,
-  "page_images"         => 13},
+  "refinerycms_base"    => 10,
+  "refinery_core"       => 11,
+  "refinery_dialogs"    => 12,
+  "refinery_i18n"       => 13,
+  "refinery_generators" => 14,
+  "page_images"         => 15},
   :default_image_sizes =>  {:small  => '110x110', :medium => '225x255', :large => '870x328'}
   }
 

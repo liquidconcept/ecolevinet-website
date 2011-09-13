@@ -1,0 +1,21 @@
+nl:
+  plugins:
+    actualites:
+      title: Actualites
+  admin:
+    actualites:
+      actions:
+        create_new: Maak een nieuwe Actualite
+        reorder: Wijzig de volgorde van de Actualites
+        reorder_done: Klaar met het wijzingen van de volgorde van de Actualites
+      records:
+        title: Actualites
+        sorry_no_results: Helaas! Er zijn geen resultaten gevonden.
+        no_items_yet: Er zijn nog geen Actualites. Druk op 'Maak een nieuwe Actualite' om de eerste aan te maken.
+      actualite:
+        view_live_html: Bekijk deze actualite op de website <br/><em>(opent een nieuw venster)</em>
+        edit: Bewerk deze actualite
+        delete: Verwijder deze actualite voor eeuwig
+  actualites:
+    show:
+      other: Andere Actualites

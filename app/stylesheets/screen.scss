@@ -5,6 +5,7 @@
 
 @import "compass/reset";
 @import "blueprint";
+@import "compass/css3";
 
 /*----------grid----------*/
 
@@ -24,170 +25,255 @@ $blue: #4341A6;
 
 $trebuchet: "Trebuchet MS", Arial, Helvetica, sans-serif;
 
-/*---------généralités---------*/
+/*---------generalites---------*/
 
 body{
-	background-image:url(../images/fond.jpg);
-	background-repeat:repeat-x;
-	background-color:$grey;
-	font-family: $trebuchet;
-	color:$dark_grey;
-	font-size:13px;
+  background-image:url(../images/fond.jpg);
+  background-repeat:repeat-x;
+  background-color:$grey;
+  font-family: $trebuchet;
+  color:$dark_grey;
+  font-size:13px;
 }
 
 html{
-	overflow:auto;
+  overflow:auto;
 }
 
 /*---------header---------*/
 
 #header{
-	width:960px;
-	height:85px;
-	margin:auto;
-	background-image:url(../images/header.png);
-	background-repeat:no-repeat;
-	img{
-		margin:15px 0px 0px 25px;
-	}
+  width:960px;
+  height:85px;
+  margin:auto;
+  background-image:url(../images/header.png);
+  background-repeat:no-repeat;
+  img{
+    margin:15px 0px 0px 25px;
+  }
 }
 
 /*---------content---------*/
 
 #page{
-	width:960px;
-	margin:auto;
-	background-image:url(../images/fond_contenu.png);
-	#content{
-		padding:0px 45px 45px 45px;
-		h1{
-			margin-left:5px;
-			font-size:23px;
-			margin-bottom:25px;
-			font-weight:normal;
-		}
-		.dates{
-			padding:5px;
-			width:280px;
-			float:left;
-			p{
-				background-color:$dark_grey;
-				border:1px solid $dark_grey;
-				color:$white;
-				margin:0;
-				padding:5px;
-				&.inverse{
-					background-color:$white;
-					border:1px solid $dark_grey;
-					color:$dark_grey;
-				}
-			}
-			span{
-				width:150px;
-				display:block;
-			}
-			h2{
-				font-size:17px;
-				padding-bottom:5px;
-				padding-left:5px;
-				font-weight:normal;
-			}
-		}
-		#clear{
-			clear:both;
-			width:100%;
-			height:5px;
-		}
-		a{
-			color:$blue;
-			text-decoration:none;
-			&:hover{
-				text-decoration:underline;
-			}
-		}
-		#nav{
-			position:relative;
-			margin-bottom:30px;
-			#nav_picture{
-				display:block;
-			}
-			#nav_text{
-				position:absolute;
-				top:282px;
-				background-image:url(../images/nav_fond.png);
-				background-repeat:no-repeat;
-				background-position:bottom left;
-				width:850px;
-				padding:5px 20px;
-				color: $white;
-				font-size:18px;
-				text-align:center;
-				#citation{
-					font-size:13px;
-				}
-			}
-			#menu{
-				position:absolute;
-				right:0px;
-				top:-85px;
-				li{
-					display:inline;
-				}
-				a{
-					display:inline-block;
-					padding:33px 10px 5px 10px;
-					color:$dark_grey;
-					text-decoration:none;
-					&.active{
-						background-color:$dark_grey;
-						color:$white;
-					}
-					&:hover{
-						background-color:$dark_grey;
-						color:$white;
-					}
-				}
-			}
-		}
-		#left_col{
-			float:left;
-			width:420px;
-			h1{
-				font-size:23px;
-				margin-bottom:25px;
-				font-weight:normal;
-			}
-		}
-		#right_col{
-			border-left:1px solid $grey;
-			float:left;
-			margin-left:25px;
-			padding-left:20px;
-			width:400px;
-			h1{
-				font-size:23px;
-				margin-bottom:25px;
-				font-weight:normal;
-			}
-			#google{
-				width:215px;
-				height:200px;
-				float:right;
-				border:none;
-			}
-		}
-	}
-	p{
-		margin-bottom:20px;
-	}
+  width:960px;
+  margin:auto;
+  background-image:url(../images/fond_contenu.png);
+  #content{
+    position:relative;
+    padding:0px 45px 45px 45px;
+    h1{
+      margin-left:5px;
+      font-size:23px;
+      margin-bottom:25px;
+      font-weight:normal;
+    }
+    .dates{
+      padding:5px;
+      width:280px;
+      float:left;
+      p{
+        background-color:$dark_grey;
+        border:1px solid $dark_grey;
+        color:$white;
+        margin:0;
+        padding:5px;
+        &.inverse{
+          background-color:$white;
+          border:1px solid $dark_grey;
+          color:$dark_grey;
+        }
+      }
+      span{
+        width:150px;
+        display:block;
+      }
+      h2{
+        font-size:17px;
+        padding-bottom:5px;
+        padding-left:5px;
+        font-weight:normal;
+      }
+    }
+    #clear{
+      clear:both;
+      width:100%;
+      height:5px;
+    }
+    a{
+      color:$blue;
+      text-decoration:none;
+      &:hover{
+        text-decoration:underline;
+      }
+    }
+    #nav{
+      position:relative;
+    }
+    #menu{
+      position:absolute;
+      right:0px;
+      top:-85px;
+      li{
+        display:inline;
+      }
+      a{
+        display:inline-block;
+        padding:33px 10px 5px 10px;
+        color:$dark_grey;
+        text-decoration:none;
+        &.active{
+          background-color:$dark_grey;
+          color:$white;
+        }
+        &:hover{
+          background-color:$dark_grey;
+          color:$white;
+        }
+      }
+    }
+    #left_col{
+      float:left;
+      width:420px;
+      h1{
+        font-size:23px;
+        margin-bottom:25px;
+        font-weight:normal;
+      }
+    }
+    #right_col{
+      border-left:1px solid $grey;
+      float:left;
+      margin-left:25px;
+      padding-left:20px;
+      width:400px;
+      h1{
+        font-size:23px;
+        margin-bottom:25px;
+        font-weight:normal;
+      }
+      #google{
+        width:215px;
+        height:200px;
+        float:right;
+        border:none;
+      }
+    }
+    p{
+      margin-bottom:20px;
+    }
+  }
 }
 
+/*---------accordion---------*/
+
+
+.horizontalaccordion{
+
+  #nav_picture{
+    display:block;
+  }
+  #nav_text{
+    position:absolute;
+    top:282px;
+    width:850px;
+    padding:5px 20px;
+    background-image:url(../images/nav_fond.png);
+    background-repeat:no-repeat;
+    background-position:bottom left;
+    color: $white;
+    font-size:18px;
+    text-align:center;
+    #citation{
+      font-size:13px;
+    }
+  }
+  &>ul {
+    margin: 0;
+    padding: 0;
+    list-style:none;
+    height: 328px;
+    &>li {
+      display:block;
+      overflow: hidden;
+      float:left;
+      margin: 0;
+      padding: 0;
+      list-style:none;
+      width:40px;
+      height: 328px;
+      background:#f0f0f0;
+      transition: width 0.3s ease-in-out;
+      -moz-transition: width 0.3s ease-in-out;
+      -webkit-transition: width 0.3s ease-in-out;
+      -o-transition: width 0.3s ease-in-out;
+
+      &>h3 {
+        display:block;
+        float:left;
+        margin: 0;
+        padding:10px;
+        height:19px;
+        width:328px;
+        border-left:#f0f0f0 1px solid;
+        font-family: Arial, Helvetica, sans-serif;
+        text-decoration:none;
+        text-transform:uppercase;
+        color: #000;
+        background:#cccccc;
+        white-space:nowrap;
+        -moz-transform: rotate(90.0deg) translate(-40px,0px);  /* FF3.5+ */
+        -moz-transform-origin:0 100%;
+        -o-transform: rotate(90.0deg) translate(-40px,0px);  /* Opera 10.5 */
+        -o-transform-origin: 0 100%;
+        -webkit-transform: rotate(90.0deg) translate(-40px,0px);  /* Saf3.1+, Chrome */
+        -webkit-transform-origin: 0 100%;
+        transform: rotate(90.0deg) translate(-40px,0px);  /* Saf3.1+, Chrome */
+        transform-origin: 0 100%;
+        filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1.0)
+        progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff999999, endColorstr=#ffcccccc);  /* IE6,IE7 */
+        -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=1.0)"
+        "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff999999, endColorstr=#ffcccccc)"; /* IE8 */
+      }
+
+      &>div {
+        top:-29px;
+        left:35px;
+         *top:0px;       /* IE7 Hack */
+         *left:0px;      /* IE7 Hack */
+         margin:0;
+         width:870px;
+         height:328px;
+         display:none;
+         float:left;
+         overflow: auto;
+         position:relative;
+     }
+   }
+
+ }
+  .current {
+         overflow: hidden;
+         width: 870px;
+         div {
+           display:block;
+         }
+  }
+
+  &:hover>ul>li:hover>h3 {
+     color:#fff;
+     background:#000000;
+  }
+  &>ul>li>h3:hover {
+       cursor:pointer;
+  }
+}
 /*---------footer---------*/
 
 #footer{
-	clear:both;
-	margin:auto;
-	width:960px;
-	height:119px;
-	background-image:url(../images/footer.png);
-}
+   clear:both;
+   margin:auto;
+   width:960px;
+   height:119px;
+   background-image:url(../images/footer.png);
+ }

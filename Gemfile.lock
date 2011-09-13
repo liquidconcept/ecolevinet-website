@@ -1,6 +1,14 @@
+GIT
+  remote: git://github.com/ncouturier/refinerycms-portfolio.git
+  revision: c3a594aa5e227485877e8ea04dc010b776aaac83
+  specs:
+    refinerycms-portfolio (0.9.10)
+      refinerycms (>= 0.9.9)
+
 PATH
   remote: vendor/engines
   specs:
+    refinerycms-actualites (1.0)
     refinerycms-sections (1.0)
 
 GEM
@@ -40,6 +48,11 @@ GEM
     babosa (0.3.5)
     bcrypt-ruby (2.1.4)
     builder (2.1.2)
+    chunky_png (1.2.1)
+    compass (0.11.5)
+      chunky_png (~> 1.2)
+      fssm (>= 0.2.7)
+      sass (~> 3.1)
     devise (1.3.4)
       bcrypt-ruby (~> 2.1.2)
       orm_adapter (~> 0.0.3)
@@ -50,6 +63,7 @@ GEM
       abstract (>= 1.0.0)
     friendly_id_globalize3 (3.2.1.4)
       babosa (~> 0.3.0)
+    fssm (0.2.7)
     globalize3 (0.1.0)
       activemodel (>= 3.0.0)
       activerecord (>= 3.0.0)
@@ -61,6 +75,9 @@ GEM
       guard (>= 0.2.2)
     guard-pow (0.1.0)
       guard (>= 0.3.0)
+    guard-sass (0.2.4)
+      guard (>= 0.2.1)
+      sass (>= 3.1)
     i18n (0.5.0)
     mail (2.2.19)
       activesupport (>= 2.3.6)
@@ -146,6 +163,7 @@ GEM
       refinerycms-base (= 1.0.4)
     routing-filter (0.2.4)
       actionpack
+    sass (3.1.7)
     seo_meta (1.1.1)
       refinerycms-generators (~> 1.0.1)
     sqlite3 (1.3.4)
@@ -163,13 +181,17 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  compass (>= 0.11.5)
   growl
   guard
   guard-bundler
   guard-pow
+  guard-sass
   rb-fsevent
   refinerycms (~> 1.0.4)
+  refinerycms-actualites (= 1.0)!
   refinerycms-i18n (~> 1.0.0)
   refinerycms-page-images (~> 1.0)
+  refinerycms-portfolio!
   refinerycms-sections (= 1.0)!
   sqlite3
