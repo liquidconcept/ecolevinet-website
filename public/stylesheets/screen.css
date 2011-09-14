@@ -239,10 +239,9 @@ html {
 }
 /* line 168, ../../app/stylesheets/screen.scss */
 #page #content #block {
-  width: 300px;
-  height: 40px;
+  width: 350px;
   background-color: #cecece;
-  margin: 10px 0px;
+  margin: 10px 10px;
   display: inline-block;
   padding: 10px 10px;
   -webkit-border-radius: 4px 4px;
@@ -254,12 +253,12 @@ html {
 }
 
 /*---------accordion---------*/
-/* line 181, ../../app/stylesheets/screen.scss */
+/* line 180, ../../app/stylesheets/screen.scss */
 #nav_picture {
   display: block;
 }
 
-/* line 184, ../../app/stylesheets/screen.scss */
+/* line 183, ../../app/stylesheets/screen.scss */
 #nav_text {
   position: absolute;
   top: 282px;
@@ -272,25 +271,25 @@ html {
   font-size: 18px;
   text-align: center;
 }
-/* line 195, ../../app/stylesheets/screen.scss */
+/* line 194, ../../app/stylesheets/screen.scss */
 #nav_text #citation {
   font-size: 13px;
 }
 
-/* line 200, ../../app/stylesheets/screen.scss */
+/* line 199, ../../app/stylesheets/screen.scss */
 .horizontalaccordion {
   position: absolute;
   top: 0px;
   left: 40px;
 }
-/* line 206, ../../app/stylesheets/screen.scss */
+/* line 205, ../../app/stylesheets/screen.scss */
 .horizontalaccordion > ul {
   margin: 0;
   padding: 0;
   list-style: none;
   height: 328px;
 }
-/* line 211, ../../app/stylesheets/screen.scss */
+/* line 210, ../../app/stylesheets/screen.scss */
 .horizontalaccordion > ul > li {
   display: inline;
   overflow: hidden;
@@ -305,7 +304,7 @@ html {
   -webkit-transition: width 0.3s ease-in-out;
   -o-transition: width 0.3s ease-in-out;
 }
-/* line 225, ../../app/stylesheets/screen.scss */
+/* line 224, ../../app/stylesheets/screen.scss */
 .horizontalaccordion > ul > li > h3 {
   display: block;
   float: left;
@@ -337,7 +336,7 @@ html {
   -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=1.0)"         "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff999999, endColorstr=#ffcccccc)";
   /* IE8 */
 }
-/* line 253, ../../app/stylesheets/screen.scss */
+/* line 252, ../../app/stylesheets/screen.scss */
 .horizontalaccordion > ul > li > div {
   top: -29px;
   left: 35px;
@@ -353,27 +352,27 @@ html {
   overflow: auto;
   position: relative;
 }
-/* line 269, ../../app/stylesheets/screen.scss */
+/* line 268, ../../app/stylesheets/screen.scss */
 .horizontalaccordion .current {
   overflow: hidden;
   width: 735px;
 }
-/* line 272, ../../app/stylesheets/screen.scss */
+/* line 271, ../../app/stylesheets/screen.scss */
 .horizontalaccordion .current div {
   display: block;
 }
-/* line 277, ../../app/stylesheets/screen.scss */
+/* line 276, ../../app/stylesheets/screen.scss */
 .horizontalaccordion:hover > ul > li:hover > h3 {
   color: #fff;
   background: #000000;
 }
-/* line 281, ../../app/stylesheets/screen.scss */
+/* line 280, ../../app/stylesheets/screen.scss */
 .horizontalaccordion > ul > li > h3:hover {
   cursor: pointer;
 }
 
 /*---------footer---------*/
-/* line 287, ../../app/stylesheets/screen.scss */
+/* line 286, ../../app/stylesheets/screen.scss */
 #footer {
   clear: both;
   margin: auto;

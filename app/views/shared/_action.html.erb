@@ -4,9 +4,12 @@
       $('.horizontalaccordion>ul>li').click(function(){
         $(this).siblings().removeClass('current');
         $(this).addClass('current');
-        $('#page_content').fadeTo('slow',0);
-        //Ajout de la mise à jour Ajax;
-        $('#page_content').fadeTo('slow',1);
+        $('#page_content').slideToggle('slow');
+        $.pjax({url: '/sections/2', container: '#page_content', fragment: '#page_content'});
+        $.bind('end.pjax',   function() {
+          $('#page_content').slideToggle('slow');
+          }
+        )
       });
     });
   </script>

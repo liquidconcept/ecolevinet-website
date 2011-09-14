@@ -1,9 +1,11 @@
 <% if @section.actualites.brulantes.any? %>
   <div id="block">
     <h3>A la une</h3>
+    <p>
     <% @section.actualites.brulantes.each do |actualite| %>
       <%= link_to actualite.title, '/actualites/' + actualite.id.to_s %>
     <% end %>
+    </p>
   </div>
 <% end %>
 <% if @section.portfolio_entries.any? %>
@@ -21,14 +23,18 @@
     <% if child.title == "Actualites" &&  @section.actualites.normales.any? %>
         <div id="block">
           <h3> Actualités</h3>
+          <p>
           <% @section.actualites.normales.each do |actualite| %>
             <%= link_to actualite.titre, '/actualites/' + actualite.id.to_s %>
           <% end %>
+          </p>
         </div>
     <% else %>
         <div id="block">
           <h3><%= child.title %> </h3>
+          <p>
           <%= link_to child.title, child.url %>
+          </p>
         </div>
     <% end %>
   <% end %>
