@@ -12,7 +12,7 @@
   <%= site_bar -%>
 
   <div id="header">
-    <%= link_to(image_tag("logo_vinet.png", :alt => ""), "/accueil") %>
+    <%= link_to(image_tag("logo_vinet.png", :alt => ""), "/") %>
   </div>
 
   <div id="page">
@@ -21,35 +21,31 @@
       <div id="nav">
         <%= render :partial => '/shared/menu', :locals => { :page => @page} %>
       </div>
+      <div id="sectiondata">
+        <% Section.all.each_with_index do |s,i| %>
+          <div id="section<%= i+1 %>"  <%=raw 'style="display: none"' unless i+1 == 1 %>  >
+            <%= image_fu s.image, '870x328', :id => "nav_picture", :alt => "" %>
+            <div id="nav_text" >
+              <h2><%=raw  s.titre   %></h2>
+              <p> <%=raw  s.chapeau %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
 
-      <%= image_tag("nav_picture.jpg", :id => "nav_picture", :alt => "" ) %>
-      <p id='nav_text'>« L'ÉDUCATION DE L'ESPRIT ET DU COEUR DOIT ÊTRE<br/> LE PREMIER OBJET DE TOUT SYSTÈME D'ÉTUDE. »
-      <span id="citation">Alexandre Vinet</span>
-      </p>
 
       <div class='horizontalaccordion'>
         <ul>
-          <li class='current'>
-          <h3>Accueil</h3>
-          </li>
-          <% Section.all.each do |s| %>
-            <li>
-            <h3><%=raw s.nom %></h3>
-            <div>
-              <!--     <%= image_tag("nav_picture.jpg", :id => "nav_picture", :alt => "" ) %>
-              <p id="nav_text">
-              <p><%=raw s.titre   %></p>
-              <p><%=raw s.chapeau %></p>-->
-
-            </div>
+          <% Section.all.each_with_index do |s,i| %>
+            <li <%= "class='current'" if @page.url== url_for(s.page.url) %>>
+            <%= link_to s.nom, url_for(s.page.url), :'data-sectionid' => i+1 %>
             </li>
           <% end %>
         </ul>
       </div>
 
-      <div id="page_content">
-        <%= yield %>
-      </div>
+      <%= yield %>
+
       <div id="clear"></div>
 
     </div>
@@ -58,7 +54,6 @@
   <div id="footer">
   </div>
 
-  <%= render :partial => "/shared/action" %>
   <%= render :partial => "/shared/javascripts" %>
 </body>
 </html>

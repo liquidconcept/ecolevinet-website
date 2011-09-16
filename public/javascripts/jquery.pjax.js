@@ -82,6 +82,7 @@ var pjax = $.pjax = function( options ) {
   // We don't want to let anyone override our success handler.
   delete options.success
 
+
   // We can't persist $objects using the history API so we must use
   // a String selector. Bail if we got anything else.
   if ( typeof options.container !== 'string' )
@@ -100,6 +101,8 @@ var pjax = $.pjax = function( options ) {
       // If they specified a fragment, look for it in the response
       // and pull it out.
       var $fragment = $(data).find(options.fragment)
+      console.log("$fragment:");
+      console.log($fragment);
       if ( $fragment.length )
         data = $fragment.children()
       else

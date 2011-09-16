@@ -1,7 +1,4 @@
-<div id='left_col'>
-  <h1><%= @actualite.title %></h1>
-  <%= image_fu @actualite.image, '200x200#c', :title => @actualite.title, :class=>'right' %>
+<h1><%= @actualite.title %></h1>
+<%= image_fu @actualite.image, '200x200#c', :title => @actualite.title, :class=>'right' %>
 
-  <p><%=raw @actualite.contenu %></p>
-
-</div>
+<p><%=raw @actualite.contenu %></p>

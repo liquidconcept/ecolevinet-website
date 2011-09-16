@@ -239,57 +239,57 @@ html {
 }
 /* line 168, ../../app/stylesheets/screen.scss */
 #page #content #block {
-  width: 350px;
+  width: 390px;
+  height: 280px;
   background-color: #cecece;
   margin: 10px 10px;
-  display: inline-block;
   padding: 10px 10px;
+  display: inline-block;
   -webkit-border-radius: 4px 4px;
   -moz-border-radius: 4px / 4px;
   -o-border-radius: 4px / 4px;
   -ms-border-radius: 4px / 4px;
   -khtml-border-radius: 4px / 4px;
   border-radius: 4px / 4px;
+  -moz-box-shadow: black 0 1px 2px, white 0 1px inset;
+  -webkit-box-shadow: black 0 1px 2px, white 0 1px inset;
+  -o-box-shadow: black 0 1px 2px, white 0 1px inset;
+  box-shadow: black 0 1px 2px, white 0 1px inset;
 }
 
 /*---------accordion---------*/
-/* line 180, ../../app/stylesheets/screen.scss */
-#nav_picture {
-  display: block;
-}
-
-/* line 183, ../../app/stylesheets/screen.scss */
+/* line 184, ../../app/stylesheets/screen.scss */
 #nav_text {
   position: absolute;
-  top: 282px;
+  top: 262px;
   width: 850px;
-  padding: 5px 20px;
+  padding: 5px 10px 0px 80px;
   background-image: url(../images/nav_fond.png);
   background-repeat: no-repeat;
   background-position: bottom left;
   color: white;
   font-size: 18px;
-  text-align: center;
+  text-align: left;
 }
-/* line 194, ../../app/stylesheets/screen.scss */
+/* line 195, ../../app/stylesheets/screen.scss */
 #nav_text #citation {
   font-size: 13px;
 }
 
-/* line 199, ../../app/stylesheets/screen.scss */
+/* line 200, ../../app/stylesheets/screen.scss */
 .horizontalaccordion {
   position: absolute;
   top: 0px;
   left: 40px;
 }
-/* line 205, ../../app/stylesheets/screen.scss */
+/* line 206, ../../app/stylesheets/screen.scss */
 .horizontalaccordion > ul {
   margin: 0;
   padding: 0;
   list-style: none;
-  height: 328px;
+  height: 327px;
 }
-/* line 210, ../../app/stylesheets/screen.scss */
+/* line 211, ../../app/stylesheets/screen.scss */
 .horizontalaccordion > ul > li {
   display: inline;
   overflow: hidden;
@@ -297,22 +297,17 @@ html {
   margin: 0;
   padding: 0;
   list-style: none;
-  width: 35px;
-  height: 328px;
-  transition: width 0.3s ease-in-out;
-  -moz-transition: width 0.3s ease-in-out;
-  -webkit-transition: width 0.3s ease-in-out;
-  -o-transition: width 0.3s ease-in-out;
+  width: 33px;
+  height: 327px;
 }
-/* line 224, ../../app/stylesheets/screen.scss */
-.horizontalaccordion > ul > li > h3 {
+/* line 221, ../../app/stylesheets/screen.scss */
+.horizontalaccordion > ul > li > a {
   display: block;
   float: left;
   margin: 0;
   padding: 10px;
   height: 19px;
-  width: 328px;
-  border-left: #f0f0f0 1px solid;
+  width: 327px;
   font-family: Arial, Helvetica, sans-serif;
   text-decoration: none;
   text-transform: uppercase;
@@ -336,6 +331,22 @@ html {
   -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=1.0)"         "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff999999, endColorstr=#ffcccccc)";
   /* IE8 */
 }
+/* line 222, ../../app/stylesheets/screen.scss */
+.horizontalaccordion > ul > li > a:link {
+  text-decoration: none;
+}
+/* line 223, ../../app/stylesheets/screen.scss */
+.horizontalaccordion > ul > li > a:visited {
+  text-decoration: none;
+}
+/* line 224, ../../app/stylesheets/screen.scss */
+.horizontalaccordion > ul > li > a:active {
+  text-decoration: none;
+}
+/* line 225, ../../app/stylesheets/screen.scss */
+.horizontalaccordion > ul > li > a:hover {
+  text-decoration: none;
+}
 /* line 252, ../../app/stylesheets/screen.scss */
 .horizontalaccordion > ul > li > div {
   top: -29px;
@@ -345,7 +356,7 @@ html {
   *left: 0px;
   /* IE7 Hack */
   margin: 0;
-  width: 735px;
+  width: 745px;
   height: 328px;
   display: none;
   float: left;
@@ -355,7 +366,7 @@ html {
 /* line 268, ../../app/stylesheets/screen.scss */
 .horizontalaccordion .current {
   overflow: hidden;
-  width: 735px;
+  width: 745px;
 }
 /* line 271, ../../app/stylesheets/screen.scss */
 .horizontalaccordion .current div {

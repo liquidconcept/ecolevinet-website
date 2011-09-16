@@ -1,5 +1,5 @@
 <ul id="menu">
-  <%= link_to 'Accueil'    , '/accueil'            , {:class => (['/accueil','/'].include?(url_for(page.url)) ? 'active' : '')} %>
+  <%= link_to 'Accueil'    , '/'                   , {:class => (['/accueil','/'].include?(url_for(page.url)) ? 'active' : '')} %>
   <%= link_to 'Admission'  , '/accueil/admission'  , {:class => ('/accueil/admission'  == url_for(page.url)   ? 'active' : '')} %>
   <%= link_to 'Cours'      , '/accueil/cours'      , {:class => ('/accueil/cours'      == url_for(page.url)   ? 'active' : '')} %>
   <%= link_to 'Agenda'     , '/accueil/agenda'     , {:class => ('/accueil/agenda'     == url_for(page.url)   ? 'active' : '')} %>
