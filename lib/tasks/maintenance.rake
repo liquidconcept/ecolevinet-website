@@ -40,7 +40,13 @@ namespace :maintenance do
 
   desc "set default plugins order"
   task :set_default_plugins_order => :environment do
-    ConfigSite[:plugins_order].each {| k, v | up = UserPlugin.find_by_name(k);up.position=v; up.save; }
+    ConfigSite[:plugins_order].each do | k, v |
+      ups = UserPlugin.where(:name => k)
+      ups.each do |up|
+        up.position=v;
+        up.save;
+      end
+    end
   end
 
   desc "set site name"
@@ -62,12 +68,11 @@ namespace :maintenance do
 
 
   desc "general maintenance task"
-  task :setup => [ :environment, :set_default_page_parts, :set_site_name, :set_site_to_french, :set_default_plugins_order, :set_default_image_sizes ] do
+  task :setup => [ :environment, :set_default_page_parts, :set_site_name, :set_site_to_french, :set_default_image_sizes ] do
 
     Rake::Task['maintenance:set_default_page_parts'].invoke
     Rake::Task['maintenance:set_site_name'].invoke
     Rake::Task['maintenance:set_site_to_french'].invoke
-    Rake::Task['maintenance:set_default_plugins_order'].invoke
     Rake::Task['maintenance:set_default_image_sizes'].invoke
 
   end

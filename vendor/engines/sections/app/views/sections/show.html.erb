@@ -1,41 +1,14 @@
-<% if @section.actualites.brulantes.any? %>
-  <div id="block">
-    <h3>A la une</h3>
-    <p>
-    <% @section.actualites.brulantes.each do |actualite| %>
-      <%= link_to actualite.title, '/actualites/' + actualite.id.to_s %>
-    <% end %>
-    </p>
-  </div>
-<% end %>
-<% if @section.portfolio_entries.any? %>
-  <div id="block">
-    <h3> Galeries Photo</h3>
-    <% @section.portfolio_entries.each do |portfolio_entry| %>
-      <%= link_to portfolio_entry.title, '/portfolio/' + portfolio_entry.title %> :
-      <%= raw portfolio_entry.body %>
-    <% end %>
-  </div>
-<% end %>
-
-<% if @section.page.children.any? %>
-  <% @section.page.children.each do |child| %>
-    <% if child.title == "Actualites" &&  @section.actualites.normales.any? %>
-        <div id="block">
-          <h3> Actualités</h3>
-          <p>
-          <% @section.actualites.normales.each do |actualite| %>
-            <%= link_to actualite.titre, '/actualites/' + actualite.id.to_s %>
-          <% end %>
-          </p>
-        </div>
-    <% else %>
-        <div id="block">
-          <h3><%= child.title %> </h3>
-          <p>
-          <%= link_to child.title, child.url %>
-          </p>
-        </div>
-    <% end %>
+<% articles_rendered = false%>
+<% @section.page.children.each do |child| %>
+  <% case child.title %>
+  <% when "Actualites" %>
+    <%= render :partial => 'actualites',  :locals => {:section => @section}  if @section.actualites.any?%>
+  <% when "Agenda" %>
+    <%= render :partial => 'agendas',      :locals => {:section => @section} %>
+  <% when "Galerie" %>
+    <%= render :partial => 'galeries', :locals => {:section => @section} if @section.portfolio_entries.any? %>
+  <% else %>
+    <%= render :partial => 'articles',     :locals => {:section => @section} unless articles_rendered %>
+    <% articles_rendered = true %>
   <% end %>
 <% end %>

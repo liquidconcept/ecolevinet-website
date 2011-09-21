@@ -21,9 +21,11 @@ class PagePart < ActiveRecord::Base
   end
 protected
   def normalise_text_fields
-    unless  !(self.page.section.blank?)
-      unless body.blank? or body =~ /^\</
-        self.body = "<p>#{body.gsub("\r\n\r\n", "</p><p>").gsub("\r\n", "<br/>")}</p>"
+    unless File.basename($0) == 'rake'
+      unless  !(self.page.section.blank?)
+        unless body.blank? or body =~ /^\</
+          self.body = "<p>#{body.gsub("\r\n\r\n", "</p><p>").gsub("\r\n", "<br/>")}</p>"
+        end
       end
     end
   end

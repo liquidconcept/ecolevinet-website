@@ -21,17 +21,29 @@
 
   <% end %>
 
-  <%= render :partial => "form_fields_after_title",
-    :locals => {
-    :f => f
-  } %>
-
-  <div class='field'>
-    <%= render :partial => "form_page_parts",
+    <%= render :partial => "form_fields_after_title",
       :locals => {
-      :f => f
-    } %>
-  </div>
+        :f => f}
+      %>
+
+  <% if !@page.section.blank? #override if this page is a section, custom partial from page parts %>
+
+      <%= render :partial => "/shared/section_form",
+        :locals => {
+        :f => f,
+        :object => @page
+      } %>
+
+  <% else %>
+
+    <div class='field'>
+      <%= render :partial => "form_page_parts",
+        :locals => {
+        :f => f
+      } %>
+    </div>
+
+  <% end %>
 
   <%= render :partial => "form_advanced_options",
     :locals => {

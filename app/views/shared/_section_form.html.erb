@@ -1,0 +1,9 @@
+<%= f.fields_for :parts do |p| %>
+
+    <div class='field'>
+      <%= p.label    p.object.title  %>
+      <%= p.text_field :body, :class => "widest" %>
+    </div>
+
+<% end %>
+

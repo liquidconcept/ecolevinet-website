@@ -25,7 +25,7 @@ class Section < ActiveRecord::Base
       section_page = Page.create(:title => section.nom,
                                  :show_in_menu => false,
                                  :deletable => false,
-                                 :position => Page.maximum("position") + 1)
+                                 :position => Page.maximum("position") || 0 + 1)
 
       section_page.parts.create({
         :title => "nom",
@@ -44,10 +44,29 @@ class Section < ActiveRecord::Base
         :body => section.lien,
         :position => 3})
       #update Section page_id
-        section.page_id = section_page.id
-        section.save
+      section.page_id = section_page.id
+      section.save
+      #Add an Actualite Page
+      page = section_page.children.create(
+        :title => 'Actualites',
+        :deletable => false,
+        :show_in_menu => false,
+        :position => section_page.position + 1)
+      Page.default_parts.each do |default_page_part|
+        page.parts.create(:title => default_page_part, :body => nil)
+      end
+      #Add a Portfolio Page
+      page = section_page.children.create(
+        :title => 'Galerie',
+        :deletable => false,
+        :show_in_menu => false,
+        :position => section_page.position + 1)
+      Page.default_parts.each do |default_page_part|
+        page.parts.create(:title => default_page_part, :body => nil)
+      end
     end
   end
+
   def before_save
     section = self
     # correponding page updated if section updated

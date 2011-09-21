@@ -11,6 +11,7 @@ unless Page.find_by_link_url('/portfolio').present?
     :link_url => "/portfolio",
     :menu_match => "\/portfolio(|\/.+?)",
     :deletable => false,
+    :show_in_menu => true,
     :position => ((Page.maximum(:position, :conditions => {:parent_id => nil}) || -1)+1)
   })
   Page.default_parts.each do |default_page_part|

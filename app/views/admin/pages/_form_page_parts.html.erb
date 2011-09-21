@@ -45,15 +45,3 @@
     <% end if current_user.has_role?(:superuser) || !@page.section.blank? %>
   </div>
 </div>
-
-<% content_for :javascripts do %>
-  <script>
-    $(document).ready(function(){
-    //  $('#custom_images_tab>a').click(function(){
-    //      $('#page_image_picker').css({'visibility': 'visible'});
-    //    $('.wym_skin_refinery').css({'opacity' : 1});
-    //     $('.wym_skin_refinery:a').css({'visibility' : 'visible'});
-    //      });
-    });
-  </script>
-<% end %>

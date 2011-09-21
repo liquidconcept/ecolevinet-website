@@ -12,6 +12,7 @@ if defined?(Page)
     :title => 'Actualites',
     :link_url => '/actualites',
     :deletable => false,
+    :show_in_menu => false,
     :position => ((Page.maximum(:position, :conditions => {:parent_id => nil}) || -1)+1),
     :menu_match => '^/actualites(\/|\/.+?|)$'
   )

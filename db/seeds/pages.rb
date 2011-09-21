@@ -9,21 +9,11 @@ unless !defined?(::SeoMeta) || ::SeoMeta.attributes.keys.all? { |k|
   ::Page.translation_class.send :is_seo_meta
 end
 
-#Home page
-page_position = -1
-
-home_page = Page.create(:title => "Accueil",
-            :deletable => false,
-            :link_url => "/",
-            :position => (page_position += 1))
-home_page.parts.create({
-              :title => "Contenu",
-              :body => "<p>Bienvenu sur le site de l'école Vinet.</p>",
-              :position => 0
-            })
 
 #Home page children
-home_page_position = -1
+
+home_page_position = Section.first.page.position
+home_page= Section.first.page
 
 admission_page = home_page.children.create(:title => "Admission",
             :show_in_menu => true,
@@ -69,7 +59,7 @@ contact_page.parts.create({
             })
 
 #last home page children
-
+page_position = -1
 #Page not found
 page_not_found_page = Page.create(:title => "Page inconnue",
             :menu_match => "^/404$",
