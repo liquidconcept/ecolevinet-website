@@ -173,44 +173,15 @@ html{
       margin-bottom:20px;
     }
     #page_content{
-      #block{
-        width:  390px ;
-        height: 280px ;
+      .block{
+        width:  390px;
+        height: 280px;
         background-color: $grey;
         margin: 10px 10px;
         padding: 10px 10px;
         float: left;
         @include border-radius(4px, 4px);
         @include box-shadow(#000 0 1px 2px, #fff 0 1px inset);
-      }
-      #block_articles{
-        width:  390px ;
-        height: 280px ;
-        background-color: violet;
-        margin: 10px 10px;
-        padding: 10px 10px;
-        float: left;
-        @include border-radius(4px, 4px);
-        @include box-shadow(#000 0 1px 2px, #fff 0 1px inset);
-        h2{
-          border-bottom: 1px solid;
-          padding: 0 0;
-          visibility: hidden;
-          bottom-margin: 20px;
-          color: #819FF7;
-          font-size:19px;
-          font-weight:bold;
-        }
-        ul{
-          visibility: hidden;
-          margin: 20px 10px;
-          list-style-type:square;
-        }
-      }
-      #block_articles:hover{
-        background-color: white;
-        h2{ visibility: visible;}
-        ul{ visibility: visible;}
       }
     }
   }
