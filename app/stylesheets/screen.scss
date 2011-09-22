@@ -333,7 +333,7 @@ html{
 		  }
 	    }
 		.layer{
-		  display:none;
+		  z-index:10;
 		  position:absolute;
 		  width:  420px;
 		  height: 300px;
