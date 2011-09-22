@@ -1,4 +1,8 @@
 $(document).ready(function() {
+  $('.scrollable').scrollbar({
+	arrows: false
+  });
+  
   $('#horizontalaccordion>ul>li>a').click(function(event){
     event.preventDefault();
     var vb, link;
