@@ -1,11 +1,5 @@
-User.find(:all).each do |user|
-  user.plugins.create({
-    :name => "portfolio",
-    :position => (user.plugins.maximum(:position) || -1) +1
-  }) unless user.plugins.find_by_name('portfolio').present?
-end
+if defined?(Page) && !Page.find_by_link_url('/portfolio').present? && !RefineryConfig.hidden_plugins.include?("portfolio")
 
-unless Page.find_by_link_url('/portfolio').present?
   page = Page.create({
     :title => "Portfolio",
     :link_url => "/portfolio",

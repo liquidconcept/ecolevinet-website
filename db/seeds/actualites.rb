@@ -1,18 +1,9 @@
-if defined?(User)
-  User.all.each do |user|
-    if user.plugins.where(:name => 'actualites').blank?
-      user.plugins.create(:name => 'actualites',
-                          :position => (user.plugins.maximum(:position) || -1) +1)
-    end
-  end
-end
-
-if defined?(Page)
+if defined?(Page) && !RefineryConfig.hidden_plugins.include?("actualites")
   page = Page.create(
     :title => 'Actualites',
     :link_url => '/actualites',
     :deletable => false,
-    :show_in_menu => false,
+    :show_in_menu => true,
     :position => ((Page.maximum(:position, :conditions => {:parent_id => nil}) || -1)+1),
     :menu_match => '^/actualites(\/|\/.+?|)$'
   )

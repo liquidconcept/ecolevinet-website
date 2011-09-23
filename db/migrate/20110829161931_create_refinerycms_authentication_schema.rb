@@ -31,6 +31,8 @@ class CreateRefinerycmsAuthenticationSchema < ActiveRecord::Migration
     end
 
     add_index ::User.table_name, ["id"], :name => "index_#{::User.table_name}_on_id"
+
+
   end
 
   def self.down

@@ -20,7 +20,8 @@ class RefineryConfig
     "refinery_i18n"       => 13,
     "refinery_generators" => 14,
     "page_images"         => 15},
-    :default_image_sizes =>  {:small  => '110x110', :medium => '225x255', :large => '870x328'}
+    :default_image_sizes =>  {:small  => '110x110', :medium => '225x255', :large => '870x328'},
+    :hidden_plugins => ["portfolio","actualites"]
   }
 
   #set default page parts
@@ -81,9 +82,13 @@ class RefineryConfig
 
   #toogle page part creation (default is set to false)
   def self.toggle_page_part_creation
-
     RefinerySetting.set(:new_page_parts, !RefinerySetting.get(:new_page_parts))
-
   end
+
+  #get hidden plugins
+  def self.hidden_plugins
+     REFINERY_CONFIG[:hidden_plugins]
+  end
+
 
 end

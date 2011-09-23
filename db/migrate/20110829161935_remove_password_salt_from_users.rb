@@ -5,6 +5,12 @@ class RemovePasswordSaltFromUsers < ActiveRecord::Migration
     User.all.each do |u|
       u.update_attribute(:encrypted_password, u.encrypted_password[29..-1])
     end
+
+    if (seed_file = Rails.root.join('db', 'seeds', 'users.rb')).file?
+      load seed_file.to_s
+      RefineryConfig.set_default_plugins_order
+    end
+
   end
 
   def self.down

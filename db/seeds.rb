@@ -10,9 +10,11 @@
 #  puts "Loading db/seeds/#{file.split(File::SEPARATOR).last}"
 #  load(file)
 #end
+# Refinery related setup :   default_page_parts, site_name, set_site_to_french ,set_default_image_sizes
+RefineryConfig.setup
 
 load(Rails.root.join('db', 'seeds', 'users.rb'))
 load(Rails.root.join('db', 'seeds', 'sections.rb'))
-load(Rails.root.join('db', 'seeds', 'pages.rb'))
+load(Rails.root.join('db', 'seeds', '_pages.rb'))
 load(Rails.root.join('db', 'seeds', 'portfolios.rb'))
 load(Rails.root.join('db', 'seeds', 'actualites.rb'))

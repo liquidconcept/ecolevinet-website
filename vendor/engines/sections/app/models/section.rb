@@ -47,22 +47,26 @@ class Section < ActiveRecord::Base
       section.page_id = section_page.id
       section.save
       #Add an Actualite Page
-      page = section_page.children.create(
-        :title => 'Actualites',
-        :deletable => false,
-        :show_in_menu => false,
-        :position => section_page.position + 1)
-      Page.default_parts.each do |default_page_part|
-        page.parts.create(:title => default_page_part, :body => nil)
+      unless RefineryConfig.hidden_plugins.include?("actualites")
+        page = section_page.children.create(
+          :title => 'Actualites',
+          :deletable => false,
+          :show_in_menu => true,
+          :position => section_page.position + 1)
+        Page.default_parts.each do |default_page_part|
+          page.parts.create(:title => default_page_part, :body => nil)
+        end
       end
       #Add a Portfolio Page
-      page = section_page.children.create(
-        :title => 'Galerie',
-        :deletable => false,
-        :show_in_menu => false,
-        :position => section_page.position + 1)
-      Page.default_parts.each do |default_page_part|
-        page.parts.create(:title => default_page_part, :body => nil)
+      unless RefineryConfig.hidden_plugins.include?("portfolio")
+        page = section_page.children.create(
+          :title => 'Galerie',
+          :deletable => false,
+          :show_in_menu => true,
+          :position => section_page.position + 1)
+        Page.default_parts.each do |default_page_part|
+          page.parts.create(:title => default_page_part, :body => nil)
+        end
       end
     end
   end

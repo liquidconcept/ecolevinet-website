@@ -13,7 +13,6 @@ class CreateSections < ActiveRecord::Migration
 
     add_index :sections, :id
 
-    load(Rails.root.join('db', 'seeds', 'sections.rb'))
   end
 
   def self.down
