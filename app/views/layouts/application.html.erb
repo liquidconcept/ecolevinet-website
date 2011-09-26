@@ -21,27 +21,34 @@
       <div id="nav">
         <%= render :partial => '/shared/menu', :locals => { :page => @page} %>
       </div>
-      <div id="sectiondata">
-        <% Section.all.each_with_index do |s,i| %>
-          <div id="section<%= i+1 %>"  <%=raw 'style="display: none"' unless @page.nested_path.include? s.page.nested_path %>  >
-            <%= image_fu s.image, '870x328', :id => "nav_picture", :alt => "" %>
-            <div class="nav_text" >
-              <h2><%=raw  s.titre   %></h2>
-              <p> <%=raw  s.chapeau %></p>
-            </div>
+      <div id="section_data">
+        <% Section.all.each_with_index do |section, index| %>
+          <div id="section_<%= index + 1 %>" >
+		    <% if index == 0 %>
+              <%= image_fu section.image, '870x328', :class => "nav_picture", :alt => section.titre %>
+              <div class="nav_text" >
+                <h2><%=raw section.titre   %></h2>
+              </div>
+			<% else %>
+			  <div class="nav_wrap">
+		        <%= image_tag "section_#{index + 1}_title.png", :class => 'nav_img' %>
+				<span class="nav_background"></span>
+			  </div>
+              <%= image_fu section.image, '870x328', :class => "nav_picture", :alt => section.titre %>
+              <div class="nav_text" >
+                <h2><%=raw section.titre   %></h2>
+                <p> <%=raw section.chapeau %></p>
+              </div>
+			<% end %>
           </div>
         <% end %>
-      </div>
-
-
-      <div id='horizontalaccordion'>
-        <ul>
-          <% Section.all.each_with_index do |s,i| %>
-            <li <%= "class='current'" if @page.nested_path.include? s.page.nested_path %>>
-            <%= link_to s.nom, url_for(s.page.url), :'data-sectionid' => i+1 %>
-            </li>
-          <% end %>
-        </ul>
+	    <div id="section_6" >
+		  <div class="nav_wrap">
+		    <%= image_tag "section_6_title.png", :class => 'nav_img' %>
+			<span class="nav_background active"></span>
+		  </div>
+		  <%= image_tag "section_6_picture.jpg", :class => 'nav_picture' %>
+		</div>
       </div>
 
     <div id="page_content">

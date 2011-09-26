@@ -96,6 +96,7 @@ html{
     position:relative;
     padding:0px 45px 45px 45px;
 	.calendar_overlay{
+		display:none;
 		background-color:$light_grey;
 		border:1px solid $grey;
 		padding:15px;
@@ -228,7 +229,10 @@ html{
         background-color: $light_grey;
         float: left;
 		margin-bottom:25px;
-        @include border-radius(4px, 4px);
+		behavior: url(/stylesheets/PIE/PIE.htc);
+		-moz-border-radius: 4px; /* Firefox */
+		-webkit-border-radius: 4px; /* Safari and Chrome */
+		border-radius: 4px; /* Opera 10.5+, future browsers, and now also Internet Explorer 6+ using IE-CSS3 */
         @include box-shadow(#000 0 1px 2px, #fff 0 1px inset);
 	    h1{
 		  margin:15px 0px 15px 25px;
@@ -375,7 +379,10 @@ html{
 		  height: 300px;
 		  background-color:$section1;
 		  .portfolio_img{
-			@include border-radius(4px, 4px);
+			behavior: url(/stylesheets/PIE/PIE.htc);
+			-moz-border-radius: 4px; /* Firefox */
+			-webkit-border-radius: 4px; /* Safari and Chrome */
+			border-radius: 4px; /* Opera 10.5+, future browsers, and now also Internet Explorer 6+ using IE-CSS3 */
 			width:  420px;
 			height: 300px;
 		  }
@@ -442,139 +449,115 @@ html{
   }
 }
 /*---------accordion---------*/
-#page #content #sectiondata{
+#page #content #section_data{
+			-moz-border-radius: 4px; /* Firefox */
+			-webkit-border-radius: 4px; /* Safari and Chrome */
+			border-radius: 4px; /* Opera 10.5+, future browsers, and now also Internet Explorer 6+ using IE-CSS3 */
+			behavior: url(/stylesheets/PIE/PIE.htc);
+  position:relative;
+  width:870px;
+  height:328px;
+  overflow:hidden;
+  .nav_img{
+  	position:absolute;
+	top:0;
+	left:0;
+	z-index:20;
+  }
+  .nav_wrap{
+  	position:absolute;
+	top:0;
+	left:0;
+	z-index:18;
+  }
   .nav_picture{
+  	position:absolute;
+	top:0;
+	left:0;
   }
-  .nav_text{
+  .nav_background{
+	width:40px;
+	height:328px;
+	display:block;
+	@include opacity(0.9);
+	&.active{
+	  @include opacity(1);
+	}
+  }
+  #section_1{
+    width:870px;
     position:absolute;
-    top:261px;
-    height: 61px;
-    width:780px;
-    background-image:url(../images/nav_fond.png);
-    background-repeat:no-repeat;
-    background-position:bottom left;
-    color: $white;
-    font-size:18px;
-    text-align:left;
-    p{
-      font-size:14px;
-      word-wrap: break-word;
-    }
-    #citation{
-      font-size:13px;
-    }
   }
-  #section1 .nav_text{
-    padding:5px 10px 0px 80px;
+  #section_2{
+    width:870px;
+    position:absolute;
+	left:670px;
+	.nav_wrap{
+	  .nav_background{
+	  	background-color:$section1;
+	  }
+	}
+	&.open{
+		left:0px;
+	}
   }
-  #section2 .nav_text {
-    padding:5px 10px 0px 80px;
-    width: 750px;
+  #section_3{
+    width:870px;
+    position:absolute;
+	left:710px;
+	.nav_wrap{
+	  position:absolute;
+	  top:0;
+	  left:0;
+	  .nav_background{
+	  	background-color:$section2;
+	  }
+	}
+	&.open{
+		left:40px;
+	}
   }
-  #section3 .nav_text {
-    padding:5px 10px 0px 110px;
-    width: 710px;
+  #section_4{
+    width:870px;
+    position:absolute;
+	left:750px;
+	.nav_wrap{
+	  .nav_background{
+	  	background-color:$section3;
+	  }
+	}
+	&.open{
+		left:80px;
+	}
   }
-  #section4 .nav_text {
-    padding:5px 10px 0px 140px;
-    width: 710px;
+  #section_5{
+    width:870px;
+    position:absolute;
+	left:790px;
+	.nav_wrap{
+	  .nav_background{
+	  	background-color:$section4;
+	  }
+	}
+	&.open{
+		left:120px;
+	}
   }
-  #section5 .nav_text {
-    padding:5px 10px 0px 175px;
-    width: 700px;
-  }
-  #section6 .nav_text {
-    padding:5px 10px 0px 140px;
-    width: 710px;
-  }
-}
-
-#page #content #horizontalaccordion{
-  position:absolute;
-  top: 2px;
-  left: 40px;
-  ul {
-    margin: 0;
-    padding: 0;
-    list-style:none;
-    height: 327px;
-    li {
-      display:inline;
-      overflow: hidden;
-      float:left;
-      margin: 0;
-      padding: 0;
-      width:34px;
-      height: 325px;
-      a {
-        &:link    {text-decoration: none; color: white;};
-        &:visited {text-decoration: none; color: white;};
-        &:active  {text-decoration: none; color: white;};
-        &:hover   {text-decoration: none; color: white;};
-        display:block;
-        float:left;
-        margin: 0;
-        padding:10px;
-        height:19px;
-        width:326px;
-        text-decoration:none;
-        text-transform:uppercase;
-        font-weight:bold;
-        font-size:19px;
-        background-color: $section1;
-        white-space:nowrap;
-        //@include rotate(-90deg);
-        //@include translate(-40px,0px);
-        //@include transform-origin(0,100%);
-
-        -moz-transform: rotate(90.0deg) translate(-40px,0px);  /* FF3.5+ */
-        -moz-transform-origin:0 100%;
-        -o-transform: rotate(90.0deg) translate(-40px,0px);  /* Opera 10.5 */
-        -o-transform-origin: 0 100%;
-        -webkit-transform: rotate(90.0deg) translate(-40px,0px);  /* Saf3.1+, Chrome */
-        -webkit-transform-origin: 0 100%;
-        transform: rotate(90.0deg) translate(-40px,0px);  /* Saf3.1+, Chrome */
-        transform-origin: 0 100%;
-        filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1.0)
-        progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff999999, endColorstr=#ffcccccc);  /* IE6,IE7 */
-        -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=1.0)"
-        "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff999999, endColorstr=#ffcccccc)"; /* IE8 */
-      }
-      &>div {
-        top:-29px;
-        left:34px;
-        *top:0px;       /* IE7 Hack */
-        *left:0px;      /* IE7 Hack */
-        margin:0;
-        width:745px;
-        height:328px;
-        display:none;
-        float:left;
-        overflow: auto;
-        position:relative;
-      }
-    }
-    li + li > a{background-color: $section2;}
-    li + li + li > a{background-color: $section3;}
-    li + li + li + li > a{background-color: $section4;}
-    li + li + li + li +li > a{background-color: $section5;}
-  }
-  .current {
-         overflow: hidden;
-         width: 745px;
-         div {
-           display:block;
-         }
-  }
-
-  &:hover>ul>li:hover>h3 {
-         color:#fff;
-         background:#000000;
-  }
-  &>ul>li>h3:hover {
-         cursor:pointer;
+  #section_6{
+    width:870px;
+    position:absolute;
+	left:830px;
+	.nav_wrap{
+	  .nav_background{
+	  	background-color:$section5;
+	  }
+	}
+	&.open{
+		left:160px;
+	}
   }
 }
+
      /*---------footer---------*/
 
      #footer{
