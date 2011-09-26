@@ -10,22 +10,23 @@ class Section < ActiveRecord::Base
 
   belongs_to :page
 
-  has_many :actualite_categorizations
-  has_many :actualites, :through => :actualite_categorizations
+  has_many :news_categorizations
+  has_many :news, :through => :news_categorizations
 
   has_many :portfolio_entry_categorizations
   has_many :portfolio_entries, :through => :portfolio_entry_categorizations
 
   default_scope :order => 'position'
 
-  #Create a page if section not linked to a page
+  #Create a page if section_id nil
   def after_save
     section = self
     if section.page_id.blank?
       section_page = Page.create(:title => section.nom,
                                  :show_in_menu => false,
                                  :deletable => false,
-                                 :position => Page.maximum("position") || 0 + 1)
+                                 :position => ((Page.maximum(:position, :conditions => {:parent_id => nil}) || -1)+1)
+                                )
 
       section_page.parts.create({
         :title => "nom",
@@ -46,8 +47,8 @@ class Section < ActiveRecord::Base
       #update Section page_id
       section.page_id = section_page.id
       section.save
-      #Add an Actualite Page
-      unless RefineryConfig.hidden_plugins.include?("actualites")
+      #Add an news Page
+      unless RefineryConfig.hidden_plugins.include?("news")
         page = section_page.children.create(
           :title => 'Actualites',
           :deletable => false,

@@ -1,20 +1,20 @@
 <div id="block">
   <h3> Actualités </h3>
 
-  <% if section.actualites.brulantes.any? %>
-    <div id="brulantes">
+  <% if section.news.hot.any? %>
+    <div id="hot">
       <p>
-      <% section.actualites.brulantes.each do |actualite| %>
-        <%= link_to actualite.titre, '/actualites/' + actualite.id.to_s %>
+      <% section.news.hot.each do |news| %>
+        <%= link_to news.titre, '/news/' + news.id.to_s %>
       <% end %>
       </p>
     </div>
   <% end %>
-  <% if section.actualites.normales.any? %>
-    <div id="normales">
+  <% if section.news.current.any? %>
+    <div id="current">
       <p>
-      <% section.actualites.normales.each do |actualite| %>
-        <%= link_to actualite.titre, '/actualites/' + actualite.id.to_s %>
+      <% section.news.current.each do |news| %>
+        <%= link_to news.titre, '/news/' + news.id.to_s %>
       <% end %>
       </p>
     </div>

@@ -5,12 +5,12 @@ fr:
   plugins:
     page_images:
       title: Images de la page
-      description: Le plugin "Image de la page" vous permet de lier une ou plusieurs pages à une page de Refinery. Cela facilite la création de galeries d'images avec des fenêtres popup du genre "lightbox" dans les vues des pages.
-  admin:
-    pages:
-      tabs:
-        images_bar:
-          add: Ajouter une image
+      description: Le plugin "Image de la page" vous permet de lier une ou plusieurs pages à une page de Refinery. Cela facilite la création de galeries d images avec des fenêtres popup du genre "lightbox" dans les vues des pages.
+      admin:
+        pages:
+          tabs:
+            images_bar:
+              add: Ajouter une image
   plugins:
     portfolio:
       title: Galeries

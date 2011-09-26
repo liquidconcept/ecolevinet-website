@@ -12,27 +12,47 @@
     :current_locale => Thread.current[:globalize_locale]
   } if ::Refinery.i18n_enabled? %>
 
-  <% if @page.section.blank? #override if this page is a section, no title field%>
 
     <div class="field">
-      <%= f.label :title %>
-      <%= f.text_field :title, :class => "larger widest" %>
+  <% if @page.section.blank? #override if this page is a section, no title field%>
+    <%= f.label :title %>
+    <%= f.text_field :title, :class => "larger widest" %>
+  <% else %>
+    <%= f.fields_for :parts do |p| %>
+      <% if p.object.title=="titre" %>
+        <%= p.label    p.object.title  %>
+        <%= p.text_field :body, :class => "larger widest" %>
+      <% end %>
+    <% end %>
+  <% end %>
     </div>
 
-  <% end %>
 
-    <%= render :partial => "form_fields_after_title",
-      :locals => {
-        :f => f}
-      %>
+  <%= render :partial => "form_fields_after_title",
+    :locals => {
+    :f => f}
+  %>
 
   <% if !@page.section.blank? #override if this page is a section, custom partial from page parts %>
 
-      <%= render :partial => "/shared/section_form",
-        :locals => {
-        :f => f,
-        :object => @page
-      } %>
+    <div class='field'>
+      <div id='page-tabs' class='clearfix ui-tabs ui-widget ui-widget-content ui-corner-all'>
+        <ul id='page_parts' class='ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all'>
+          <li class='ui-state-default ui-state-active'>
+            <a href="#">Entête</a>
+          </li>
+        </ul>
+
+        <div id='page_part_editors'>
+          <div id='page_part_contenu' class='page_part wymeditor_like' >
+          <%= render :partial => "/shared/section_form",
+            :locals => {
+            :f => f,
+            :object => @page } %>
+          </div>
+        </div>
+      </div>
+    </div>
 
   <% else %>
 

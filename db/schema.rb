@@ -11,31 +11,31 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110913095341) do
+ActiveRecord::Schema.define(:version => 20110924152639) do
 
-  create_table "actualite_categorizations", :force => true do |t|
-    t.integer  "actualite_id"
+  create_table "event_categorizations", :force => true do |t|
+    t.integer  "event_id"
     t.integer  "section_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "actualite_categorizations", ["actualite_id"], :name => "index_actualite_categorizations_on_actualite_id"
-  add_index "actualite_categorizations", ["section_id"], :name => "index_actualite_categorizations_on_section_id"
+  add_index "event_categorizations", ["event_id"], :name => "index_event_categorizations_on_event_id"
+  add_index "event_categorizations", ["section_id"], :name => "index_event_categorizations_on_section_id"
 
-  create_table "actualites", :force => true do |t|
-    t.text     "contenu"
+  create_table "events", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "location"
+    t.date     "start_date"
+    t.date     "end_date"
     t.integer  "image_id"
-    t.date     "date_limite"
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "titre"
-    t.string   "lien"
-    t.boolean  "brulante"
   end
 
-  add_index "actualites", ["id"], :name => "index_actualites_on_id"
+  add_index "events", ["id"], :name => "index_events_on_id"
 
   create_table "image_pages", :id => false, :force => true do |t|
     t.integer "image_id"
@@ -66,6 +66,30 @@ ActiveRecord::Schema.define(:version => 20110913095341) do
   end
 
   add_index "images_portfolio_entries", ["image_id", "portfolio_entry_id"], :name => "composite_key_index"
+
+  create_table "news", :force => true do |t|
+    t.text     "contenu"
+    t.integer  "image_id"
+    t.date     "date_limite"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "titre"
+    t.string   "lien"
+    t.boolean  "hot"
+  end
+
+  add_index "news", ["id"], :name => "index_news_on_id"
+
+  create_table "news_categorizations", :force => true do |t|
+    t.integer  "news_id"
+    t.integer  "section_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "news_categorizations", ["news_id"], :name => "index_news_categorizations_on_news_id"
+  add_index "news_categorizations", ["section_id"], :name => "index_news_categorizations_on_section_id"
 
   create_table "page_part_translations", :force => true do |t|
     t.integer  "page_part_id"

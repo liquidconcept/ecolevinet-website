@@ -12,6 +12,7 @@ class CreateRefinerycmsSettingsSchema < ActiveRecord::Migration
     end
 
     add_index ::RefinerySetting.table_name, ["name"], :name => "index_#{::RefinerySetting.table_name}_on_name"
+
   end
 
   def self.down

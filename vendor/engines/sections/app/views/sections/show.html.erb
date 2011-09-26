@@ -1,8 +1,8 @@
 <% articles_rendered = false%>
 <% @section.page.children.each do |child| %>
   <% case child.title %>
-  <% when "Actualites" %>
-    <%= render :partial => 'actualites',  :locals => {:section => @section}  if @section.actualites.any?%>
+  <% when "news" %>
+    <%= render :partial => 'news',  :locals => {:section => @section}  if @section.news.any?%>
   <% when "Agenda" %>
     <%= render :partial => 'agendas',      :locals => {:section => @section} %>
   <% when "Galerie" %>

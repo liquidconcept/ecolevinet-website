@@ -1,27 +1,29 @@
 class RefineryConfig
 
-  REFINERY_CONFIG={:site_name => "Ecole Vinet", :default_page_parts => ["Contenu"],
+  REFINERY_CONFIG={:site_name => "Ecole Vinet",
+    :default_page_parts => ["Contenu"],
     :plugins_order => {
     #user related plugins
     "refinery_pages"      => 1,
     "sections"            => 2,
-    "actualites"          => 3,
+    "news"                => 3,
     "portfolio"           => 4,
-    "refinery_images"     => 5,
-    "refinery_files"      => 6,
-    "refinery_users"      => 7,
+    "events"              => 5,
+    "refinery_images"     => 6,
+    "refinery_files"      => 7,
+    "refinery_users"      => 8,
     #superuser related plugins
-    "refinery_settings"   => 8,
-    "refinery_dashboard"  => 9,
+    "refinery_settings"   => 10,
+    "refinery_dashboard"  => 11,
     #base plugins
-    "refinerycms_base"    => 10,
-    "refinery_core"       => 11,
-    "refinery_dialogs"    => 12,
-    "refinery_i18n"       => 13,
-    "refinery_generators" => 14,
-    "page_images"         => 15},
+    "refinerycms_base"    => 12,
+    "refinery_core"       => 13,
+    "refinery_dialogs"    => 14,
+    "refinery_i18n"       => 15,
+    "refinery_generators" => 16,
+    "page_images"         => 17},
     :default_image_sizes =>  {:small  => '110x110', :medium => '225x255', :large => '870x328'},
-    :hidden_plugins => ["portfolio","actualites"]
+    :hidden_plugins => ["portfolio","news","events"]
   }
 
   #set default page parts
@@ -73,10 +75,10 @@ class RefineryConfig
   #general maintenance
   def self.setup
 
-    self.set_default_page_parts
-    self.set_site_name
-    self.set_site_to_french
-    self.set_default_image_sizes
+    RefineryConfig.set_default_page_parts
+    RefineryConfig.set_site_name
+    RefineryConfig.set_site_to_french
+    RefineryConfig.set_default_image_sizes
 
   end
 
@@ -89,6 +91,5 @@ class RefineryConfig
   def self.hidden_plugins
      REFINERY_CONFIG[:hidden_plugins]
   end
-
 
 end

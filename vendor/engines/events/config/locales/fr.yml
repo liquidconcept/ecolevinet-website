@@ -1,0 +1,25 @@
+fr:
+  shared:
+    admin:
+      image_picker:
+        image: image
+  plugins:
+    events:
+      title: Agenda
+  admin:
+    events:
+      actions:
+        create_new: Créer un nouvel événement
+        reorder: Réordonner les événements
+        reorder_done: Fin de réordonnancement des événements
+      records:
+        title: évenements
+        sorry_no_results: "Désolé ! Aucun résultat."
+        no_items_yet: 'Il n''y a actuellement aucun événement. Cliquer sur "Créer un nouvel événement" pour créer votre premier événement.'
+      event:
+        view_live_html: Voir cet événement <br/><em>(Ouvre une nouvelle fenêtre)</em>
+        edit: Modifier cet événement
+        delete: Supprimer définitivement cet événement
+  events:
+    show:
+      other: Autres événements
