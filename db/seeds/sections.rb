@@ -29,7 +29,6 @@ if defined?(Section) && defined?(Page) && Section.count == 0
                  :heading => "Découvrez nos programmes, les conditions d'admission et l'organisation de notre école qui vous permettrons d'atteindre vos rêves.",
                  :position => position, :link => "")
   p= s.page
-  p.link_url="/sections/2"
   p.show_in_menu = true
   p.save
 
@@ -39,7 +38,6 @@ if defined?(Section) && defined?(Page) && Section.count == 0
                  :heading => "Les photos du camp de ski de la classe de VSB sont à disposition dans notre section galerie photo depuis le 18 janvier 2012." ,
                  :position => position, :link => "")
   p= s.page
-  p.link_url="/sections/3"
   p.show_in_menu = true
   p.save
 
@@ -50,7 +48,6 @@ if defined?(Section) && defined?(Page) && Section.count == 0
                  :position => position, :link => "")
 
   p= s.page
-  p.link_url="/sections/4"
   p.show_in_menu = true
   p.save
 
@@ -61,7 +58,6 @@ if defined?(Section) && defined?(Page) && Section.count == 0
                  :position => position, :link => "")
 
   p= s.page
-  p.link_url="/sections/5"
   p.show_in_menu = true
   p.save
 

@@ -15,6 +15,7 @@ Page.reset_column_information
 
 # Refinery related setup :   default_page_parts, site_name, set_site_to_french ,set_default_image_sizes
 RefineryConfig.setup
+RefinerySetting.find_or_set(:use_marketable_urls, true)
 
 load(Rails.root.join('db', 'seeds', 'sections.rb'))
 load(Rails.root.join('db', 'seeds', 'pages.rb'))
@@ -23,3 +24,4 @@ load(Rails.root.join('db', 'seeds', 'news.rb'))
 load(Rails.root.join('db', 'seeds', 'users.rb'))
 
 RefineryConfig.set_default_plugins_order
+RefineryConfig.friendly

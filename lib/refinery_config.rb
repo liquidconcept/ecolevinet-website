@@ -1,3 +1,4 @@
+require 'rake'
 class RefineryConfig
 
   REFINERY_CONFIG={:site_name => "Ecole Vinet",
@@ -90,6 +91,11 @@ class RefineryConfig
   #get hidden plugins
   def self.hidden_plugins
      REFINERY_CONFIG[:hidden_plugins]
+  end
+
+  #generate friendly ids
+  def self.friendly
+    system ("rake friendly_id:make_slugs   MODEL='Page' --trace 2>&1 >> #{Rails.root}/log/rake.log &")
   end
 
 end

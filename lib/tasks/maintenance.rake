@@ -51,4 +51,10 @@ namespace :maintenance do
 
   end
 
+  desc "friendly_id for a model"
+  task :friendly => :environment do
+
+    RefineryConfig.friendly
+
+  end
 end

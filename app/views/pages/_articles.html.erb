@@ -1,0 +1,8 @@
+<div id="block_articles">
+  <h2>Pour aller plus loin</h2>
+    <ul>
+    <% section.page.children.reject{|c| ['Actualites','Agenda','Galerie'].include?(c.title)}.each do |child|  %>
+      <li><%= link_to child.title, child.url %></li>
+    <% end %>
+    </ul>
+</div>

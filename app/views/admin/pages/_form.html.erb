@@ -14,17 +14,8 @@
 
 
   <div class="field">
-    <% if @page.section.blank? #override if this page is a section, no title field%>
       <%= f.label :title %>
       <%= f.text_field :title, :class => "larger widest" %>
-    <% else %>
-      <%= f.fields_for :parts do |p| %>
-        <% if p.object.title=="title" %>
-          <%= p.label   t(p.object.title)  %>
-          <%= p.text_field :body, :class => "larger widest" %>
-        <% end %>
-      <% end %>
-    <% end %>
   </div>
 
 

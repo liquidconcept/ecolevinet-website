@@ -1,0 +1,22 @@
+<div id="block">
+  <h3> Actualités </h3>
+
+  <% if section.news.hot.any? %>
+    <div id="hot">
+      <p>
+      <% section.news.hot.each do |news| %>
+        <%= link_to news.titre, '/news/' + news.id.to_s %>
+      <% end %>
+      </p>
+    </div>
+  <% end %>
+  <% if section.news.current.any? %>
+    <div id="current">
+      <p>
+      <% section.news.current.each do |news| %>
+        <%= link_to news.titre, '/news/' + news.id.to_s %>
+      <% end %>
+      </p>
+    </div>
+  <% end %>
+</div>

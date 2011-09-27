@@ -1,0 +1,10 @@
+<div id="block">
+    <h3> Galeries Photo</h3>
+<% if section.portfolio_entries.any? %>
+    <% section.portfolio_entries.each do |portfolio_entry| %>
+      <%= link_to portfolio_entry.title, '/portfolio/' + portfolio_entry.title %> :
+      <%= raw portfolio_entry.body %>
+    <% end %>
+<% end %>
+</div>
+
