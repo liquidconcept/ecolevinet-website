@@ -5,10 +5,9 @@ if defined?(User)
 
   available_plugins  = ::Refinery::Plugins.registered.in_menu.collect{|a|{:name => a.name, :title => a.title}}.sort_by {|a| a[:title]}
   admin_plugins = available_plugins.reject{|pl| RefineryConfig.hidden_plugins.include? pl[:name] }.map{|p|p[:name]} -
-["refinery_settings",
- "refinery_dashboard"]
+["refinery_settings", "refinery_dashboard", "sections"]
 
-  restricted_plugins = admin_plugins - ["sections","refinery_users"]
+  restricted_plugins = admin_plugins - ["refinery_users"]
 
   available_plugins  = available_plugins.map{|p|p[:name]}
   #Admin profile if needed

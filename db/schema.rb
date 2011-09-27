@@ -223,15 +223,15 @@ ActiveRecord::Schema.define(:version => 20110927072130) do
   add_index "roles_users", ["user_id", "role_id"], :name => "index_roles_users_on_user_id_and_role_id"
 
   create_table "sections", :force => true do |t|
-    t.string   "nom"
-    t.string   "titre"
-    t.string   "chapeau"
+    t.string   "title"
+    t.string   "heading_title"
+    t.string   "heading"
     t.integer  "image_id"
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "page_id"
-    t.string   "lien"
+    t.string   "link"
   end
 
   add_index "sections", ["id"], :name => "index_sections_on_id"

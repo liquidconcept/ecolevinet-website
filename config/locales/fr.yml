@@ -1,4 +1,15 @@
 fr:
+  title: "Titre"
+  heading_title: "Titre de l'en-tête"
+  heading:       "Chapeau"
+  link:          "lien"
+  activerecord:
+    attributes:
+      section:
+        title:         "Titre"
+        heading_title: "Titre de l'en-tête"
+        heading:       "Chapeau"
+        link:          "lien"
   devise:
     failure:
       already_authenticated: "Vous êtes déjà authentifié"

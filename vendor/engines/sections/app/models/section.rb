@@ -1,10 +1,10 @@
 class Section < ActiveRecord::Base
 
-  acts_as_indexed :fields => [:nom, :titre, :chapeau]
+  acts_as_indexed :fields => [:title, :heading_title, :heading]
 
-  validates :nom,   :presence => true, :uniqueness => true
-  validates :titre,   :presence => true
-  validates :lien, :format => /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$/ix, :allow_blank => true
+  validates :title,   :presence => true, :uniqueness => true
+  validates :heading_title,   :presence => true
+  validates :link, :format => /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$/ix, :allow_blank => true
 
   belongs_to :image
 
@@ -22,27 +22,27 @@ class Section < ActiveRecord::Base
   def after_save
     section = self
     if section.page_id.blank?
-      section_page = Page.create(:title => section.nom,
+      section_page = Page.create(:title => section.title,
                                  :show_in_menu => false,
                                  :deletable => false,
                                  :position => ((Page.maximum(:position, :conditions => {:parent_id => nil}) || -1)+1)
                                 )
 
       section_page.parts.create({
-        :title => "nom",
-        :body =>  section.nom,
+        :title => "title",
+        :body =>  section.title,
         :position => 0})
       section_page.parts.create({
-        :title => "titre",
-        :body =>  section.titre,
+        :title => "heading_title",
+        :body =>  section.heading_title,
         :position => 1})
       section_page.parts.create({
-        :title => "chapeau",
-        :body =>   section.chapeau,
+        :title => "heading",
+        :body =>   section.heading,
         :position => 2})
       section_page.parts.create({
-        :title => "lien",
-        :body => section.lien,
+        :title => "link",
+        :body => section.link,
         :position => 3})
       #update Section page_id
       section.page_id = section_page.id
@@ -77,7 +77,7 @@ class Section < ActiveRecord::Base
     # correponding page updated if section updated
     if section.changed? && !(section.page_id.blank?)
       page = Page.find(section.page_id)
-      page.title = section.nom
+      page.title = section.title
       page.parts.each do |p|
         p.body = section.send(p.title)
       end

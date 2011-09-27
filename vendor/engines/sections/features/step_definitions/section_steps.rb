@@ -5,7 +5,7 @@ end
 Given /^I (only )?have sections titled "?([^\"]*)"?$/ do |only, titles|
   Section.delete_all if only
   titles.split(', ').each do |title|
-    Section.create(:nom => title)
+    Section.create(:title=> title)
   end
 end
 

@@ -26,8 +26,8 @@
           <div id="section<%= i+1 %>"  <%=raw 'style="display: none"' unless @page.nested_path.include? s.page.nested_path %>  >
             <%= image_fu s.image, '870x328', :id => "nav_picture", :alt => "" %>
             <div class="nav_text" >
-              <h2><%=raw  s.titre   %></h2>
-              <p> <%=raw  s.chapeau %></p>
+              <h2><%=raw  s.heading_title   %></h2>
+              <p> <%=raw  s.heading %></p>
             </div>
           </div>
         <% end %>
@@ -38,7 +38,7 @@
         <ul>
           <% Section.all.each_with_index do |s,i| %>
             <li <%= "class='current'" if @page.nested_path.include? s.page.nested_path %>>
-            <%= link_to s.nom, url_for(s.page.url), :'data-sectionid' => i+1 %>
+            <%= link_to s.title, url_for(s.page.url), :'data-sectionid' => i+1 %>
             </li>
           <% end %>
         </ul>

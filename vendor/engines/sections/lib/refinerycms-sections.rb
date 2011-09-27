@@ -20,8 +20,7 @@ module Refinery
           plugin.name = "sections"
           plugin.pathname = root
           plugin.activity = {
-            :class => Section,
-            :title => 'nom'
+            :class => Section
           }
         end
       end

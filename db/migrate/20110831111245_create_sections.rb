@@ -2,9 +2,9 @@ class CreateSections < ActiveRecord::Migration
 
   def self.up
     create_table :sections do |t|
-      t.string :nom
-      t.string :titre
-      t.string :chapeau
+      t.string :title
+      t.string :heading_title
+      t.string :heading
       t.integer :image_id
       t.integer :position
 

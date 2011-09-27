@@ -18,7 +18,7 @@
           <%= check_box_tag 'event[section_ids][]', section.id,
             @event.sections.include?(section),
             :id => (id="events_section_ids_#{section.id}") %>
-            <%= label_tag 'event[section_ids][]', section.nom,
+            <%= label_tag 'event[section_ids][]', section.title,
               :class => 'stripped',
               :for => id %>
           </li>
@@ -48,22 +48,22 @@
       </div>
     </div>
   </div>
-  
+
   <div class='field'>
     <%= f.label :location -%>
     <%= f.text_field :location  -%>
   </div>
-  
+
   <div class='field'>
     <%= f.label :start_date -%>
     <%= f.date_select :start_date  -%>
   </div>
-  
+
   <div class='field'>
     <%= f.label :end_date -%>
     <%= f.date_select :end_date  -%>
   </div>
-  
+
   <%= render :partial => "/shared/admin/form_actions",
               :locals => {
                 :f => f,

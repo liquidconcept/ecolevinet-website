@@ -31,7 +31,7 @@
           <%= check_box_tag 'portfolio_entry[section_ids][]', section.id,
             @portfolio_entry.sections.include?(section),
             :id => (id="portfolios_section_ids_#{section.id}") %>
-            <%= label_tag 'portfolio_entry[section_ids][]', section.nom,
+            <%= label_tag 'portfolio_entry[section_ids][]', section.title,
               :class => 'stripped',
               :for => id %>
           </li>

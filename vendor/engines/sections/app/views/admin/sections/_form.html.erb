@@ -5,23 +5,23 @@
         } %>
 
   <div class='field'>
-    <%= f.label :nom -%>
-    <%= f.text_field :nom, :class => 'larger widest'  -%>
+    <%= f.label "Titre" -%>
+    <%= f.text_field :title, :class => 'larger widest'  -%>
   </div>
 
   <div class='field'>
-    <%= f.label :titre -%>
-    <%= f.text_field :titre , :class => 'widest'  -%>
+    <%= f.label "Titre de l'en-tête" -%>
+    <%= f.text_field :heading_title, :class => 'widest'  -%>
   </div>
 
   <div class='field'>
-    <%= f.label :chapeau -%>
-    <%= f.text_field :chapeau , :class => 'widest'  -%>
+    <%= f.label "Chapeau" -%>
+    <%= f.text_field :heading, :class => 'widest'  -%>
   </div>
 
   <div class='field'>
-    <%= f.label :lien -%>
-    <%= f.text_field :lien , :class => 'widest' -%>
+    <%= f.label "lien" -%>
+    <%= f.text_field :link , :class => 'widest' -%>
   </div>
 
   <div class='field'>
@@ -39,6 +39,6 @@
                 :f => f,
                 :continue_editing => true,
                 :delete_title => t('delete', :scope => 'admin.sections.section'),
-                :delete_confirmation => t('message', :scope => 'shared.admin.delete', :title => @section.nom)
+                :delete_confirmation => t('message', :scope => 'shared.admin.delete', :title => @section.title)
               } %>
 <% end -%>

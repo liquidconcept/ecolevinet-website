@@ -18,7 +18,7 @@
           <%= check_box_tag 'news[section_ids][]', section.id,
             @news.sections.include?(section),
             :id => (id="news_section_ids_#{section.id}") %>
-            <%= label_tag 'news[section_ids][]', section.nom,
+            <%= label_tag 'news[section_ids][]', section.title,
               :class => 'stripped',
               :for => id %>
           </li>
