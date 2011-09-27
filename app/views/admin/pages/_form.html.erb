@@ -13,19 +13,19 @@
   } if ::Refinery.i18n_enabled? %>
 
 
-    <div class="field">
-  <% if @page.section.blank? #override if this page is a section, no title field%>
-    <%= f.label :title %>
-    <%= f.text_field :title, :class => "larger widest" %>
-  <% else %>
-    <%= f.fields_for :parts do |p| %>
-      <% if p.object.title=="titre" %>
-        <%= p.label    p.object.title  %>
-        <%= p.text_field :body, :class => "larger widest" %>
+  <div class="field">
+    <% if @page.section.blank? #override if this page is a section, no title field%>
+      <%= f.label :title %>
+      <%= f.text_field :title, :class => "larger widest" %>
+    <% else %>
+      <%= f.fields_for :parts do |p| %>
+        <% if p.object.title=="titre" %>
+          <%= p.label    p.object.title  %>
+          <%= p.text_field :body, :class => "larger widest" %>
+        <% end %>
       <% end %>
     <% end %>
-  <% end %>
-    </div>
+  </div>
 
 
   <%= render :partial => "form_fields_after_title",
@@ -39,7 +39,7 @@
       <div id='page-tabs' class='clearfix ui-tabs ui-widget ui-widget-content ui-corner-all'>
         <ul id='page_parts' class='ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all'>
           <li class='ui-state-default ui-state-active'>
-            <a href="#">Entête</a>
+            <a href="#">En-tête</a>
           </li>
         </ul>
 

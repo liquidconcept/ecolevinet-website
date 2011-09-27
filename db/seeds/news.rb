@@ -1,4 +1,4 @@
-if defined?(Page) && !RefineryConfig.hidden_plugins.include?("news")
+if defined?(Page) && !Page.find_by_link_url('/news').present? && !RefineryConfig.hidden_plugins.include?("news")
   page = Page.create(
     :title => 'Actualite',
     :link_url => '/news',

@@ -6,15 +6,13 @@ def image_creation(image_name)
   image_path = Rails.root.join('public', 'images', image_name).to_s
   uploader = Dragonfly[:images]
   uploaded_image = uploader.fetch_file(image_path)
-
   image = Image.create image: uploaded_image
-
   rescue Error => e
      print "Error creating image: " + e
 end
 
 
-if defined?(Section) && defined?(Page)
+if defined?(Section) && defined?(Page) && Section.count == 0
 
   position = (Page.maximum("position") || 0 ) + 1
   s = Section.create(:nom => "Accueil", :titre => '« L\'ÉDUCATION DE L\'ESPRIT ET DU COEUR DOIT ÊTRE<br/> LE PREMIER OBJET DE TOUT SYSTÈME D\'ÉTUDE. »<span id="citation">Alexandre Vinet</span>',

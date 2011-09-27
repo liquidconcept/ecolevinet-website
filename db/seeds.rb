@@ -17,7 +17,7 @@ Page.reset_column_information
 RefineryConfig.setup
 
 load(Rails.root.join('db', 'seeds', 'sections.rb'))
-load(Rails.root.join('db', 'seeds', '_pages.rb'))
+load(Rails.root.join('db', 'seeds', 'pages.rb'))
 load(Rails.root.join('db', 'seeds', 'portfolios.rb'))
 load(Rails.root.join('db', 'seeds', 'news.rb'))
 load(Rails.root.join('db', 'seeds', 'users.rb'))

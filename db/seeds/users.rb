@@ -11,7 +11,7 @@ if defined?(User)
   restricted_plugins = admin_plugins - ["sections","refinery_users"]
 
   available_plugins  = available_plugins.map{|p|p[:name]}
-  #Admin profile
+  #Admin profile if needed
   if User.find_by_username('admin').blank?
     admin = User.new(:username => 'admin',
     :email => 'admin@example.com',
@@ -23,7 +23,7 @@ if defined?(User)
     admin.save!
   end
 
-  #Lconcept profile
+  #Lconcept profile if needed
   if User.find_by_username('lconcept').blank?
     admin = User.new(:username => 'lconcept',
     :email => 'lconcept@example.com',
@@ -36,7 +36,7 @@ if defined?(User)
     admin.save!
   end
 
-  #clerck profile
+  #clerck profile if needed
   if User.find_by_username('secretariat').blank?
     demo = User.new(:username => 'secretariat',
     :email => 'secretariat@example.com',

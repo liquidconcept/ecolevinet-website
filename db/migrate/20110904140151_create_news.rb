@@ -13,7 +13,6 @@ class CreateNews < ActiveRecord::Migration
 
     add_index :news, :id
 
-    load(Rails.root.join('db', 'seeds', 'news.rb'))
   end
 
   def self.down

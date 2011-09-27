@@ -8,7 +8,6 @@ class TranslatePortfolioEntries < ActiveRecord::Migration
       :migrate_date => true
     })
 
-    load(Rails.root.join('db', 'seeds', 'portfolios.rb'))
   end
 
   def self.down

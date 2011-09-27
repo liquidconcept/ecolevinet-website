@@ -15,12 +15,6 @@ class CreateEvents < ActiveRecord::Migration
 
     add_index :events, :id
 
-    load(Rails.root.join('db', 'seeds', 'events.rb'))
-    if (seed_file = Rails.root.join('db', 'seeds', 'users.rb')).file?
-      load seed_file.to_s
-      RefineryConfig.setup
-    end
-
   end
 
   def self.down

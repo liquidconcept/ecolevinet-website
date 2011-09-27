@@ -1,4 +1,4 @@
-if defined?(Page) && !RefineryConfig.hidden_plugins.include?("events")
+if defined?(Page) && !Page.find_by_link_url('/events').present? && !RefineryConfig.hidden_plugins.include?("events")
   page = Page.create(
     :title => 'Agenda',
     :link_url => '/events',
