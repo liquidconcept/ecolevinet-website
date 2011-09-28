@@ -16,6 +16,9 @@ class Section < ActiveRecord::Base
   has_many :portfolio_entry_categorizations
   has_many :portfolio_entries, :through => :portfolio_entry_categorizations
 
+  has_many :event_categorizations
+  has_many :events, :through => :event_categorizations
+
   default_scope :order => 'position'
 
   #Create a page if section_id nil

@@ -1,14 +1,14 @@
-<% articles_rendered = false%>
+<% articles_rendered = false %>
 <% @section.page.children.each do |child| %>
-  <% case child.title %>
+  <% case child.data_type %>
   <% when "news" %>
-    <%= render :partial => 'news',  :locals => {:section => @section}  if @section.news.any?%>
-  <% when "Agenda" %>
-    <%= render :partial => 'agendas',      :locals => {:section => @section} %>
-  <% when "Galerie" %>
-    <%= render :partial => 'galeries', :locals => {:section => @section} if @section.portfolio_entries.any? %>
+    <%= render :partial => 'news',       :locals => {:section => @section}  if @section.news.any?%>
+  <% when "events" %>
+    <%= render :partial => 'calendar',   :locals => {:section => @section}  if @section.events.any? %>
+  <% when "portfolio" %>
+    <%= render :partial => 'portfolio',  :locals => {:section => @section}  if @section.portfolio_entries.any? %>
   <% else %>
-    <%= render :partial => 'articles',     :locals => {:section => @section} unless articles_rendered %>
+    <%= render :partial => 'page',       :locals => {:section => @section}  unless articles_rendered %>
     <% articles_rendered = true %>
   <% end %>
 <% end %>

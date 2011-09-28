@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110927072130) do
+ActiveRecord::Schema.define(:version => 20110928130505) do
 
   create_table "event_categorizations", :force => true do |t|
     t.integer  "event_id"
@@ -140,6 +140,7 @@ ActiveRecord::Schema.define(:version => 20110927072130) do
     t.integer  "lft"
     t.integer  "rgt"
     t.integer  "depth"
+    t.string   "data_type"
   end
 
   add_index "pages", ["depth"], :name => "index_pages_on_depth"

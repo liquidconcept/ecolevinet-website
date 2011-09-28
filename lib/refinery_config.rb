@@ -95,7 +95,7 @@ class RefineryConfig
 
   #generate friendly ids
   def self.friendly
-    system ("rake friendly_id:make_slugs   MODEL='Page' --trace 2>&1 >> #{Rails.root}/log/rake.log &")
+    system ("rake friendly_id:make_slugs   MODEL='Page' --trace 2>&1 >> #{Rails.root}/log/rake.log")
   end
 
 end

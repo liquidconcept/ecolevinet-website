@@ -78,3 +78,8 @@ capybara-*html
 .rvmrc
 .rvmrc.*
 
+
+/start.bat
+/public/stylesheets/ie.css
+/public/stylesheets/print.css
+/public/stylesheets/screen.css

@@ -21,34 +21,44 @@
       <div id="nav">
         <%= render :partial => '/shared/menu', :locals => { :page => @page} %>
       </div>
-      <div id="sectiondata">
-        <% Section.all.each_with_index do |s,i| %>
-          <div id="section<%= i+1 %>"  <%=raw 'style="display: none"' unless @page.nested_path.include? s.page.nested_path %>  >
-            <%= image_fu s.image, '870x328', :id => "nav_picture", :alt => "" %>
-            <div class="nav_text" >
-              <h2><%=raw  s.heading_title   %></h2>
-              <p> <%=raw  s.heading %></p>
-            </div>
+      <% open = true %>
+      <div id="section_data">
+        <% Section.all.each_with_index do |section, index| %>
+
+          <div id="section_<%= index + 1 %>" class="<%= 'open' if open %>" >
+            <% if index == 0 %>
+              <%= image_fu section.image, '870x328', :class => "nav_picture", :alt => section.title %>
+              <div class="nav_text" >
+                <h2><%=raw section.heading_title   %></h2>
+              </div>
+            <% else %>
+              <div class="nav_wrap">
+                <%= link_to image_tag("section_#{index + 1}_title.png", {:class => 'nav_img'} ) , url_for(section.page)  %>
+                <span class="nav_background"></span>
+              </div>
+              <%= image_fu section.image, '870x328', :class => "nav_picture", :alt => section.title %>
+              <div class="nav_text" >
+                <h2><%=raw section.heading_title   %></h2>
+                <p> <%=raw section.heading %></p>
+              </div>
+            <% end %>
           </div>
+          <% open = false if @page.nested_path.start_with?(Section.first.page.nested_path, section.page.nested_path)  %>
         <% end %>
+        <div id="section_6" >
+          <div class="nav_wrap">
+            <%= image_tag "section_6_title.png", :class => 'nav_img' %>
+            <span class="nav_background active"></span>
+          </div>
+          <%= image_tag "section_6_picture.jpg", :class => 'nav_picture' %>
+        </div>
       </div>
 
-
-      <div id='horizontalaccordion'>
-        <ul>
-          <% Section.all.each_with_index do |s,i| %>
-            <li <%= "class='current'" if @page.nested_path.include? s.page.nested_path %>>
-            <%= link_to s.title, url_for(s.page.url), :'data-sectionid' => i+1 %>
-            </li>
-          <% end %>
-        </ul>
+      <div id="page_content">
+        <%= yield %>
       </div>
 
-    <div id="page_content">
-      <%= yield %>
-    </div>
-
-    <div id="clear"></div>
+      <div id="clear"></div>
 
     </div>
   </div>

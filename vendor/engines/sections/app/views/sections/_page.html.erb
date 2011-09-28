@@ -1,0 +1,44 @@
+<div class="block left" id="page_block">
+
+  <div class="layer">
+    <img src="/images/more.png" class="more" />
+  </div>
+
+  <h1>Pour aller plus loin</h1>
+
+  <div class="scrollable">
+    <ul id="further">
+      <% if section.page.children.any? %>
+        <% section.page.children.each do |child| %>
+          <% if child.data_type.blank?%>
+            <% if child.children.any? %>
+              <ul class="submenu">
+                <% child.children.each do |sub_child| %>
+
+                  <% if subchild.data_type.blank?%>
+                    <% if subchild.children.any? %>
+                      <ul class="sub_submenu">
+
+                        <% subchild.children.each do |sub_subchild| %>
+                          <% if sub_subchild.data_type.blank?%>
+                            <li><%= link_to sub_subchild.title, url_for(sub_subchild.url)  %></li>
+                          <% end%>
+                        <% end %>
+
+                      </ul>
+                    <% else %>
+                      <li><%= link_to subchild.title, url_for(subchild.url)  %></li>
+                    <% end %>
+
+                  <% end %>
+                <% end %>
+              </ul>
+            <% else %>
+              <li><%= link_to child.title, url_for(child.url)  %></li>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+</div>
