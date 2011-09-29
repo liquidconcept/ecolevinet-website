@@ -41,6 +41,7 @@ after 'deploy:update_code' do
 end
 
 after 'deploy:update', 'deploy:cleanup'
+after 'deploy:migrations', 'deploy:cleanup'
 
 #
 # finish
