@@ -40,6 +40,19 @@
             :locals => {
             :f => f,
             :object => @page } %>
+
+            <div class='field'>
+              <%= f.fields_for :image do |p| %>
+                <%= p.label :image -%>
+                <%= render :partial => "/shared/admin/image_picker", :locals => {
+                    :f => p,
+                    :field => :image_id,
+                    :image => @page.section.image,
+                    :toggle_image_display => false
+                  } %>
+               <% end %>
+            </div>
+
           </div>
         </div>
       </div>
