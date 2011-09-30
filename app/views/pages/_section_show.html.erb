@@ -1,8 +1,8 @@
 <% articles_rendered = false %>
 <% page.children.each do |child| %>
   <% case child.data_type %>
-  <% when "news" %>
-    <%= render :partial => 'news',       :locals => {:section => page.section}  if page.section.news.any?%>
+  <% when "news_items" %>
+    <%= render :partial => 'news_items', :locals => {:section => page.section}  if page.section.news_items.any?%>
   <% when "events" %>
     <%= render :partial => 'calendar',   :locals => {:section => page.section}  if page.section.events.any? %>
   <% when "portfolio" %>

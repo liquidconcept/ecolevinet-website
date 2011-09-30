@@ -1,0 +1,40 @@
+<div class="block <%= odd ? 'left' : 'right' %> " id="news_block">
+
+  <div class="layer">
+    <div id="news">
+      <h1>NEWS</h1>
+    </div>
+    <% header_news = section.news_items.hot.first %>
+    <% unless  header_news.nil? %>
+      <div class="news">
+        <h2><%= header_news.title %> </h2>
+        <p> <%= header_news.content %> </p>
+      </div>
+    <% end %>
+  </div>
+
+  <h1>Actualités</h1>
+
+  <div class="scrollable">
+  <% if  section.news_items.hot.any? %>
+      <div id="flash">
+        <% section.news_items.hot.each do |news_item| %>
+          <div class="event">
+            <p class="event_date"><%=raw  news_item.created_at.strftime('%d/%m/%y') %></p>
+            <h2 class="event_title"><%=link_to news_item.title, news_item.link  %></h2>
+            <p class="event_info">  <%=raw news_item.content %></p>
+          </div>
+        <% end %>
+      </div>
+  <% end %>
+  <% if  section.news_items.current.any? %>
+    <% section.news_items.current.each do |news_item| %>
+      <div class="event">
+        <p class="event_date">  <%=raw news_item.created_at.strftime('%d/%m/%y') %></p>
+        <h2 class="event_title"><%=link_to news_item.title, news_item.link %>     </h2>
+        <p class="event_info">  <%=raw news_item.content %>   </p>
+      </div>
+    <% end %>
+  <% end %>
+  </div>
+</div>

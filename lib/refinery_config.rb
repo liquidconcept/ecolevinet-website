@@ -7,7 +7,7 @@ class RefineryConfig
     #user related plugins
     "refinery_pages"      => 1,
     "sections"            => 2,
-    "news"                => 3,
+    "news_items"          => 3,
     "portfolio"           => 4,
     "events"              => 5,
     "refinery_images"     => 6,
@@ -24,7 +24,7 @@ class RefineryConfig
     "refinery_generators" => 16,
     "page_images"         => 17},
     :default_image_sizes =>  {:small  => '110x110', :medium => '225x255', :large => '870x328'},
-    :hidden_plugins => ["portfolio","news","events"]
+    :hidden_plugins => ["portfolio", "events"]
   }
 
   #set default page parts

@@ -20,7 +20,7 @@ RefinerySetting.find_or_set(:use_marketable_urls, true)
 load(Rails.root.join('db', 'seeds', 'sections.rb'))
 load(Rails.root.join('db', 'seeds', 'pages.rb'))
 load(Rails.root.join('db', 'seeds', 'portfolios.rb'))
-load(Rails.root.join('db', 'seeds', 'news.rb'))
+load(Rails.root.join('db', 'seeds', 'news_items.rb'))
 load(Rails.root.join('db', 'seeds', 'users.rb'))
 
 RefineryConfig.set_default_plugins_order

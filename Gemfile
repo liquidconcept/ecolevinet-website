@@ -11,7 +11,7 @@ gem 'refinerycms-i18n',         '~> 1.0.0'
 # gem 'refinerycms-portfolio',     :git => 'git://github.com/ncouturier/refinerycms-portfolio.git'
 
 gem 'refinerycms-sections',     '1.0', :path => 'vendor/engines'
-# gem 'refinerycms-news',         '1.0', :path => 'vendor/engines'
+gem 'refinerycms-news_items',   '1.0', :path => 'vendor/engines'
 # gem 'refinerycms-events',       '1.0', :path => 'vendor/engines'
 
 gem 'compass',      '>= 0.11.5'

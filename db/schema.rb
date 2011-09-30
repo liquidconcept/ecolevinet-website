@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110928130505) do
+ActiveRecord::Schema.define(:version => 20110929182100) do
 
   create_table "event_categorizations", :force => true do |t|
     t.integer  "event_id"
@@ -67,7 +67,17 @@ ActiveRecord::Schema.define(:version => 20110928130505) do
 
   add_index "images_portfolio_entries", ["image_id", "portfolio_entry_id"], :name => "composite_key_index"
 
-  create_table "news", :force => true do |t|
+  create_table "news_item_categorizations", :force => true do |t|
+    t.integer  "news_item_id"
+    t.integer  "section_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "news_item_categorizations", ["news_item_id"], :name => "index_news_categorizations_on_news_id"
+  add_index "news_item_categorizations", ["section_id"], :name => "index_news_categorizations_on_section_id"
+
+  create_table "news_items", :force => true do |t|
     t.text     "contenu"
     t.integer  "image_id"
     t.date     "date_limite"
@@ -77,19 +87,10 @@ ActiveRecord::Schema.define(:version => 20110928130505) do
     t.string   "titre"
     t.string   "lien"
     t.boolean  "hot"
+    t.date     "hotness_date"
   end
 
-  add_index "news", ["id"], :name => "index_news_on_id"
-
-  create_table "news_categorizations", :force => true do |t|
-    t.integer  "news_id"
-    t.integer  "section_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "news_categorizations", ["news_id"], :name => "index_news_categorizations_on_news_id"
-  add_index "news_categorizations", ["section_id"], :name => "index_news_categorizations_on_section_id"
+  add_index "news_items", ["id"], :name => "index_news_on_id"
 
   create_table "page_part_translations", :force => true do |t|
     t.integer  "page_part_id"
