@@ -1,14 +1,15 @@
 <% articles_rendered = false %>
-<% page.children.each do |child| %>
+<% page.children.each_with_index do |child,i| %>
+
   <% case child.data_type %>
   <% when "news" %>
-    <%= render :partial => 'news',       :locals => {:section => page.section}  if page.section.news.any?%>
+    <%= render :partial => 'news',       :locals => {:section => page.section, :odd => i % 2 == 0 }  if page.section.news.any? %>
   <% when "events" %>
-    <%= render :partial => 'calendar',   :locals => {:section => page.section}  if page.section.events.any? %>
+    <%= render :partial => 'calendar',   :locals => {:section => page.section, :odd => i % 2 == 0 }  if page.section.events.any? %>
   <% when "portfolio" %>
-    <%= render :partial => 'portfolio',  :locals => {:section => page.section}  if page.section.portfolio_entries.any? %>
+    <%= render :partial => 'portfolio',  :locals => {:section => page.section, :odd => i % 2 == 0 }  if page.section.portfolio_entries.any? %>
   <% else %>
-    <%= render :partial => 'page',       :locals => {:section => page.section}  unless articles_rendered %>
+    <%= render :partial => 'page',       :locals => {:section => page.section, :odd => i % 2 == 0 }  unless articles_rendered  %>
     <% articles_rendered = true %>
   <% end %>
 <% end %>

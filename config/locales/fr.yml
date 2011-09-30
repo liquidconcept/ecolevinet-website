@@ -3,6 +3,7 @@ fr:
   heading_title: "Titre de l'en-tête"
   heading:       "Chapeau"
   link:          "lien"
+  Content:       "Contenu"
   activerecord:
     attributes:
       section:

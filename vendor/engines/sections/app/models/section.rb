@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class Section < ActiveRecord::Base
 
   acts_as_indexed :fields => [:title, :heading_title, :heading]
