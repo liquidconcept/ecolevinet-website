@@ -1,4 +1,4 @@
-class newsController < ApplicationController
+class NewsController < ApplicationController
 
   before_filter :find_all_news
   before_filter :find_page

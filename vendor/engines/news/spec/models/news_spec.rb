@@ -24,7 +24,7 @@ describe news do
 
     it "rejects non unique title" do
       # as one gets created before each spec by reset_news
-      NEws.new(@valid_attributes).should_not be_valid
+      News.new(@valid_attributes).should_not be_valid
     end
     
   end
