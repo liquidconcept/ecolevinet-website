@@ -2,7 +2,19 @@ $(document).ready(function() {
   $('.scrollable').scrollbar({
 	arrows: false
   });
-  
+
+  //block comportment
+  $('.block>.layer').css({display: 'inline'});
+  $('.block').hover(
+  function () {
+    $(this).find('.layer').css({display: 'none'}).end();
+  },
+  function () {
+    $(this).find('.layer').css({display: 'inline'}).end();
+  }
+  );
+
+  //horizontal accordion
   $('#horizontalaccordion>ul>li>a').click(function(event){
     event.preventDefault();
     var vb, link;
