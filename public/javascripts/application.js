@@ -19,35 +19,44 @@ $(document).ready(function() {
 
   //prettyphoto activation
   $("a[rel^='prettyPhoto']").prettyPhoto({social_tools:false});
+  if ($('#flash.current').prev('#flash').length == 0) {$('a.left').fadeTo('slow', 0.5);}
+  if ($('#flash.current').next('#flash').length == 0) {$('a.right').fadeTo('slow',0.5);}
 
-// galeries selection
+  // galeries selection
   $('#month_switcher>a.left').click(function(event){
     if ($('#flash.current').prev('#flash').length == 0)  {return false;};
     // replace current galery by the first on the left
     $('#flash.current').fadeOut('slow', function() {
       $(this).css({'display': 'none'});// Animation complete.
+      //change layer source image
+      $('.layer img.portfolio_img').attr('src',$('#flash.current div.img_resize a').attr('href'));
+      //change galery title
+      $('#month_switcher > p').html($('#flash.current img.thumbnails_img').attr('alt'));
     }).prev('#flash').fadeIn('slow', function() {
        $(this).css({'display': 'inline'});
     });
     $('#flash.current').toggleClass('current').prev('#flash').toggleClass('current');
-    //focus
-    $('#flash.current').focus();
-    //change layer source image
-    $('.layer>img.portfolio_img').attr('href',$('#flash.current>div.img_resize>img.thumbnails_img').attr('href'));
+    if ($('#flash.current').prev('#flash').length == 0) {$('a.left').fadeTo('slow', 0.5);}
+    else {$('a.left').fadeTo('slow', 1);};
+    if ($('#flash.current').next('#flash').length == 0) {$('a.right').css({'opacity' : 0.5});}
+    else {$('a.right').fadeTo('slow', 1);};
   });
   $('#month_switcher>a.right').click(function(event){
     if ($('#flash.current').next('#flash').length == 0)  {return false;};
     $('#flash.current').fadeOut('slow', function() {
       $(this).css({'display': 'none'});// Animation complete.
+    //change layer source image
+    $('.layer img.portfolio_img').attr('src',$('#flash.current div.img_resize a').attr('href'));
+    //change galery title
+    $('#month_switcher > p').html($('#flash.current img.thumbnails_img').attr('alt'));
     }).next('#flash').fadeIn('slow', function() {
        $(this).css({'display': 'inline'});
     });
     $('#flash.current').toggleClass('current').next('#flash').toggleClass('current');
-    //focus
-    $('#flash.current').focus();
-    //change layer source image
-    $('.layer>img.portfolio_img').attr('href',$('#flash.current>div.img_resize>img.thumbnails_img').attr('href'));
-    alert($('#flash.current>.img_resize>img.thumbnails_img').attr('src'));
+    if ($('#flash.current').prev('#flash').length == 0) {$('a.left').fadeTo('slow', 0.5);}
+    else {$('a.left').fadeTo('slow', 1);};
+    if ($('#flash.current').next('#flash').length == 0) {$('a.right').css({'opacity' : 0.5});}
+    else {$('a.right').fadeTo('slow', 1);};
   });
 
 

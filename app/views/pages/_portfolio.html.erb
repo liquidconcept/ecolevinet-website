@@ -1,23 +1,26 @@
 <div class="block <%= odd ? 'left' : 'right' %> ">
  <%# randomly chosen portfolio entry  %>
- <%  portfolio_entry_index = rand(section.portfolio_entries.length) %>
+ <%  r_portfolio_entry_index = rand(section.portfolio_entries.length) %>
+ <%  r_portfolio_entry = section.portfolio_entries[r_portfolio_entry_index] %>
 
   <div class="layer">
-    <%= image_fu section.portfolio_entries[portfolio_entry_index].images.first, '420x300',  {:class => "portfolio_img"}%>
+    <%= image_fu r_portfolio_entry.images.first, '420x300',
+      {:class => "portfolio_img", :alt => "#{r_portfolio_entry.title}" }%>
   </div>
 	
 	<h1>Galerie</h1>
 <% section.portfolio_entries.each_with_index do  |portfolio_entry,i| %>
-  <div id="flash" class="portfolio scrollable <%= 'current' if i == portfolio_entry_index %>">
+  <div id="flash" class="portfolio scrollable <%= 'current' if i == r_portfolio_entry_index %>">
     <% portfolio_entry.images.each do |image| %>
       <div class="img_resize">
-        <%= link_to image_fu(image, '105x92',  {:class => "thumbnails_img"}) , image.url ,  {:rel => 'prettyPhoto[porfolio]', :title => '' } %>
+        <%= link_to image_fu(image, '105x92',  {:class => "thumbnails_img", :alt => portfolio_entry.title  }) ,
+          image.url ,  {:rel => "prettyPhoto[#{portfolio_entry.title.gsub(' ','')}]"} %>
       </div>
     <% end %>
-	</div>
+  </div>
 <% end %>
-  <div id="month_switcher"><a href="#" class="left"></a><p><%= section.portfolio_entries[portfolio_entry_index].title %></p><a href="#" class="right"></a></div>
-	
+  <div id="month_switcher"><a href="#" class="left"></a><p><%=raw r_portfolio_entry.title %></p><a href="#" class="right"></a></div>
+
 </div>
 
 <% content_for :javascripts do %>

@@ -223,17 +223,17 @@ html{
 		}
 	  }
       .block{
-	  	position:relative;
-        width:  420px;
-        height: 300px;
-        background-color: $light_grey;
-        float: left;
-		margin-bottom:25px;
-		behavior: url(/stylesheets/PIE/PIE.htc);
-		-moz-border-radius: 4px; /* Firefox */
-		-webkit-border-radius: 4px; /* Safari and Chrome */
-		border-radius: 4px; /* Opera 10.5+, future browsers, and now also Internet Explorer 6+ using IE-CSS3 */
-        @include box-shadow(#000 0 1px 2px, #fff 0 1px inset);
+      position:relative;
+      width:  420px;
+      height: 300px;
+      background-color: $light_grey;
+      float: left;
+      margin-bottom:25px;
+      behavior: url(/stylesheets/PIE/PIE.htc);
+      -moz-border-radius: 4px; /* Firefox */
+      -webkit-border-radius: 4px; /* Safari and Chrome */
+      border-radius: 4px; /* Opera 10.5+, future browsers, and now also Internet Explorer 6+ using IE-CSS3 */
+      @include box-shadow(#000 0 1px 2px, #fff 0 1px inset);
 	    h1{
 		  margin:15px 0px 15px 25px;
 	    }
@@ -270,15 +270,15 @@ html{
 		  display: inline;
       }
 		  .thumbnails_img{
-		    height:92px;
+      height:92px;
 			margin:0;
 			padding:0;
 			border:none;
 		  }
 		  .img_resize{
-		    overflow:hidden;
-		  	float:left;
-		  	width:105px;
+      overflow:hidden;
+      float:left;
+      width:105px;
 			height:92px;
 		  }
 		}
@@ -365,7 +365,7 @@ html{
 				}
 			}
 			p{
-				text-align:center;
+				text-align:left;
 			}
 		}
 	    .event{
