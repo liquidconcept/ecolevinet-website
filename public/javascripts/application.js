@@ -6,13 +6,50 @@ $(document).ready(function() {
   //block comportment
   $('.block>.layer').css({display: 'inline'});
   $('.block').hover(
-  function () {
-    $(this).find('.layer').css({display: 'none'}).end();
-  },
-  function () {
-    $(this).find('.layer').css({display: 'inline'}).end();
-  }
-  );
+    function () {
+      $(this).find('.layer').fadeOut('slow', function() {
+      $(this).css({'display': 'none'});// Animation complete.
+    });
+    },
+    function () {
+      $(this).find('.layer').fadeIn('slow', function() {
+       $(this).css({'display': 'inline'});
+    });
+  });
+
+  //prettyphoto activation
+  $("a[rel^='prettyPhoto']").prettyPhoto({social_tools:false});
+
+// galeries selection
+  $('#month_switcher>a.left').click(function(event){
+    if ($('#flash.current').prev('#flash').length == 0)  {return false;};
+    // replace current galery by the first on the left
+    $('#flash.current').fadeOut('slow', function() {
+      $(this).css({'display': 'none'});// Animation complete.
+    }).prev('#flash').fadeIn('slow', function() {
+       $(this).css({'display': 'inline'});
+    });
+    $('#flash.current').toggleClass('current').prev('#flash').toggleClass('current');
+    //focus
+    $('#flash.current').focus();
+    //change layer source image
+    $('.layer>img.portfolio_img').attr('href',$('#flash.current>div.img_resize>img.thumbnails_img').attr('href'));
+  });
+  $('#month_switcher>a.right').click(function(event){
+    if ($('#flash.current').next('#flash').length == 0)  {return false;};
+    $('#flash.current').fadeOut('slow', function() {
+      $(this).css({'display': 'none'});// Animation complete.
+    }).next('#flash').fadeIn('slow', function() {
+       $(this).css({'display': 'inline'});
+    });
+    $('#flash.current').toggleClass('current').next('#flash').toggleClass('current');
+    //focus
+    $('#flash.current').focus();
+    //change layer source image
+    $('.layer>img.portfolio_img').attr('href',$('#flash.current>div.img_resize>img.thumbnails_img').attr('href'));
+    alert($('#flash.current>.img_resize>img.thumbnails_img').attr('src'));
+  });
+
 
   //horizontal accordion
   $('#horizontalaccordion>ul>li>a').click(function(event){

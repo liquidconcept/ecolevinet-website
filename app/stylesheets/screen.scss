@@ -262,9 +262,13 @@ html{
 		#flash{
 		  background-color:$white;
 		  border-bottom:1px solid $dark_grey;
+      display: none;
 		  &.portfolio{
 		  	height:184px;
 		  }
+		  &.current{
+		  display: inline;
+      }
 		  .thumbnails_img{
 		    height:92px;
 			margin:0;
@@ -332,11 +336,12 @@ html{
 		}
 		#month_switcher{
 			position:relative;
-			top:5px;
+			top:200px;
 			font-size:18px;
 			margin-top:12px;
 			a{
 				position:absolute;
+				text-align: left;
 				display:block;
 				width:23px;
 				height:13px;
