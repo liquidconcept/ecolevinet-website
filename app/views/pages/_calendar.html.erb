@@ -2,44 +2,29 @@
 
 	<div class="layer">
 		<div id="today">
-			<p id="today_month">septembre</p>
-			<p id="today_wrap"><span id="today_day">jeudi</span> <span id="today_number">15</span></p>
-		</div>
-		<div class="news">
-			<h2>Course d'école</h2>
-			<p>RDV à 9H à la gare de Lausanne</p>
-		</div>
+      <p id="today_month"><%= current_month %></p>
+      <p id="today_wrap"><span id="today_day"><%= current_day_word %></span>
+      <span id="today_number"><%= current_day_number %></span></p>
+    </div>
+    <% @page.section.events.today.each do |event| %>
+      <div class="news">
+        <h2><%=raw  event.title %></h2>
+        <p><%= raw event.description%></p>
+      </div>
+    <% end %>
 	</div>
 	
 	<h1>Agenda</h1>
 	
 	<div id="calendar">
-		<ul>
-		  <li class="first">29</li>
-		  <li>30</li>
-		  <li>31</li>
-		  <li>1</li>
-		  <li>2</li>
-		  <li class="weekend">3</li>
-		  <li class="weekend">4</li>
-		</ul>
-		<ul>
-		  <li class="first event_number">5 <span class="event_number">2</span> </li>
-		  <li class="event_check">6 <span class="event_number">2</span> </li>
-		  <li>7</li>
-		  <li>8</li>
-		  <li>9</li>
-		  <li class="weekend">10</li>
-		  <li class="weekend">11</li>
-		</ul>
-		<ul>
-		  <li class="first">12</li>
-		  <li>13</li>
-		  <li>14</li>
-		  <li class="event_check">15 <span class="event_number">2</span> </li>
-		  <li>16</li>
-		  <li class="weekend">17</li>
-		  <li class="weekend">18</li>
+    <ul>
+      <% (first_day..first_day.end_of_week).each do |day| %>
+        <li class="<%= day_type(day)  %>"><%= l(day , :format => :day_number) %>
+        <% if Event.given_day(day).count > 0 %>
+          <span class="event_number">Date.given_day.count</span>
+        <% end %>
+        </li>
+      <% end %>
 		</ul>
 		<ul id="current_week">
 		  <li class="first">19</li>
@@ -49,15 +34,6 @@
 		  <li>23</li>
 		  <li class="weekend">24</li>
 		  <li class="weekend">25</li>
-		</ul>
-		<ul>
-		  <li class="first">26</li>
-		  <li>27</li>
-		  <li>28</li>
-		  <li>29</li>
-		  <li>30</li>
-		  <li class="weekend">1</li>
-		  <li class="weekend">2</li>
 		</ul>
 	</div>
 	

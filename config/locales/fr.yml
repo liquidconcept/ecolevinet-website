@@ -4,6 +4,12 @@ fr:
   heading:       "Chapeau"
   link:          "lien"
   Content:       "Contenu"
+  date:
+    formats:
+      month_word:  "%B"
+      day_word:    "%A"
+      day_number:  "%d"
+      week_number: "%U"
   activerecord:
     attributes:
       section:

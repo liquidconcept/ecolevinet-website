@@ -1,4 +1,8 @@
 fr:
+  title:         "Titre"
+  location:      "Lieu"
+  start_date:    "Date de début"
+  end_date:      "Date de fin"
   activerecord:
     attributes:
       events:
