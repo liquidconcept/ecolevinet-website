@@ -1,4 +1,11 @@
 fr:
+  activerecord:
+    attributes:
+      events:
+        title:         "Titre"
+        location:      "Lieu"
+        start_date:    "Date de début"
+        end_date:      "Date de fin"
   shared:
     admin:
       image_picker:
@@ -20,6 +27,11 @@ fr:
         view_live_html: Voir cet événement <br/><em>(Ouvre une nouvelle fenêtre)</em>
         edit: Modifier cet événement
         delete: Supprimer définitivement cet événement
+      form:
+        title:         "Titre"
+        location:      "Lieu"
+        start_date:    "Date de début"
+        end_date:      "Date de fin"
   events:
     show:
       other: Autres événements

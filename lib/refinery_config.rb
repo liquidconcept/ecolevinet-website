@@ -26,7 +26,7 @@ class RefineryConfig
     "refinery_generators" => 16,
     "page_images"         => 17},
     :default_image_sizes =>  {:small  => '110x110', :medium => '225x255', :large => '870x328'},
-    :hidden_plugins => ["portfolio","news","events"]
+    :hidden_plugins => ["portfolio","news"]
   }
 
   #set default page parts
