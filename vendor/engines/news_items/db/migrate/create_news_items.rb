@@ -5,7 +5,7 @@ class CreateNewsItems < ActiveRecord::Migration
       t.string :title
       t.text :content
       t.integer :image_id
-      t.date :end_date
+      t.date :hotness_end_at
       t.string :link
       t.boolean :hot
       t.integer :position

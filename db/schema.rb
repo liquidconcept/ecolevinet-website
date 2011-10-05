@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110929182100) do
+ActiveRecord::Schema.define(:version => 20111005092103) do
 
   create_table "event_categorizations", :force => true do |t|
     t.integer  "event_id"
@@ -78,14 +78,14 @@ ActiveRecord::Schema.define(:version => 20110929182100) do
   add_index "news_item_categorizations", ["section_id"], :name => "index_news_categorizations_on_section_id"
 
   create_table "news_items", :force => true do |t|
-    t.text     "contenu"
+    t.text     "content"
     t.integer  "image_id"
-    t.date     "date_limite"
+    t.date     "hotness_end_at"
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "titre"
-    t.string   "lien"
+    t.string   "title"
+    t.string   "link"
     t.boolean  "hot"
     t.date     "hotness_date"
   end

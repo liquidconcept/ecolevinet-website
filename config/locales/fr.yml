@@ -13,7 +13,7 @@ fr:
       news_item:
         title:          "Titre"
         content:        "Contenu"
-        end_date:       "brûlante jusqu'à"
+        hotness_end_at:       "brûlante jusqu'à"
         link:           "lien"
         hot:            "brûlante"
   devise:

@@ -9,8 +9,8 @@ class NewsItem < ActiveRecord::Base
 
   belongs_to :image
 
-  scope :hot, where(['end_date >  ? and hot = ?', Date.today, true]).order('hotness_date DESC')
-  scope :current,  where(['end_date <= ? ', Date.today])
+  scope :hot, where(['hotness_end_at >  ? and hot = ?', Date.today, true]).order('hotness_end_at DESC')
+  scope :current,  where(['hotness_end_at <= ? or hot = ?', Date.today, false])
 
   def before_save
     self.hotness_date = Date.today if !self.changes[:hot].blank? && self.changes[:hot].last
