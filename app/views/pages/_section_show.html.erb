@@ -4,7 +4,7 @@
 
   <% case child.data_type %>
   <% when "news_items" %>
-    <% if page.section.news.any? %>
+    <% if page.section.news_items.any? %>
       <%= render :partial => 'news_items',       :locals => {:section => page.section, :odd => odd }   %>
       <% odd = !odd %>
     <% end %>
