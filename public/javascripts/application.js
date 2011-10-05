@@ -2,7 +2,36 @@ $(document).ready(function() {
   $('.scrollable').scrollbar({
 	arrows: false
   });
-  
+
+  //block comportment
+  $('.block>.layer').css({display: 'inline'});
+  $('.block').hover(
+    function () {
+      $(this).find('.layer').fadeOut('slow', function() {
+      $(this).css({'display': 'none'});// Animation complete.
+    });
+    },
+    function () {
+      $(this).find('.layer').fadeIn('slow', function() {
+       $(this).css({'display': 'inline'});
+    });
+  });
+
+  //calendar comportment
+  $('.event_check').hover(
+    function () {
+      $('.calendar_overlay').fadeIn('slow', function() {
+        $('.calendar_overlay').css({'display': 'inline'});// Animation complete.
+      });
+    },
+    function () {
+      $('.calendar_overlay').fadeOut('slow', function() {
+        $('.calendar_overlay').css({'display': 'none'});// Animation complete.
+      });
+    }
+  );
+
+
   $('#horizontalaccordion>ul>li>a').click(function(event){
     event.preventDefault();
     var vb, link;
