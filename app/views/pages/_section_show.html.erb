@@ -1,14 +1,28 @@
 <% articles_rendered = false %>
+<% odd = true %>
 <% page.children.each do |child| %>
+
   <% case child.data_type %>
   <% when "news_items" %>
-    <%= render :partial => 'news_items', :locals => {:section => page.section}  if page.section.news_items.any?%>
+    <% if page.section.news.any? %>
+      <%= render :partial => 'news_items',       :locals => {:section => page.section, :odd => odd }   %>
+      <% odd = !odd %>
+    <% end %>
   <% when "events" %>
-    <%= render :partial => 'calendar',   :locals => {:section => page.section}  if page.section.events.any? %>
+    <% if page.section.events.any? %>
+      <%= render :partial => 'calendar',   :locals => {:section => page.section, :odd => odd }   %>
+      <% odd = !odd %>
+    <% end %>
   <% when "portfolio" %>
-    <%= render :partial => 'portfolio',  :locals => {:section => page.section}  if page.section.portfolio_entries.any? %>
+    <% if page.section.portfolio_entries.any? %>
+      <%= render :partial => 'portfolio',  :locals => {:section => page.section, :odd => odd }   %>
+      <% odd = !odd %>
+    <% end %>
   <% else %>
-    <%= render :partial => 'page',       :locals => {:section => page.section}  unless articles_rendered %>
-    <% articles_rendered = true %>
+    <% unless articles_rendered %>
+      <%= render :partial => 'page',       :locals => {:section => page.section, :odd => odd }   %>
+      <% articles_rendered = true %>
+      <% odd = !odd %>
+    <% end %>
   <% end %>
 <% end %>
