@@ -22,7 +22,7 @@
     <% (first_day(_day)..last_day(_day)).step(7).each do |week_day| %>
       <ul <%=raw  week_type(week_day) %> >
       <% (week_day...(week_day+7.days)).each do |day| %>
-        <li class="<%= day_type(day)  %>"><%= l(day , :format => :day_number) %>
+        <li class="<%= day_type(day)  %>" data-day="<%= day.strftime('%d-%m-%y') %>"> <%= l(day , :format => :day_number) %>
         <% if Event.given_day(day).count > 0 %>
           <span class="event_number">
             <%= Event.given_day(day).count %>
@@ -37,9 +37,6 @@
 	<div id="month_switcher"><a href="#" class="left"></a><p><%= current_month %></p><a href="#" class="right"></a></div>
 	
 	<div class="calendar_overlay">
-		<p>Blabla</p>
-		<p>Blabla</p>
-		<p>Blabla</p>
 	</div>
 	
 </div>

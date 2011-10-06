@@ -8,6 +8,7 @@ class EventsController < ApplicationController
     # you can use meta fields from your model instead (e.g. browser_title)
     # by swapping @page for @event in the line below:
     present(@page)
+    present(@events)
   end
 
   def show
@@ -16,6 +17,14 @@ class EventsController < ApplicationController
     # you can use meta fields from your model instead (e.g. browser_title)
     # by swapping @page for @event in the line below:
     present(@page)
+    present(@event)
+  end
+
+  def on_the
+    @events = Event.given_day(params[:day].strptime('%d-%m-%y'))
+    respond_to do |format|
+      format.js
+    end
   end
 
 protected

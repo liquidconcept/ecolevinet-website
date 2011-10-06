@@ -22,6 +22,7 @@ load(Rails.root.join('db', 'seeds', 'pages.rb'))
 load(Rails.root.join('db', 'seeds', 'portfolios.rb'))
 load(Rails.root.join('db', 'seeds', 'news.rb'))
 load(Rails.root.join('db', 'seeds', 'users.rb'))
+load(Rails.root.join('db', 'seeds', 'events.rb'))
 
 RefineryConfig.set_default_plugins_order
 RefineryConfig.friendly

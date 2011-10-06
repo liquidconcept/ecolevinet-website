@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
   $('.scrollable').scrollbar({
 	arrows: false
   });
@@ -20,7 +21,7 @@ $(document).ready(function() {
   //calendar comportment
   $('.event_check').hover(
     function () {
-      $('.calendar_overlay').fadeIn('slow', function() {
+     $('.calendar_overlay').fadeIn('slow', function() {
         $('.calendar_overlay').css({'display': 'inline'});// Animation complete.
       });
     },
