@@ -25,6 +25,7 @@ $(document).ready(function() {
   // galeries selection
   $('#month_switcher>a.left').click(function(event){
     if ($('#flash.current').prev('#flash').length == 0)  {return false;};
+    event.preventDefault();
     // replace current galery by the first on the left
     $('#flash.current').fadeOut('slow', function() {
       $(this).css({'display': 'none'});// Animation complete.
@@ -43,6 +44,7 @@ $(document).ready(function() {
   });
   $('#month_switcher>a.right').click(function(event){
     if ($('#flash.current').next('#flash').length == 0)  {return false;};
+    event.preventDefault();
     $('#flash.current').fadeOut('slow', function() {
       $(this).css({'display': 'none'});// Animation complete.
     //change layer source image
