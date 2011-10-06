@@ -259,7 +259,7 @@ html{
             list-style-type:circle;
           }
         }
-        #flash{
+        .flash{
           background-color:$white;
           border-bottom:1px solid $dark_grey;
           display: none;
@@ -339,6 +339,7 @@ html{
           top:200px;
           font-size:18px;
           margin-top:12px;
+          width: 420px;
           a{
             position:absolute;
             text-align: left;
@@ -365,7 +366,8 @@ html{
             }
           }
           p{
-            text-align:left;
+            text-align:center;
+            margin: auto;
           }
         }
         .event{
