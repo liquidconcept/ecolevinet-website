@@ -267,7 +267,7 @@ html{
             height:184px;
           }
           &.current{
-            display: inline;
+            display: block;
           }
           .thumbnails_img{
             height:92px;
@@ -336,7 +336,6 @@ html{
         }
         #month_switcher{
           position:relative;
-          top:200px;
           font-size:18px;
           margin-top:12px;
           width: 420px;
@@ -348,9 +347,15 @@ html{
             height:13px;
             background-position:top;
             margin-top:4px;
+            &.target{
+              display: block;
+              width: 420px;
+              margin: auto;
+              text-align: center;
+            }
           }
           .left{
-            bottom:2px;
+            top:2px;
             left:20px;
             background-image:url("../images/arrow_l.jpg");
             &:hover{
@@ -358,16 +363,12 @@ html{
             }
           }
           .right{
-            bottom:2px;
+            top:2px;
             right:20px;
             background-image:url("../images/arrow_r.jpg");
             &:hover{
               background-position:bottom;
             }
-          }
-          p{
-            text-align:center;
-            margin: auto;
           }
         }
         .event{

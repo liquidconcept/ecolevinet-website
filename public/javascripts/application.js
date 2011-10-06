@@ -7,18 +7,18 @@ $(document).ready(function() {
   $('.block>.layer').css({display: 'inline'});
   $('.block').hover(
     function () {
-      $(this).find('.layer').fadeOut('fast', function() {
-      $(this).css({'display': 'none'});// Animation complete.
+      $(this).find('.layer').fadeOut('fast', function() {$(this).css({'display': 'none'});
     });
     },
     function () {
-      $(this).find('.layer').fadeIn('fast', function() {
-       $(this).css({'display': 'inline'});
+      $(this).find('.layer').fadeIn('fast', function() {$(this).css({'display': 'inline'});
     });
   });
 
   //prettyphoto activation
   $("a[rel^='prettyPhoto']").prettyPhoto({social_tools:false});
+
+  //navigation initialization
   if ($('.flash.current').prev('.flash').length == 0) {$('a.left').fadeTo('fast', 0.5);}
   if ($('.flash.current').next('.flash').length == 0) {$('a.right').fadeTo('fast',0.5);}
 
