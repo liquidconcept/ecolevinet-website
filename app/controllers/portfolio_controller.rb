@@ -3,9 +3,9 @@ class PortfolioController < ApplicationController
   before_filter :load_page, :only => [:index, :show, :empty]
 
   def index
-    if RefinerySetting.find_or_set(:portfolio_has_no_index, true)
+    if RefinerySetting.find_or_set(:portfolio_has_no_index,false)
       if (first_entry = PortfolioEntry.where(:parent_id => nil).first).present?
-        redirect_to portfolio_url(first_entry)
+        redirect_to portfolio_url(first_entry) and return
       else
         @portfolio_entries = []
       end
@@ -39,19 +39,17 @@ class PortfolioController < ApplicationController
         image_index = (params[:image_id].presence || '0').to_i
         @image = @portfolio_entry.images[image_index]
       rescue
-        render :action => "empty"
+        render :action => "empty" and return
       end
     rescue
-      error_404
+      error_404 and return
     end
 
-    render :partial => "main_image", :layout => false if request.xhr?
 
     respond_to do |format|
-    
+      format.xml { render :partial => "main_image", :layout => false if request.xhr? }
       format.html
       format.any(:js, :json) { render request.format.to_sym => @portfolio_entry.to_json(:include  => {:images => {:methods => [ :url ]}})}
-    
     end
 
   end
