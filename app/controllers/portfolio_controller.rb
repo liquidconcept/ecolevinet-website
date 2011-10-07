@@ -46,6 +46,14 @@ class PortfolioController < ApplicationController
     end
 
     render :partial => "main_image", :layout => false if request.xhr?
+
+    respond_to do |format|
+    
+      format.html
+      format.any(:js, :json) { render request.format.to_sym => @portfolio_entry.to_json(:include  => {:images => {:methods => [ :url ]}})}
+    
+    end
+
   end
 
 protected
