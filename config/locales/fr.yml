@@ -3,6 +3,7 @@ fr:
   heading_title: "Titre de l'en-tête"
   heading:       "Chapeau"
   link:          "lien"
+  Content:       "Contenu"
   activerecord:
     attributes:
       section:
@@ -13,6 +14,7 @@ fr:
       news_item:
         title:          "Titre"
         content:        "Contenu"
+        Content:        "Contenu"
         hotness_end_at:       "brûlante jusqu'à"
         link:           "lien"
         hot:            "brûlante"

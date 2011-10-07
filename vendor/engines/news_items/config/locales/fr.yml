@@ -9,7 +9,7 @@ fr:
   admin:
     news_items:
       actions:
-        create_new: Créer une nouvele Actualité
+        create_new: Créer une nouvelle Actualité
         reorder: Réordonner les Actualités
         reorder_done: Fin de réordonnancement des Actualités
       records:
@@ -23,3 +23,5 @@ fr:
   news_items:
     show:
       other: Autres Actualités
+    new:
+      Content: Contenu
