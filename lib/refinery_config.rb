@@ -102,7 +102,7 @@ class RefineryConfig
 
   #set portfolio to one level
   def self.one_level_portfolio
-    RefinerySetting.set(:multi_level_portfolio, false,{:callback_proc_as_string => %q{::ActionController::Routing::Routes.reload!}})
+    RefinerySetting.set(:multi_level_portfolio, false)
   end
 
 end
