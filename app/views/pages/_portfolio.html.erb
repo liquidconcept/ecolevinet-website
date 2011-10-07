@@ -2,6 +2,10 @@
   <%# first portfolio %>
   <%  first_portfolio_entry = section.portfolio_entries.first %>
 
+  <script>
+    <![CDATA[ var portfolios = <%=raw section.portfolio_entries.to_json %>; ]]>
+  </script>
+
   <div class="layer">
     <%= image_fu first_portfolio_entry.images.first, '420x300#',
       {:class => "portfolio_img", :alt => "#{first_portfolio_entry.title}" }%>

@@ -1,66 +1,76 @@
 $(document).ready(function() {
   $('.scrollable').scrollbar({
-	arrows: false
+    arrows: false
   });
 
   //block comportment
   $('.block>.layer').css({display: 'inline'});
   $('.block').hover(
     function () {
-      $(this).find('.layer').fadeOut('fast', function() {$(this).css({'display': 'none'});
+    $(this).find('.layer').fadeOut('fast', function() {$(this).css({'display': 'none'});
     });
-    },
-    function () {
-      $(this).find('.layer').fadeIn('fast', function() {$(this).css({'display': 'inline'});
+  },
+  function () {
+    $(this).find('.layer').fadeIn('fast', function() {$(this).css({'display': 'inline'});
     });
   });
 
   //prettyphoto activation
   $("a[rel^='prettyPhoto']").prettyPhoto({social_tools:false});
 
+  var navigation;
+  navigation = {
+    init: function() {
+      //navigation initialization
+      if ($('.flash.current').prev('.flash').length == 0) {$('a.left').fadeTo('fast', 0.5);}
+      if ($('.flash.current').next('.flash').length == 0) {$('a.right').fadeTo('fast',0.5);}
+    },
+    update: function() {
+      //navigation update
+      if ($('.flash.current').prev('.flash').length == 0) {$('a.left').fadeTo('fast', 0.5);}
+      else {$('a.left').fadeTo('fast', 1);};
+      if ($('.flash.current').next('.flash').length == 0) {$('a.right').css({'opacity' : 0.5});}
+      else {$('a.right').fadeTo('fast', 1);};
+      //change galery title & src
+      portfolio = portfolios[navigation.index]
+      $('#month_switcher > a.target').attr('href','/portfolio/' + portfolio['title']).innerHtml(portfolio['title']);
+    },
+    index: 0
+  };
+
   //navigation initialization
-  if ($('.flash.current').prev('.flash').length == 0) {$('a.left').fadeTo('fast', 0.5);}
-  if ($('.flash.current').next('.flash').length == 0) {$('a.right').fadeTo('fast',0.5);}
+  navigation.init();
 
   // galeries selection
   $('#month_switcher>a.left').click(function(event){
     if ($('.flash.current').prev('.flash').length == 0)  {return false;};
     event.preventDefault();
+    navigation.index -= 1;
     // replace current galery by the first on the left
     $('.flash.current').fadeOut('fast', function() {
       $(this).css({'display': 'none'});// Animation complete.
       //change layer source image
       $('.layer img.portfolio_img').attr('src',$('.flash.current div.img_resize a').attr('href'));
-      //change galery title
-      $('#month_switcher > p').html($('.flash.current img.thumbnails_img').attr('alt'));
+
     }).prev('.flash').fadeIn('fast', function() {
-       $(this).css({'display': 'inline'});
+      $(this).css({'display': 'inline'});
     });
     $('.flash.current').toggleClass('current').prev('.flash').toggleClass('current');
-    if ($('.flash.current').prev('.flash').length == 0) {$('a.left').fadeTo('fast', 0.5);}
-    else {$('a.left').fadeTo('fast', 1);};
-    if ($('.flash.current').next('.flash').length == 0) {$('a.right').css({'opacity' : 0.5});}
-    else {$('a.right').fadeTo('fast', 1);};
+    //navigation update
+    navigation.update();
   });
   $('#month_switcher>a.right').click(function(event){
     if ($('.flash.current').next('.flash').length == 0)  {return false;};
     event.preventDefault();
-    $('.flash.current').fadeOut('fast', function() {
-      $(this).css({'display': 'none'});// Animation complete.
-    //change layer source image
-    $('.layer img.portfolio_img').attr('src',$('.flash.current div.img_resize a').attr('href'));
-    //change galery title
-    $('#month_switcher > p').html($('.flash.current img.thumbnails_img').attr('alt'));
-    }).next('.flash').fadeIn('fast', function() {
-       $(this).css({'display': 'inline'});
-    });
-    $('.flash.current').toggleClass('current').next('.flash').toggleClass('current');
-    if ($('.flash.current').prev('.flash').length == 0) {$('a.left').fadeTo('fast', 0.5);}
-    else {$('a.left').fadeTo('fast', 1);};
-    if ($('.flash.current').next('.flash').length == 0) {$('a.right').css({'opacity' : 0.5});}
-    else {$('a.right').fadeTo('fast', 1);};
+    navigation.index += 1;
+    $('.flash.current').fadeOut('slow', function() {
+      //change layer source image
+      $('.layer img.portfolio_img').attr('src',$('.flash.current div.img_resize a').attr('href'));
+      $('.flash.current').removeClass('current').nextAll('.flash').addClass('current');
+    }).nextAll('.flash').fadeIn('fast');
+    //navigation update
+    navigation.update();
   });
-
 
   //horizontal accordion
   $('#horizontalaccordion>ul>li>a').click(function(event){
