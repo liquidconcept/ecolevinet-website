@@ -105,4 +105,9 @@ class RefineryConfig
     RefinerySetting.set(:multi_level_portfolio, false)
   end
 
+  #allow acces to portfolio index
+  def self.portfolio_has_index
+    RefinerySetting.set(:portfolio_has_no_index, false)
+  end
+
 end
