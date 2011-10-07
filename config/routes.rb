@@ -1,4 +1,6 @@
 EcolevinetWebsite::Application.routes.draw do
+  resources :portfolio
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

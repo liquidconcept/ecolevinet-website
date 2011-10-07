@@ -32,8 +32,8 @@ $(document).ready(function() {
       if ($('.flash.current').next('.flash').length == 0) {$('a.right').css({'opacity' : 0.5});}
       else {$('a.right').fadeTo('fast', 1);};
       //change galery title & src
-      portfolio = portfolios[navigation.index]
-      $('#month_switcher > a.target').attr('href','/portfolio/' + portfolio['title']).innerHtml(portfolio['title']);
+      // portfolio = portfolios[navigation.index]
+      // $('#month_switcher > a.target').attr('href','/portfolio/' + portfolio['title']).innerHtml(portfolio['title']);
     },
     index: 0
   };
@@ -48,14 +48,10 @@ $(document).ready(function() {
     navigation.index -= 1;
     // replace current galery by the first on the left
     $('.flash.current').fadeOut('fast', function() {
-      $(this).css({'display': 'none'});// Animation complete.
       //change layer source image
       $('.layer img.portfolio_img').attr('src',$('.flash.current div.img_resize a').attr('href'));
-
-    }).prev('.flash').fadeIn('fast', function() {
-      $(this).css({'display': 'inline'});
-    });
-    $('.flash.current').toggleClass('current').prev('.flash').toggleClass('current');
+      $('.flash.current').removeClass('current').prevAll('.flash').addClass('current');
+    }).prevAll('.flash').fadeIn('fast');
     //navigation update
     navigation.update();
   });
@@ -63,6 +59,7 @@ $(document).ready(function() {
     if ($('.flash.current').next('.flash').length == 0)  {return false;};
     event.preventDefault();
     navigation.index += 1;
+    // replace current galery by the first on the right
     $('.flash.current').fadeOut('slow', function() {
       //change layer source image
       $('.layer img.portfolio_img').attr('src',$('.flash.current div.img_resize a').attr('href'));
