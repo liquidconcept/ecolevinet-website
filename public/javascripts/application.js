@@ -19,19 +19,63 @@ $(document).ready(function() {
   });
 
   //calendar comportment
+  // hover behaviour on an event
   $('.event_check').hover(
     function () {
-     $('.calendar_overlay').fadeIn('slow', function() {
-        $('.calendar_overlay').css({'display': 'inline'});// Animation complete.
-      });
+     $.ajax({
+       url: '/events/on_the',
+       data: {day: $(this).attr('data-day')},
+       dataType: 'html',
+       success: function(data){
+         $('#calendar_overlay').html(data);
+         $('#calendar_overlay').fadeIn('fast', function() {});
+        }}
+     );
     },
     function () {
-      $('.calendar_overlay').fadeOut('slow', function() {
-        $('.calendar_overlay').css({'display': 'none'});// Animation complete.
+      $('#calendar_overlay').fadeOut('fast', function() {
       });
     }
   );
 
+  //month selection
+  // previous month
+  function previous_month(event) {
+     event.preventDefault();
+     $('#calendar_overlay').fadeOut('fast');
+     $.ajax({
+       url: '/events/for_the',
+       data: {month: $('#month').attr('data-month'), direction: 'down'},
+       dataType: 'html',
+       success: function(data){
+         $('#calendar').html(data);
+         $('#month_switcher>a.left').click(function(event){previous_month(event)});
+        }}
+     );
+  }
+  // next month
+  function next_month(event) {
+     event.preventDefault();
+     $('#calendar_overlay').fadeOut('fast');
+     $.ajax({
+       url: '/events/for_the',
+       data: {month: $('#month').attr('data-month'), direction: 'up'},
+       dataType: 'html',
+       success: function(data){
+         $('#calendar').html(data);
+         $('#month_switcher>a.right').click(function(event){next_month(event)});
+        }}
+     );
+  }
+
+  // left
+  $('#month_switcher>a.left').click(function(event){
+    previous_month(event);
+  });
+  // right
+  $('#month_switcher>a.right').click(function(event){
+    next_month(event);
+  });
 
   $('#horizontalaccordion>ul>li>a').click(function(event){
     event.preventDefault();

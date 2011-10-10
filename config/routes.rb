@@ -1,4 +1,10 @@
 EcolevinetWebsite::Application.routes.draw do
+  resources :events do
+    collection do
+      get 'on_the'
+      get 'for_the'
+    end
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

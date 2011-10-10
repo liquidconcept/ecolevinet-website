@@ -27,6 +27,8 @@ module PageHelper
   def week_type(day)
     day.to_date.cweek == current_day.cweek ? 'id="current_week"' : ''
   end
-
+  def day_count(day)
+    Event.given_day(day).count
+  end
 end
 

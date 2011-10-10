@@ -21,9 +21,17 @@ class EventsController < ApplicationController
   end
 
   def on_the
-    @events = Event.given_day(params[:day].strptime('%d-%m-%y'))
+    @events = Event.given_day(Date.strptime(params[:day],'%d-%m-%y')).all
     respond_to do |format|
-      format.js
+      format.html { render :partial => 'events/on_the', :layout => false,  :locals => { :events => @events }}
+    end
+  end
+
+  def for_the
+    direction = params[:direction] == 'up' ? 1 : -1
+    _day = Date.strptime(params[:month],'%m-%y') + direction.month
+    respond_to do |format|
+      format.html { render :partial => 'events/month', :layout => false,  :locals => { :_day => _day }}
     end
   end
 
