@@ -50,8 +50,8 @@ $(document).ready(function() {
     $('.flash.current').fadeOut('fast', function() {
       //change layer source image
       $('.layer img.portfolio_img').attr('src',$('.flash.current div.img_resize a').attr('href'));
-      $('.flash.current').removeClass('current').prevAll('.flash').addClass('current');
-    }).prevAll('.flash').fadeIn('fast');
+      $('.flash.current').removeClass('current').prev('.flash').addClass('current');
+    }).prev('.flash').fadeIn('fast');
     //navigation update
     navigation.update();
   });
@@ -63,8 +63,8 @@ $(document).ready(function() {
     $('.flash.current').fadeOut('slow', function() {
       //change layer source image
       $('.layer img.portfolio_img').attr('src',$('.flash.current div.img_resize a').attr('href'));
-      $('.flash.current').removeClass('current').nextAll('.flash').addClass('current');
-    }).nextAll('.flash').fadeIn('fast');
+      $('.flash.current').removeClass('current').next('.flash').addClass('current');
+    }).next('.flash').fadeIn('fast');
     //navigation update
     navigation.update();
   });
