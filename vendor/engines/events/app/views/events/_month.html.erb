@@ -16,6 +16,6 @@
 
 <div id="month_switcher">
   <a href="#" class="left"></a>
-  <p><%=l(_day , :format => :month_word)%></p>
+  <%= link_to l(_day , :format => :month_word).titleize, '#', {:class => 'target'} %>
   <a href="#" class="right"></a>
 </div>
