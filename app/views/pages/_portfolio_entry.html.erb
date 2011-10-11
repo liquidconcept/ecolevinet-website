@@ -1,4 +1,4 @@
-<div class="flash portfolio scrollable <%= klass %>" data-portfolio="<%= portfolio_entry.id %>">
+<div class="flash portfolio <%= klass %>" data-portfolio="<%= portfolio_entry.id %>">
   <% portfolio_entry.images.each do |image| %>
     <div class="img_resize">
       <%= link_to image_fu(image, '105x92#c',  {:class => "thumbnails_img", :alt => portfolio_entry.title  }),

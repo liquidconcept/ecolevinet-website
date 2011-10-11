@@ -5,7 +5,7 @@
     <%= image_fu first_portfolio_entry.images.first, '420x300#', {:class => "portfolio_img", :alt => "#{first_portfolio_entry.title}" }%>
   </div>
 
-  <h1><%= link_to 'Galerie', '/galerie/' %></h1>
+  <h1><%= link_to 'Galerie', '/portfolio/' %></h1>
   <div id="portfolio_window" >
     <div id="portfolios_container" data-section="<%= section.id %>">
       <% section.portfolio_entries[0..1].each do  |portfolio_entry| %>

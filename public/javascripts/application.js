@@ -52,7 +52,10 @@ $(document).ready(function() {
 
   // galeries selection
   $('#month_switcher>a.left').click(function(event){
-    if (navigation.index==0)  {return false;};
+    console.log('début left');
+    console.log(navigation.index);
+    console.log(portfolios.length);
+    if (navigation.index==0)  { navigation.update();return false; };
     event.preventDefault();
     navigation.index -= 1;
     //slide portfolios
@@ -61,16 +64,19 @@ $(document).ready(function() {
     navigation.update();
   });
   $('#month_switcher>a.right').click(function(event){
+
     if (navigation.index + 1 == portfolios.length)  {return false;};
     event.preventDefault();
     navigation.index += 1;
     // replace current galery by the first on the right
     $('#portfolios_container').animate({left: '-=420px'});
-    console.log(navigation.index);
     // Add a galery to the right
-    if ( navigation.index > 1 && $('[data-portfolio="' + portfolios[navigation.index]['portfolio_entry']['id'] +'"]').length == 0 ){
+    if ( navigation.index > 0 &&
+         navigation.index + 1 < portfolios.length &&
+         $('[data-portfolio="' + portfolios[navigation.index+1]['portfolio_entry']['id'] +'"]').length == 0
+       ){
       $.ajax({
-        url: '/portfolio/' + portfolios[navigation.index]['portfolio_entry']['id'],
+        url: '/portfolio/' + portfolios[navigation.index+1]['portfolio_entry']['id'],
         dataType: 'html',
         success: function(data){
           $('#portfolios_container').append(data);
