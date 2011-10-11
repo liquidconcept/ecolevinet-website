@@ -261,19 +261,25 @@ html{
           }
         }
         #portfolios_container{
+          height:185px;
+          width:5000px;
+          display: block;
+          position: absolute;
+          left:0;
+        }
+        #portfolio_window{
           overflow: hidden;
+          position: relative;
           height:185px;
           width:420px;
         }
         .flash{
           background-color:$white;
           border-bottom:1px solid $dark_grey;
-          display: none;
           &.portfolio{
             height:184px;
-          }
-          &.current{
-            display: block;
+            width:420px;
+            float: left;
           }
           .thumbnails_img{
             height:92px;

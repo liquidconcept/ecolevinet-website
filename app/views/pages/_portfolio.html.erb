@@ -6,10 +6,12 @@
   </div>
 
   <h1><%= link_to 'Galerie', '/galerie/' %></h1>
-  <div id="portfolios_container">
-    <% section.portfolio_entries[0..1].each do  |portfolio_entry| %>
-      <%= render :partial => 'pages/portfolio_entry' , :locals => { :portfolio_entry => portfolio_entry, :klass => (portfolio_entry==first_portfolio_entry)? 'current' : ''}  %>
+  <div id="portfolio_window" >
+    <div id="portfolios_container" data-section="<%= section.id %>">
+      <% section.portfolio_entries[0..1].each do  |portfolio_entry| %>
+      <%= render :partial => 'pages/portfolio_entry' , :locals => { :portfolio_entry => portfolio_entry, :klass => (portfolio_entry==first_portfolio_entry)? 'first' : ''}  %>
     <% end %>
+    </div>
   </div>
 
   <div id="month_switcher">

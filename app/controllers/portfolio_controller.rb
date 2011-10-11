@@ -39,9 +39,10 @@ class PortfolioController < ApplicationController
       error_404 and return
     end
 
+   (render :partial => 'pages/portfolio_entry', :layout => false,
+    :locals => { :portfolio_entry => @portfolio_entry, :klass => ''}   and return ) if request.xhr?
 
     respond_to do |format|
-      format.xml { render :partial => "main_image", :layout => false if request.xhr? }
       format.html
       format.any(:js, :json) { render request.format.to_sym => @portfolio_entry.to_json(:include  => {:images => {:methods => [ :url ]}})}
     end
