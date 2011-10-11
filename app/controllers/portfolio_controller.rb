@@ -3,21 +3,15 @@ class PortfolioController < ApplicationController
   before_filter :load_page, :only => [:index, :show, :empty]
 
   def index
-    if RefinerySetting.find_or_set(:portfolio_has_no_index,false)
-      if (first_entry = PortfolioEntry.where(:parent_id => nil).first).present?
-        redirect_to portfolio_url(first_entry) and return
-      else
-        @portfolio_entries = []
-      end
-    else
-      @portfolio_entries = PortfolioEntry
-      @portfolio_entries = @portfolio_entries.joins(:sections).where(:sections => {:id => params[:section_id]}) if params[:section_id]
-      @portfolio_entries = @portfolio_entries.all
-    end
+    @portfolio_entries = PortfolioEntry
+    @portfolio_entries = @portfolio_entries.where(:sections => {:id => params[:section_id]}) if params[:section_id]
+    @portfolio_entries = @portfolio_entries.joins(:sections).all
 
-    respond_to do |format|
+   (render :json =>  @portfolio_entries.to_json , :layout => false and return ) if request.xhr?
+
+   respond_to do |format|
+      format.any(:js, :json) { render request.format.to_sym => @portfolio_entries.to_json , :layout => false}
       format.html
-      format.any(:js, :json) { render request.format.to_sym => @portfolio_entries.to_json }
     end
   end
 

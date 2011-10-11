@@ -260,6 +260,9 @@ html{
             list-style-type:circle;
           }
         }
+        #portfolios_container{
+          overflow: hidden;
+        }
         .flash{
           background-color:$white;
           border-bottom:1px solid $dark_grey;
@@ -455,6 +458,7 @@ html{
     }
   }
 }
+
 /*---------accordion---------*/
 #page #content #section_data{
   -moz-border-radius: 4px; /* Firefox */
