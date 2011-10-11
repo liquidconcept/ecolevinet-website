@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
   $('.scrollable').scrollbar({
     arrows: false
   });
@@ -40,7 +41,8 @@ $(document).ready(function() {
       else {$('a.right').fadeTo('fast', 1);};
       //change galery title & src
       portfolio = portfolios[navigation.index];
-      $('#month_switcher > a.target').attr('href','/portfolio/' + portfolio['portfolio_entry']['title']).html(portfolio['portfolio_entry']['title']);
+      $('#month_switcher > a.target').attr('href','/portfolio/' + portfolio['portfolio_entry']['title']);
+      $('#month_switcher > a.target').html(portfolio['portfolio_entry']['title']);
     },
     index: 0
   };
@@ -64,16 +66,20 @@ $(document).ready(function() {
     navigation.index += 1;
     // replace current galery by the first on the right
     $('#portfolios_container').animate({left: '-=420px'});
+    console.log(navigation.index);
     // Add a galery to the right
-    $.ajax({
-       url: '/portfolio/' + portfolios[navigation.index]['portfolio_entry']['id'],
-       dataType: 'html',
-       success: function(data){
-         $('#portfolios_container').append(data);
-         //load prettyPhoto
-         $("a[rel^='prettyPhoto']").prettyPhoto({social_tools:false});
+    if ( navigation.index > 1 && $('[data-portfolio="' + portfolios[navigation.index]['portfolio_entry']['id'] +'"]').length == 0 ){
+      $.ajax({
+        url: '/portfolio/' + portfolios[navigation.index]['portfolio_entry']['id'],
+        dataType: 'html',
+        success: function(data){
+          $('#portfolios_container').append(data);
+          $('#portfolios_container').css('width','+=420px');
+          //load prettyPhoto
+          $("a[rel^='prettyPhoto']").prettyPhoto({social_tools:false});
         }}
-    );
+      );
+    }
     //navigation update
     navigation.update();
   });
