@@ -287,7 +287,7 @@ html{
 		  border-bottom:1px solid $dark_grey;
 		  ul{
 		    clear:both;
-		    width:189px;
+		    width:154px;
 		  	margin:auto;
 		    li{
 			  position:relative;
@@ -296,8 +296,8 @@ html{
 			  border-top:1px solid $dark_grey;		
 			  border-bottom:1px solid $dark_grey;		
 			  font-size:13px;
-			  width:25px;
-			  height:25px;
+			  width:20px;
+			  height:20px;
 			  margin-top:5px;
 			  background-color:$light_grey;
         &.first{
@@ -318,17 +318,20 @@ html{
 		    }
 		  }
 		  #current_week{
-		    width:298px;
+		    width:228px;
+        position: relative;
 		  	li{
 			  font-size:20px;
-			  width:40px;
-			  height:40px;
-			}
-			span.event_number{
-			  color:#ff0000;
-			  position:relative;
-			  top:16px;
-			}
+			  width:30px;
+			  height:30px;
+        span.event_number{
+			  font-size:16px;
+        color:#ff0000;
+			  position:absolute;
+			  top:14px;
+        right:1px;
+        }
+        }
 		  }
 		}
 		#month_switcher{
