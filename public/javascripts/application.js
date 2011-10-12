@@ -17,28 +17,36 @@ $(document).ready(function() {
   });
 
   // PORTFOLIO
-  //prettyphoto activation
+  // prettyphoto activation
   if ($("a[rel^='prettyPhoto']").length > 0) {$("a[rel^='prettyPhoto']").prettyPhoto({social_tools:false});}
 
   //navigation initialization
-  var navigation;
-  var portfolios=new Object();
-  navigation = {
+  var portfolios = new Object();
+  var navigation = {
     init: function() {
+      var that = this;
+
       $.getJSON('/portfolio.json',
         {section_id: $('portfolio_container').attr('data-section')},
-        function(data) {portfolios = data;
-        if (portfolios.length == 1) {$('a.right').fadeTo('fast',0.5);};
-        })
-      //navigation initialization
-      $('a.left').fadeTo('fast', 0.5);
+        function(data) {
+          portfolios = data;
+          that.update();
+        }
+      );
     },
     update: function() {
       //navigation update
-      if (navigation.index == 1) {$('a.left').fadeTo('fast', 0.5);}
-      else {$('a.left').fadeTo('fast', 1);};
-      if (navigation.index + 1 == portfolios.length) {$('a.right').fadeTo('fast', 0.5);}
-      else {$('a.right').fadeTo('fast', 1);};
+      if (navigation.index <= 0) {
+        $('#month_switcher > a.left').fadeTo('fast', 0.5);
+      } else {
+        $('#month_switcher > a.left').fadeTo('fast', 1);
+      };
+      if (navigation.index + 1 >= portfolios.length) {
+        $('#month_switcher > a.right').fadeTo('fast', 0.5);
+      } else {
+        $('#month_switcher > a.right').fadeTo('fast', 1);
+      }
+
       //change galery title & src
       portfolio = portfolios[navigation.index];
       $('#month_switcher > a.target').attr('href','/portfolio/' + portfolio['portfolio_entry']['title']);
@@ -51,45 +59,55 @@ $(document).ready(function() {
   navigation.init();
 
   // galeries selection
-  $('#month_switcher>a.left').click(function(event){
+  $('#month_switcher > a.left').click(function(event){
+    event.preventDefault();
+
     console.log('début left');
     console.log(navigation.index);
     console.log(portfolios.length);
-    if (navigation.index==0)  { navigation.update();return false; };
-    event.preventDefault();
-    navigation.index -= 1;
+
+    if (navigation.index == 0) {
+      return false;
+    }
+
     //slide portfolios
     $('#portfolios_container').animate({left: '+=420px'});
+
     //navigation update
+    navigation.index -= 1;
     navigation.update();
   });
-  $('#month_switcher>a.right').click(function(event){
-
-    if (navigation.index + 1 == portfolios.length)  {return false;};
+  $('#month_switcher > a.right').click(function(event){
     event.preventDefault();
-    navigation.index += 1;
+
+    if (navigation.index + 1 == portfolios.length)  {
+      return false;
+    }
+
     // replace current galery by the first on the right
     $('#portfolios_container').animate({left: '-=420px'});
+
+    //navigation update
+    navigation.index += 1;
+    navigation.update();
+
     // Add a galery to the right
     if ( navigation.index > 0 &&
          navigation.index + 1 < portfolios.length &&
-         $('[data-portfolio="' + portfolios[navigation.index+1]['portfolio_entry']['id'] +'"]').length == 0
+        $('[data-portfolio="' + portfolios[navigation.index+1]['portfolio_entry']['id'] +'"]').length == 0
        )
      {
-        $.ajax({
-          url: '/portfolio/' + portfolios[navigation.index+1]['portfolio_entry']['id'],
-          dataType: 'html',
-          success: function(data){
-            $('#portfolios_container').append(data);
-            $('#portfolios_container').css('width','+=420px');
-            //load prettyPhoto
-            $("a[rel^='prettyPhoto']").prettyPhoto({social_tools:false});
-          }
-        }
-      )
-     };
-    //navigation update
-    navigation.update();
+       $.ajax({
+         url: '/portfolio/' + portfolios[navigation.index+1]['portfolio_entry']['id'],
+         dataType: 'html',
+         success: function(data){
+           $('#portfolios_container').css('width','+=420px');
+           $('#portfolios_container').append(data);
+           // reload prettyPhoto
+           $("a[rel^='prettyPhoto']").prettyPhoto({social_tools:false});
+         }
+       })
+     }
   });
 
   //horizontal accordion
