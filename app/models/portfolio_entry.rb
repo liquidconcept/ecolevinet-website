@@ -16,7 +16,7 @@ class PortfolioEntry < ActiveRecord::Base
   # call to gems included in refinery.
   has_friendly_id :title, :use_slug => true
   acts_as_nested_set
-  default_scope :order => 'lft ASC'
+  default_scope :order => 'lft DESC'
   acts_as_indexed :fields => [:title, :image_titles, :image_names]
 
   has_many :images_portfolio_entries
@@ -36,7 +36,7 @@ class PortfolioEntry < ActiveRecord::Base
   def image_titles
     self.images.collect{|i| i.title}
   end
-  
+
   def image_names
     self.images.collect{|i| i.image_name}
   end
