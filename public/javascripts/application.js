@@ -18,7 +18,11 @@ $(document).ready(function() {
 
   // PORTFOLIO
   // prettyphoto activation
-  if ($("a[rel^='prettyPhoto']").length > 0) {$("a[rel^='prettyPhoto']").prettyPhoto({social_tools:false});}
+  function load_prettyPhoto () {
+    if ($("a[rel^='prettyPhoto']").length > 0) {$("a[rel^='prettyPhoto']").prettyPhoto({social_tools:false});}
+  };
+
+  load_prettyPhoto();
 
   //navigation initialization
   var portfolios = new Object();
@@ -49,7 +53,8 @@ $(document).ready(function() {
 
       //change galery title & src
       portfolio = portfolios[navigation.index];
-      $('#month_switcher > a.target').attr('href','/portfolio/' + portfolio['portfolio_entry']['title']);
+
+      $('#month_switcher > a.target').attr('href','/portfolio/' + portfolio['portfolio_entry']['friendly_id']);
       $('#month_switcher > a.target').html(portfolio['portfolio_entry']['title']);
     },
     index: 0
@@ -104,7 +109,7 @@ $(document).ready(function() {
            $('#portfolios_container').css('width','+=420px');
            $('#portfolios_container').append(data);
            // reload prettyPhoto
-           $("a[rel^='prettyPhoto']").prettyPhoto({social_tools:false});
+           load_prettyPhoto();
          }
        })
      }

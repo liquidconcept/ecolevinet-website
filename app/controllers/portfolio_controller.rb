@@ -3,14 +3,14 @@ class PortfolioController < ApplicationController
   before_filter :load_page, :only => [:index, :show, :empty]
 
   def index
-    @portfolio_entries = PortfolioEntry
+    @portfolio_entries = PortfolioEntry.joins(:sections)
     @portfolio_entries = @portfolio_entries.where(:sections => {:id => params[:section_id]}) if params[:section_id]
-    @portfolio_entries = @portfolio_entries.joins(:sections).all
+    @portfolio_entries = @portfolio_entries.all
 
-   (render :json =>  @portfolio_entries.to_json , :layout => false and return ) if request.xhr?
+   (render :json =>  @portfolio_entries.to_json(:methods => :friendly_id), :layout => false and return ) if request.xhr?
 
    respond_to do |format|
-      format.any(:js, :json) { render request.format.to_sym => @portfolio_entries.to_json , :layout => false}
+      format.any(:js, :json) { render request.format.to_sym => @portfolio_entries.to_json(:methods => :friendly_id) , :layout => false }
       format.html
     end
   end

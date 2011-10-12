@@ -32,7 +32,7 @@ class PortfolioEntry < ActiveRecord::Base
       end
     }.compact
   end
-  
+
   def image_titles
     self.images.collect{|i| i.title}
   end
