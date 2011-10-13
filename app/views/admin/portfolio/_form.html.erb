@@ -94,12 +94,6 @@
         </div>
       </div>
   </div>
-  <% if (nested_portfolios = nested_set_options(PortfolioEntry, @portfolio_entry) {|i| "#{'-' * i.level} #{i.title}" }).present? %>
-    <div class='field'>
-      <%= f.label t('.parent') %>
-      <%= f.select :parent_id, nested_portfolios, :include_blank => true %>
-    </div>
-  <% end %>
 
   <%= render :partial => "/shared/admin/form_actions",
              :locals => {

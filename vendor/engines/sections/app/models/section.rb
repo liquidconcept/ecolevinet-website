@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class Section < ActiveRecord::Base
 
   acts_as_indexed :fields => [:title, :heading_title, :heading]
@@ -67,6 +68,7 @@ class Section < ActiveRecord::Base
           :title => 'Galerie',
           :deletable => false,
           :show_in_menu => true,
+          :data_type => 'portfolio',
           :position => section_page.position + 1)
         Page.default_parts.each do |default_page_part|
           page.parts.create(:title => default_page_part, :body => nil)

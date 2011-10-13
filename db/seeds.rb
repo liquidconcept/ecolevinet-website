@@ -25,3 +25,5 @@ load(Rails.root.join('db', 'seeds', 'users.rb'))
 
 RefineryConfig.set_default_plugins_order
 RefineryConfig.friendly
+RefineryConfig.one_level_portfolio
+

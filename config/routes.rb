@@ -1,4 +1,6 @@
 EcolevinetWebsite::Application.routes.draw do
+  resources :portfolio
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -57,4 +59,6 @@ EcolevinetWebsite::Application.routes.draw do
   # match ':controller(/:action(/:id(.:format)))'
   get 'refinery', :to => 'Pages#home' #redirect refinery page to homepage
   get 'admin', :to => 'admin/pages#index', :as => :refinery_root #uses /admin as the admin page
+  get 'galerie', :to => 'Portfolio#index'
+
 end

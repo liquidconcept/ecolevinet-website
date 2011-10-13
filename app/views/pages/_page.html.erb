@@ -1,4 +1,4 @@
-<div class="block left" id="page_block">
+<div class="block <%= odd ? 'left' : 'right' %> " id="page_block">
 
   <div class="layer">
     <img src="/images/more.png" class="more" />
@@ -11,6 +11,7 @@
       <% if section.page.children.any? %>
         <% section.page.children.each do |child| %>
         <% if child.data_type.blank? %>
+        <li><%= link_to child.title, url_for(child.url)  %></li>
           <% if child.children.any? %>
             <ul class="submenu">
                 <% child.children.each do |subchild| %>

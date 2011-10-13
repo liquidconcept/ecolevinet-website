@@ -1,3 +1,4 @@
+# encoding: UTF-8
 if defined?(Page) && !Page.find_by_link_url('/events').present? && !RefineryConfig.hidden_plugins.include?("events")
   page = Page.create(
     :title => 'Agenda',
