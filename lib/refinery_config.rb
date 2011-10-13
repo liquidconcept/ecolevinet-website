@@ -26,7 +26,7 @@ class RefineryConfig
     "refinery_generators" => 16,
     "page_images"         => 17},
     :default_image_sizes =>  {:small  => '110x110', :medium => '225x255', :large => '870x328'},
-    :hidden_plugins => ["portfolio","news","events"]
+    :hidden_plugins => ["news","events"]
   }
 
   #set default page parts
@@ -98,6 +98,16 @@ class RefineryConfig
   #generate friendly ids
   def self.friendly
     system ("rake friendly_id:make_slugs   MODEL='Page' --trace ")
+  end
+
+  #set portfolio to one level
+  def self.one_level_portfolio
+    RefinerySetting.set(:multi_level_portfolio, false)
+  end
+
+  #allow acces to portfolio index
+  def self.portfolio_has_index
+    RefinerySetting.set(:portfolio_has_no_index, false)
   end
 
 end

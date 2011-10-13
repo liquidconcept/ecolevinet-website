@@ -1,0 +1,45 @@
+<% content_for :body_content_title do -%>
+  Galeries
+<% end -%>
+<% content_for :body_content_left do -%>
+  <% @portfolio_entries.each do | portfolio | -%>
+  	<entrie id=" blog_post_<%= portfolio.id %>" class="portofolio_entrie">
+      <header>
+        <h1><%= link_to portfolio.title, portfolio_path(portfolio)  %></h1>
+      </header>
+      <section class="clearfix">
+        <table>
+          <tr>
+            <td>
+              <%= link_to image_fu(portfolio.images.first, '420x300#',  {:class => "thumbnails_img"  }), portfolio_path(portfolio) %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <%= truncate(portfolio.body,
+                         :length => RefinerySetting.find_or_set(:portfolio_entrie_teaser_length, 250),
+                         :preserve_html_tags => true) %>
+            </td>
+          </tr>
+        </table>
+      </section>
+      <footer>
+        <p>
+          <%= link_to t('portfolio.read_more'), portfolio_path(portfolio) %>
+        </p>
+      </footer>
+    </entrie>
+  <% end -%>
+<% end -%>
+
+<% content_for :body_content_right do -%>
+  <h2>Toutes les galeries</h2>
+  <ul>
+    <% @portfolio_entries.each do | portfolio | -%>
+      <li class="clearfix"><%= link_to portfolio.title, portfolio_path(portfolio)  %></li>
+    <% end -%>
+  </ul>
+<% end -%>
+
+
+<%= render :partial => '/shared/content_page' -%>

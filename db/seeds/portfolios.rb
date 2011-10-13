@@ -1,7 +1,8 @@
+# encoding: UTF-8
 if defined?(Page) && !Page.find_by_link_url('/portfolio').present? && !RefineryConfig.hidden_plugins.include?("portfolio")
 
   page = Page.create({
-    :title => "Portfolio",
+    :title => "Galerie",
     :link_url => "/portfolio",
     :menu_match => "\/portfolio(|\/.+?)",
     :deletable => false,
