@@ -3,9 +3,9 @@ class PortfolioController < ApplicationController
   before_filter :load_page, :only => [:index, :show, :empty]
 
   def index
-    @portfolio_entries = PortfolioEntry.joins(:sections)
+    @portfolio_entries = PortfolioEntry
     @portfolio_entries = @portfolio_entries.where(:sections => {:id => params[:section_id]}) if params[:section_id]
-    @portfolio_entries = @portfolio_entries.all
+    @portfolio_entries = @portfolio_entries.joins(:sections).all
 
    (render :json =>  @portfolio_entries.to_json(:methods => :friendly_id), :layout => false and return ) if request.xhr?
 

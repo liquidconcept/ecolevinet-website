@@ -35,13 +35,15 @@ $(document).ready(function() {
     init: function() {
       var that = this;
 
-      $.getJSON('/portfolio.json',
-        {section_id: $('portfolio_container').attr('data-section')},
-        function(data) {
+      $.ajax({
+        url: '/portfolio',
+        dataType: 'json',
+        data: "section_id=" + $('#portfolios_container').attr('data-section'),
+        success: function(data){
           portfolios = data;
           that.update();
         }
-      );
+      });
     },
     update: function() {
       //navigation update
