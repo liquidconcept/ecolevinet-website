@@ -1,8 +1,13 @@
 $(document).ready(function() {
 
- // $('.scrollable').scrollbar({
- //   arrows: false
- // });
+  function load_Scrollbar () {
+    if ($('.scrollable').length > 0){
+      $('.scrollable').scrollbar({
+        arrows: false
+      });
+    }
+  }
+  load_Scrollbar();
 
   //block general comportment
   $('.block>.layer').css({display: 'inline'});
@@ -107,6 +112,8 @@ $(document).ready(function() {
            $('#portfolios_container').append(data);
            // reload prettyPhoto
            load_prettyPhoto();
+           // reload Scrollbar
+           load_Scrollbar();
            //populate loaded pages
            navigation.loaded.push(navigation.index + 1)
          }

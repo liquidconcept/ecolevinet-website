@@ -9,7 +9,7 @@
           image.url ,  {:rel => "prettyPhoto[#{@portfolio_entry.title.gsub(' ','')}]"} %>
   
         <% else %>
-             <%= link_to image_fu(image, '105x92+' + (image.width/2).to_s + '+' + (image.height/2).to_s,  {:class => "thumbnails_img"  }) ,
+             <%= link_to image_fu(image, '105x92#c',  {:class => "thumbnails_img"  }) ,
           image.url ,  {:rel => "prettyPhoto[#{@portfolio_entry.title.gsub(' ','')}]"} %>
   
     <% end %>
