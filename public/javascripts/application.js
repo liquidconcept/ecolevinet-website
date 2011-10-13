@@ -57,7 +57,8 @@ $(document).ready(function() {
       $('#month_switcher > a.target').attr('href','/portfolio/' + portfolio['portfolio_entry']['friendly_id']);
       $('#month_switcher > a.target').html(portfolio['portfolio_entry']['title']);
     },
-    index: 0
+    index: 0,
+    loaded: []
   };
 
   //navigation initialization
@@ -66,10 +67,6 @@ $(document).ready(function() {
   // galeries selection
   $('#month_switcher > a.left').click(function(event){
     event.preventDefault();
-
-    console.log('début left');
-    console.log(navigation.index);
-    console.log(portfolios.length);
 
     if (navigation.index == 0) {
       return false;
@@ -99,7 +96,7 @@ $(document).ready(function() {
     // Add a galery to the right
     if ( navigation.index > 0 &&
          navigation.index + 1 < portfolios.length &&
-        $('[data-portfolio="' + portfolios[navigation.index+1]['portfolio_entry']['id'] +'"]').length == 0
+         $.inArray(navigation.index + 1, navigation.loaded) == -1
        )
      {
        $.ajax({
@@ -110,6 +107,8 @@ $(document).ready(function() {
            $('#portfolios_container').append(data);
            // reload prettyPhoto
            load_prettyPhoto();
+           //populate loaded pages
+           navigation.loaded.push(navigation.index + 1)
          }
        })
      }
