@@ -1,8 +1,26 @@
 $(document).ready(function() {
-  $('.scrollable').scrollbar({
-	arrows: false
+
+  function load_Scrollbar () {
+    if ($('.scrollable').length > 0){
+      $('.scrollable').scrollbar({
+        arrows: false
+      });
+    }
+  }
+  load_Scrollbar();
+
+  //block general comportment
+  $('.block>.layer').css({display: 'inline'});
+  $('.block').hover(
+    function () {
+    $(this).find('.layer').fadeOut('fast', function() {$(this).css({'display': 'none'});
+    });
+  },
+  function () {
+    $(this).find('.layer').fadeIn('fast', function() {$(this).css({'display': 'inline'});
+    });
   });
-  
+
   $('#horizontalaccordion>ul>li>a').click(function(event){
     event.preventDefault();
     var vb, link;
