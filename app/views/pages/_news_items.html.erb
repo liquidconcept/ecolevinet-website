@@ -4,7 +4,7 @@
     <div id="news">
       <h1>NEWS</h1>
     </div>
-    <% header_news = section.news_items.hot.first %>
+    <% header_news = section.news_items.hot.first || section.news_items.current.first  %>
     <% unless  header_news.nil? %>
       <div class="news">
         <h2><%= header_news.title %> </h2>
@@ -27,6 +27,7 @@
         <% end %>
       </div>
   <% end %>
+
   <% if  section.news_items.current.any? %>
     <% section.news_items.current.each do |news_item| %>
       <div class="event">

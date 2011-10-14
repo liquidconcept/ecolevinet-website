@@ -9,7 +9,9 @@ class NewsItem < ActiveRecord::Base
 
   belongs_to :image
 
-  scope :hot, where(['hotness_end_at >  ? and hot = ?', Date.today, true]).order('hotness_date desc').order('hotness_end_at desc').order('created_at DESC')
+  default_scope :order => 'created_at DESC'
+
+  scope :hot, where(['hotness_end_at >  ? and hot = ?', Date.today, true]).order('hotness_date desc').order('hotness_end_at desc')
   scope :current,  where(['hotness_end_at <= ? or hot = ?', Date.today, false])
 
   def before_save
