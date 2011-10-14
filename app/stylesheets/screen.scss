@@ -95,7 +95,7 @@ html{
   #content{
     position:relative;
     padding:0px 45px 45px 45px;
-    .calendar_overlay{
+    #calendar_overlay{
       display:none;
       background-color:$light_grey;
       border:1px solid $grey;
@@ -354,7 +354,7 @@ html{
             }
           }
           .left{
-            bottom:2px;
+            bottom:-8px;
             left:20px;
             background-image:url("../images/arrow_l.jpg");
             &:hover{
@@ -362,7 +362,7 @@ html{
             }
           }
           .right{
-            bottom:2px;
+            bottom:-8px;
             right:20px;
             background-image:url("../images/arrow_r.jpg");
             &:hover{
