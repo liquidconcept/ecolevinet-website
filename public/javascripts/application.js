@@ -39,6 +39,26 @@ $(document).ready(function() {
   );
 
   //month selection
+  var months = {};
+
+  months.list = {
+    "1": "Janvier",
+    "2": "Février",
+    "3": "Mars",
+    "4": "Avril",
+    "5": "Mai",
+    "6": "Juin",
+    "7": "Juillet",
+    "8": "Août",
+    "9": "Septembre",
+    "10": "Octobre",
+    "11": "Novembre",
+    "12": "Décembre"};
+
+  months.from =  function (month) {
+      return months.list[Number(month)]
+    };
+
   // previous month
   function previous_month(event) {
      event.preventDefault();
@@ -49,7 +69,7 @@ $(document).ready(function() {
        dataType: 'html',
        success: function(data){
          $('#calendar').html(data);
-         $('#month_switcher>a.left').click(function(event){previous_month(event)});
+         $('#month_switcher > a.target').html(months.from($('#month').attr('data-month').substr(0,2)));
         }}
      );
   }
@@ -63,7 +83,7 @@ $(document).ready(function() {
        dataType: 'html',
        success: function(data){
          $('#calendar').html(data);
-         $('#month_switcher>a.right').click(function(event){next_month(event)});
+         $('#month_switcher > a.target').text(months.from($('#month').attr('data-month').substr(0,2)));
         }}
      );
   }
