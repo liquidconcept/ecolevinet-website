@@ -11,8 +11,8 @@ class Section < ActiveRecord::Base
 
   belongs_to :page
 
-  has_many :news_categorizations
-  has_many :news, :through => :news_categorizations
+  has_many :news_item_categorizations
+  has_many :news_items, :through => :news_item_categorizations
 
   has_many :portfolio_entry_categorizations
   has_many :portfolio_entries, :through => :portfolio_entry_categorizations
@@ -52,10 +52,10 @@ class Section < ActiveRecord::Base
       section.page_id = section_page.id
       section.save
       #Add an news Page
-      unless RefineryConfig.hidden_plugins.include?("news")
-        page = section_page.children.create(
-          :title => 'Actualites',
+      unless RefineryConfig.hidden_plugins.include?("news_items")
+        page = section_page.children.create(:title => 'Actualités',
           :deletable => false,
+          :data_type => 'news_items',
           :show_in_menu => true,
           :position => section_page.position + 1)
         Page.default_parts.each do |default_page_part|
