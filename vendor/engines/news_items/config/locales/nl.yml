@@ -1,0 +1,21 @@
+nl:
+  plugins:
+    news_items:
+      title: News Items
+  admin:
+    news_items:
+      actions:
+        create_new: Maak een nieuwe News Item
+        reorder: Wijzig de volgorde van de News Items
+        reorder_done: Klaar met het wijzingen van de volgorde van de News Items
+      records:
+        title: News Items
+        sorry_no_results: Helaas! Er zijn geen resultaten gevonden.
+        no_items_yet: Er zijn nog geen News Items. Druk op 'Maak een nieuwe News Item' om de eerste aan te maken.
+      news_item:
+        view_live_html: Bekijk deze news item op de website <br/><em>(opent een nieuw venster)</em>
+        edit: Bewerk deze news item
+        delete: Verwijder deze news item voor eeuwig
+  news_items:
+    show:
+      other: Andere News Items

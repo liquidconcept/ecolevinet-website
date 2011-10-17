@@ -1,0 +1,28 @@
+fr:
+  shared:
+    admin:
+      image_picker:
+        image: image
+  plugins:
+    news_items:
+      title: Actualités
+  admin:
+    news_items:
+      actions:
+        create_new: Créer une nouvelle Actualité
+        reorder: Réordonner les Actualités
+        reorder_done: Fin de réordonnancement des Actualités
+      records:
+        title: Actualités
+        sorry_no_results: "Désolé ! Aucun résultat."
+        no_items_yet: 'Il n''y a actuellement aucune actualité. Cliquer sur "Créer une nouvelle Actualité" pour créer votre première Actualité.'
+      news_item:
+        view_live_html: Voir cette Actualité <br/><em>(Ouvre une nouvelle fenêtre)</em>
+        edit: Modifier cette actualité
+        delete: Supprimer définitivement cette actualité
+      form:
+        Content: Contenu
+        Heading: Chapeau
+  news_items:
+    show:
+      other: Autres Actualités

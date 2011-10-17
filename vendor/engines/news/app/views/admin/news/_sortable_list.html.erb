@@ -1,7 +1,0 @@
-<ul id='sortable_list'>
-  <%= render :partial => 'piece_of_news', :collection => @news %>
-</ul>
-<%= render :partial => "/shared/admin/sortable_list",
-            :locals => {
-              :continue_reordering => (local_assigns.keys.include?(:continue_reordering)) ? continue_reordering : true
-            } %>

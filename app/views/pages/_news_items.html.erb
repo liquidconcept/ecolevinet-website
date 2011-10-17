@@ -1,0 +1,35 @@
+<div class="block <%= odd ? 'left' : 'right' %> " id="news_block">
+
+  <div class="layer">
+    <div id="news">
+      <h1>NEWS</h1>
+    </div>
+    <% header_news = section.news_items.hot.first || section.news_items.current.first  %>
+    <% unless  header_news.nil? %>
+      <div class="news">
+        <h2><%= header_news.title %> </h2>
+        <p>
+          <%=raw header_news.heading %>
+        </p>
+      </div>
+    <% end %>
+  </div>
+
+  <h1>Actualités</h1>
+
+  <div class="scrollable">
+  <% if  section.news_items.hot.any? %>
+      <div id="flash">
+        <% section.news_items.hot.each do |news_item| %>
+          <%= render :partial => 'news_items/event',  :locals => {:news_item => news_item}%>
+        <% end %>
+      </div>
+  <% end %>
+
+  <% if  section.news_items.current.any? %>
+    <% section.news_items.current.each do |news_item| %>
+          <%= render :partial => 'news_items/event',  :locals => {:news_item => news_item}%>
+    <% end %>
+  <% end %>
+  </div>
+</div>
