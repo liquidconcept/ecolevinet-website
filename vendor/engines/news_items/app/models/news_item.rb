@@ -1,6 +1,6 @@
 class NewsItem < ActiveRecord::Base
 
-  acts_as_indexed :fields => [:title, :content, :link]
+  acts_as_indexed :fields => [:title, :content, :heading]
 
   validates :title, :presence => true, :uniqueness => true
 

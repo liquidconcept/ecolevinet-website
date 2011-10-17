@@ -15,9 +15,12 @@ class NewsItemsController < ApplicationController
   def show
     @news_item = NewsItem.find(params[:id])
 
+
     # you can use meta fields from your model instead (e.g. browser_title)
     # by swapping @page for @news_item in the line below:
     present(@page)
+    present(@news_item)
+
   end
 
 protected

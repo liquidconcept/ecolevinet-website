@@ -20,8 +20,9 @@ fr:
         view_live_html: Voir cette Actualité <br/><em>(Ouvre une nouvelle fenêtre)</em>
         edit: Modifier cette actualité
         delete: Supprimer définitivement cette actualité
+      form:
+        Content: Contenu
+        Heading: Chapeau
   news_items:
     show:
       other: Autres Actualités
-    new:
-      Content: Contenu
