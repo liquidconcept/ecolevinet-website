@@ -9,7 +9,7 @@
       <div class="news">
         <h2><%= header_news.title %> </h2>
         <p>
-          <%=raw header_news.heading %>
+        <%=raw header_news.heading %>
         </p>
       </div>
     <% end %>
@@ -18,18 +18,18 @@
   <h1>Actualités</h1>
 
   <div class="scrollable">
-  <% if  section.news_items.hot.any? %>
-      <div id="flash">
+    <% if  section.news_items.hot.any? %>
+      <div class="flash">
         <% section.news_items.hot.each do |news_item| %>
           <%= render :partial => 'news_items/event',  :locals => {:news_item => news_item}%>
         <% end %>
       </div>
-  <% end %>
-
-  <% if  section.news_items.current.any? %>
-    <% section.news_items.current.each do |news_item| %>
-          <%= render :partial => 'news_items/event',  :locals => {:news_item => news_item}%>
     <% end %>
-  <% end %>
+
+    <% if  section.news_items.current.any? %>
+      <% section.news_items.current.each do |news_item| %>
+        <%= render :partial => 'news_items/event',  :locals => {:news_item => news_item}%>
+      <% end %>
+    <% end %>
   </div>
 </div>
