@@ -17,9 +17,11 @@
 	<h1>Agenda</h1>
 	
   <div id="calendar"  >
+    <div id="month_window" >
 
-    <%= render :partial => "events/month",:locals => { :_day => Date.today} %>
+        <%= render :partial => "events/month",:locals => { :_day => Date.today} %>
 
+    </div>
 	</div>
 
   <div id="month_switcher">

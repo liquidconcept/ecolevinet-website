@@ -335,13 +335,14 @@ html{
             }
           }
         }
-        #month_switcher{
+        #month_switcher, #portfolio_switcher {
           position:relative;
-          top:5px;
           font-size:18px;
           margin-top:12px;
+          width: 420px;
           a{
             position:absolute;
+            text-align: left;
             display:block;
             width:23px;
             height:13px;
@@ -349,13 +350,13 @@ html{
             margin-top:4px;
             &.target{
               display: block;
-              width: 420px;
-              margin: auto;
+              width: 320px;
+              margin: 0 50px;
               text-align: center;
             }
           }
           .left{
-            bottom:-8px;
+            top:2px;
             left:20px;
             background-image:url("../images/arrow_l.jpg");
             &:hover{
@@ -363,18 +364,15 @@ html{
             }
           }
           .right{
-            bottom:-8px;
+            top:2px;
             right:20px;
             background-image:url("../images/arrow_r.jpg");
             &:hover{
               background-position:bottom;
             }
           }
-          p{
-            text-align:center;
-          }
         }
-        .event{
+       .event{
           width:390px;
           padding:15px 0px 20px 25px;
           .event_date{
