@@ -20,21 +20,32 @@ $(document).ready(function() {
 
   //calendar comportment
   // hover behaviour on an event
+  var render = true;
+
   $('.event_check').hover(
-    function () {
+    //wile entering
+    function (e) {
+     render = true;
      $.ajax({
        url: '/events/on_the',
        data: {day: $(this).attr('data-day')},
        dataType: 'html',
        success: function(data){
          $('#calendar_overlay').html(data);
-         $('#calendar_overlay').fadeIn('fast', function() {});
+         $('#calendar_overlay').css({
+           'bottom': (e.pagey - 570) + 'px',
+           'right': (380 -  e.pageX) + 'px'
+         });
+           if (render) {
+             $('#calendar_overlay').fadeIn('fast');
+           };
         }}
      );
     },
-    function () {
-      $('#calendar_overlay').fadeOut('fast', function() {
-      });
+    //wile leaving
+    function (e) {
+      render = false;
+      $('#calendar_overlay').fadeOut('fast');
     }
   );
 
