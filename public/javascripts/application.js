@@ -48,21 +48,21 @@ $(document).ready(function() {
     update: function() {
       //navigation update
       if (navigation.index <= 0) {
-        $('#month_switcher > a.left').fadeTo('fast', 0.5);
+        $('#portfolio_switcher > a.left').fadeTo('fast', 0.5);
       } else {
-        $('#month_switcher > a.left').fadeTo('fast', 1);
+        $('#portfolio_switcher > a.left').fadeTo('fast', 1);
       };
       if (navigation.index + 1 >= portfolios.length) {
-        $('#month_switcher > a.right').fadeTo('fast', 0.5);
+        $('#portfolio_switcher > a.right').fadeTo('fast', 0.5);
       } else {
-        $('#month_switcher > a.right').fadeTo('fast', 1);
+        $('#portfolio_switcher > a.right').fadeTo('fast', 1);
       }
 
       //change galery title & src
       portfolio = portfolios[navigation.index];
 
-      $('#month_switcher > a.target').attr('href','/portfolio/' + portfolio['portfolio_entry']['friendly_id']);
-      $('#month_switcher > a.target').html(portfolio['portfolio_entry']['title']);
+      $('#portfolio_switcher > a.target').attr('href','/portfolio/' + portfolio['portfolio_entry']['friendly_id']);
+      $('#portfolio_switcher > a.target').html(portfolio['portfolio_entry']['title']);
     },
     index: 0,
     loaded: []
@@ -72,7 +72,7 @@ $(document).ready(function() {
   navigation.init();
 
   // galeries selection
-  $('#month_switcher > a.left').click(function(event){
+  $('#portfolio_switcher > a.left').click(function(event){
     event.preventDefault();
 
     if (navigation.index == 0) {
@@ -86,7 +86,7 @@ $(document).ready(function() {
     navigation.index -= 1;
     navigation.update();
   });
-  $('#month_switcher > a.right').click(function(event){
+  $('#portfolio_switcher > a.right').click(function(event){
     event.preventDefault();
 
     if (navigation.index + 1 == portfolios.length)  {
