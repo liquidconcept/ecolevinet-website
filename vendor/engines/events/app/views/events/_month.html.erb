@@ -1,4 +1,4 @@
-<div id="month" data-month="<%=_day.strftime('%m-%y')%>">
+<div class="calendar" data-month="<%=_day.strftime('%m-%y')%>">
   <% (first_day(_day)..last_day(_day)).step(7).each do |week_day| %>
     <ul <%=raw  week_type(week_day) %> >
       <% (week_day...(week_day + 7.days)).each do |day| %>

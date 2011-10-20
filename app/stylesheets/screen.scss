@@ -260,6 +260,19 @@ html{
             list-style-type:circle;
           }
         }
+        #portfolios_container, #month_container{
+          height:185px;
+          width:5000px;
+          display: block;
+          position: absolute;
+          left:0;
+        }
+        #portfolio_window, #month_window{
+          overflow: hidden;
+          position: relative;
+          height:185px;
+          width:420px;
+        }
         #flash{
           background-color:$white;
           border-bottom:1px solid $dark_grey;
@@ -279,8 +292,10 @@ html{
             height:92px;
           }
         }
-        #calendar{
+        .calendar{
           height:185px;
+          width:420px;
+          float: left;
           padding-top:5px;
           background-color:$white;
           border-top:1px solid $dark_grey;

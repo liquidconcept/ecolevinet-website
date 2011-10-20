@@ -19,9 +19,116 @@ $(document).ready(function() {
   });
 
   //calendar comportment
+  //moment language initialization
+  moment.lang('fr');
+
+  var temp = '';
+
+  var today = new Date();
+  // reference day first day of current month
+  var reference_day = function() {return moment([today.getFullYear(),today.getMonth()])};
+  var navigation = {
+    init: function() {
+      $('#month_container').animate({left: '-=420px'});
+    },
+    update: function() {
+      //navigation
+      //change month title
+      $('#month_switcher > a.target').html(moment.months[navigation.index.month()]);
+    },
+    index: reference_day(),
+    loaded: [ reference_day().subtract('M', 1).format('MM-YY'),
+              reference_day().format('MM-YY'),
+              reference_day().add('M',1).format('MM-YY') ]
+  };
+
+  //navigation initialization
+  navigation.init();
+
+   // previous month
+  function previous_month(event) {
+
+    event.preventDefault();
+    $('#calendar_overlay').fadeOut('fast');
+
+    //navigation update
+    navigation.index.subtract('M',1);
+
+    navigation.update();
+
+    // if not previously added load it
+    temp = navigation.index.format('DD-MM-YY');
+    if ( $.inArray( moment(temp,'DD-MM-YY').subtract('M',1).format('MM-YY'), navigation.loaded) == -1)
+      {
+
+        $.ajax({
+          url: '/events/for_the',
+          data: {month: navigation.index.format("MM-YY"), direction: 'down'},
+          dataType: 'html',
+          success: function(data){
+            $('#month_container').prepend(data);
+            //add space to container
+            $('#month_container').css('width','+=420px');
+            // $('#month_container').animate({left: '+=420px'});
+            //populate loaded pages
+            temp = navigation.index.format('DD-MM-YY');
+            navigation.loaded.push(moment(temp,'DD-MM-YY').subtract('M',1).format('MM-YY'));
+            console.log(navigation.loaded);
+          }
+        });
+      }
+      else {
+        // replace current month by the first on the left
+        $('#month_container').animate({left: '+=420px'});
+      };
+  }
+  // next month
+
+  function next_month(event) {
+     event.preventDefault();
+     var temp; // temporary container for currrent index
+     $('#calendar_overlay').fadeOut('fast');
+
+    // replace current month by the first on the right
+    $('#month_container').animate({left: '-=420px'});
+
+    //navigation update
+    navigation.index.add('M',1);
+    
+    navigation.update();
+    
+    // if not previously added load it
+    temp = navigation.index.format('DD-MM-YY');
+    if ( $.inArray(moment(temp,'DD-MM-YY').add('M',1).format('MM-YY'), navigation.loaded) == -1 )
+    {
+      $.ajax({
+         url: '/events/for_the',
+         data: {month: navigation.index.format("MM-YY") , direction: 'up'},
+         dataType: 'html',
+         success: function(data){
+           $('#month_container').append(data);
+           //add space to container
+           $('#month_container').css('width','+=420px');
+           //populate loaded pages
+           temp = navigation.index.format('DD-MM-YY');
+           navigation.loaded.push(moment(temp,'DD-MM-YY').add('M',1).format('MM-YY'));
+           console.log(navigation.loaded);
+          }
+      });
+    };
+  }
+
+  // left
+  $('#month_switcher>a.left').click(function(event){
+    previous_month(event);
+  });
+  // right
+  $('#month_switcher>a.right').click(function(event){
+    next_month(event);
+  });
+
   // hover behaviour on an event
   var render = true;
-
   $('.event_check').hover(
     //wile entering
     function (e) {
@@ -33,7 +140,7 @@ $(document).ready(function() {
        success: function(data){
          $('#calendar_overlay').html(data);
          $('#calendar_overlay').css({
-           'bottom': (e.pagey - 570) + 'px',
+           'bottom': (e.pageY - 570) + 'px',
            'right': (380 -  e.pageX) + 'px'
          });
            if (render) {
@@ -49,64 +156,6 @@ $(document).ready(function() {
     }
   );
 
-  //month selection
-  var months = {};
-
-  months.list = {
-    "1": "Janvier",
-    "2": "Février",
-    "3": "Mars",
-    "4": "Avril",
-    "5": "Mai",
-    "6": "Juin",
-    "7": "Juillet",
-    "8": "Août",
-    "9": "Septembre",
-    "10": "Octobre",
-    "11": "Novembre",
-    "12": "Décembre"};
-
-  months.from =  function (month) {
-      return months.list[Number(month)]
-    };
-
-  // previous month
-  function previous_month(event) {
-     event.preventDefault();
-     $('#calendar_overlay').fadeOut('fast');
-     $.ajax({
-       url: '/events/for_the',
-       data: {month: $('#month').attr('data-month'), direction: 'down'},
-       dataType: 'html',
-       success: function(data){
-         $('#calendar').html(data);
-         $('#month_switcher > a.target').html(months.from($('#month').attr('data-month').substr(0,2)));
-        }}
-     );
-  }
-  // next month
-  function next_month(event) {
-     event.preventDefault();
-     $('#calendar_overlay').fadeOut('fast');
-     $.ajax({
-       url: '/events/for_the',
-       data: {month: $('#month').attr('data-month'), direction: 'up'},
-       dataType: 'html',
-       success: function(data){
-         $('#calendar').html(data);
-         $('#month_switcher > a.target').text(months.from($('#month').attr('data-month').substr(0,2)));
-        }}
-     );
-  }
-
-  // left
-  $('#month_switcher>a.left').click(function(event){
-    previous_month(event);
-  });
-  // right
-  $('#month_switcher>a.right').click(function(event){
-    next_month(event);
-  });
 
   $('#horizontalaccordion>ul>li>a').click(function(event){
     event.preventDefault();
