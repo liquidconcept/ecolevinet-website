@@ -133,6 +133,9 @@ $(document).ready(function() {
     //wile entering
     function (e) {
      render = true;
+     console.log(e.pageY);
+     console.log(e.pageY - 570);
+
      $.ajax({
        url: '/events/on_the',
        data: {day: $(this).attr('data-day')},
@@ -140,8 +143,8 @@ $(document).ready(function() {
        success: function(data){
          $('#calendar_overlay').html(data);
          $('#calendar_overlay').css({
-           'bottom': (e.pageY - 570) + 'px',
-           'right': (380 -  e.pageX) + 'px'
+           'bottom': (650 - e.pageY) + 'px',
+           'right':  (380 - e.pageX) + 'px'
          });
            if (render) {
              $('#calendar_overlay').fadeIn('fast');
