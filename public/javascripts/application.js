@@ -128,13 +128,27 @@ $(document).ready(function() {
   });
 
   // hover behaviour on an event
+
+  var over_note = false;
+  $('#calendar_overlay').hover(
+    function(){
+      over_note = true;
+    }
+    ,
+    function(){
+      over_note = false;
+    }
+  );
+
   var render = true;
   $('.event_check').hover(
     //wile entering
     function (e) {
      render = true;
-     console.log(e.pageY);
-     console.log(e.pageY - 570);
+     console.log('y=' + e.pageY);
+     console.log('x=' + e.pageX);
+     console.log('cal y=' + (650 - e.pageY)) ;
+     console.log('cal x=' + (350 + 90 - e.pageX) );
 
      $.ajax({
        url: '/events/on_the',
@@ -144,7 +158,7 @@ $(document).ready(function() {
          $('#calendar_overlay').html(data);
          $('#calendar_overlay').css({
            'bottom': (650 - e.pageY) + 'px',
-           'right':  (380 - e.pageX) + 'px'
+           'right':  (350 + 90 - e.pageX) + 'px'
          });
            if (render) {
              $('#calendar_overlay').fadeIn('fast');
@@ -155,7 +169,9 @@ $(document).ready(function() {
     //wile leaving
     function (e) {
       render = false;
-      $('#calendar_overlay').fadeOut('fast');
+      if ( !over_note) {
+        $('#calendar_overlay').fadeOut('fast');
+      };
     }
   );
 
