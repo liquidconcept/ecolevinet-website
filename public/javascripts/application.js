@@ -280,6 +280,7 @@ $(document).ready(function() {
     },
     //wile leaving
     function (e) {
+      clearTimeout($('#calendar_overlay').data('timeoutId'));
       // set overlay as non renderable
       $('#calendar_overlay').data('render',false);
       // timeout for fading overlay unless on it
