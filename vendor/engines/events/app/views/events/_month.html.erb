@@ -1,0 +1,16 @@
+<div class="calendar" data-month="<%=_day.strftime('%m-%y')%>">
+  <% (first_day(_day)..last_day(_day)).step(7).each do |week_day| %>
+    <ul <%=raw  week_type(week_day) %> >
+      <% (week_day...(week_day + 7.days)).each do |day| %>
+        <li class="<%= day_type(day)  %>" data-day="<%= day.strftime('%d-%m-%y') %>"> <%= l(day , :format => :day_number) %>
+        <% if day_count(day) > 0 %>
+          <span class="event_number">
+            <%= day_count(day) %>
+          </span>
+        <% end %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
+

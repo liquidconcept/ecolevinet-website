@@ -8,7 +8,11 @@ GIT
 PATH
   remote: vendor/engines
   specs:
+<<<<<<< HEAD
     refinerycms-news_items (1.0)
+=======
+    refinerycms-events (1.0)
+>>>>>>> feature/events
     refinerycms-sections (1.0)
 
 GEM
@@ -233,6 +237,7 @@ DEPENDENCIES
   pry
   rb-fsevent
   refinerycms (~> 1.0.4)
+  refinerycms-events (= 1.0)!
   refinerycms-i18n (~> 1.0.0)
   refinerycms-news_items (= 1.0)!
   refinerycms-page-images (~> 1.0)

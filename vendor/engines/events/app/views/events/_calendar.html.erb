@@ -1,0 +1,37 @@
+<div class="block">
+
+	<div class="layer">
+		<div id="today">
+      <p id="today_month"><%= current_month %></p>
+      <p id="today_wrap"><span id="today_day"><%= current_day_word %></span>
+      <span id="today_number"><%= current_day_number %></span></p>
+    </div>
+    <% @page.section.events.today.each do |event| %>
+      <div class="news">
+        <h2><%=raw  event.title %></h2>
+        <p><%= raw event.description%></p>
+      </div>
+    <% end %>
+	</div>
+	
+	<h1>Agenda</h1>
+	
+    <div id="month_window" >
+      <div id="month_container">
+        <%= render :partial => "events/month",:locals => { :_day => 1.month.ago } %>
+        <%= render :partial => "events/month",:locals => { :_day => Date.today } %>
+        <%= render :partial => "events/month",:locals => { :_day => Date.today + 1.month } %>
+      </div>
+    </div>
+
+  <div id="month_switcher">
+  <a href="#" class="left"></a>
+  <%= link_to l(Date.today , :format => :month_word).titleize, '#', {:class => 'target'} %>
+  <a href="#" class="right"></a>
+  </div>
+	
+	
+	<div id="calendar_overlay">
+	</div>
+	
+</div>

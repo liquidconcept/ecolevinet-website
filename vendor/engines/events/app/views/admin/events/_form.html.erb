@@ -5,7 +5,7 @@
         } %>
 
   <div class='field'>
-    <%= f.label :title -%>
+    <%= f.label t(:title) -%>
     <%= f.text_field :title, :class => 'larger widest'  -%>
   </div>
 
@@ -50,24 +50,24 @@
   </div>
 
   <div class='field'>
-    <%= f.label :location -%>
+    <%= f.label t(:location) -%>
     <%= f.text_field :location  -%>
   </div>
 
   <div class='field'>
-    <%= f.label :start_date -%>
+    <%= f.label t(:start_date) -%>
     <%= f.date_select :start_date  -%>
   </div>
 
   <div class='field'>
-    <%= f.label :end_date -%>
+    <%= f.label t(:end_date) -%>
     <%= f.date_select :end_date  -%>
   </div>
 
   <%= render :partial => "/shared/admin/form_actions",
               :locals => {
                 :f => f,
-                :continue_editing => false,
+                :continue_editing => true,
                 :delete_title => t('delete', :scope => 'admin.events.event'),
                 :delete_confirmation => t('message', :scope => 'shared.admin.delete', :title => @event.title)
               } %>

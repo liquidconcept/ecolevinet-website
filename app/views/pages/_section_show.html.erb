@@ -10,7 +10,7 @@
     <% end %>
   <% when "events" %>
     <% if page.section.events.any? %>
-      <%= render :partial => 'calendar',   :locals => {:section => page.section, :odd => odd }   %>
+      <%= render :partial => 'events/calendar',   :locals => {:section => page.section, :odd => odd }   %>
       <% odd = !odd %>
     <% end %>
   <% when "portfolio" %>
