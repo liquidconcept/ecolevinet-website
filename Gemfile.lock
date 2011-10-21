@@ -8,11 +8,8 @@ GIT
 PATH
   remote: vendor/engines
   specs:
-<<<<<<< HEAD
-    refinerycms-news_items (1.0)
-=======
     refinerycms-events (1.0)
->>>>>>> feature/events
+    refinerycms-news_items (1.0)
     refinerycms-sections (1.0)
 
 GEM
