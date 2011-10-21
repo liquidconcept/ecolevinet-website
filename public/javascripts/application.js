@@ -31,7 +31,7 @@ $(document).ready(function() {
 
   //navigation initialization
   var portfolios = new Object();
-  var navigation = {
+  var p_navigation = {
     init: function() {
       var that = this;
 
@@ -47,19 +47,19 @@ $(document).ready(function() {
     },
     update: function() {
       //navigation update
-      if (navigation.index <= 0) {
+      if (p_navigation.index <= 0) {
         $('#portfolio_switcher > a.left').fadeTo('fast', 0.5);
       } else {
         $('#portfolio_switcher > a.left').fadeTo('fast', 1);
       };
-      if (navigation.index + 1 >= portfolios.length) {
+      if (p_navigation.index + 1 >= portfolios.length) {
         $('#portfolio_switcher > a.right').fadeTo('fast', 0.5);
       } else {
         $('#portfolio_switcher > a.right').fadeTo('fast', 1);
       }
 
       //change galery title & src
-      portfolio = portfolios[navigation.index];
+      portfolio = portfolios[p_navigation.index];
 
       $('#portfolio_switcher > a.target').attr('href','/portfolio/' + portfolio['portfolio_entry']['friendly_id']);
       $('#portfolio_switcher > a.target').html(portfolio['portfolio_entry']['title']);
@@ -69,13 +69,13 @@ $(document).ready(function() {
   };
 
   //navigation initialization
-  navigation.init();
+  p_navigation.init();
 
   // galeries selection
   $('#portfolio_switcher > a.left').click(function(event){
     event.preventDefault();
 
-    if (navigation.index == 0) {
+    if (p_navigation.index == 0) {
       return false;
     }
 
@@ -83,13 +83,13 @@ $(document).ready(function() {
     $('#portfolios_container').animate({left: '+=420px'});
 
     //navigation update
-    navigation.index -= 1;
-    navigation.update();
+    p_navigation.index -= 1;
+    p_navigation.update();
   });
   $('#portfolio_switcher > a.right').click(function(event){
     event.preventDefault();
 
-    if (navigation.index + 1 == portfolios.length)  {
+    if (p_navigation.index + 1 == portfolios.length)  {
       return false;
     }
 
@@ -97,17 +97,17 @@ $(document).ready(function() {
     $('#portfolios_container').animate({left: '-=420px'});
 
     //navigation update
-    navigation.index += 1;
-    navigation.update();
+    p_navigation.index += 1;
+    p_navigation.update();
 
     // Add a galery to the right
-    if ( navigation.index > 0 &&
-         navigation.index + 1 < portfolios.length &&
-         $.inArray(navigation.index + 1, navigation.loaded) == -1
+    if ( p_navigation.index > 0 &&
+         p_navigation.index + 1 < portfolios.length &&
+         $.inArray(p_navigation.index + 1, p_navigation.loaded) == -1
        )
      {
        $.ajax({
-         url: '/portfolio/' + portfolios[navigation.index+1]['portfolio_entry']['id'],
+         url: '/portfolio/' + portfolios[p_navigation.index+1]['portfolio_entry']['id'],
          dataType: 'html',
          success: function(data){
            $('#portfolios_container').css('width','+=420px');
@@ -117,7 +117,7 @@ $(document).ready(function() {
            // reload Scrollbar
            load_Scrollbar();
            //populate loaded pages
-           navigation.loaded.push(navigation.index + 1)
+           p_navigation.loaded.push(p_navigation.index + 1)
          }
        })
      }
@@ -132,14 +132,14 @@ $(document).ready(function() {
   var today = new Date();
   // reference day first day of current month
   var reference_day = function() {return moment([today.getFullYear(),today.getMonth()])};
-  var navigation = {
+  var c_navigation = {
     init: function() {
       $('#month_container').animate({left: '-=420px'});
     },
     update: function() {
       //navigation
       //change month title
-      $('#month_switcher > a.target').html(moment.months[navigation.index.month()]);
+      $('#month_switcher > a.target').html(moment.months[c_navigation.index.month()]);
     },
     index: reference_day(),
     loaded: [ reference_day().subtract('M', 1).format('MM-YY'),
@@ -148,7 +148,7 @@ $(document).ready(function() {
   };
 
   //navigation initialization
-  navigation.init();
+  c_navigation.init();
 
    // previous month
   function previous_month(event) {
@@ -157,18 +157,18 @@ $(document).ready(function() {
     $('#calendar_overlay').fadeOut('fast');
 
     //navigation update
-    navigation.index.subtract('M',1);
+    c_navigation.index.subtract('M',1);
 
-    navigation.update();
+    c_navigation.update();
 
     // if not previously added load it
-    temp = navigation.index.format('DD-MM-YY');
-    if ( $.inArray( moment(temp,'DD-MM-YY').subtract('M',1).format('MM-YY'), navigation.loaded) == -1)
+    temp = c_navigation.index.format('DD-MM-YY');
+    if ( $.inArray( moment(temp,'DD-MM-YY').subtract('M',1).format('MM-YY'), c_navigation.loaded) == -1)
       {
 
         $.ajax({
           url: '/events/for_the',
-          data: {month: navigation.index.format("MM-YY"), direction: 'down'},
+          data: {month: c_navigation.index.format("MM-YY"), direction: 'down'},
           dataType: 'html',
           success: function(data){
             $('#month_container').prepend(data);
@@ -176,9 +176,9 @@ $(document).ready(function() {
             $('#month_container').css('width','+=420px');
             // $('#month_container').animate({left: '+=420px'});
             //populate loaded pages
-            temp = navigation.index.format('DD-MM-YY');
-            navigation.loaded.push(moment(temp,'DD-MM-YY').subtract('M',1).format('MM-YY'));
-            console.log(navigation.loaded);
+            temp = c_navigation.index.format('DD-MM-YY');
+            c_navigation.loaded.push(moment(temp,'DD-MM-YY').subtract('M',1).format('MM-YY'));
+            console.log(c_navigation.loaded);
           }
         });
       }
@@ -198,26 +198,25 @@ $(document).ready(function() {
     $('#month_container').animate({left: '-=420px'});
 
     //navigation update
-    navigation.index.add('M',1);
+    c_navigation.index.add('M',1);
     
-    navigation.update();
+    c_navigation.update();
     
     // if not previously added load it
-    temp = navigation.index.format('DD-MM-YY');
-    if ( $.inArray(moment(temp,'DD-MM-YY').add('M',1).format('MM-YY'), navigation.loaded) == -1 )
+    temp = c_navigation.index.format('DD-MM-YY');
+    if ( $.inArray(moment(temp,'DD-MM-YY').add('M',1).format('MM-YY'), c_navigation.loaded) == -1 )
     {
       $.ajax({
          url: '/events/for_the',
-         data: {month: navigation.index.format("MM-YY") , direction: 'up'},
+         data: {month: c_navigation.index.format("MM-YY") , direction: 'up'},
          dataType: 'html',
          success: function(data){
            $('#month_container').append(data);
            //add space to container
            $('#month_container').css('width','+=420px');
            //populate loaded pages
-           temp = navigation.index.format('DD-MM-YY');
-           navigation.loaded.push(moment(temp,'DD-MM-YY').add('M',1).format('MM-YY'));
-           console.log(navigation.loaded);
+           temp = c_navigation.index.format('DD-MM-YY');
+           c_navigation.loaded.push(moment(temp,'DD-MM-YY').add('M',1).format('MM-YY'));
           }
       });
     };
