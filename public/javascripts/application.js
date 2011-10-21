@@ -102,8 +102,8 @@ $(document).ready(function() {
 
     // Add a galery to the right
     if ( p_navigation.index > 0 &&
-         p_navigation.index + 1 < portfolios.length &&
-         $.inArray(p_navigation.index + 1, p_navigation.loaded) == -1
+        p_navigation.index + 1 < portfolios.length &&
+          $.inArray(p_navigation.index + 1, p_navigation.loaded) == -1
        )
      {
        $.ajax({
@@ -143,14 +143,14 @@ $(document).ready(function() {
     },
     index: reference_day(),
     loaded: [ reference_day().subtract('M', 1).format('MM-YY'),
-              reference_day().format('MM-YY'),
-              reference_day().add('M',1).format('MM-YY') ]
+      reference_day().format('MM-YY'),
+      reference_day().add('M',1).format('MM-YY') ]
   };
 
   //navigation initialization
   c_navigation.init();
 
-   // previous month
+  // previous month
   function previous_month(event) {
 
     event.preventDefault();
@@ -190,36 +190,36 @@ $(document).ready(function() {
   // next month
 
   function next_month(event) {
-     event.preventDefault();
-     var temp; // temporary container for currrent index
-     $('#calendar_overlay').fadeOut('fast');
+    event.preventDefault();
+    var temp; // temporary container for currrent index
+    $('#calendar_overlay').fadeOut('fast');
 
     // replace current month by the first on the right
     $('#month_container').animate({left: '-=420px'});
 
     //navigation update
     c_navigation.index.add('M',1);
-    
+
     c_navigation.update();
-    
+
     // if not previously added load it
     temp = c_navigation.index.format('DD-MM-YY');
     if ( $.inArray(moment(temp,'DD-MM-YY').add('M',1).format('MM-YY'), c_navigation.loaded) == -1 )
-    {
-      $.ajax({
-         url: '/events/for_the',
-         data: {month: c_navigation.index.format("MM-YY") , direction: 'up'},
-         dataType: 'html',
-         success: function(data){
-           $('#month_container').append(data);
-           //add space to container
-           $('#month_container').css('width','+=420px');
-           //populate loaded pages
-           temp = c_navigation.index.format('DD-MM-YY');
-           c_navigation.loaded.push(moment(temp,'DD-MM-YY').add('M',1).format('MM-YY'));
+      {
+        $.ajax({
+          url: '/events/for_the',
+          data: {month: c_navigation.index.format("MM-YY") , direction: 'up'},
+          dataType: 'html',
+          success: function(data){
+            $('#month_container').append(data);
+            //add space to container
+            $('#month_container').css('width','+=420px');
+            //populate loaded pages
+            temp = c_navigation.index.format('DD-MM-YY');
+            c_navigation.loaded.push(moment(temp,'DD-MM-YY').add('M',1).format('MM-YY'));
           }
-      });
-    };
+        });
+      };
   }
 
   // left
@@ -231,51 +231,64 @@ $(document).ready(function() {
     next_month(event);
   });
 
-  // hover behaviour on an event
 
-  var over_note = false;
+  // hover behaviour on overlay
   $('#calendar_overlay').hover(
-    function(){
-      over_note = true;
-    }
+    //wile entering, register being over
+    function(){$('#calendar_overlay').data('hover',true);}
     ,
+    //wile leaving, register leaving & fadeOUt unless being on an event
     function(){
-      over_note = false;
+      $('#calendar_overlay').data('hover',false);
+      if (!$('#calendar_overlay').data('render')){
+        $('#calendar_overlay').fadeOut('fast');
+        clearTimeout($(this).data('timeoutId'));
+      };
     }
   );
 
-  var render = true;
+  // hover behaviour on a full day
   $('.event_check').hover(
     //wile entering
     function (e) {
-     render = true;
-     console.log('y=' + e.pageY);
-     console.log('x=' + e.pageX);
-     console.log('cal y=' + (650 - e.pageY)) ;
-     console.log('cal x=' + (350 + 90 - e.pageX) );
+      //TODO: Fix me : clear timeout for in progress effect
+      clearTimeout($('#calendar_overlay').data('timeoutId'));
+      // set overlay as renderable
+      $('#calendar_overlay').data('render', true);
 
-     $.ajax({
-       url: '/events/on_the',
-       data: {day: $(this).attr('data-day')},
-       dataType: 'html',
-       success: function(data){
-         $('#calendar_overlay').html(data);
-         $('#calendar_overlay').css({
-           'bottom': (650 - e.pageY) + 'px',
-           'right':  (350 + 90 - e.pageX) + 'px'
-         });
-           if (render) {
-             $('#calendar_overlay').fadeIn('fast');
-           };
-        }}
-     );
+      var cell, cell_offset, parent_offset;
+      cell = $(this);
+      cell_offset = cell.offset();
+      parent_offset = cell.parent().offset();
+
+      $.ajax({
+        url: '/events/on_the',
+        data: {day: cell.attr('data-day')},
+        dataType: 'html',
+        success: function(data){
+          $('#calendar_overlay').html(data);
+          var cWidth = cell.outerWidth();
+          var oWidth = $('#calendar_overlay').outerWidth();
+          var left   = (cell_offset.left + cWidth - 365 - 50) + "px";
+          var top    = (parent_offset.top - cell_offset.top)  + "px";
+          $('#calendar_overlay').css( {left: left, top: top });
+          if ($('#calendar_overlay').data('render')) {
+            $('#calendar_overlay').fadeIn('fast');
+          };
+        }
+      });
     },
     //wile leaving
     function (e) {
-      render = false;
-      if ( !over_note) {
-        $('#calendar_overlay').fadeOut('fast');
-      };
+      // set overlay as non renderable
+      $('#calendar_overlay').data('render',false);
+      // timeout for fading overlay unless on it
+      var timeoutId = setTimeout(
+        "if (!$('#calendar_overlay').data('hover')){$('#calendar_overlay').fadeOut('fast');};"
+        , 1000
+      );
+      // register timeout
+      $('#calendar_overlay').data('timeoutId', timeoutId);
     }
   );
 
