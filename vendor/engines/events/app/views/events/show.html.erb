@@ -5,10 +5,20 @@
 <% content_for :body_content_left do %>
   <h2><%=raw @event.title %></h2>
   <p><%=raw @event.description %></p>
-  <h3><%=raw t(:location) + ':' %> </h3>
-  <p><%=raw @event.location %></p>
+  <br />
+  <% unless @event.location.blank? %>
+    <h3><%=raw t(:location) + ':' %> </h3>
+    <p> <%=raw @event.location %>    </p>
+    <br />
+    <% unless @event.adress.blank? %>
+      <%= link_to image_tag(@map_url), 'http://maps.google.com/maps?q=' + @event.adress %>
+    <% end %>
+  <% end %>
+
+  <br /><br />
   <h3><%=raw t(:start_date) + ':' %> </h3>
   <p><%=raw @event.start_date%></p>
+  <br />
   <h3><%=raw t(:end_date) + ':' %> </h3>
   <p><%=raw @event.end_date%></p>
 <% end %>

@@ -13,9 +13,10 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    map = GoogleStaticMap.new(:zoom => 10, :width => 160, :height => 160)
+    map.markers << MapMarker.new(:color => "blue", :location => MapLocation.new(:address => @event.adress ))
+    @map_url = map.url
 
-    # you can use meta fields from your model instead (e.g. browser_title)
-    # by swapping @page for @event in the line below:
     present(@page)
     present(@event)
   end

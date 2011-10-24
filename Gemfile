@@ -13,7 +13,7 @@ gem 'refinerycms-portfolio',     :git => 'git://github.com/ncouturier/refinerycm
 gem 'refinerycms-sections',     '1.0', :path => 'vendor/engines'
 gem 'refinerycms-news_items',   '1.0', :path => 'vendor/engines'
 gem 'refinerycms-events',       '1.0', :path => 'vendor/engines'
-
+gem 'googlestaticmap'
 gem 'compass',      '>= 0.11.5'
 
 gem 'airbrake'
