@@ -6,6 +6,7 @@ class Event < ActiveRecord::Base
   acts_as_indexed :fields => [:title, :description, :location]
 
   validates :title, :presence => true, :uniqueness => true
+  validates :sections, :presence => true
 
   belongs_to :image
 

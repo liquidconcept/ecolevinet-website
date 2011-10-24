@@ -3,6 +3,7 @@ class NewsItem < ActiveRecord::Base
   acts_as_indexed :fields => [:title, :content, :heading]
 
   validates :title, :presence => true, :uniqueness => true
+  validates :sections, :presence => true
 
   has_many :news_item_categorizations
   has_many :sections, :through => :news_item_categorizations, :source => :section
