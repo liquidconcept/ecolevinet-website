@@ -1,0 +1,43 @@
+<%= form_tag('/send/justification_absence') do -%>
+
+<p>
+Justification d’absence A la direction de l’établissement 
+</p>
+<p>Elève </p>
+<%= label_tag :nom %>
+<%= text_field_tag :nom %>
+<br />
+
+<%= label_tag :prenom %>
+<%= text_field_tag :prenom %>
+<br />
+
+<%= label_tag :classe %>
+<%= text_field_tag :classe %>
+<br />
+
+<p>DATES  DE L’ABSENCE </p>
+<p>
+du  
+  <%= label_tag 'Date de début' %>
+  <%= select_datetime DateTime.now, :prefix => :start_date %>
+</p>
+<p>
+au  
+<%= label_tag 'Date de fin' %>
+<%= select_datetime DateTime.now, :prefix => :end_date %>
+</p>
+
+<p>
+MOTIF :
+  <%= text_area_tag :motive,nil, :rows => 10,  :cols => 60 %>
+</p>
+ 
+<p>
+  <%= label_tag 'Email d’un des parents :' %>
+  <%= email_field_tag :email %>
+</p>
+
+  <%= submit_tag 'Envoyer' %></p>
+<% end -%>
+

@@ -6,6 +6,12 @@ EcolevinetWebsite::Application.routes.draw do
       get 'for_the'
     end
   end
+
+  match 'send/index' => 'send#index'
+  match 'send/resultat' => 'send#resultat'
+  match 'send/demande_absence'       => 'send#demande_absence'
+  match 'send/justification_absence' => 'send#justification_absence'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
