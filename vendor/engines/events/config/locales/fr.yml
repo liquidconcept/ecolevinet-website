@@ -1,13 +1,15 @@
 fr:
   title:         "Titre"
-  location:      "Lieu"
+  location:      "Lieu (facultatif)"
+  adress:        "Adresse (utilisée pour la géolocalisation)"
   start_date:    "Date de début"
   end_date:      "Date de fin"
   activerecord:
     attributes:
       events:
         title:         "Titre"
-        location:      "Lieu"
+        location:      "Lieu (facultatif)"
+        adress:        "Adresse (utilisée pour la géolocalisation)"
         start_date:    "Date de début"
         end_date:      "Date de fin"
   shared:
@@ -33,7 +35,8 @@ fr:
         delete: Supprimer définitivement cet événement
       form:
         title:         "Titre"
-        location:      "Lieu"
+        location:      "Lieu (facultatif)"
+        adress:        "Adresse (utilisée pour la géolocalisation)"
         start_date:    "Date de début"
         end_date:      "Date de fin"
   events:
