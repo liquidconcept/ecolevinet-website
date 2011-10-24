@@ -7,7 +7,13 @@ class AbsenceMailer < ActionMailer::Base
 
   def demande_absence(params)
     @params = params
-     mail(:to => 'n.couturier@gmail.com', :subject => "Demande d'absence", :from => @params[:email])
+    timestamp
+    #TODO replace n.couturier by secretariat@ecolevinet.ch
+    mail(:to => 'n.couturier@gmail.com', :subject => "Demande d'absence", :from => @params[:email])
+    
+    #TODO replace n.couturier by secretariat@ecolevinet.ch
+    mail(:to => @params[:email] 'n.couturier@gmail.com', :subject => "Demande d'absence", :from => 'n.couturier@gmail.com')
+
   end
 
 end
