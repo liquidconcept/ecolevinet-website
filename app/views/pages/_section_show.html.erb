@@ -1,4 +1,3 @@
-<% articles_rendered = false %>
 <% odd = true %>
 <% page.children.each do |child| %>
 
@@ -19,10 +18,7 @@
       <% odd = !odd %>
     <% end %>
   <% else %>
-    <% unless articles_rendered %>
-      <%= render :partial => 'page',       :locals => {:section => page.section, :odd => odd }   %>
-      <% articles_rendered = true %>
-      <% odd = !odd %>
-    <% end %>
+    <%= render :partial => 'page',       :locals => {:page => child, :odd => odd }   %>
+    <% odd = !odd %>
   <% end %>
 <% end %>
