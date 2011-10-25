@@ -17,5 +17,6 @@ class NewsItem < ActiveRecord::Base
 
   def before_save
     self.hotness_date = Date.today if !self.changes[:hot].blank? && self.changes[:hot].last
+    self.hotness_end_at = nil unless self.hot
   end
 end
