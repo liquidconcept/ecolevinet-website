@@ -8,8 +8,6 @@ class NewsItem < ActiveRecord::Base
   has_many :news_item_categorizations
   has_many :sections, :through => :news_item_categorizations, :source => :section
 
-  belongs_to :image
-
   default_scope :order => 'created_at DESC'
 
   scope :hot, where(['hotness_end_at >  ? and hot = ?', Date.today, true]).order('hotness_date desc').order('hotness_end_at desc')

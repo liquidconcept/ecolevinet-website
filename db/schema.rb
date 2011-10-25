@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111024123001) do
+ActiveRecord::Schema.define(:version => 20111025070547) do
 
   create_table "event_categorizations", :force => true do |t|
     t.integer  "event_id"
@@ -80,7 +80,6 @@ ActiveRecord::Schema.define(:version => 20111024123001) do
 
   create_table "news_items", :force => true do |t|
     t.text     "content"
-    t.integer  "image_id"
     t.date     "hotness_end_at"
     t.integer  "position"
     t.datetime "created_at"
