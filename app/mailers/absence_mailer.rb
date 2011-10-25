@@ -1,18 +1,30 @@
+# encoding: UTF-8
 class AbsenceMailer < ActionMailer::Base
-  default :from => "n.couturier@gmail.com", :to => 'n.couturier@gmail.com', :subject => 'test'
 
-  def justification_absence(params)
+  def justification_absence(params,timestamp,to_parents)
+
     @params = params
+    @timestamp = timestamp
+    @to_parents = to_parents
+    #TODO replace n.couturier by secretariat@ecolevinet.ch
+    if @to_parents
+      mail(:to => @params[:email], :subject => "Justification d'absence", :from => 'n.couturier@gmail.com')
+    else
+      mail(:to => 'n.couturier@gmail.com', :subject => "[Ecole Vinet] Justification d'absence réf.: #{@timestamp}", :from => @params[:email])
+    end
   end
 
-  def demande_absence(params)
+  def demande_absence(params,timestamp,to_parents)
+
     @params = params
-    timestamp
+    @timestamp = timestamp
+    @to_parents = to_parents
     #TODO replace n.couturier by secretariat@ecolevinet.ch
-    mail(:to => 'n.couturier@gmail.com', :subject => "Demande d'absence", :from => @params[:email])
-    
-    #TODO replace n.couturier by secretariat@ecolevinet.ch
-    mail(:to => @params[:email] 'n.couturier@gmail.com', :subject => "Demande d'absence", :from => 'n.couturier@gmail.com')
+    if  @to_parents
+      mail(:to => @params[:email], :subject => "Demande d'absence", :from => 'n.couturier@gmail.com')
+    else
+      mail(:to => 'n.couturier@gmail.com', :subject => "[Ecole Vinet] Demande d'absence réf.: #{@timestamp}", :from => @params[:email])
+    end
 
   end
 
