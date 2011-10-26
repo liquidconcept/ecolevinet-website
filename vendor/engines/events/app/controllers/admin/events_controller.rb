@@ -2,6 +2,7 @@ module Admin
   class EventsController < Admin::BaseController
 
     before_filter :find_categories, :except => :index
+    before_filter :populate, :only => :update
 
     crudify :event, :xhr_paging => true
 
@@ -17,5 +18,10 @@ module Admin
     def find_categories
       @event_sections = Section.all
     end
+
+    def populate
+      params[:event][:section_ids] ||= []
+    end
+
   end
 end
