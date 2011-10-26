@@ -73,7 +73,7 @@ EcolevinetWebsite::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
   get 'refinery', :to => 'Pages#home' #redirect refinery page to homepage
-  get 'admin', :to => 'admin/pages#index', :as => :refinery_root #uses /admin as the admin page
-  get 'galerie', :to => 'Portfolio#index'
+  get 'admin',    :to => 'admin/pages#index', :as => :refinery_root #uses /admin as the admin page
+  get 'galerie',  :to => 'Portfolio#index'
 
 end
