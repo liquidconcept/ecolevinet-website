@@ -208,6 +208,28 @@ html{
     }
     #page_content{
       margin-top:25px;
+			em{
+				font-style:italic;	
+			}
+			strong{
+				font-weight:bold;
+			}
+			p{
+				margin:0px 0px 15px 0px;
+			}
+			img{
+				float:left;
+				clear:left;
+				margin:0px 15px 15px 0px;
+			}
+			ul{
+				clear:both;
+				margin-left:15px;
+				li{
+					list-style-type:square;
+					margin-bottom:5px;
+				}
+			}
       #news_block{
         .scrollable{
           height:247px;
