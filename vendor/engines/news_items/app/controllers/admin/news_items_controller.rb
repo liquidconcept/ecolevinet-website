@@ -2,6 +2,7 @@ module Admin
   class NewsItemsController < Admin::BaseController
 
     before_filter :find_categories, :except => :index
+    before_filter :populate, :only => :update
 
     crudify :news_item, :xhr_paging => true
 
@@ -17,6 +18,11 @@ module Admin
      def find_categories
        @news_sections = Section.all
      end
+
+     def populate
+       params[:news_item][:section_ids] ||= []
+     end
+
 
   end
 end
