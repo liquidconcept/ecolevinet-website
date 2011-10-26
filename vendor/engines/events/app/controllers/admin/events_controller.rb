@@ -10,6 +10,7 @@ module Admin
       search_all_events if searching?
 
       @events = Event.order('position ASC')
+      @events = @events.joins(:sections).where(:sections => {'id' => params['section_id'].to_i}) if params['section_id']
       @events = @events.paginate(:page => 1, :per_page => 10)
 
       render :partial => 'events' if request.xhr?

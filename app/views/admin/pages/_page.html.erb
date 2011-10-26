@@ -19,10 +19,12 @@
                   page.data_type.blank? ? page.url : page.parent.section.page.url,
                   :target => "_blank",
                   :title => t('.view_live_html') %>
-      <% if page.data_type.blank? %>
-        <%= link_to refinery_icon_tag('application_edit.png'), edit_admin_page_path(page),
-          :title => t('edit', :scope => 'admin.pages') %>
+      <% if  page.data_type.blank? %>
+        <%= link_to refinery_icon_tag('application_edit.png'), edit_admin_page_path(page), :title => t('edit', :scope => 'admin.pages') %>
+      <% else%>
+        <%= link_to refinery_icon_tag('application_edit.png'), url_for(:controller => 'admin/' + page.data_type , :action => 'index' ,  :section_id => page.parent.section.id.to_i) , {:title => t('edit', :scope => 'admin.pages')} unless page.data_type == 'form' %>
       <% end %>
+
       <%= link_to refinery_icon_tag('delete.png'), admin_page_path(page),
                   :class => "cancel confirm-delete",
                   :title => t('delete', :scope => 'admin.pages'),
