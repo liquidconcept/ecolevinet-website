@@ -30,5 +30,12 @@ module PageHelper
   def day_count(day)
     Event.given_day(day).count
   end
+
+  def in_section(page)
+    page.section || page.parent.section || page.parent.parent.section ||
+    page.parent.parent.parent.section || page.parent.parent.parent.section ||
+    page.parent.parent.parent.parent.section
+  end
+
 end
 
