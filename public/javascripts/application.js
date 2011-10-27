@@ -292,6 +292,7 @@ $(document).ready(function() {
     }
   );
 
+
   //Horizontal accordion
   $('#horizontalaccordion>ul>li>a').click(function(event){
     event.preventDefault();

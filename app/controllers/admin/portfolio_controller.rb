@@ -1,6 +1,6 @@
 class Admin::PortfolioController < Admin::BaseController
 
-  before_filter :find_categories, :except => :index
+  before_filter :find_categories
   before_filter :populate, :only => :update
 
   crudify :portfolio_entry,
