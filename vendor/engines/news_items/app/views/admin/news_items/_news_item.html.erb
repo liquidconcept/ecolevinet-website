@@ -1,6 +1,11 @@
 <li class='clearfix record <%= cycle("on", "on-hover") %>' id="<%= dom_id(news_item) -%>">
-  <span class='title'>
+<span class='title'>
+    
+    <%= l(news_item.created_at.to_date) + " -"%>
     <%= news_item.title %>
+    <% if news_item.hot %>
+      <%= image_tag 'Fire-flame-icon.jpg' %>
+    <% end%>
     <span class="preview">&nbsp;</span>
   </span>
   <span class='actions'>

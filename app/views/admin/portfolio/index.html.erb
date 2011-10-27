@@ -1,9 +1,10 @@
+<% items = [['Toutes les sections',0]] + @portfolio_sections.collect{ |s| [s.title, s.id] }  %>
+<%= select_tag 'section', options_for_select(items) %>
+
 <div id='records' class='tree'>
   <% if searching? %>
     <h2><%= t('shared.admin.search.results_for', :query => params[:search]) %></h2>
   <% end %>
-  <% items = [['Toutes les sections',0]] + @portfolio_sections.collect{ |s| [s.title, s.id] }  %>
-  <%= select_tag 'section', options_for_select(items) %>
   <% if @portfolio_entries.any? %>
     <%= render :partial => 'sortable_list' %>
   <% else %>
