@@ -95,7 +95,7 @@ html{
   #content{
     position:relative;
     padding:0px 45px 45px 45px;
-    .calendar_overlay{
+    #calendar_overlay{
       display:none;
       background-color:$light_grey;
       border:1px solid $grey;
@@ -208,6 +208,68 @@ html{
     }
     #page_content{
       margin-top:25px;
+			#text{
+				padding-left:150px;
+				padding-right:150px;
+				text-align:justify;
+				font-size:16px;
+				h1{
+					font-size:25px;
+					margin:0px 0px 15px 0px;
+					padding:0;
+				}
+				h2{
+					font-size:23px;
+					margin:0px 0px 15px 0px;
+					padding:0;
+				}
+				h3{
+					font-size:21px;
+					margin:0px 0px 15px 0px;
+					padding:0;
+				}
+				em{
+					font-style:italic;	
+				}
+				strong{
+					font-weight:bold;
+				}
+				p{
+					margin:0px 0px 15px 0px;
+				}
+				img{
+					float:left;
+					clear:left;
+					margin:0px 15px 15px 0px;
+				}
+				ul{
+					clear:both;
+					margin:0px 0px 15px 15px;
+					li{
+						list-style-type:square;
+						margin-bottom:5px;
+					}
+				}
+				ol{
+					clear:both;
+					margin:0px 0px 15px 22px;
+					li{
+						list-style-type:decimal;
+						margin-bottom:5px;
+					}
+				}
+				table{
+					margin-bottom:15px;
+					caption{
+						padding:5px;
+						font-style:italic;
+					}
+					td{
+						border:1px dotted $light_grey;
+						padding:5px;
+					}
+				}
+			}
       #news_block{
         .scrollable{
           height:247px;
@@ -260,14 +322,14 @@ html{
             list-style-type:circle;
           }
         }
-        #portfolios_container{
+        #portfolios_container, #month_container{
           height:185px;
           width:5000px;
           display: block;
           position: absolute;
           left:0;
         }
-        #portfolio_window{
+        #portfolio_window, #month_window{
           overflow: hidden;
           position: relative;
           height:185px;
@@ -294,15 +356,17 @@ html{
             height:92px;
           }
         }
-        #calendar{
+        .calendar{
           height:185px;
+          width:420px;
+          float: left;
           padding-top:5px;
           background-color:$white;
           border-top:1px solid $dark_grey;
           border-bottom:1px solid $dark_grey;
           ul{
             clear:both;
-            width:189px;
+            width:154px;
             margin:auto;
             li{
               position:relative;
@@ -311,8 +375,8 @@ html{
               border-top:1px solid $dark_grey;		
               border-bottom:1px solid $dark_grey;		
               font-size:13px;
-              width:25px;
-              height:25px;
+              width:20px;
+              height:20px;
               margin-top:5px;
               background-color:$light_grey;
               &.first{
@@ -327,22 +391,26 @@ html{
               span.event_number{
                 color:#ff0000;
                 position:absolute;
-                top:10px;
+                top:9px;
                 right:1px;
+                font-size:12px;
               }
             }
           }
           #current_week{
-            width:298px;
+            width:228px;
+            position: relative;
             li{
               font-size:20px;
-              width:40px;
-              height:40px;
-            }
-            span.event_number{
-              color:#ff0000;
-              position:relative;
-              top:16px;
+              width:30px;
+              height:30px;
+              span.event_number{
+                font-size:16px;
+                color:#ff0000;
+                position:absolute;
+                top:14px;
+                right:1px;
+              }
             }
           }
         }
@@ -383,7 +451,7 @@ html{
             }
           }
         }
-        .event{
+       .event{
           width:390px;
           padding:15px 0px 20px 25px;
           .event_date{

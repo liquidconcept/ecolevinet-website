@@ -8,29 +8,29 @@
 
   <div class="scrollable">
     <ul id="further">
-      <% if section.page.children.any? %>
-        <% section.page.children.each do |child| %>
-        <% if child.data_type.blank? %>
-        <li><%= link_to child.title, url_for(child.url)  %></li>
-          <% if child.children.any? %>
-            <ul class="submenu">
+      <% if page.children.any? %>
+        <% page.children.each do |child| %>
+          <% if child.data_type.blank? %>
+            <li><%= link_to child.title, url_for(child.url)  %></li>
+            <% if child.children.any? %>
+              <ul class="submenu">
                 <% child.children.each do |subchild| %>
-                <% if subchild.data_type.blank? %>
-                  <li><%= link_to subchild.title, url_for(subchild.url)  %></li>
-                  <% if subchild.children.any? %>
-                    <ul class="sub_submenu">
-                      <% subchild.children.each do |sub_subchild| %>
-                      <% if sub_subchild.data_type.blank? %>
-                        <li><%= link_to sub_subchild.title, url_for(sub_subchild.url)  %></li>
-                      <% end %>
-                      <% end %>
-                    </ul>
+                  <% if subchild.data_type.blank? %>
+                    <li><%= link_to subchild.title, url_for(subchild.url)  %></li>
+                    <% if subchild.children.any? %>
+                      <ul class="sub_submenu">
+                        <% subchild.children.each do |sub_subchild| %>
+                          <% if sub_subchild.data_type.blank? %>
+                            <li><%= link_to sub_subchild.title, url_for(sub_subchild.url)  %></li>
+                          <% end %>
+                        <% end %>
+                      </ul>
+                    <% end %>
                   <% end %>
                 <% end %>
-                <% end %>
-            </ul>
+              </ul>
+            <% end %>
           <% end %>
-        <% end %>
         <% end %>
       <% end %>
     </ul>

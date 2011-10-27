@@ -74,6 +74,19 @@ class Section < ActiveRecord::Base
           page.parts.create(:title => default_page_part, :body => nil)
         end
       end
+
+      #Add an event Page
+      unless RefineryConfig.hidden_plugins.include?("events")
+        page = section_page.children.create(
+          :title => 'Agenda',
+          :deletable => false,
+          :show_in_menu => true,
+          :data_type => 'events',
+          :position => section_page.position + 1)
+        Page.default_parts.each do |default_page_part|
+          page.parts.create(:title => default_page_part, :body => nil)
+        end
+      end
     end
   end
 

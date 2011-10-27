@@ -31,7 +31,7 @@ $(document).ready(function() {
 
   //navigation initialization
   var portfolios = new Object();
-  var navigation = {
+  var p_navigation = {
     init: function() {
       var that = this;
 
@@ -47,19 +47,19 @@ $(document).ready(function() {
     },
     update: function() {
       //navigation update
-      if (navigation.index <= 0) {
+      if (p_navigation.index <= 0) {
         $('#portfolio_switcher > a.left').fadeTo('fast', 0.5);
       } else {
         $('#portfolio_switcher > a.left').fadeTo('fast', 1);
       };
-      if (navigation.index + 1 >= portfolios.length) {
+      if (p_navigation.index + 1 >= portfolios.length) {
         $('#portfolio_switcher > a.right').fadeTo('fast', 0.5);
       } else {
         $('#portfolio_switcher > a.right').fadeTo('fast', 1);
       }
 
       //change galery title & src
-      portfolio = portfolios[navigation.index];
+      portfolio = portfolios[p_navigation.index];
 
       $('#portfolio_switcher > a.target').attr('href','/portfolio/' + portfolio['portfolio_entry']['friendly_id']);
       $('#portfolio_switcher > a.target').html(portfolio['portfolio_entry']['title']);
@@ -69,13 +69,13 @@ $(document).ready(function() {
   };
 
   //navigation initialization
-  navigation.init();
+  p_navigation.init();
 
   // galeries selection
   $('#portfolio_switcher > a.left').click(function(event){
     event.preventDefault();
 
-    if (navigation.index == 0) {
+    if (p_navigation.index == 0) {
       return false;
     }
 
@@ -83,13 +83,13 @@ $(document).ready(function() {
     $('#portfolios_container').animate({left: '+=420px'});
 
     //navigation update
-    navigation.index -= 1;
-    navigation.update();
+    p_navigation.index -= 1;
+    p_navigation.update();
   });
   $('#portfolio_switcher > a.right').click(function(event){
     event.preventDefault();
 
-    if (navigation.index + 1 == portfolios.length)  {
+    if (p_navigation.index + 1 == portfolios.length)  {
       return false;
     }
 
@@ -97,17 +97,17 @@ $(document).ready(function() {
     $('#portfolios_container').animate({left: '-=420px'});
 
     //navigation update
-    navigation.index += 1;
-    navigation.update();
+    p_navigation.index += 1;
+    p_navigation.update();
 
     // Add a galery to the right
-    if ( navigation.index > 0 &&
-         navigation.index + 1 < portfolios.length &&
-         $.inArray(navigation.index + 1, navigation.loaded) == -1
+    if ( p_navigation.index > 0 &&
+        p_navigation.index + 1 < portfolios.length &&
+          $.inArray(p_navigation.index + 1, p_navigation.loaded) == -1
        )
      {
        $.ajax({
-         url: '/portfolio/' + portfolios[navigation.index+1]['portfolio_entry']['id'],
+         url: '/portfolio/' + portfolios[p_navigation.index+1]['portfolio_entry']['id'],
          dataType: 'html',
          success: function(data){
            $('#portfolios_container').css('width','+=420px');
@@ -117,13 +117,183 @@ $(document).ready(function() {
            // reload Scrollbar
            load_Scrollbar();
            //populate loaded pages
-           navigation.loaded.push(navigation.index + 1)
+           p_navigation.loaded.push(p_navigation.index + 1)
          }
        })
      }
   });
 
-  //horizontal accordion
+  //calendar comportment
+  //moment language initialization
+  moment.lang('fr');
+
+  var temp = '';
+
+  var today = new Date();
+  // reference day first day of current month
+  var reference_day = function() {return moment([today.getFullYear(),today.getMonth()])};
+  var c_navigation = {
+    init: function() {
+      $('#month_container').animate({left: '-=420px'});
+    },
+    update: function() {
+      //navigation
+      //change month title
+      $('#month_switcher > a.target').html(moment.months[c_navigation.index.month()]);
+    },
+    index: reference_day(),
+    loaded: [ reference_day().subtract('M', 1).format('MM-YY'),
+      reference_day().format('MM-YY'),
+      reference_day().add('M',1).format('MM-YY') ]
+  };
+
+  //navigation initialization
+  c_navigation.init();
+
+  // previous month
+  function previous_month(event) {
+
+    event.preventDefault();
+    $('#calendar_overlay').fadeOut('fast');
+
+    //navigation update
+    c_navigation.index.subtract('M',1);
+
+    c_navigation.update();
+
+    // if not previously added load it
+    temp = c_navigation.index.format('DD-MM-YY');
+    if ( $.inArray( moment(temp,'DD-MM-YY').subtract('M',1).format('MM-YY'), c_navigation.loaded) == -1)
+      {
+
+        $.ajax({
+          url: '/events/for_the',
+          data: {month: c_navigation.index.format("MM-YY"), direction: 'down'},
+          dataType: 'html',
+          success: function(data){
+            $('#month_container').prepend(data);
+            //add space to container
+            $('#month_container').css('width','+=420px');
+            // $('#month_container').animate({left: '+=420px'});
+            //populate loaded pages
+            temp = c_navigation.index.format('DD-MM-YY');
+            c_navigation.loaded.push(moment(temp,'DD-MM-YY').subtract('M',1).format('MM-YY'));
+            console.log(c_navigation.loaded);
+          }
+        });
+      }
+      else {
+        // replace current month by the first on the left
+        $('#month_container').animate({left: '+=420px'});
+      };
+  }
+  // next month
+
+  function next_month(event) {
+    event.preventDefault();
+    var temp; // temporary container for currrent index
+    $('#calendar_overlay').fadeOut('fast');
+
+    // replace current month by the first on the right
+    $('#month_container').animate({left: '-=420px'});
+
+    //navigation update
+    c_navigation.index.add('M',1);
+
+    c_navigation.update();
+
+    // if not previously added load it
+    temp = c_navigation.index.format('DD-MM-YY');
+    if ( $.inArray(moment(temp,'DD-MM-YY').add('M',1).format('MM-YY'), c_navigation.loaded) == -1 )
+      {
+        $.ajax({
+          url: '/events/for_the',
+          data: {month: c_navigation.index.format("MM-YY") , direction: 'up'},
+          dataType: 'html',
+          success: function(data){
+            $('#month_container').append(data);
+            //add space to container
+            $('#month_container').css('width','+=420px');
+            //populate loaded pages
+            temp = c_navigation.index.format('DD-MM-YY');
+            c_navigation.loaded.push(moment(temp,'DD-MM-YY').add('M',1).format('MM-YY'));
+          }
+        });
+      };
+  }
+
+  // left
+  $('#month_switcher>a.left').click(function(event){
+    previous_month(event);
+  });
+  // right
+  $('#month_switcher>a.right').click(function(event){
+    next_month(event);
+  });
+
+
+  // hover behaviour on overlay
+  $('#calendar_overlay').hover(
+    //wile entering, register being over
+    function(){$('#calendar_overlay').data('hover',true);}
+    ,
+    //wile leaving, register leaving & fadeOUt unless being on an event
+    function(){
+      $('#calendar_overlay').data('hover',false);
+      if (!$('#calendar_overlay').data('render')){
+        $('#calendar_overlay').fadeOut('fast');
+        clearTimeout($(this).data('timeoutId'));
+      };
+    }
+  );
+
+  // hover behaviour on a full day
+  $('.event_check').hover(
+    //wile entering
+    function (e) {
+      //TODO: Fix me : clear timeout for in progress effect
+      clearTimeout($('#calendar_overlay').data('timeoutId'));
+      // set overlay as renderable
+      $('#calendar_overlay').data('render', true);
+
+      var cell, cell_offset, parent_offset;
+      cell = $(this);
+      cell_offset = cell.offset();
+      parent_offset = cell.parent().offset();
+
+      $.ajax({
+        url: '/events/on_the',
+        data: {day: cell.attr('data-day')},
+        dataType: 'html',
+        success: function(data){
+          $('#calendar_overlay').html(data);
+          var cWidth = cell.outerWidth();
+          var oWidth = $('#calendar_overlay').outerWidth();
+          var left   = (cell_offset.left + cWidth - 365 - 50) + "px";
+          var top    = (parent_offset.top - cell_offset.top)  + "px";
+          $('#calendar_overlay').css( {left: left, top: top });
+          if ($('#calendar_overlay').data('render')) {
+            $('#calendar_overlay').fadeIn('fast');
+          };
+        }
+      });
+    },
+    //wile leaving
+    function (e) {
+      clearTimeout($('#calendar_overlay').data('timeoutId'));
+      // set overlay as non renderable
+      $('#calendar_overlay').data('render',false);
+      // timeout for fading overlay unless on it
+      var timeoutId = setTimeout(
+        "if (!$('#calendar_overlay').data('hover')){$('#calendar_overlay').fadeOut('fast');};"
+        , 1000
+      );
+      // register timeout
+      $('#calendar_overlay').data('timeoutId', timeoutId);
+    }
+  );
+
+  //Horizontal accordion
   $('#horizontalaccordion>ul>li>a').click(function(event){
     event.preventDefault();
     var vb, link;

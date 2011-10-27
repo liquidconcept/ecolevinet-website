@@ -12,6 +12,7 @@ class PortfolioEntry < ActiveRecord::Base
   attr_accessor :locale # to hold temporarily
 
   validates :title, :presence => true
+  validates :sections, :presence => true
 
   # call to gems included in refinery.
   has_friendly_id :title, :use_slug => true

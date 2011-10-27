@@ -1,10 +1,13 @@
-<h1>
-  <%=raw @news_item.title %>
-</h1>
-<p>
-  <%=raw @news_item.heading%>
-</p>
-<p>
-  <%=raw @news_item.content %>
-</p>
-<%= link_to 'retour', :back %>
+<div id="text">
+  <h1>
+    <%=raw @news_item.title %>
+  </h1>
+  <p>
+    <%=raw @news_item.heading%>
+  </p>
+  <p>
+    <%=raw @news_item.content %>
+  </p>
+    <%= link_to 'retour', :back %>
+</div>
+

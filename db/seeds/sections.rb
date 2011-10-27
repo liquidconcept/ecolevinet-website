@@ -7,6 +7,7 @@ def image_creation(image_name)
   uploader = Dragonfly[:images]
   uploaded_image = uploader.fetch_file(image_path)
   image = Image.create image: uploaded_image
+
   rescue Error => e
      print "Error creating image: " + e
 end

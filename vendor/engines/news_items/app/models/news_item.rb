@@ -3,11 +3,10 @@ class NewsItem < ActiveRecord::Base
   acts_as_indexed :fields => [:title, :content, :heading]
 
   validates :title, :presence => true, :uniqueness => true
+  validates :sections, :presence => true
 
   has_many :news_item_categorizations
   has_many :sections, :through => :news_item_categorizations, :source => :section
-
-  belongs_to :image
 
   default_scope :order => 'created_at DESC'
 
@@ -16,5 +15,6 @@ class NewsItem < ActiveRecord::Base
 
   def before_save
     self.hotness_date = Date.today if !self.changes[:hot].blank? && self.changes[:hot].last
+    self.hotness_end_at = nil unless self.hot
   end
 end

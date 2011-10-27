@@ -1,8 +1,6 @@
 en:
   shared:
     admin:
-      image_picker:
-        image: image
   plugins:
     news_items:
       title: News Items
