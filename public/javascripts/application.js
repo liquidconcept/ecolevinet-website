@@ -8,7 +8,6 @@ $(document).ready(function() {
     }
   }
   load_Scrollbar();
-
   //block general comportment
   $('.block>.layer').css({display: 'inline'});
   $('.block').hover(

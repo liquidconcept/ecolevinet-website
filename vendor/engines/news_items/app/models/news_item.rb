@@ -3,7 +3,7 @@ class NewsItem < ActiveRecord::Base
   acts_as_indexed :fields => [:title, :content, :heading]
 
   validates :title, :presence => true, :uniqueness => true
-  validates :sections, :presence => true
+  validates :sections, :presence => { :message => "Vous devez choisir au moins une section" }
 
   has_many :news_item_categorizations
   has_many :sections, :through => :news_item_categorizations, :source => :section
