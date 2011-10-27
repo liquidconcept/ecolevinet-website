@@ -213,18 +213,53 @@ html{
 				padding-right:150px;
 				text-align:justify;
 				font-size:16px;
-				h1{
-					font-size:25px;
-					margin:0px 0px 15px 0px;
-					padding:0;
-				}
 				h2{
-					font-size:23px;
+					font-size:26px;
+					margin:0px 0px 15px 0px;
+					padding:5px;
+				}
+				&.section_2{
+					h2{
+						background-color:$section1;
+						color:$white;
+					}
+				}
+				&.section_3{
+					h2{
+						background-color:$section2;
+						color:$white;
+					}
+				}
+				&.section_4{
+					h2{
+						background-color:$section3;
+						color:$white;
+					}
+				}
+				&.section_5{
+					h2{
+						background-color:$section4;
+						color:$white;
+					}
+				}
+				&.section_6{
+					h2{
+						background-color:$section5;
+						color:$white;
+					}
+				}
+				h1{
+					font-size:34px;
 					margin:0px 0px 15px 0px;
 					padding:0;
 				}
 				h3{
-					font-size:21px;
+					font-size:25px;
+					margin:0px 0px 15px 0px;
+					padding:0;
+				}
+				h3{
+					font-size:23px;
 					margin:0px 0px 15px 0px;
 					padding:0;
 				}
