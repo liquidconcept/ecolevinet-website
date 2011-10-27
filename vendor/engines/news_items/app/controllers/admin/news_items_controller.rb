@@ -1,7 +1,7 @@
 module Admin
   class NewsItemsController < Admin::BaseController
 
-    before_filter :find_categories, :except => :index
+    before_filter :find_categories
     before_filter :populate, :only => :update
 
     crudify :news_item, :xhr_paging => true

@@ -1,4 +1,6 @@
 <section id='records'>
+  <% items = [['Toutes les sections',0]] + @news_sections.collect{ |s| [s.title, s.id] }  %>
+  <%= select_tag 'section', options_for_select(items) %>
   <%= render :partial => 'records' %>
 </section>
 <aside id='actions'>
@@ -7,4 +9,7 @@
 <%= render :partial => '/shared/admin/make_sortable',
             :locals => {
               :tree => false
-            } if !searching? and Admin::NewsItemsController.sortable? and NewsItem.count > 1 %>
+} if !searching? and Admin::NewsItemsController.sortable? and NewsItem.count > 1 %>
+
+<%= render :partial => '/shared/section_selection' %>
+

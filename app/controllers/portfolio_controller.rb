@@ -6,6 +6,7 @@ class PortfolioController < ApplicationController
     @portfolio_entries = PortfolioEntry
     @portfolio_entries = @portfolio_entries.where(:sections => {:id => params[:section_id]}) if params[:section_id]
     @portfolio_entries = @portfolio_entries.joins(:sections).all
+    @portfolio_sections = Section.all
 
    (render :json =>  @portfolio_entries.to_json(:methods => :friendly_id), :layout => false and return ) if request.xhr?
 

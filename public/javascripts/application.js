@@ -8,7 +8,6 @@ $(document).ready(function() {
     }
   }
   load_Scrollbar();
-
   //block general comportment
   $('.block>.layer').css({display: 'inline'});
   $('.block').hover(
@@ -292,6 +291,7 @@ $(document).ready(function() {
       $('#calendar_overlay').data('timeoutId', timeoutId);
     }
   );
+
 
   //Horizontal accordion
   $('#horizontalaccordion>ul>li>a').click(function(event){
