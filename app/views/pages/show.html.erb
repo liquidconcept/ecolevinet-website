@@ -1,6 +1,8 @@
 <% if @page.section.blank? %>
-  <h1><%=  @page.title %> </h1>
-  <p> <%= raw  @page.content_for(:contenu) %></p>
+  <div id="text">
+    <h1><%=  @page.title %> </h1>
+    <p> <%= raw  @page.content_for(:contenu) %></p>
+  </div>
 <% else %>
   <%= render :partial => "section_show",  :locals => { :page => @page } %>
 <% end %>
