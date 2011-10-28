@@ -37,5 +37,24 @@ module PageHelper
     page.parent.parent.parent.parent.section
   end
 
+  def page_tree(page, level = 1)
+    return if !page.children.any?{|child| page_tree_child?(child) }
+
+    content = []
+    content << "<ul class\"tree_level_#{level}\">"
+    page.children.select{|child| page_tree_child?(child) }.each do |child|
+      content << '<li>' + link_to(child.title, url_for(child.url))
+      content << page_tree(child, level + 1)
+      content << '</li>'
+    end
+    content << '</ul>'
+
+    content.compact.join("\n").html_safe
+  end
+
+  def page_tree_child?(child)
+    child.data_type.blank? || !%w(form).include?(child.data_type.blank?)
+  end
+
 end
 
