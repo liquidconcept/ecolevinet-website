@@ -214,6 +214,37 @@ html{
     }
     #page_content{
       margin-top:25px;
+			form{
+				width:500px;
+				margin:auto;
+				h2{
+					font-size:21px;
+					margin:0px 0px 15px 0px;
+					background-color:$section4;
+					padding:5px;
+					color:$white;
+					text-align:center;
+				}
+				input{
+					width:500px;
+				}
+				label{
+					font-style:italic;
+				}
+				.submit{
+					border:1px solid $grey;
+					margin-top:15px;
+					cursor:pointer;
+					width:507px;
+					height:30px;
+					background-color:$section4;
+					color:$white;
+					font-weight:bold;
+					&:hover{
+						background-color:$dark_grey;
+					}
+				}
+			}
 			#text{
 				padding-left:150px;
 				padding-right:150px;

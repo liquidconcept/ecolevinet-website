@@ -1,16 +1,24 @@
 <%= form_tag('/send/resultat_demande') do -%>
 <h2>Demande de congé à la direction de l’établissement</h2>
-<p>Elève </p>
-<%= label_tag :nom %>
+<p>Elève </p><br/>
+<%= label_tag :nom %><br/>
 <%= text_field_tag :nom %>
 <br />
-<%= label_tag :prenom %>
+<%= label_tag :prenom %><br/>
 <%= text_field_tag :prenom %>
 <br />
-<%= label_tag :classe %>
+<%= label_tag :classe %><br/>
 <%= text_field_tag :classe %>
+<p>
+  <%= label_tag 'Email d’un des parents :' %><br/>
+  <%= email_field_tag :email %>
+</p>
+<p>
+  <%= label_tag 'Téléphone d’un des parents :' %><br/>
+  <%= text_field_tag :phone %>
+</p>
 <br />
-<p>Dates  de l’absence </p>
+<p>Dates  de l’absence </p><br />
 <p>
 du
   <%= label_tag 'Date de début' %>
@@ -20,16 +28,13 @@ du
 au
 <%= label_tag 'Date de fin' %>
 <%= select_datetime DateTime.now, :prefix => :end_date %>
-</p>
+</p><br />
 <p>
 Motif :
 <br />
 <%= text_area_tag :motive,nil, :rows => 10,  :cols => 60 %>
 </p>
-<p>
-  <%= label_tag 'Email d’un des parents :' %>
-  <%= email_field_tag :email %>
-</p>
-  <%= submit_tag 'Envoyer' %></p>
-<% end -%>
+
+  <%= submit_tag 'Envoyer', :class => 'submit' %></p><br />
 <p>En principe, il n’est pas accordé de congés immédiatement avant ou après les vacances.</p>
+<% end -%>
