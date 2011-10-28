@@ -16,7 +16,7 @@
 
     <span class='actions'>
       <%= link_to refinery_icon_tag('application_go.png'),
-                  page.data_type.blank? ? page.url : page.parent.section.page.url,
+                  page_tree_child?(page) ? page.url : page.parent.section.page.url,
                   :target => "_blank",
                   :title => t('.view_live_html') %>
       <% if  page.data_type.blank? %>
