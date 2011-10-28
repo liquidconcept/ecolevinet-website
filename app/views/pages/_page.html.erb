@@ -1,39 +1,17 @@
-<div class="block <%= odd ? 'left' : 'right' %> " id="page_block">
+<% if page.children.any?{|child| page_tree_child?(child) } %>
+  <div class="block <%= odd ? 'left' : 'right' %> " id="page_block">
 
-  <div class="layer">
-    <img src="/images/more.png" class="more" />
+    <div class="layer">
+      <img src="/images/more.png" class="more" />
+    </div>
+
+    <h1>Pour aller plus loin</h1>
+
+    <div class="scrollable">
+      <ul id="further">
+        <%= page_tree(page) %>
+      </ul>
+    </div>
+
   </div>
-
-  <h1>Pour aller plus loin</h1>
-
-  <div class="scrollable">
-    <ul id="further">
-      <% if page.children.any? %>
-        <% page.children.each do |child| %>
-          <% if child.data_type.blank? %>
-            <li><%= link_to child.title, url_for(child.url)  %></li>
-            <% if child.children.any? %>
-              <ul class="submenu">
-                <% child.children.each do |subchild| %>
-                  <% if subchild.data_type.blank? %>
-                    <li><%= link_to subchild.title, url_for(subchild.url)  %></li>
-                    <% if subchild.children.any? %>
-                      <ul class="sub_submenu">
-                        <% subchild.children.each do |sub_subchild| %>
-                          <% if sub_subchild.data_type.blank? %>
-                            <li><%= link_to sub_subchild.title, url_for(sub_subchild.url)  %></li>
-                          <% end %>
-                        <% end %>
-                      </ul>
-                    <% end %>
-                  <% end %>
-                <% end %>
-              </ul>
-            <% end %>
-          <% end %>
-        <% end %>
-      <% end %>
-    </ul>
-  </div>
-
-</div>
+<% end %>
