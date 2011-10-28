@@ -1,3 +1,4 @@
+# encoding: UTF-8
 EcolevinetWebsite::Application.routes.draw do
   resources :portfolio
   resources :events do
@@ -6,6 +7,15 @@ EcolevinetWebsite::Application.routes.draw do
       get 'for_the'
     end
   end
+
+  match 'send/demande_absence'        => 'send#demande_absence'
+  match 'send/justification_absence'  => 'send#justification_absence'
+  match 'send/resultat_demande'       => 'send#resultat_demande'
+  match 'send/resultat_justification' => 'send#resultat_justification'
+
+  match 'parents/*demande-de-congé'        => redirect('send#demande_absence')
+  match 'parents/*justification-d’absence' => redirect('send#justification_absence')
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -63,7 +73,7 @@ EcolevinetWebsite::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
   get 'refinery', :to => 'Pages#home' #redirect refinery page to homepage
-  get 'admin', :to => 'admin/pages#index', :as => :refinery_root #uses /admin as the admin page
-  get 'galerie', :to => 'Portfolio#index'
+  get 'admin',    :to => 'admin/pages#index', :as => :refinery_root #uses /admin as the admin page
+  get 'galerie',  :to => 'Portfolio#index'
 
 end

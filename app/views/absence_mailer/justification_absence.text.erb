@@ -1,0 +1,25 @@
+# encoding: UTF-8
+<% if @to_parents %>
+Cet email est une copie de la juststification. Votre Demande a été prise en compte par le secrétariat.
+<% end %>
+Justification d'absence addressée à la direction de l'établissemnt.
+
+Date :
+<%= I18n.l DateTime.now %>
+
+Elève:
+Nom:    <%= @params[:nom] %>
+Prénom: <%= @params[:prenom] %>
+Classe: <%= @params[:classe] %>
+
+Dates de l'absence :
+<% start_d = @params[:start_date] %>
+<% end_d = @params[:end_date] %>
+Début :  <%= I18n.l DateTime.new(y=start_d[:year].to_i, m=start_d[:month].to_i,d=start_d[:day].to_i,
+  h=start_d[:hour].to_i, min=start_d[:minute].to_i, s=start_d[:second].to_i, of=1)%>
+
+Fin :    <%= I18n.l DateTime.new(y=end_d[:year].to_i, m=end_d[:month].to_i,d=end_d[:day].to_i,
+                                 h=end_d[:hour].to_i, min=end_d[:minute].to_i, s=end_d[:second].to_i, of=1)%>
+                                 
+Motif :
+ <%= @params[:motive] %>
