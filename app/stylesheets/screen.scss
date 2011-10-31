@@ -22,11 +22,7 @@ $dark_grey: #818284;
 $light_grey: #F7F7F7;
 $blue: #4341A6;
 
-$section1: #C7BEB7;
-$section2: #A99E8B;
-$section3: #75888E;
-$section4: #7683A1;
-$section5: #97AEC0;
+$section_colors: #ffffff #C7BEB7 #A99E8B #75888E #7683A1 #97AEC0;
 
 
 /*---------fonts----------*/
@@ -46,6 +42,16 @@ body{
 
 html{
   overflow:auto;
+}
+
+.text_background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
 }
 
 /*---------header---------*/
@@ -69,7 +75,7 @@ html{
 }
 
 .scrollbar-handle-container {
-  background: $section1;
+  background: nth($section_colors, 1);
   width: 5px;
 }
 
@@ -220,31 +226,31 @@ html{
 				}
 				&.section_2{
 					h2{
-						background-color:$section1;
+						background-color:nth($section_colors, 2);
 						color:$white;
 					}
 				}
 				&.section_3{
 					h2{
-						background-color:$section2;
+						background-color:nth($section_colors, 3);
 						color:$white;
 					}
 				}
 				&.section_4{
 					h2{
-						background-color:$section3;
+						background-color:nth($section_colors, 4);
 						color:$white;
 					}
 				}
 				&.section_5{
 					h2{
-						background-color:$section4;
+						background-color:nth($section_colors, 5);
 						color:$white;
 					}
 				}
 				&.section_6{
 					h2{
-						background-color:$section5;
+						background-color:nth($section_colors, 6);
 						color:$white;
 					}
 				}
@@ -505,7 +511,7 @@ html{
           position:absolute;
           width:  420px;
           height: 300px;
-          background-color:$section1;
+          background-color:nth($section_colors, 2);
           .portfolio_img{
             behavior: url(/stylesheets/PIE/PIE.htc);
             -moz-border-radius: 4px; /* Firefox */
@@ -575,8 +581,8 @@ html{
   }
 }
 
-/*---------accordion---------*/
-#page #content #section_data{
+/*---------menu---------*/
+#section_container{
   -moz-border-radius: 4px; /* Firefox */
   -webkit-border-radius: 4px; /* Safari and Chrome */
   border-radius: 4px; /* Opera 10.5+, future browsers, and now also Internet Explorer 6+ using IE-CSS3 */
@@ -585,102 +591,106 @@ html{
   width:870px;
   height:328px;
   overflow:hidden;
-  .nav_img{
-    position:absolute;
-    top:0;
-    left:0;
-    z-index:20;
-  }
-  .nav_wrap{
-    position:absolute;
-    top:0;
-    left:0;
-    z-index:18;
-  }
-  .nav_picture{
-    position:absolute;
-    top:0;
-    left:0;
-  }
-  .nav_background{
-    width:40px;
+
+  .section {
+    width:870px;
     height:328px;
-    display:block;
-    @include opacity(0.9);
-    &.active{
-      @include opacity(1);
-    }
-  }
-  #section_1{
-    width:870px;
     position:absolute;
-  }
-  #section_2{
-    width:870px;
-    position:absolute;
-    left:670px;
-    .nav_wrap{
-      .nav_background{
-        background-color:$section1;
-      }
-    }
-    &.open{
-      left:0px;
-    }
-  }
-  #section_3{
-    width:870px;
-    position:absolute;
-    left:710px;
+    @include opacity(1);
+    z-index: 15;
+
     .nav_wrap{
       position:absolute;
       top:0;
       left:0;
+      z-index:18;
+
+      .nav_img{
+        position:absolute;
+        top:0;
+        left:0;
+        z-index:20;
+      }
+
       .nav_background{
-        background-color:$section2;
+        width:40px;
+        height:328px;
+        display:block;
+        @include opacity(0.9);
+
+        &.active, &:hover {
+          @include opacity(1);
+        }
       }
     }
-    &.open{
-      left:40px;
+
+    .nav_picture{
+      position:absolute;
+      top:0;
+      left:0;
+    }
+
+    .nav_text {
+      position: absolute;
+      bottom: 0;
+      left: 40px;
+      width: 670px;
+      z-index: 15;
+      color: $white;
+
+      h2, p {
+        position: relative;
+        a {
+          display: block;
+          padding: 5px 10px 7px 5px;
+          color: inherit!important;
+          &:hover {
+            text-decoration: none!important;
+          }
+        }
+      }
+
+      h2 {
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      p {
+        font-size: 14px;
+        line-height: 18px;
+        color: lighten($blue, 10);
+      }
+
+      h2 .text_background {
+        @include opacity(0.9);
+      }
+
+      p .text_background {
+        @include opacity(0.9);
+        background-color: $grey;
+      }
     }
   }
-  #section_4{
-    width:870px;
-    position:absolute;
-    left:750px;
-    .nav_wrap{
-      .nav_background{
-        background-color:$section3;
+
+  @for $i from 2 through 6 {
+    #section_#{$i} {
+      left: 630px + (($i - 1) * 40px);
+
+      .nav_wrap {
+        .nav_background {
+          background-color:nth($section_colors, $i);
+        }
       }
-    }
-    &.open{
-      left:80px;
-    }
-  }
-  #section_5{
-    width:870px;
-    position:absolute;
-    left:790px;
-    .nav_wrap{
-      .nav_background{
-        background-color:$section4;
+
+      .nav_text {
+        h2 .text_background {
+          background-color:nth($section_colors, $i);
+        }
       }
-    }
-    &.open{
-      left:120px;
-    }
-  }
-  #section_6{
-    width:870px;
-    position:absolute;
-    left:830px;
-    .nav_wrap{
-      .nav_background{
-        background-color:$section5;
+
+      &.open{
+        left: (($i - 2) * 40px);
       }
-    }
-    &.open{
-      left:160px;
     }
   }
 }
