@@ -335,7 +335,7 @@ html{
           margin:15px 0px 15px 25px;
           text-align: center;
         }
-        #further{
+        ul.tree_level_1{
           padding-top:15px;
           padding-left:40px;
           li{
@@ -345,16 +345,18 @@ html{
             padding-left:10px;
           }
         }
-        .submenu{
+        ul.tree_level_2{
           margin-left:25px;
           li{
             list-style-type:disc;
           }
         }
-        .sub_submenu{
-          margin-left:25px;
-          li{
-            list-style-type:circle;
+        @for $i from 3 through 5 {
+          ul.tree_level_#{$i} {
+            margin-left:25px;
+            li{
+              list-style-type:circle;
+            }
           }
         }
         #portfolios_container, #month_container{
