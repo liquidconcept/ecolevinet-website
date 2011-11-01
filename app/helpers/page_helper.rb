@@ -41,7 +41,7 @@ module PageHelper
     return if !page.children.any?{|child| page_tree_child?(child) }
 
     content = []
-    content << "<ul class\"tree_level_#{level}\">"
+    content << "<ul class=\"tree_level_#{level}\">"
     page.children.select{|child| page_tree_child?(child) }.each do |child|
       content << '<li>' + link_to(child.title, url_for(child.url))
       content << page_tree(child, level + 1)

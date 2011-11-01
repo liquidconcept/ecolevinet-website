@@ -1,19 +1,58 @@
 <div id="left_col">
-  <%= link_to("Espace professeur",'/enseignants/', {:onClick => "window.open(this.href,'_blank');return false;"}) %>
-  <p>
-  <%= link_to(image_tag("Facebook-Icon.jpg", :alt => "", :style => "position:relative; top:10px; margin-right:5px;"),"http://www.facebook.com/group.php?gid=21310185688", {:onClick => "window.open(this.href,'_blank');return false;" }) %>
-
-  Rejoignez-nous sur
-  <%=link_to("Facebook","http://www.facebook.com/group.php?gid=21310185688",{:onClick => "window.open(this.href,'_blank');return false;"}) -%> !
-  </p>
+  <h2/>Actualités</h2>
+	<div class="important">
+		<p>9EG6 - Attention à prendre vos bottes ce lundi</p>
+	</div>
+	<ul class="infos">
+		<li>
+			<h3>27.11.2011 - Course d'école</h3>
+			<p>N'oubliez pas de vous lever, il va pleuvoir, c'est pas la fête et vive le Lorem Ipsum dolor sit amet</p>
+		</li>
+		<li>
+			<h3>27.11.2011 - Course d'école</h3>
+			<p>N'oubliez pas de vous lever</p>
+		</li>
+		<li>
+			<h3>27.11.2011 - Course d'école</h3>
+		</li>
+		<li>
+			<h3>27.11.2011 - Course d'école</h3>
+		</li>
+	</ul>
 </div>
+
+<div id="center_col">
+  <h2/>Agenda</h2>
+	<ul class="infos">
+		<li>
+			<h3>27.11.2011 - Course d'école</h3>
+			<p>N'oubliez pas de vous lever</p>
+		</li>
+		<li>
+			<h3>27.11.2011 - Course d'école</h3>
+		</li>
+		<li>
+			<h3>27.11.2011 - Course d'école</h3>
+		</li>
+		<li>
+			<h3>27.11.2011 - Course d'école</h3>
+			<p>N'oubliez pas de vous lever</p>
+		</li>
+		<li>
+			<h3>27.11.2011 - Course d'école</h3>
+			<p>N'oubliez pas de vous lever</p>
+		</li>
+	</ul>
+</div>
+
 <div id="right_col">
-  <%= link_to(image_tag("google.jpg",:alt => "", :style => "float:right"),"http://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=%C3%A9cole+vinet+lausanne&amp;aq=&amp;sll=37.0625,-95.677068&amp;sspn=69.476188,177.451172&amp;vpsrc=6&amp;ie=UTF8&amp;hq=%C3%A9cole+vinet&amp;hnear=Lausanne,+Vaud,+Switzerland&amp;cid=5096095572938173010&amp;ll=46.519894,6.637373&amp;spn=0.011812,0.018368&amp;z=14&amp;iwloc=A",{ :onClick => "window.open(this.href,'_blank');return false;"}) %>
-  <h1/>Contact</h1>
-  <p>Ecole Vinet<br />
-  Rue de l’Ecole-Supérieur 2<br />
+  <h2/>Contact</h2>
+  <%= link_to(image_tag("google.jpg",:alt => ""),"http://maps.google.com/maps?f=q&source=embed&hl=en&geocode=&q=%C3%A9cole+vinet+lausanne&aq=&sll=37.0625,-95.677068&sspn=69.476188,177.451172&vpsrc=6&ie=UTF8&hq=%C3%A9cole+vinet&hnear=Lausanne,+Vaud,+Switzerland&cid=5096095572938173010&ll=46.519894,6.637373&spn=0.011812,0.018368&z=14&iwloc=A",{ :onClick => "window.open(this.href,'_blank');return false;"}) %>
+	<br/>
+  <h3>Ecole Vinet</h3>
+  <p>Rue de l’Ecole-Supérieure 2<br />
   C.P. 5987<br />
-  1002 Lausanne</p>
+  1002 Lausanne</p><br/>
   <p>Tel: 021 312 44 70<br />Fax:	021 311 81 12</p>
-  <%= link_to("Agrandir la carte","http://maps.google.com/maps?f=q&source=embed&hl=en&geocode=&q=%C3%A9cole+vinet+lausanne&aq=&sll=37.0625,-95.677068&sspn=69.476188,177.451172&vpsrc=6&ie=UTF8&hq=%C3%A9cole+vinet&hnear=Lausanne,+Vaud,+Switzerland&cid=5096095572938173010&ll=46.519894,6.637373&spn=0.011812,0.018368&z=14&iwloc=A", {:onClick => "window.open(this.href,'_blank');return false;" } ) %>
+	<%= link_to(image_tag("Facebook-Icon.jpg", :alt => "", :style => "position:absolute; bottom:0px; right:0px;"),"http://www.facebook.com/group.php?gid=21310185688", {:onClick => "window.open(this.href,'_blank');return false;" }) %>
 </div>
