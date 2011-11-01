@@ -220,7 +220,7 @@ html{
 				h2{
 					font-size:21px;
 					margin:0px 0px 15px 0px;
-					background-color:$section4;
+					background-color:nth($section_colors, 4);
 					padding:5px;
 					color:$white;
 					text-align:center;
@@ -237,7 +237,7 @@ html{
 					cursor:pointer;
 					width:507px;
 					height:30px;
-					background-color:$section4;
+					background-color:nth($section_colors, 4);
 					color:$white;
 					font-weight:bold;
 					&:hover{
