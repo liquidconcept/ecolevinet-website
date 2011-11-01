@@ -820,6 +820,20 @@ html{
     }
   }
 
+  #section_1 {
+    .nav_text {
+      left: 0;
+
+      h2 .text_background {
+        background-color:nth($section_colors, 1);
+      }
+
+      p {
+        display: none;
+      }
+    }
+  }
+
   @for $i from 2 through 6 {
     #section_#{$i} {
       left: 630px + (($i - 1) * 40px);
@@ -829,47 +843,6 @@ html{
           background-color:nth($section_colors, $i);
         }
       }
-			
-			#form_contact{
-				position:absolute;
-				padding:20px;
-				background-image:url(../images/fond_contact.png);
-				-moz-border-radius: 4px; /* Firefox */
-				-webkit-border-radius: 4px; /* Safari and Chrome */
-				border-radius: 4px; /* Opera 10.5+, future browsers, and now also Internet Explorer 6+ using IE-CSS3 */
-				behavior: url(/stylesheets/PIE/PIE.htc);
-				z-index:10;
-				width:568px;
-				height:276px;
-				border:1px solid $grey;
-				padding:70px 20px 0px 120px;
-				form{
-					.float{
-						float:left;
-						margin-right:20px;
-						#message{
-							width:300px;
-							height:100px;
-							margin:2px 0px 17px 0px;
-						}
-						.submit{
-							width:305px;;
-							background-color:$white;
-							color:nth($section_colors, 6);
-							border:1px solid nth($section_colors, 6);
-							padding:1px 0px;
-							cursor:pointer;
-							&:hover{
-								color:$dark_grey;
-							}
-						}
-					}
-					input{
-						width:180px;
-						margin:2px 0px 5px 0px;
-					}
-				}
-			}
 
       .nav_text {
         h2 .text_background {
@@ -879,6 +852,47 @@ html{
 
       &.open{
         left: (($i - 2) * 40px);
+      }
+    }
+			
+    #form_contact{
+      position:absolute;
+      padding:20px;
+      background-image:url(../images/fond_contact.png);
+      -moz-border-radius: 4px; /* Firefox */
+      -webkit-border-radius: 4px; /* Safari and Chrome */
+      border-radius: 4px; /* Opera 10.5+, future browsers, and now also Internet Explorer 6+ using IE-CSS3 */
+      behavior: url(/stylesheets/PIE/PIE.htc);
+      z-index:10;
+      width:568px;
+      height:276px;
+      border:1px solid $grey;
+      padding:70px 20px 0px 120px;
+      form{
+        .float{
+          float:left;
+          margin-right:20px;
+          #message{
+            width:300px;
+            height:100px;
+            margin:2px 0px 17px 0px;
+          }
+          .submit{
+            width:305px;;
+            background-color:$white;
+            color:nth($section_colors, 6);
+            border:1px solid nth($section_colors, 6);
+            padding:1px 0px;
+            cursor:pointer;
+            &:hover{
+              color:$dark_grey;
+            }
+          }
+        }
+        input{
+          width:180px;
+          margin:2px 0px 5px 0px;
+        }
       }
     }
   }
