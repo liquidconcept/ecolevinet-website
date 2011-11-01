@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
-  function load_Scrollbar () {
+  // init scrollbar
+  function load_Scrollbar() {
     if ($('.scrollable').length > 0){
       $('.scrollable').scrollbar({
         arrows: false
@@ -8,41 +9,41 @@ $(document).ready(function() {
     }
   }
   load_Scrollbar();
-  //block general comportment
-  $('.block>.layer').css({display: 'inline'});
-  $('.block').hover(
-    function () {
-    $(this).find('.layer').fadeOut('fast', function() {$(this).css({'display': 'none'});
-    });
-  },
-  function () {
-    $(this).find('.layer').fadeIn('fast', function() {$(this).css({'display': 'inline'});
-    });
+
+  // Block overlay
+  $('.block > .layer').show();
+  $('.block > .layer').bind('mouseenter', function() {
+    $(this).fadeOut('fast');
+  });
+  $('.block').bind('mouseleave', function() {
+    $(this).find('.layer').fadeIn('fast');
   });
 
-  // PORTFOLIO
   // prettyphoto activation
-  function load_prettyPhoto () {
-    if ($("a[rel^='prettyPhoto']").length > 0) {$("a[rel^='prettyPhoto']").prettyPhoto({social_tools:false});}
+  function load_prettyPhoto() {
+    if ($("a[rel^='prettyPhoto']").length > 0) {
+      $("a[rel^='prettyPhoto']").prettyPhoto({social_tools:false});
+    }
   };
-
   load_prettyPhoto();
 
-  //navigation initialization
+  // portfolio navigation initialization
   var portfolios = new Object();
   var p_navigation = {
     init: function() {
       var that = this;
 
-      $.ajax({
-        url: '/portfolio',
-        dataType: 'json',
-        data: "section_id=" + $('#portfolios_container').attr('data-section'),
-        success: function(data){
-          portfolios = data;
-          that.update();
-        }
-      });
+      if ($('#portfolios_container').length > 0) {
+        $.ajax({
+          url: '/portfolio',
+          dataType: 'json',
+          data: "section_id=" + $('#portfolios_container').attr('data-section'),
+          success: function(data){
+            portfolios = data;
+            that.update();
+          }
+        });
+      }
     },
     update: function() {
       //navigation update
@@ -66,8 +67,6 @@ $(document).ready(function() {
     index: 0,
     loaded: []
   };
-
-  //navigation initialization
   p_navigation.init();
 
   // galeries selection
@@ -229,7 +228,6 @@ $(document).ready(function() {
   $('#month_switcher>a.right').click(function(event){
     next_month(event);
   });
-
 
   // hover behaviour on overlay
   $('#calendar_overlay').hover(
