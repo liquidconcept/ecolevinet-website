@@ -1,7 +1,6 @@
 <div class='portfolio'>
-<h1><%=  @portfolio_entry.title %> </h1>
-
 <div id="left_col">
+<h1><%=  @portfolio_entry.title %> </h1>
   <%=  raw @portfolio_entry.body %><br/>
   <% @portfolio_entry.images.each_with_index do |image, index| -%>
     <% if @portfolio_entry.images.count == 1 %>
@@ -16,6 +15,7 @@
   <% end %>
 </div>
 <div id="right_col">
+	<h1>Galeries</h1>
   <% if @portfolio_entries.many?%>
   <ul>
     <% @portfolio_entries.each do | portfolio | -%>

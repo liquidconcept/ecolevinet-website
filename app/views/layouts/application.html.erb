@@ -45,6 +45,28 @@
             <%= image_tag "section_6_title.png", :class => 'nav_img' %>
             <span class="nav_background active"></span>
           </div>
+					<div id="form_contact">
+						<form>
+							<div class="float">
+								<%= label_tag :Nom %><br/>
+								<%= text_field_tag :name %>
+								<br />
+								<%= label_tag :Classe %><br/>
+								<%= text_field_tag :class %>
+								<br />
+								<%= label_tag :Téléphone %><br/>
+								<%= text_field_tag :phone %>
+								<br />
+								<%= label_tag :Sujet %><br/>
+								<%= text_field_tag :subject %>
+							</div>
+							<div class="float">
+								<%= label_tag :Message %><br/>
+								<%= text_area_tag :message,nil, :rows => 10,  :cols => 60 %><br />
+								<%= submit_tag 'Envoyer', :class => 'submit' %>
+							</div>
+						</form>
+					</div>
           <%= image_tag "section_6_picture.jpg", :class => 'nav_picture' %>
         </div>
       </div>

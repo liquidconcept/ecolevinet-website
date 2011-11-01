@@ -22,7 +22,7 @@ $dark_grey: #818284;
 $light_grey: #F7F7F7;
 $blue: #4341A6;
 
-$section_colors: #ffffff #C7BEB7 #A99E8B #75888E #7683A1 #97AEC0;
+$section_colors: #6E5C79 #C7BEB7 #A99E8B #75888E #7683A1 #97AEC0;
 
 
 /*---------fonts----------*/
@@ -185,23 +185,82 @@ html{
     }
     #left_col{
       float:left;
-      width:420px;
-      h1{
+      width:300px;
+			margin-right:25px;
+      h2{
         font-size:23px;
         margin-bottom:25px;
         font-weight:normal;
       }
+			.important{
+				width:265px;
+				padding:10px;
+				margin-bottom:5px;
+				text-align:center;
+        behavior: url(/stylesheets/PIE/PIE.htc);
+        -moz-border-radius: 10px; /* Firefox */
+        -webkit-border-radius: 10px; /* Safari and Chrome */
+        border-radius: 10px; /* Opera 10.5+, future browsers, and now also Internet Explorer 6+ using IE-CSS3 */
+				background-color:nth($section_colors, 5);
+				color:$white;
+				font-weight:bold;
+			}
+			.infos{
+				width:285px;
+				li{
+					width:100%;
+					margin-bottom:2px;
+				}
+				h3{
+          background-color:$dark_grey;
+          color:$white;
+					padding:3px;
+				}
+				p{
+					padding:3px 3px 15px 3px;
+					border:1px solid $dark_grey;
+				}
+			}
     }
-    #right_col{
-      border-left:1px solid $grey;
+    #center_col{
       float:left;
-      margin-left:25px;
-      padding-left:20px;
-      width:400px;
-      h1{
+      width:300px;
+      h2{
         font-size:23px;
         margin-bottom:25px;
         font-weight:normal;
+      }
+			.infos{
+				width:285px;
+				li{
+					width:100%;
+					margin-bottom:2px;
+				}
+				h3{
+          background-color:$dark_grey;
+          color:$white;
+					padding:3px;
+				}
+				p{
+					padding:3px 3px 15px 3px;
+					border:1px solid $dark_grey;
+				}
+			}
+    }
+    #right_col{
+      float:right;
+			position:relative;
+      padding-left:20px;
+      width:220px;
+      h2{
+        font-size:23px;
+        margin-bottom:25px;
+        font-weight:normal;
+      }
+      h3{
+        font-size:15px;
+        margin:15px 0px 5px 0px;
+        font-weight:bold;
       }
       #google{
         width:215px;
@@ -212,6 +271,58 @@ html{
     }
     #page_content{
       margin-top:25px;
+			#body_content{
+				h1{
+					margin:0px 0px 15px 0px;
+					background-color:$dark_grey;
+					color:$white;
+					padding:5px;
+				}
+				#body_content_left{
+					width:420px;
+					float:left;
+					img{
+						width:420px;
+						margin-bottom:5px;
+					}
+					h2{
+						width:410px;
+						margin:15px 0px 15px 0px;
+						background-color:nth($section_colors, 4);
+						color:$white;
+						padding:5px;
+						font-size:20px;
+						a{
+							color:$white;
+						}
+					}
+				}
+				#body_content_right{
+					h2{
+						margin:15px 0px 15px 0px;
+						background-color:nth($section_colors, 4);
+						color:$white;
+						padding:5px;
+						font-size:20px;
+					}
+				}
+			}
+			.portfolio{
+				h1{
+					margin:0px 0px 15px 0px;
+					background-color:nth($section_colors, 4);
+					color:$white;
+					padding:5px;
+				}
+				#left_col{
+					float:left;
+					width:545px;
+				}
+				#right_col{
+					width:280px;
+					float:right;
+				}
+			}
 			form{
 				width:500px;
 				margin:auto;
@@ -263,40 +374,45 @@ html{
 					color:$white;
 				}
 				h3{
-					font-size:26px;
+					font-size:24px;
 					margin:30px 0px 15px 0px;
-					padding:5px;
 				}
 				h4{
 					font-size:21px;
 					margin:0px 0px 15px 0px;
 				}
+				&.section_1{
+					h2{
+						background-color:nth($section_colors, 1);
+						color:$white;
+					}
+				}
 				&.section_2{
-					h3{
+					h2{
 						background-color:nth($section_colors, 2);
 						color:$white;
 					}
 				}
 				&.section_3{
-					h3{
+					h2{
 						background-color:nth($section_colors, 3);
 						color:$white;
 					}
 				}
 				&.section_4{
-					h3{
+					h2{
 						background-color:nth($section_colors, 4);
 						color:$white;
 					}
 				}
 				&.section_5{
-					h3{
+					h2{
 						background-color:nth($section_colors, 5);
 						color:$white;
 					}
 				}
 				&.section_6{
-					h3{
+					h2{
 						background-color:nth($section_colors, 6);
 						color:$white;
 					}
@@ -370,7 +486,7 @@ html{
         border-radius: 4px; /* Opera 10.5+, future browsers, and now also Internet Explorer 6+ using IE-CSS3 */
         @include box-shadow(#000 0 1px 2px, #fff 0 1px inset);
         h1{
-          margin:15px 0px 15px 25px;
+          margin:15px 0px 15px 0px;
           text-align: center;
         }
         ul.tree_level_1{
@@ -713,6 +829,47 @@ html{
           background-color:nth($section_colors, $i);
         }
       }
+			
+			#form_contact{
+				position:absolute;
+				padding:20px;
+				background-image:url(../images/fond_contact.png);
+				-moz-border-radius: 4px; /* Firefox */
+				-webkit-border-radius: 4px; /* Safari and Chrome */
+				border-radius: 4px; /* Opera 10.5+, future browsers, and now also Internet Explorer 6+ using IE-CSS3 */
+				behavior: url(/stylesheets/PIE/PIE.htc);
+				z-index:10;
+				width:568px;
+				height:276px;
+				border:1px solid $grey;
+				padding:70px 20px 0px 120px;
+				form{
+					.float{
+						float:left;
+						margin-right:20px;
+						#message{
+							width:300px;
+							height:100px;
+							margin:2px 0px 17px 0px;
+						}
+						.submit{
+							width:305px;;
+							background-color:$white;
+							color:nth($section_colors, 6);
+							border:1px solid nth($section_colors, 6);
+							padding:1px 0px;
+							cursor:pointer;
+							&:hover{
+								color:$dark_grey;
+							}
+						}
+					}
+					input{
+						width:180px;
+						margin:2px 0px 5px 0px;
+					}
+				}
+			}
 
       .nav_text {
         h2 .text_background {

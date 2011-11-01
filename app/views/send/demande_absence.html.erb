@@ -21,12 +21,12 @@
 <p>Dates  de l’absence </p><br />
 <p>
 du
-  <%= label_tag 'Date de début' %>
+  <%= label_tag 'Date de début' %><br />
   <%= select_datetime DateTime.now, :prefix => :start_date %>
 </p>
 <p>
 au
-<%= label_tag 'Date de fin' %>
+<%= label_tag 'Date de fin' %><br />
 <%= select_datetime DateTime.now, :prefix => :end_date %>
 </p><br />
 <p>
