@@ -32,9 +32,8 @@ module PageHelper
   end
 
   def in_section(page)
-    page.section || page.parent.section || page.parent.parent.section ||
-    page.parent.parent.parent.section || page.parent.parent.parent.section ||
-    page.parent.parent.parent.parent.section
+    return Section.first if page.nil?
+    page.try(:section) || in_section(page.parent)
   end
 
   def page_tree(page, level = 1)
