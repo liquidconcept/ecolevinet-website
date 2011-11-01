@@ -253,22 +253,18 @@ $(document).ready(function() {
       // set overlay as renderable
       $('#calendar_overlay').data('render', true);
 
-      var cell, cell_offset, parent_offset;
-      cell = $(this);
-      cell_offset = cell.offset();
-      parent_offset = cell.parent().offset();
-
+      var cell = $(this);
       $.ajax({
         url: '/events/on_the',
         data: {day: cell.attr('data-day')},
         dataType: 'html',
         success: function(data){
           $('#calendar_overlay').html(data);
-          var cWidth = cell.outerWidth();
-          var oWidth = $('#calendar_overlay').outerWidth();
-          var left   = (cell_offset.left + cWidth - 365 - 50) + "px";
-          var top    = (parent_offset.top - cell_offset.top)  + "px";
-          $('#calendar_overlay').css( {left: left, top: top });
+
+          var left = cell.offset().left - cell.parents('.block').offset().left + cell.outerWidth()  - 10 + 'px';
+          var top  = cell.offset().top  - cell.parents('.block').offset().top  + cell.outerHeight() -  5 + 'px';
+          $('#calendar_overlay').css({left: left, top: top });
+
           if ($('#calendar_overlay').data('render')) {
             $('#calendar_overlay').fadeIn('fast');
           };
