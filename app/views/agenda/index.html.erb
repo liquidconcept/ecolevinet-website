@@ -1,0 +1,35 @@
+<div id="agenda">
+  <h2/>Agenda</h2>
+
+  <ul class="infos">
+    <% @events.all.each do |event| %>
+      <li>
+      <h3>
+      <div class="event_container">
+        <% date  = if event.start_date == event.end_date
+                     l(event.start_date)
+                   else
+                     'du ' + l(event.start_date) + ' au ' + l(event.end_date)
+                   end %>
+
+        <%  type  = event.description.blank? ? 'empty':'full' %>
+        <div class="date <%= 'empty' if type == 'empty' %>">
+          <%  if type == 'full' %>
+              <%= link_to image_tag('right.png', :class => type),'#' %>
+            <%  end %>
+          <%=raw  date %>
+        </div>
+        <br />
+        <div class="title">
+           <%=link_to event.title, event_path(event) %>
+           <br />
+         </div>
+       </div>
+     </h3>
+     <div class="description" style="display:none;">
+       <%=raw event.description if event.description %>
+     </div>
+     </li>
+     <% end %>
+   </ul>
+</div>

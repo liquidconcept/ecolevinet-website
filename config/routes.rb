@@ -1,5 +1,7 @@
 # encoding: UTF-8
 EcolevinetWebsite::Application.routes.draw do
+  get "agenda/index"
+
   resources :portfolio
   resources :events do
     collection do

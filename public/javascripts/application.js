@@ -286,6 +286,27 @@ $(document).ready(function() {
     }
   );
 
+ //agenda page animation
+
+  $('#agenda .date>a').toggle(
+    function(event){
+    event.preventDefault();
+    var img; img = $(this).find('img');
+      if (img.is('.full')){
+        $('.description',$(this).closest('li')).fadeIn('fast');
+        img.attr('src','/images/down.png');
+      };
+    },
+    function(event){
+    event.preventDefault();
+    var img; img = $(this).find('img');
+      if (img.is('.full')){
+       $('.description',$(this).closest('li')).fadeOut('fast');
+        img.attr('src','/images/right.png');
+      };
+    }
+  );
+
 
   //Horizontal accordion
   $('#horizontalaccordion>ul>li>a').click(function(event){
