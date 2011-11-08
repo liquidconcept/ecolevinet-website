@@ -1,58 +1,49 @@
 <div id="left_col">
   <h2/>Actualités</h2>
-	<div class="important">
-		<p>9EG6 - Attention à prendre vos bottes ce lundi</p>
-	</div>
-	<ul class="infos">
-		<li>
-			<h3>27.11.2011 - Course d'école</h3>
-			<p>N'oubliez pas de vous lever, il va pleuvoir, c'est pas la fête et vive le Lorem Ipsum dolor sit amet</p>
-		</li>
-		<li>
-			<h3>27.11.2011 - Course d'école</h3>
-			<p>N'oubliez pas de vous lever</p>
-		</li>
-		<li>
-			<h3>27.11.2011 - Course d'école</h3>
-		</li>
-		<li>
-			<h3>27.11.2011 - Course d'école</h3>
-		</li>
-	</ul>
+  <% if @page.section.news_items.hot.any? %>
+    <div class="important">
+      <% @page.section.news_items.hot.each do |news_item| %>
+        <h3><%=raw  news_item.created_at.strftime('%d/%m/%y') %> - <%=raw news_item.title %></h3>
+        <p><%=raw news_item.heading %><br /><%= link_to 'En savoir plus' ,news_item_path(news_item) unless news_item.content.strip.gsub('^<p></p>$', '').gsub('<br />','').blank? %></p>
+      <% end %>
+    </div>
+  <% end %>
+  <% if @page.section.news_items.current.any? %>
+    <ul class="infos">
+      <% @page.section.news_items.current.each do |news_item| %>
+        <li>
+          <h3><%= news_item.created_at.strftime('%d/%m/%y') %> - <%= news_item.title %></h3>
+          <p><%= news_item.heading %>
+            <% if !news_item.content.strip.gsub('^<p></p>$', '').gsub('<br />','').blank? %>
+              <span><%= link_to 'En savoir plus', news_item_path(news_item) %></span>
+            <% end %>
+          </p>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
 </div>
 
 <div id="center_col">
   <h2/>Agenda</h2>
-	<ul class="infos">
-		<li>
-			<h3>27.11.2011 - Course d'école</h3>
-			<p>N'oubliez pas de vous lever</p>
-		</li>
-		<li>
-			<h3>27.11.2011 - Course d'école</h3>
-		</li>
-		<li>
-			<h3>27.11.2011 - Course d'école</h3>
-		</li>
-		<li>
-			<h3>27.11.2011 - Course d'école</h3>
-			<p>N'oubliez pas de vous lever</p>
-		</li>
-		<li>
-			<h3>27.11.2011 - Course d'école</h3>
-			<p>N'oubliez pas de vous lever</p>
-		</li>
-	</ul>
+  <ul class="infos">
+    <% @page.section.events.from_now.reverse.each do |event_item| %>
+      <li>
+        <h3><%= event_item.start_date.strftime("%d.%m.%Y") %><%= (event_item.end_date > event_item.start_date) ? event_item.end_date.strftime(' au %d.%m.%Y') : '' %> - <%= event_item.title %></h3>
+        <p><%=raw event_item.description %></p>
+      </li>
+    <% end %>
+  </ul>
 </div>
 
 <div id="right_col">
   <h2/>Contact</h2>
   <%= link_to(image_tag("google.jpg",:alt => ""),"http://maps.google.com/maps?f=q&source=embed&hl=en&geocode=&q=%C3%A9cole+vinet+lausanne&aq=&sll=37.0625,-95.677068&sspn=69.476188,177.451172&vpsrc=6&ie=UTF8&hq=%C3%A9cole+vinet&hnear=Lausanne,+Vaud,+Switzerland&cid=5096095572938173010&ll=46.519894,6.637373&spn=0.011812,0.018368&z=14&iwloc=A",{ :onClick => "window.open(this.href,'_blank');return false;"}) %>
-	<br/>
+  <br/>
   <h3>Ecole Vinet</h3>
   <p>Rue de l’Ecole-Supérieure 2<br />
-  C.P. 5987<br />
-  1002 Lausanne</p><br/>
+    C.P. 5987<br />
+    1002 Lausanne</p><br/>
   <p>Tel: 021 312 44 70<br />Fax:	021 311 81 12</p>
-	<%= link_to(image_tag("Facebook-Icon.jpg", :alt => "", :style => "position:absolute; bottom:0px; right:0px;"),"http://www.facebook.com/group.php?gid=21310185688", {:onClick => "window.open(this.href,'_blank');return false;" }) %>
+  <%= link_to(image_tag("Facebook-Icon.jpg", :alt => "", :style => "position:absolute; bottom:0px; right:0px;"),"http://www.facebook.com/group.php?gid=21310185688", {:onClick => "window.open(this.href,'_blank');return false;" }) %>
 </div>
