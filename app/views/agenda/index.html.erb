@@ -7,9 +7,9 @@
       <h3>
       <div class="event_container">
         <% date  = if event.start_date == event.end_date
-                     l(event.start_date)
+                     event.start_date.strftime("%d.%m.%Y")
                    else
-                     'du ' + l(event.start_date) + ' au ' + l(event.end_date)
+                     'du ' + event.start_date.strftime("%d.%m.%Y") + ' au ' + event.end_date.strftime("%d.%m.%Y")
                    end %>
 
         <%  type  = event.description.blank? ? 'empty':'full' %>
@@ -27,7 +27,7 @@
        </div>
      </h3>
      <div class="description" style="display:none;">
-       <%=raw event.description if event.description %>
+       <p><%=raw event.description if event.description %></p>
      </div>
      </li>
      <% end %>
