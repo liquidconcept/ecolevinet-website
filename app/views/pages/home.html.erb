@@ -26,26 +26,14 @@
 
 <div id="center_col">
   <h2/>Agenda</h2>
-	<ul class="infos">
-		<li>
-			<h3>27.11.2011 - Course d'école</h3>
-			<p>N'oubliez pas de vous lever</p>
-		</li>
-		<li>
-			<h3>27.11.2011 - Course d'école</h3>
-		</li>
-		<li>
-			<h3>27.11.2011 - Course d'école</h3>
-		</li>
-		<li>
-			<h3>27.11.2011 - Course d'école</h3>
-			<p>N'oubliez pas de vous lever</p>
-		</li>
-		<li>
-			<h3>27.11.2011 - Course d'école</h3>
-			<p>N'oubliez pas de vous lever</p>
-		</li>
-	</ul>
+  <ul class="infos">
+    <% @page.section.events.from_now.reverse.each do |event_item| %>
+      <li>
+        <h3><%= event_item.start_date.strftime("%d.%m.%Y") %><%= (event_item.end_date > event_item.start_date) ? event_item.end_date.strftime(' au %d.%m.%Y') : '' %> - <%= event_item.title %></h3>
+        <p><%=raw event_item.description %></p>
+      </li>
+    <% end %>
+  </ul>
 </div>
 
 <div id="right_col">

@@ -13,5 +13,6 @@ class Event < ActiveRecord::Base
 
   scope :today, lambda { where("start_date <= ? and end_date >= ?", Date.today, Date.today) }
   scope :given_day, lambda {|day| where("start_date <= ? and end_date >= ?", day, day) }
+  scope :from_now, lambda { where("start_date >= ? or end_date >= ?", Date.today, Date.today) }
 
 end
