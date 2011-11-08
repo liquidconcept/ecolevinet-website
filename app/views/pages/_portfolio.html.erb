@@ -4,8 +4,7 @@
   <div class="layer">
     <%= image_fu first_portfolio_entry.images.first, '420x300#', {:class => "portfolio_img", :alt => "#{first_portfolio_entry.title}" }%>
   </div>
-
-  <h1><%= link_to 'Galerie', '/portfolio/' %></h1>
+  <h1><%= link_to 'Galerie', :controller => "portfolio", :section_id => section.id %></h1>
   <div id="portfolio_window" >
     <div id="portfolios_container" data-section="<%= section.id %>">
       <% section.portfolio_entries[0..1].each do  |portfolio_entry| %>
@@ -16,7 +15,7 @@
 
   <div id="portfolio_switcher">
     <a href="#" class="left"></a>
-    <%= link_to first_portfolio_entry.title, portfolio_path(first_portfolio_entry), {:class => "target"}  %>
+    <%= link_to first_portfolio_entry.title, portfolio_path(first_portfolio_entry,:section_id => section.id), {:class => "target"}  %>
     <a href="#" class="right"></a>
   </div>
 

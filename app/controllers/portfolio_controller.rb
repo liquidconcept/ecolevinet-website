@@ -63,11 +63,16 @@ protected
 
   def single_level
     @portfolio_entries = PortfolioEntry.all
+    @portfolio_entries = @portfolio_entries.keep_if{|pe| pe.sections.include? Section.find(params[:section_id].to_i) }
     @portfolio_entry = @master_entry
   end
 
   def load_page
-    @page = Page.find_by_link_url('/portfolio', :include => [:parts])
+    if params[:section_id]
+      @page = Section.find(params[:section_id]).page
+    else
+      @page = Page.find_by_link_url('/portfolio', :include => [:parts])
+    end
   end
 
 end
