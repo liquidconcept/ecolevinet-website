@@ -1,4 +1,4 @@
-<div id="text" class="section_<%= in_section(@page).id%>">
+<div id="text" class="<%='section_' + in_section(@page).id.to_s %>">
   <h1>
     <%=raw @news_item.title %>
   </h1>
