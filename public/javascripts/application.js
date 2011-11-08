@@ -61,7 +61,7 @@ $(document).ready(function() {
       //change galery title & src
       portfolio = portfolios[p_navigation.index];
 
-      $('#portfolio_switcher > a.target').attr('href','/portfolio/' + portfolio['portfolio_entry']['friendly_id']);
+      $('#portfolio_switcher > a.target').attr('href','/portfolio/' + portfolio['portfolio_entry']['friendly_id'] + "?section_id=" + $('#portfolios_container').attr('data-section'));
       $('#portfolio_switcher > a.target').html(portfolio['portfolio_entry']['title']);
     },
     index: 0,

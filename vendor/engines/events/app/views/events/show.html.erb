@@ -7,7 +7,7 @@
   <p><%=raw @event.description %></p>
   <br />
   <% unless @event.location.blank? %>
-    <h3><%=raw t(:location) + ':' %> </h3>
+    <h3> Lieu :</h3>
     <p> <%=raw @event.location %>    </p>
     <br />
     <% unless @event.adress.blank? %>
@@ -35,7 +35,7 @@
     </ul>
   </aside>
 <% end %>
-<div id="text" class="section_<%= @event.section.id%>">
+<div id="text" class="<%='section_' + in_section(@page).id.to_s %>">
   <%= render :partial => "/shared/content_page" %>
 </div>
 

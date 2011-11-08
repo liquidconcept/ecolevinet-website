@@ -43,7 +43,11 @@ protected
   end
 
   def find_page
-    @page = Page.where(:link_url => "/events").first
+    if params[:section_id]
+      @page = Section.find(params[:section_id]).page
+    else
+      @page = Page.where(:link_url => "/events").first
+    end
   end
 
   def find_categories
