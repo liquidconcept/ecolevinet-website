@@ -217,8 +217,18 @@ html{
 					padding:3px;
 				}
 				p{
+          position:relative;
 					padding:3px 3px 15px 3px;
 					border:1px solid $dark_grey;
+          span {
+            display:block;
+            height:15px;
+            a {
+              position:absolute;
+              bottom:2px;
+              right:3px;
+            }
+          }
 				}
 			}
     }
