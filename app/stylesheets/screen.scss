@@ -897,7 +897,54 @@ html{
     }
   }
 }
+/*--formating  specific to the agenda page --*/
+#agenda{
+      float:left;
+      width:600px;
+			margin-right:25px;
+      h2{
+        font-size:23px;
+        margin-bottom:25px;
+        font-weight:normal;
+      }
+			.infos{
+				width:585px;
+				li{
+					width:100%;
+					margin-bottom:10px;
+				}
+        .empty{
+          text-indent: 13px;
+        }
 
+				h3{
+          background-color:$white;
+          color:$dark_grey;
+          padding: 3px 3px 0px 0px;
+          .event_container{
+            position:relative;
+            height: 20px;
+            .date{
+              border:1px solid $dark_grey;
+              background-color:$dark_grey;
+              color:$white;
+              padding: 3px;
+              width: 205px;
+            }
+            .title{
+              position: absolute;
+              left: 220px;
+              top: 5px;
+            }
+          }
+        }
+				p{
+					margin-top: 8px;
+          padding:3px 3px 15px 3px;
+					border:1px solid $dark_grey;
+				}
+			}
+}
 /*---------footer---------*/
 
 #footer{
