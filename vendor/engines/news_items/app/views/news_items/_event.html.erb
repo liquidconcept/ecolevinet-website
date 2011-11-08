@@ -2,6 +2,6 @@
   <p class="event_date"><%=raw  news_item.created_at.strftime('%d/%m/%y') %></p>
   <h2 class="event_title"><%=raw news_item.title %></h2>
   <div class="event_info">  <%=raw news_item.heading %>
-    <%= link_to 'En savoir plus' ,news_item_path(news_item) unless news_item.content.strip.gsub('^<p></p>$', '').gsub('<br />','').blank? %>
+      <%= link_to 'En savoir plus' ,news_item_path(news_item,:section_id => in_section(@page).id) unless news_item.content.strip.gsub('^<p></p>$', '').gsub('<br />','').blank? %>
   </div>
 </div>
