@@ -1,24 +1,27 @@
 <div id="left_col">
   <h2/>Actualités</h2>
-	<div class="important">
-		<p>9EG6 - Attention à prendre vos bottes ce lundi</p>
-	</div>
-	<ul class="infos">
-		<li>
-			<h3>27.11.2011 - Course d'école</h3>
-			<p>N'oubliez pas de vous lever, il va pleuvoir, c'est pas la fête et vive le Lorem Ipsum dolor sit amet</p>
-		</li>
-		<li>
-			<h3>27.11.2011 - Course d'école</h3>
-			<p>N'oubliez pas de vous lever</p>
-		</li>
-		<li>
-			<h3>27.11.2011 - Course d'école</h3>
-		</li>
-		<li>
-			<h3>27.11.2011 - Course d'école</h3>
-		</li>
-	</ul>
+  <% if @page.section.news_items.hot.any? %>
+    <div class="important">
+      <% @page.section.news_items.hot.each do |news_item| %>
+        <h3><%=raw  news_item.created_at.strftime('%d/%m/%y') %> - <%=raw news_item.title %></h3>
+        <p><%=raw news_item.heading %><br /><%= link_to 'En savoir plus' ,news_item_path(news_item) unless news_item.content.strip.gsub('^<p></p>$', '').gsub('<br />','').blank? %></p>
+      <% end %>
+    </div>
+  <% end %>
+  <% if @page.section.news_items.current.any? %>
+    <ul class="infos">
+      <% @page.section.news_items.current.each do |news_item| %>
+        <li>
+          <h3><%= news_item.created_at.strftime('%d/%m/%y') %> - <%= news_item.title %></h3>
+          <p><%= news_item.heading %>
+            <% if !news_item.content.strip.gsub('^<p></p>$', '').gsub('<br />','').blank? %>
+              <span><%= link_to 'En savoir plus', news_item_path(news_item) %></span>
+            <% end %>
+          </p>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
 </div>
 
 <div id="center_col">
