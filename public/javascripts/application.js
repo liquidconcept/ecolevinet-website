@@ -343,6 +343,7 @@ $(document).ready(function() {
   }
 
   var getCurrentSectionID = function(current_url) {
+    current_url = current_url.replace(location.origin, '');
     var current_section_id = parseInt(getQueryString(current_url, 'section_id') || 1);
     $('#section_container > div:not(#section_1)').each(function(index, el) {
       var section_id = index + 2; // index start to 0, section start to 1 and fisrt section is skeeped
@@ -361,11 +362,14 @@ $(document).ready(function() {
     slideSection(getCurrentSectionID(options.url), options.url);
   });
 
-  $('#section_container #section_6').bind('click', function() {
-    if ($(this).hasClass('open')) {
-      slideSection($(this).data('lastSectionId'), location.pathname);
+  $('#section_container #section_6, #menu a.contact').bind('click', function(event) {
+    event.preventDefault();
+
+    var tab = $('#section_container #section_6');
+    if (tab.hasClass('open')) {
+      slideSection(tab.data('lastSectionId'), location.href);
     } else {
-      $(this).data('lastSectionId', getCurrentSectionID(location.href));
+      tab.data('lastSectionId', getCurrentSectionID(location.href));
       slideSection(6, location.pathname);
     }
   });
