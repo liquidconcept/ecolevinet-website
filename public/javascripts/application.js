@@ -178,7 +178,6 @@ $(document).ready(function() {
             //populate loaded pages
             temp = c_navigation.index.format('DD-MM-YY');
             c_navigation.loaded.push(moment(temp,'DD-MM-YY').subtract('M',1).format('MM-YY'));
-            console.log(c_navigation.loaded);
           }
         });
       }
@@ -330,7 +329,7 @@ $(document).ready(function() {
         });
       }
 
-      if (current_section_id === 1) {
+      if (current_section_id === 1 || ($('#menu a.active').length !== 0 && current_section_id === 6)) {
         $('#menu a').removeClass('active');
         if ($('#menu a[href="'+ current_url +'"]').length === 0) {
           $('#menu a:first-child').addClass('active');
@@ -344,7 +343,7 @@ $(document).ready(function() {
   }
 
   var getCurrentSectionID = function(current_url) {
-    var current_section_id = $.getQueryString(current_url, 'section_id') || 1;
+    var current_section_id = parseInt(getQueryString(current_url, 'section_id') || 1);
     $('#section_container > div:not(#section_1)').each(function(index, el) {
       var section_id = index + 2; // index start to 0, section start to 1 and fisrt section is skeeped
       el = $(el);
@@ -363,7 +362,12 @@ $(document).ready(function() {
   });
 
   $('#section_container #section_6').bind('click', function() {
-    slideSection(6, location.pathname);
+    if ($(this).hasClass('open')) {
+      slideSection($(this).data('lastSectionId'), location.pathname);
+    } else {
+      $(this).data('lastSectionId', getCurrentSectionID(location.href));
+      slideSection(6, location.pathname);
+    }
   });
 
   $('body').bind('pjax:end', function() {
@@ -376,35 +380,33 @@ $(document).ready(function() {
     if (!href.match(/(https?)?\/\//)) {
       event.preventDefault();
 
-      if (href !== undefined && href !== '' && location.pathname !== $(this).attr('href')) {
-        $.pjax({url: href, container: '#page_content', timeout: 10000});
+      if (href !== undefined && href !== '' && location.href !== $(this).attr('href')) {
+        jQuery.pjax({url: href, container: '#page_content', timeout: 10000});
       } else {
-        slideSection(getCurrentSectionID(location.pathname), location.pathname);
+        slideSection(getCurrentSectionID(location.href), location.href);
       }
     }
   });
 });
 
-$.extend({
-  getQueryString: function(href, name) {
-    if (name === undefined) {
-      name = href;
-      href = window.location.href;
-    }
-
-    var vars = [], hash;
-    var hashes = href.slice(href.indexOf('?') + 1).split('&');
-    for(var i = 0; i < hashes.length; i++)
-    {
-      hash = hashes[i].split('=');
-      vars.push(hash[0]);
-      vars[hash[0]] = hash[1];
-    }
-
-    if (name) {
-      return vars[name];
-    } else {
-      return vars;
-    }
+var getQueryString = function(href, name) {
+  if (name === undefined) {
+    name = href;
+    href = window.location.href;
   }
-});
+
+  var vars = [], hash;
+  var hashes = href.slice(href.indexOf('?') + 1).split('&');
+  for(var i = 0; i < hashes.length; i++)
+  {
+    hash = hashes[i].split('=');
+    vars.push(hash[0]);
+    vars[hash[0]] = hash[1];
+  }
+
+  if (name) {
+    return vars[name];
+  } else {
+    return vars;
+  }
+}
