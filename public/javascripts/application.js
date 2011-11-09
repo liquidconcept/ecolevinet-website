@@ -344,12 +344,12 @@ $(document).ready(function() {
   }
 
   var getCurrentSectionID = function(current_url) {
-    var current_section_id = 1;
+    var current_section_id = $.getQueryString(current_url, 'section_id') || 1;
     $('#section_container > div:not(#section_1)').each(function(index, el) {
       var section_id = index + 2; // index start to 0, section start to 1 and fisrt section is skeeped
       el = $(el);
 
-      if (current_url.indexOf(el.find('a').attr('href')) === 0 || el.attr('id') === 'section_' + $.getQueryString('section_id')) {
+      if (current_url.indexOf(el.find('a').attr('href')) === 0) {
         current_section_id = index + 2;
       }
     });
@@ -376,7 +376,7 @@ $(document).ready(function() {
     if (!href.match(/(https?)?\/\//)) {
       event.preventDefault();
 
-      if ($(this).attr('href') !== undefined && $(this).attr('href') !== '' && location.pathname !== $(this).attr('href')) {
+      if (href !== undefined && href !== '' && location.pathname !== $(this).attr('href')) {
         $.pjax({url: href, container: '#page_content', timeout: 10000});
       } else {
         slideSection(getCurrentSectionID(location.pathname), location.pathname);
@@ -386,9 +386,14 @@ $(document).ready(function() {
 });
 
 $.extend({
-  getQueryString: function(name) {
+  getQueryString: function(href, name) {
+    if (name === undefined) {
+      name = href;
+      href = window.location.href;
+    }
+
     var vars = [], hash;
-    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    var hashes = href.slice(href.indexOf('?') + 1).split('&');
     for(var i = 0; i < hashes.length; i++)
     {
       hash = hashes[i].split('=');
