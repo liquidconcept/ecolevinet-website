@@ -14,10 +14,10 @@ $(document).ready(function() {
 
   // Block overlay
   $('.block > .layer').show();
-  $('.block > .layer').bind('mouseenter', function() {
+  $('.block > .layer').live('mouseenter', function() {
     $(this).fadeOut('fast');
   });
-  $('.block').bind('mouseleave', function() {
+  $('.block').live('mouseleave', function() {
     $(this).find('.layer').fadeIn('fast');
   });
 
