@@ -372,6 +372,7 @@ $(document).ready(function() {
 
   $('body').bind('pjax:end', function() {
     $('#page_content').slideDown(1000);
+    load_Scrollbar();
   });
 
   $('body').delegate('a', 'click', function(event){
