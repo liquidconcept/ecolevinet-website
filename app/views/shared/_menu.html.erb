@@ -2,5 +2,5 @@
   <%= link_to 'Accueil'    , '/'                   , {:class => (['/accueil','/'].include?(url_for(page.url)) ? 'active' : '')} %>
   <%= link_to 'Admission'  , '/accueil/admission'  , {:class => ('/accueil/admission'  == url_for(page.url)   ? 'active' : '')} %>
   <%= link_to 'Agenda'     , '/agenda/index'       , {:class => ('/agenda/index'       == url_for(page.url)   ? 'active' : '')} %>
-  <%= link_to 'Contact'    , '/accueil/contact'    , {:class => ('/accueil/contact'    == url_for(page.url)   ? 'active' : '')} %>
+  <%= link_to 'Contact'    , '#'                   , {:class => 'contact'} %>
 </ul>
