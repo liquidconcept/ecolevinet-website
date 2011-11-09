@@ -12,7 +12,7 @@
     <ul class="infos">
       <% @page.section.news_items.current.each do |news_item| %>
         <li>
-          <h3><%= news_item.created_at.strftime('%d/%m/%y') %> - <%= news_item.title %></h3>
+          <h3><%= news_item.created_at.strftime('%d.%m.%Y') %> - <%= news_item.title %></h3>
           <p><%= news_item.heading %>
             <% if !news_item.content.strip.gsub('^<p></p>$', '').gsub('<br />','').blank? %>
               <span><%= link_to 'En savoir plus', news_item_path(news_item, :section_id => @page.section.id) %></span>
