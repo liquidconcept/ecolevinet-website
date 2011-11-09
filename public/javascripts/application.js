@@ -377,7 +377,7 @@ $(document).ready(function() {
   $('body').delegate('a', 'click', function(event){
     var href = $(this).attr('href');
 
-    if (!href.match(/(https?)?\/\//)) {
+    if (!href.match(/(https?)?\/\//) && href !== '#') {
       event.preventDefault();
 
       if (href !== undefined && href !== '' && location.href !== $(this).attr('href')) {

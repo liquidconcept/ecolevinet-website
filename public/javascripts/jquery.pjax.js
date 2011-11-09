@@ -196,7 +196,6 @@ pjax.defaults = {
     xhr.setRequestHeader('X-PJAX', 'true')
   },
   error: function(xhr, textStatus, errorThrown){
-    console.log(errorThrown);
     if ( textStatus !== 'abort' )
       window.location = pjax.options.url
   },
