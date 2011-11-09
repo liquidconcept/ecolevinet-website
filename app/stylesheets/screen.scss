@@ -102,7 +102,6 @@ html{
     position:relative;
     padding:0px 45px 45px 45px;
     #calendar_overlay{
-      display:none;
       background-color:$light_grey;
       border:1px solid $grey;
       padding:15px;
@@ -201,7 +200,7 @@ html{
         -moz-border-radius: 10px; /* Firefox */
         -webkit-border-radius: 10px; /* Safari and Chrome */
         border-radius: 10px; /* Opera 10.5+, future browsers, and now also Internet Explorer 6+ using IE-CSS3 */
-				background-color:nth($section_colors, 5);
+				background-color:nth($section_colors, 1);
 				color:$white;
 				font-weight:bold;
 			}
@@ -987,21 +986,33 @@ html{
       border-radius: 4px; /* Opera 10.5+, future browsers, and now also Internet Explorer 6+ using IE-CSS3 */
       behavior: url(/stylesheets/PIE/PIE.htc);
       z-index:10;
-      width:568px;
-      height:276px;
+      width:588px;
+      height:306px;
       border:1px solid $grey;
-      padding:70px 20px 0px 120px;
+      padding:40px 20px 0px 100px;
       form{
         .float{
           float:left;
-          margin-right:20px;
+          margin-right:40px;
+					p{
+						width:300px;
+					}
+					h2{
+						width:185px;
+						font-size:14px;
+						font-weight:bold;
+						margin-bottom:5px;
+					}
+					strong{
+						font-weight:bold;
+					}
           #message{
             width:300px;
             height:100px;
             margin:2px 0px 17px 0px;
           }
           .submit{
-            width:305px;;
+            width:185px;;
             background-color:$white;
             color:nth($section_colors, 6);
             border:1px solid nth($section_colors, 6);
