@@ -332,7 +332,11 @@ $(document).ready(function() {
 
       if (current_section_id === 1) {
         $('#menu a').removeClass('active');
-        $('#menu a[href="'+ current_url +'"]').addClass('active');
+        if ($('#menu a[href="'+ current_url +'"]').length === 0) {
+          $('#menu a:first-child').addClass('active');
+        } else {
+          $('#menu a[href="'+ current_url +'"]').addClass('active');
+        }
       } else  {
         $('#menu a').removeClass('active');
       }
