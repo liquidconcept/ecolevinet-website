@@ -849,6 +849,7 @@ html{
       left: 630px + (($i - 1) * 40px);
 
       .nav_wrap {
+        cursor:pointer;
         .nav_background {
           background-color:nth($section_colors, $i);
         }
@@ -864,7 +865,7 @@ html{
         left: (($i - 2) * 40px);
       }
     }
-			
+
     #form_contact{
       position:absolute;
       padding:20px;
