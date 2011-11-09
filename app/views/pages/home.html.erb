@@ -14,9 +14,9 @@
         <li>
           <h3><%= news_item.created_at.strftime('%d.%m.%Y') %> - <%= news_item.title %></h3>
           <p><%= news_item.heading %>
-            <% if !news_item.content.strip.gsub('^<p></p>$', '').gsub('<br />','').blank? %>
-              <span><%= link_to 'En savoir plus', news_item_path(news_item, :section_id => @page.section.id) %></span>
-            <% end %>
+          <% if !news_item.content.strip.gsub('^<p></p>$', '').gsub('<br />','').blank? %>
+            <span><%= link_to 'En savoir plus', news_item_path(news_item, :section_id => @page.section.id) %></span>
+          <% end %>
           </p>
         </li>
       <% end %>
@@ -30,7 +30,9 @@
     <% @page.section.events.from_now.reverse.each do |event_item| %>
       <li>
         <h3><%= event_item.start_date.strftime("%d.%m.%Y") %><%= (event_item.end_date > event_item.start_date) ? event_item.end_date.strftime(' au %d.%m.%Y') : '' %> - <%= event_item.title %></h3>
-        <p><%=raw event_item.description %></p>
+        <% if !event_item.description.strip.gsub('^<p></p>$', '').gsub('<br />','').blank? %>
+          <p><%=raw event_item.description %></p>
+        <% end %>
       </li>
     <% end %>
   </ul>
