@@ -1,41 +1,27 @@
-<% content_for :body_content_title do %>
-  <%= @event.title %>
-<% end %>
+<div class="portfolio <%='section_' + in_section(@page).id.to_s %>">
 
-<% content_for :body_content_left do %>
-  <h2><%=raw @event.title %></h2>
+<div id="left_col">
+  <h2><%=raw date_for(@event) + ' ' +  @event.title %></h2>
   <p><%=raw @event.description %></p>
   <br />
   <% unless @event.location.blank? %>
-    <h3> Lieu :</h3>
-    <p> <%=raw @event.location %>    </p>
-    <br />
-    <% unless @event.adress.blank? %>
-      <%= link_to image_tag(@map_url), 'http://maps.google.com/maps?q=' + @event.adress %>
-    <% end %>
+   <h3> Lieu :</h3>
+   <p> <%=raw @event.location %>    </p>
+   <br />
+   <% unless @event.adress.blank? %>
+     <%= link_to image_tag(@map_url), 'http://maps.google.com/maps?q=' + @event.adress %>
+   <% end %>
   <% end %>
-
-  <br /><br />
-  <h3><%=raw t(:start_date) + ':' %> </h3>
-  <p><%=raw @event.start_date%></p>
-  <br />
-  <h3><%=raw t(:end_date) + ':' %> </h3>
-  <p><%=raw @event.end_date%></p>
-<% end %>
-
-<% content_for :body_content_right do %>
-  <aside>
-    <h2><%= t('.other') %></h2>
-    <ul id="events">
-      <% @events.each do |event| %>
-        <li>
-          <%= link_to event.title, event_path(event) %>
-        </li>
-      <% end %>
-    </ul>
-  </aside>
-<% end %>
-<div id="text" class="<%='section_' + in_section(@page).id.to_s %>">
-  <%= render :partial => "/shared/content_page" %>
 </div>
 
+  <div id="right_col">
+   <h2><%= t('.other') %></h2>
+   <ul id="events">
+     <% @events.each do |event| %>
+       <li>
+       <%= link_to event.title, event_path(event) %>
+       </li>
+     <% end %>
+   </ul>
+  </div>
+</div>
