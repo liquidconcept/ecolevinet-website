@@ -55,5 +55,15 @@ module PageHelper
     child.data_type.blank? || !%w(form).include?(child.data_type.blank?)
   end
 
+  def date_for(event_object)
+    if event_object.start_date == event_object.end_date
+      event_object.start_date.strftime("%d.%m.%Y")
+    else
+      'du ' + event_object.start_date.strftime("%d.%m.%Y") + ' au ' + event_object.end_date.strftime("%d.%m.%Y")
+    end
+  rescue Exception => e
+    logger.error(" #{e.message}")
+  end
 end
+
 

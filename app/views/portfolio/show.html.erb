@@ -1,5 +1,6 @@
 <div class='portfolio'>
 <div id="left_col">
+  <div class="<%='section_' + in_section(@page).id.to_s %>">
 <h1><%=  @portfolio_entry.title %> </h1>
   <%=  raw @portfolio_entry.body %><br/>
   <% @portfolio_entry.images.each_with_index do |image, index| -%>
@@ -13,8 +14,10 @@
   
     <% end %>
   <% end %>
+  </div>
 </div>
 <div id="right_col">
+  <div class="<%='section_' + in_section(@page).id.to_s %>">
 	<h1>Galeries</h1>
   <% if @portfolio_entries.many?%>
   <ul>
@@ -23,6 +26,7 @@
     <% end -%>
   </ul>
   <% end %>
+  </div>
 </div>
 
 </div>

@@ -82,7 +82,6 @@ var pjax = $.pjax = function( options ) {
   // We don't want to let anyone override our success handler.
   delete options.success
 
-
   // We can't persist $objects using the history API so we must use
   // a String selector. Bail if we got anything else.
   if ( typeof options.container !== 'string' )
@@ -101,8 +100,6 @@ var pjax = $.pjax = function( options ) {
       // If they specified a fragment, look for it in the response
       // and pull it out.
       var $fragment = $(data).find(options.fragment)
-      console.log("$fragment:");
-      console.log($fragment);
       if ( $fragment.length )
         data = $fragment.children()
       else
@@ -122,6 +119,11 @@ var pjax = $.pjax = function( options ) {
     var oldTitle = document.title,
         title = $.trim( this.find('title').remove().text() )
     if ( title ) document.title = title
+
+    // No <title>? Fragment? Look for data-title and title attributes.
+    if ( !title && options.fragment ) {
+      title = $fragment.attr('title') || $fragment.data('title')
+    }
 
     var state = {
       pjax: options.container,
@@ -188,6 +190,8 @@ pjax.defaults = {
   type: 'GET',
   dataType: 'html',
   beforeSend: function(xhr){
+    this.trigger('pjax:start', [xhr, pjax.options])
+    // start.pjax is deprecated
     this.trigger('start.pjax', [xhr, pjax.options])
     xhr.setRequestHeader('X-PJAX', 'true')
   },
@@ -196,6 +200,8 @@ pjax.defaults = {
       window.location = pjax.options.url
   },
   complete: function(xhr){
+    this.trigger('pjax:end', [xhr, pjax.options])
+    // end.pjax is deprecated
     this.trigger('end.pjax', [xhr, pjax.options])
   }
 }

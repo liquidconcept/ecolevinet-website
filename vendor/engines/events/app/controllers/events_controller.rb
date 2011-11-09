@@ -46,7 +46,7 @@ protected
     if params[:section_id]
       @page = Section.find(params[:section_id]).page
     else
-      @page = Page.where(:link_url => "/events").first
+      @page = Page.where(:link_url => "/").first
     end
   end
 

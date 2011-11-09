@@ -1,3 +1,5 @@
+var undefined;
+
 $(document).ready(function() {
 
   // init scrollbar
@@ -176,7 +178,6 @@ $(document).ready(function() {
             //populate loaded pages
             temp = c_navigation.index.format('DD-MM-YY');
             c_navigation.loaded.push(moment(temp,'DD-MM-YY').subtract('M',1).format('MM-YY'));
-            console.log(c_navigation.loaded);
           }
         });
       }
@@ -307,33 +308,106 @@ $(document).ready(function() {
     }
   );
 
+  //
+  // MENU
+  //
 
-  //Horizontal accordion
-  $('#horizontalaccordion>ul>li>a').click(function(event){
-    event.preventDefault();
-    var vb, link;
-    vb   = $(this).parent();
-    link = $(this);
-    // if user is asking for the current page, do nothing
-    if (location.pathname == $(this).attr('href') ) {return false;};
+  var slideSection = function(current_section_id, current_url) {
+    $('#section_container > div:not(#section_1)').each(function(index, el) {
+      var section_id = index + 2; // index start to 0, section start to 1 and fisrt section is skeeped
+      el = $(el);
 
-    //pjax call
-    $.pjax({url: $(this).attr('href') , container: '#page_content',  timeout: 3000});
+      // open section if needed
+      if (section_id <= current_section_id && !el.hasClass('open')) {
+        el.animate({left: '-=670'}, function() {
+          el.addClass('open');
+        });
+      // or close it
+      } else if (section_id > current_section_id && el.hasClass('open')) {
+        el.animate({left: '+=670'}, function() {
+          el.removeClass('open');
+        });
+      }
 
-    //pjax start bind
-    $('body').unbind('start.pjax').bind('start.pjax', function() {
-      $('#page_content').slideUp(1000);
+      if (current_section_id === 1 || ($('#menu a.active').length !== 0 && current_section_id === 6)) {
+        $('#menu a').removeClass('active');
+        if ($('#menu a[href="'+ current_url +'"]').length === 0) {
+          $('#menu a:first-child').addClass('active');
+        } else {
+          $('#menu a[href="'+ current_url +'"]').addClass('active');
+        }
+      } else  {
+        $('#menu a').removeClass('active');
+      }
+    });
+  }
+
+  var getCurrentSectionID = function(current_url) {
+    var current_section_id = parseInt(getQueryString(current_url, 'section_id') || 1);
+    $('#section_container > div:not(#section_1)').each(function(index, el) {
+      var section_id = index + 2; // index start to 0, section start to 1 and fisrt section is skeeped
+      el = $(el);
+
+      if (current_url.indexOf(el.find('a').attr('href')) === 0) {
+        current_section_id = index + 2;
+      }
     });
 
-    //pjax end bind
-    $('body').unbind('end.pjax').bind('end.pjax',   function() {
-      var sectionid;
-      sectionid = link.attr('data-sectionid');
-      $('#section' + sectionid).siblings().css({display: 'none'});//images et textes des autres sections en non sélectionnés
-      $('#section' + sectionid).fadeIn('fast');//.css({display: 'block'}); //images et textes de la section courante sélectionné
-      $('#page_content').slideDown(1000); //apparition du contenu
-      vb.parent().find('.current').animate({width: '34px'},'fast').removeClass('current').end(); //slider out
-      vb.animate({width: '736px'},'fast').addClass('current'); //slider in
-    });
+    return current_section_id;
+  }
+
+  $('body').bind('pjax:start', function(event, xhr, options) {
+    $('#page_content').slideUp(1000);
+    slideSection(getCurrentSectionID(options.url), options.url);
+  });
+
+  $('#section_container #section_6').bind('click', function() {
+    if ($(this).hasClass('open')) {
+      slideSection($(this).data('lastSectionId'), location.pathname);
+    } else {
+      $(this).data('lastSectionId', getCurrentSectionID(location.href));
+      slideSection(6, location.pathname);
+    }
+  });
+
+  $('body').bind('pjax:end', function() {
+    $('#page_content').slideDown(1000);
+    load_Scrollbar();
+  });
+
+  $('body').delegate('a', 'click', function(event){
+    var href = $(this).attr('href');
+
+    if (!href.match(/(https?)?\/\//) && href !== '#') {
+      event.preventDefault();
+
+      if (href !== undefined && href !== '' && location.href !== $(this).attr('href')) {
+        jQuery.pjax({url: href, container: '#page_content', timeout: 10000});
+      } else {
+        slideSection(getCurrentSectionID(location.href), location.href);
+      }
+    }
   });
 });
+
+var getQueryString = function(href, name) {
+  if (name === undefined) {
+    name = href;
+    href = window.location.href;
+  }
+
+  var vars = [], hash;
+  var hashes = href.slice(href.indexOf('?') + 1).split('&');
+  for(var i = 0; i < hashes.length; i++)
+  {
+    hash = hashes[i].split('=');
+    vars.push(hash[0]);
+    vars[hash[0]] = hash[1];
+  }
+
+  if (name) {
+    return vars[name];
+  } else {
+    return vars;
+  }
+}

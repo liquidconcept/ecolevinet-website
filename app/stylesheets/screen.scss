@@ -22,7 +22,7 @@ $dark_grey: #818284;
 $light_grey: #F7F7F7;
 $blue: #4341A6;
 
-$section_colors: #6E5C79 #C7BEB7 #A99E8B #75888E #7683A1 #97AEC0;
+$section_colors: #649488 #C7BEB7 #A99E8B #75888E #7683A1 #97AEC0;
 
 
 /*---------fonts----------*/
@@ -288,6 +288,42 @@ html{
 					color:$white;
 					padding:5px;
 				}
+        .section_1{
+					h2{
+						background-color:nth($section_colors, 1);
+						color:$white;
+					}
+        }
+				.section_2{
+					h2{
+						background-color:nth($section_colors, 2);
+						color:$white;
+					}
+				}
+				.section_3{
+					h2{
+						background-color:nth($section_colors, 3);
+						color:$white;
+					}
+				}
+				.section_4{
+					h2{
+						background-color:nth($section_colors, 4);
+						color:$white;
+					}
+				}
+				.section_5{
+					h2{
+						background-color:nth($section_colors, 5);
+						color:$white;
+					}
+				}
+				.section_6{
+					h2{
+						background-color:nth($section_colors, 6);
+						color:$white;
+					}
+        }
 				#body_content_left{
 					width:420px;
 					float:left;
@@ -298,7 +334,6 @@ html{
 					h2{
 						width:410px;
 						margin:15px 0px 15px 0px;
-						background-color:nth($section_colors, 4);
 						color:$white;
 						padding:5px;
 						font-size:20px;
@@ -306,24 +341,102 @@ html{
 							color:$white;
 						}
 					}
+        .section_1{
+					h2{
+						background-color:nth($section_colors, 1);
+						color:$white;
+					}
+        }
+				.section_2{
+					h2{
+						background-color:nth($section_colors, 2);
+						color:$white;
+					}
+				}
+				.section_3{
+					h2{
+						background-color:nth($section_colors, 3);
+						color:$white;
+					}
+				}
+				.section_4{
+					h2{
+						background-color:nth($section_colors, 4);
+						color:$white;
+					}
+				}
+				.section_5{
+					h2{
+						background-color:nth($section_colors, 5);
+						color:$white;
+					}
+				}
+				.section_6{
+					h2{
+						background-color:nth($section_colors, 6);
+						color:$white;
+					}
+        }
+
 				}
 				#body_content_right{
 					h2{
 						margin:15px 0px 15px 0px;
-						background-color:nth($section_colors, 4);
 						color:$white;
 						padding:5px;
 						font-size:20px;
 					}
-				}
+        }
 			}
 			.portfolio{
 				h1{
 					margin:0px 0px 15px 0px;
-					background-color:nth($section_colors, 4);
 					color:$white;
 					padding:5px;
 				}
+        .section_1{
+					h1{
+						background-color:nth($section_colors, 1);
+						color:$white;
+					}
+        }
+				.section_2{
+					h1{
+						background-color:nth($section_colors, 2);
+						color:$white;
+					}
+				}
+				.section_3{
+					h1{
+						background-color:nth($section_colors, 3);
+						color:$white;
+					}
+				}
+				.section_4{
+					h1{
+						background-color:nth($section_colors, 4);
+						color:$white;
+					}
+				}
+				.section_5{
+					h1{
+						background-color:nth($section_colors, 5);
+						color:$white;
+					}
+				}
+				.section_6{
+					h1{
+						background-color:nth($section_colors, 6);
+						color:$white;
+					}
+        }
+        h2{
+					margin:0px 0px 15px 0px;
+					color:$white;
+					padding:5px;
+          background-color:nth($section_colors, 1);
+				}
+
 				#left_col{
 					float:left;
 					width:545px;
@@ -339,7 +452,7 @@ html{
 				h2{
 					font-size:21px;
 					margin:0px 0px 15px 0px;
-					background-color:nth($section_colors, 4);
+					background-color:nth($section_colors, 5);
 					padding:5px;
 					color:$white;
 					text-align:center;
@@ -356,7 +469,7 @@ html{
 					cursor:pointer;
 					width:507px;
 					height:30px;
-					background-color:nth($section_colors, 4);
+					background-color:nth($section_colors, 5);
 					color:$white;
 					font-weight:bold;
 					&:hover{
@@ -849,6 +962,7 @@ html{
       left: 630px + (($i - 1) * 40px);
 
       .nav_wrap {
+        cursor:pointer;
         .nav_background {
           background-color:nth($section_colors, $i);
         }
@@ -864,7 +978,7 @@ html{
         left: (($i - 2) * 40px);
       }
     }
-			
+
     #form_contact{
       position:absolute;
       padding:20px;
@@ -949,7 +1063,7 @@ html{
           }
         }
 				p{
-					margin-top: 8px;
+          margin-top: 10px;
           padding:3px 3px 15px 3px;
 					border:1px solid $dark_grey;
 				}

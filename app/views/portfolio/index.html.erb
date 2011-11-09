@@ -2,6 +2,8 @@
   Galeries
 <% end -%>
 <% content_for :body_content_left do -%>
+  
+  <div class="<%='section_' + in_section(@page).id.to_s %>">
   <% @portfolio_entries.each do | portfolio | -%>
   	<entrie id=" blog_post_<%= portfolio.id %>" class="portofolio_entrie">
       <header>
@@ -30,16 +32,18 @@
       </footer>
     </entrie>
   <% end -%>
+</div>
 <% end -%>
 
 <% content_for :body_content_right do -%>
+<div class="<%='section_' + in_section(@page).id.to_s %>">
   <h2>Toutes les galeries</h2>
   <ul>
     <% @portfolio_entries.each do | portfolio | -%>
       <li class="clearfix"><%= link_to portfolio.title, portfolio_path(portfolio)  %></li>
     <% end -%>
   </ul>
+</div>
 <% end -%>
 
-
-<%= render :partial => '/shared/content_page' -%>
+  <%= render :partial => '/shared/content_page' -%>
