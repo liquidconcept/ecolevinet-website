@@ -72,7 +72,7 @@ $(document).ready(function() {
   p_navigation.init();
 
   // galeries selection
-  $('#portfolio_switcher > a.left').click(function(event){
+  $('#portfolio_switcher > a.left').live('click', (function(event){
     event.preventDefault();
 
     if (p_navigation.index == 0) {
@@ -85,8 +85,8 @@ $(document).ready(function() {
     //navigation update
     p_navigation.index -= 1;
     p_navigation.update();
-  });
-  $('#portfolio_switcher > a.right').click(function(event){
+  }));
+  $('#portfolio_switcher > a.right').live('click', (function(event){
     event.preventDefault();
 
     if (p_navigation.index + 1 == portfolios.length)  {
@@ -121,7 +121,7 @@ $(document).ready(function() {
          }
        })
      }
-  });
+  }));
 
   //calendar comportment
   //moment language initialization
@@ -222,21 +222,20 @@ $(document).ready(function() {
   }
 
   // left
-  $('#month_switcher>a.left').click(function(event){
+  $('#month_switcher>a.left').live('click', function(event){
     previous_month(event);
   });
   // right
-  $('#month_switcher>a.right').click(function(event){
+  $('#month_switcher>a.right').live('click',function(event){
     next_month(event);
   });
 
   // hover behaviour on overlay
-  $('#calendar_overlay').hover(
-    //wile entering, register being over
-    function(){$('#calendar_overlay').data('hover',true);}
-    ,
-    //wile leaving, register leaving & fadeOUt unless being on an event
-    function(){
+
+  //wile entering, register being over
+  $('#calendar_overlay').live('mouseenter', function(){$('#calendar_overlay').data('hover',true);});
+  //wile leaving, register leaving & fadeOUt unless being on an event
+  $('#calendar_overlay').live('mouseleave', function(){
       $('#calendar_overlay').data('hover',false);
       if (!$('#calendar_overlay').data('render')){
         $('#calendar_overlay').fadeOut('fast');
@@ -246,7 +245,7 @@ $(document).ready(function() {
   );
 
   // hover behaviour on a full day
-  $('.event_check').hover(
+  $('.event_check').live('mouseenter',
     //wile entering
     function (e) {
       //TODO: Fix me : clear timeout for in progress effect
@@ -271,7 +270,8 @@ $(document).ready(function() {
           };
         }
       });
-    },
+    });
+$('.event_check').live('mouseleave',
     //wile leaving
     function (e) {
       clearTimeout($('#calendar_overlay').data('timeoutId'));
@@ -289,24 +289,23 @@ $(document).ready(function() {
 
  //agenda page animation
 
-  $('#agenda .date>a').toggle(
+  $('#agenda .date>a').live('click',
     function(event){
     event.preventDefault();
     var img; img = $(this).find('img');
       if (img.is('.full')){
-        $('.description',$(this).closest('li')).fadeIn('fast');
-        img.attr('src','/images/down.png');
+        if (!img.hasClass('open')){
+          $('.description',$(this).closest('li')).fadeIn('fast');
+          img.attr('src','/images/down.png');
+          img.addClass('open');
+        }
+        else {
+          $('.description',$(this).closest('li')).fadeOut('fast');
+          img.attr('src','/images/right.png');
+          img.removeClass('open');
+        };
       };
-    },
-    function(event){
-    event.preventDefault();
-    var img; img = $(this).find('img');
-      if (img.is('.full')){
-       $('.description',$(this).closest('li')).fadeOut('fast');
-        img.attr('src','/images/right.png');
-      };
-    }
-  );
+    });
 
   //
   // MENU
@@ -377,6 +376,7 @@ $(document).ready(function() {
   $('body').bind('pjax:end', function() {
     $('#page_content').slideDown(1000);
     load_Scrollbar();
+    load_prettyPhoto();
   });
 
   $('body').delegate('a', 'click', function(event){

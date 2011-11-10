@@ -8,8 +8,6 @@ class PortfolioController < ApplicationController
     @portfolio_entries = @portfolio_entries.joins(:sections).all
     @portfolio_sections = Section.all
 
-   (render :json =>  @portfolio_entries.to_json(:methods => :friendly_id), :layout => false and return ) if request.xhr?
-
    respond_to do |format|
       format.any(:js, :json) { render request.format.to_sym => @portfolio_entries.to_json(:methods => :friendly_id) , :layout => false }
       format.html
@@ -40,11 +38,8 @@ class PortfolioController < ApplicationController
       error_404 and return
     end
 
-   (render :partial => 'pages/portfolio_entry', :layout => false,
-    :locals => { :portfolio_entry => @portfolio_entry, :klass => ''}   and return ) if request.xhr?
-
     respond_to do |format|
-      format.html
+      format.html {render :partial => 'pages/portfolio_entry', :layout => false, :locals => { :portfolio_entry => @portfolio_entry, :klass => ''} }
       format.any(:js, :json) { render request.format.to_sym => @portfolio_entry.to_json(:include  => {:images => {:methods => [ :url ]}})}
     end
 
