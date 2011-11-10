@@ -381,7 +381,7 @@ $('.event_check').live('mouseleave',
     p_navigation.init();
   });
 
-  $('body').delegate('a', 'click', function(event){
+  $('body').delegate('a:not([rel^="prettyPhoto"])', 'click', function(event){
     var href = $(this).attr('href');
 
     if (!href.match(/(https?)?\/\//) && href !== '#') {

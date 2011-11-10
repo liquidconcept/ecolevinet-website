@@ -39,8 +39,8 @@ class PortfolioController < ApplicationController
     end
 
     respond_to do |format|
-      format.html {render :partial => 'pages/portfolio_entry', :layout => false, :locals => { :portfolio_entry => @portfolio_entry, :klass => ''} }
       format.any(:js, :json) { render request.format.to_sym => @portfolio_entry.to_json(:include  => {:images => {:methods => [ :url ]}})}
+      format.html
     end
 
   end
