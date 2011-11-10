@@ -2,12 +2,14 @@
 class SendController < ApplicationController
 
   def justification_absence
-    @page = Page.find_by_link_url('/')
+    #serve parents page
+    @page = Section.find(5).page
   end
 
   def resultat_justification
     @params = params
-    @page = Page.find_by_link_url('/')
+    #serve parents page
+    @page = Section.find(5).page
     @timestamp = DateTime.now.to_i
     AbsenceMailer.justification_absence(@params,@timestamp,false).deliver
     AbsenceMailer.justification_absence(@params,@timestamp,true).deliver
@@ -22,12 +24,14 @@ class SendController < ApplicationController
   end
 
   def demande_absence
-    @page = Page.find_by_link_url('/')
+    #serve parents page
+    @page = Section.find(5).page
   end
 
   def resultat_demande
     @params = params
-    @page = Page.find_by_link_url('/')
+    #serve parents page
+    @page = Section.find(5).page
     @timestamp = DateTime.now.to_i
     
     AbsenceMailer.demande_absence(@params,@timestamp,true).deliver

@@ -1,22 +1,21 @@
 <%= form_tag('/send/resultat_justification') do -%>
 
-<p>
+<h2>
 Justification d’absence A la direction de l’établissement 
-</p>
-<p>Elève </p>
-<%= label_tag :nom %>
+</h2>
+<p>Elève </p><br/>
+<%= label_tag :nom %><br/>
 <%= text_field_tag :nom %>
 <br />
 
-<%= label_tag :prenom %>
+<%= label_tag :prenom %><br/>
 <%= text_field_tag :prenom %>
 <br />
 
-<%= label_tag :classe %>
+<%= label_tag :classe %><br/>
 <%= text_field_tag :classe %>
 <br />
-
-<p>DATES  DE L’ABSENCE </p>
+<p>Dates de l’absence </p>
 <p>
 du  
   <%= label_tag 'Date de début' %>
@@ -28,7 +27,7 @@ au
 <%= select_datetime DateTime.now, :prefix => :end_date %>
 </p>
 <p>
-MOTIF :
+Motif :
   <%= text_area_tag :motive,nil, :rows => 10,  :cols => 60 %>
 </p>
 <p>
@@ -40,6 +39,5 @@ MOTIF :
   <%= text_field_tag :phone %>
 </p>
 
-  <%= submit_tag 'Envoyer' %></p>
+  <%= submit_tag 'Envoyer', :class => 'submit'%></p><br />
 <% end -%>
-
