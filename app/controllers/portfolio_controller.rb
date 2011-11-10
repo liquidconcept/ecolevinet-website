@@ -8,8 +8,6 @@ class PortfolioController < ApplicationController
     @portfolio_entries = @portfolio_entries.joins(:sections).all
     @portfolio_sections = Section.all
 
- #  (render :json =>  @portfolio_entries.to_json(:methods => :friendly_id), :layout => false and return ) if request.xhr?
-
    respond_to do |format|
       format.any(:js, :json) { render request.format.to_sym => @portfolio_entries.to_json(:methods => :friendly_id) , :layout => false }
       format.html
