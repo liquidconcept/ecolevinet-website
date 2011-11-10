@@ -42,7 +42,9 @@ module PageHelper
     content = []
     content << "<ul class=\"tree_level_#{level}\">"
     page.children.select{|child| page_tree_child?(child) }.each do |child|
-      content << '<li>' + link_to(child.title, url_for(child.url))
+      url = url_for(child.url)
+      url += (url =~/\?/ ? '&' : '?') + "section_id=#{in_section(child).id}"
+      content << '<li>' + link_to(child.title, url)
       content << page_tree(child, level + 1)
       content << '</li>'
     end
