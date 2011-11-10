@@ -377,6 +377,8 @@ $('.event_check').live('mouseleave',
     $('#page_content').slideDown(1000);
     load_Scrollbar();
     load_prettyPhoto();
+    c_navigation.init();
+    p_navigation.init();
   });
 
   $('body').delegate('a', 'click', function(event){
