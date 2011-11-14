@@ -384,7 +384,7 @@ $('.event_check').live('mouseleave',
   $('body').delegate('a:not([rel^="prettyPhoto"])', 'click', function(event){
     var href = $(this).attr('href');
 
-    if (!href.match(/(https?)?\/\//) && href !== '#') {
+    if (!href.match(/(https?)?\/\//) && href !== '#' ) {
       event.preventDefault();
 
       if (href !== undefined && href !== '' && location.href !== $(this).attr('href')) {
