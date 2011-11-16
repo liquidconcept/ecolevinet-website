@@ -22,7 +22,7 @@
   <% if @portfolio_entries.many?%>
   <ul>
     <% @portfolio_entries.each do | portfolio | -%>
-      <li class="clearfix"><%= link_to portfolio.title, portfolio_path(portfolio)  %></li>
+      <li class="clearfix"><%= link_to portfolio.title, portfolio_path(portfolio,:section_id => in_section(@page))  %></li>
     <% end -%>
   </ul>
   <% end %>

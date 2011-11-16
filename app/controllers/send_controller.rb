@@ -46,4 +46,19 @@ class SendController < ApplicationController
     redirect_to :action => :demande_absence
   end
 
+  def demande_contact
+    @params = params
+    @timestamp = DateTime.now.to_i
+    
+    ContactMailer.demande_contact(@params,@timestamp,true).deliver
+    ContactMailer.demande_contact(@params,@timestamp,false).deliver
+
+    respond_to do |format|
+     format.js { render :text => "<p>Un message a été envoyé</p><p>au secrétariat de l'école</p>", :content_type => 'text/html'}
+    end
+
+  rescue Exception => exc
+    logger.error(" #{exc.message}")
+  end
+
 end

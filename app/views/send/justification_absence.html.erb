@@ -18,12 +18,12 @@ Justification d’absence à la direction de l’établissement
 <p>Dates de l’absence </p>
 <p>
 du  
-  <%= label_tag 'Date de début' %>
+  <%= label_tag 'Date de début' %><br/>
   <%= select_datetime DateTime.now, :prefix => :start_date %>
 </p>
 <p>
 au  
-<%= label_tag 'Date de fin' %>
+<%= label_tag 'Date de fin' %><br/>
 <%= select_datetime DateTime.now, :prefix => :end_date %>
 </p>
 <p>
@@ -39,5 +39,6 @@ Motif :
   <%= text_field_tag :phone %>
 </p>
 
-  <%= submit_tag 'Envoyer', :class => 'submit'%></p><br />
+<%= submit_tag 'Envoyer', :class => 'submit'%></p><br />
+<p>Toute justification d'absence envoyée par le formulaire sera vérifiée par le secrétariat.</p>
 <% end -%>
