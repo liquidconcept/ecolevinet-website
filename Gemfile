@@ -17,7 +17,7 @@ gem 'googlestaticmap'
 gem 'compass',      '>= 0.11.5'
 
 gem 'rack-pjax'
-
+gem 'jquery-rails'
 gem 'airbrake'
 
 group :production do

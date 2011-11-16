@@ -46,29 +46,30 @@
             <span class="nav_background active"></span>
           </div>
 					<div id="form_contact">
-						<form>
-							<div class="float">
-								<h2>Merci de prendre contact avec moi aux coordonnées suivantes: </h2>
-								<%= label_tag :name, "Nom, Prénom" %><br/>
-								<%= text_field_tag :name %>
-								<br />
-								<%= label_tag :phone, "No de téléphone" %><br/>
-								<%= text_field_tag :phone %>
-								<br />
-								<%= label_tag :email, "Adresse e-mail" %><br/>
-								<%= text_field_tag :email %><br />
-								<%= submit_tag 'Envoyer', :class => 'submit' %>
+              <%= form_tag('send/demande_contact', :remote => true, :id => 'demande_contact') do -%>
+                <div class="float">
+                  <h2>Merci de prendre contact avec moi aux coordonnées suivantes: </h2>
+                  <%= label_tag :name, "Nom, Prénom" %><br/>
+                  <%= text_field_tag :name %>
+                  <br />
+                  <%= label_tag :phone, "No de téléphone" %><br/>
+                  <%= text_field_tag :phone %>
+                  <br />
+                  <%= label_tag :email, "Adresse e-mail" %><br/>
+                  <%= text_field_tag :email %><br />
+                  <%= submit_tag 'Envoyer', :class => 'submit' %>
+                  <div id="contact_message"></div>
+                </div>
+                <div class="float">
+                  <p><strong>Direction</strong> - <a href="mailto:direction@ecolevinet.ch">direction@ecolevinet.ch</a> </p><br/>
+                  <p><strong>Décanat</strong> - <a href="mailto:alexandre.monbaron@ecolevinet.ch">alexandre.monbaron@ecolevinet.ch</a> </p><br/>
+                  <p><strong>Secrétariat</strong> - <a href="mailto:secretariat@ecolevinet.ch">secretariat@ecolevinet.ch</a></p><br/>
+                  <p><strong>Formulaire de - </strong><a href="/send/demande_absence">Demande de congé</a></p><br/>
+                  <p><strong>Formulaire de - </strong><a href="/send/justification_absence">Justification d’absence</a></p><br/><br/>
+                  <p>Le secrétariat répond de 8 h à 12 h et de 14 h à 17 h (sauf mercredi après-midi).</p><br/>
+                  <p>Tél. <strong>021 312 44 70</strong> - Fax <strong>021 311 81 12</strong> </p>
 							</div>
-							<div class="float">
-								<p><strong>Direction</strong> - <a href="mailto:direction@ecolevinet.ch">direction@ecolevinet.ch</a> </p><br/>
-								<p><strong>Décanat</strong> - <a href="mailto:alexandre.monbaron@ecolevinet.ch">alexandre.monbaron@ecolevinet.ch</a> </p><br/>
-								<p><strong>Secrétariat</strong> - <a href="mailto:secretariat@ecolevinet.ch">secretariat@ecolevinet.ch</a></p><br/>
-								<p><strong>Formulaire de - </strong><a href="/send/demande_absence">Demande de congé</a></p><br/>
-								<p><strong>Formulaire de - </strong><a href="/send/justification_absence">Justification d’absence</a></p><br/><br/>
-								<p>Le secrétariat répond de 8 h à 12 h et de 14 h à 17 h (sauf mercredi après-midi).</p><br/>
-								<p>Tél. <strong>021 312 44 70</strong> - Fax <strong>021 311 81 12</strong> </p>
-							</div>
-						</form>
+              <% end %>
 					</div>
           <%= image_tag "section_6_picture.jpg", :class => 'nav_picture' %>
         </div>

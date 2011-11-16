@@ -14,9 +14,7 @@ EcolevinetWebsite::Application.routes.draw do
   match 'send/justification_absence'  => 'send#justification_absence'
   match 'send/resultat_demande'       => 'send#resultat_demande'
   match 'send/resultat_justification' => 'send#resultat_justification'
-
-  match 'parents/*demande-de-congé'        => redirect('send#demande_absence')
-  match 'parents/*justification-d’absence' => redirect('send#justification_absence')
+  match 'send/demande_contact'        => 'send#demande_contact'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

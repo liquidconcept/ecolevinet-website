@@ -307,7 +307,13 @@ $('.event_check').live('mouseleave',
       };
     });
 
-  //
+  // contact form animation
+    //
+    $('#demande_contact').live('ajax:success',
+     function(event, data, status, xhr) {
+       $('#contact_message').html(data).fadeIn();
+     });
+
   // MENU
   //
 
@@ -361,7 +367,7 @@ $('.event_check').live('mouseleave',
     slideSection(getCurrentSectionID(options.url), options.url);
   });
 
-  $('#section_container #section_6, #menu a.contact').bind('click', function(event) {
+  $('#section_container #section_6 .nav_wrap, #menu a.contact').bind('click', function(event) {
     event.preventDefault();
 
     var tab = $('#section_container #section_6');
@@ -371,6 +377,7 @@ $('.event_check').live('mouseleave',
       tab.data('lastSectionId', getCurrentSectionID(location.href));
       slideSection(6, location.pathname);
     }
+    $('#form_contact').unbind('click');
   });
 
   $('body').bind('pjax:end', function() {
