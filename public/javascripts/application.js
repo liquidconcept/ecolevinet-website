@@ -128,7 +128,6 @@ $(document).ready(function() {
   moment.lang('fr');
 
   var temp = '';
-
   var today = new Date();
   // reference day first day of current month
   var reference_day = function() {return moment([today.getFullYear(),today.getMonth()])};
@@ -324,7 +323,7 @@ $('.event_check').live('mouseleave',
 
       // open section if needed
       if (section_id <= current_section_id && !el.hasClass('open')) {
-        el.animate({left: '-=670'}, function() {
+         '-=670'}, function() {
           el.addClass('open');
         });
       // or close it
@@ -351,7 +350,7 @@ $('.event_check').live('mouseleave',
     current_url = current_url.replace(location.origin, '');
     var current_section_id = parseInt(getQueryString(current_url, 'section_id') || 1);
     $('#section_container > div:not(#section_1)').each(function(index, el) {
-      var section_id = index + 2; // index start to 0, section start to 1 and fisrt section is skeeped
+      var section_id = index + 2; // index start to 0, section start to 1 and first section is skiped
       el = $(el);
 
       if (current_url.indexOf(el.find('a').attr('href')) === 0) {
@@ -383,9 +382,9 @@ $('.event_check').live('mouseleave',
   $('body').bind('pjax:end', function() {
     $('#page_content').slideDown(1000);
     load_Scrollbar();
-    load_prettyPhoto();
     c_navigation.init();
     p_navigation.init();
+    load_prettyPhoto();
   });
 
   $('body').delegate('a:not([rel^="prettyPhoto"],[data-pjax="false"])', 'click', function(event){
