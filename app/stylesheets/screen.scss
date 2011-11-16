@@ -1008,15 +1008,16 @@ html{
 						font-weight:bold;
 					}
           #contact_message{
-            width:300px;
+            width:185px;
             height:100px;
             margin:2px 0px 17px 0px;
             display:none;
           }
           .submit{
-            width:185px;;
-            background-color:$white;
-            color:nth($section_colors, 6);
+            width:185px;
+            background-color: $white;
+            color: $grey;
+            //nth($section_colors, 6);
             border:1px solid nth($section_colors, 6);
             padding:1px 0px;
             cursor:pointer;
