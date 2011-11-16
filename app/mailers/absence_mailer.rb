@@ -8,9 +8,9 @@ class AbsenceMailer < ActionMailer::Base
     @to_parents = to_parents
     #TODO replace n.couturier by secretariat@ecolevinet.ch
     if @to_parents
-      mail(:to => @params[:email], :subject => "Justification d'absence", :from => 'n.couturier@gmail.com')
+      mail(:to => @params[:email], :subject => "Justification d'absence", :from => 'julien.henzelin@liquid-concept.ch')
     else
-      mail(:to => 'n.couturier@gmail.com', :subject => "[Ecole Vinet] Justification d'absence réf.: #{@timestamp}", :from => @params[:email])
+      mail(:to => 'julien.henzelin@liquid-concept.ch', :subject => "[Ecole Vinet] Justification d'absence réf.: #{@timestamp}", :from => @params[:email])
     end
   end
 
@@ -21,9 +21,9 @@ class AbsenceMailer < ActionMailer::Base
     @to_parents = to_parents
     #TODO replace n.couturier by secretariat@ecolevinet.ch
     if  @to_parents
-      mail(:to => @params[:email], :subject => "Demande d'absence", :from => 'n.couturier@gmail.com')
+      mail(:to => @params[:email], :subject => "Demande d'absence", :from => 'julien.henzelin@liquid-concept.ch')
     else
-      mail(:to => 'n.couturier@gmail.com', :subject => "[Ecole Vinet] Demande d'absence réf.: #{@timestamp}", :from => @params[:email])
+      mail(:to => 'julien.henzelin@liquid-concept.ch', :subject => "[Ecole Vinet] Demande d'absence réf.: #{@timestamp}", :from => @params[:email])
     end
 
   end
