@@ -46,7 +46,7 @@
             <span class="nav_background active"></span>
           </div>
 					<div id="form_contact">
-              <%= form_tag('send/demande_contact', :remote => true, :id => 'demande_contact') do -%>
+            <%= form_tag({:controller => 'send', :action => 'demande_contact'}, :remote => true, :id => 'demande_contact') do -%>
                 <div class="float">
                   <h2>Merci de prendre contact avec moi aux coordonnées suivantes: </h2>
                   <%= label_tag :name, "Nom, Prénom" %><br/>
