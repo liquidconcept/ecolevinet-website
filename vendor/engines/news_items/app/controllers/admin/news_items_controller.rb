@@ -11,9 +11,9 @@ module Admin
 
        @news_items = NewsItem.order('position ASC')
        @news_items = @news_items.joins(:sections).where(:sections => {'id' => params['section_id'].to_i}) if params['section_id']
-       @news_items = @news_items.paginate(:page => 1, :per_page => 10)
+       @news_items = @news_items.paginate(:page => params[:page], :per_page => 10)
 
-       render :partial => 'news' if request.xhr?
+       render :partial => 'news_items' if request.xhr?
      end
 
      def find_categories
