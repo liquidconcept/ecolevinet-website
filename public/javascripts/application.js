@@ -24,10 +24,11 @@ $(document).ready(function() {
   // prettyphoto activation
   function load_prettyPhoto() {
     if ($("a[rel^='prettyPhoto']").length > 0) {
+      console.log('pp' + pp_alreadyInitialized);
       $("a[rel^='prettyPhoto']").prettyPhoto({social_tools:false});
     }
   };
-  load_prettyPhoto();
+  // load_prettyPhoto();
 
   // portfolio navigation initialization
   var portfolios = new Object();
@@ -310,6 +311,7 @@ $('.event_check').live('mouseleave',
     //
     $('#demande_contact').live('ajax:success',
      function(event, data, status, xhr) {
+       $('#fields').css({visibility: 'hidden'});
        $('#contact_message').html(data).fadeIn();
      });
 
@@ -323,7 +325,7 @@ $('.event_check').live('mouseleave',
 
       // open section if needed
       if (section_id <= current_section_id && !el.hasClass('open')) {
-         '-=670'}, function() {
+        el.animate({left: '-=670'}, function() {
           el.addClass('open');
         });
       // or close it
@@ -362,7 +364,6 @@ $('.event_check').live('mouseleave',
   }
 
   $('body').bind('pjax:start', function(event, xhr, options) {
-    $('#page_content').slideUp(1000);
     slideSection(getCurrentSectionID(options.url), options.url);
   });
 
@@ -370,27 +371,28 @@ $('.event_check').live('mouseleave',
     event.preventDefault();
 
     var tab = $('#section_container #section_6');
+    $('#form_contact #fields input:not([type="submit"])').val('');
     if (tab.hasClass('open')) {
       slideSection(tab.data('lastSectionId'), location.href);
     } else {
       tab.data('lastSectionId', getCurrentSectionID(location.href));
       slideSection(6, location.pathname);
     }
+
     $('#form_contact').unbind('click');
   });
 
   $('body').bind('pjax:end', function() {
-    $('#page_content').slideDown(1000);
     load_Scrollbar();
     c_navigation.init();
     p_navigation.init();
-    load_prettyPhoto();
+    // load_prettyPhoto();
   });
 
-  $('body').delegate('a:not([rel^="prettyPhoto"],[data-pjax="false"])', 'click', function(event){
+  $('body').delegate('a:not([rel^="prettyPhoto"]', 'click', function(event){
     var href = $(this).attr('href');
 
-    if (!href.match(/(https?)?\/\//) && href !== '#') {
+    if ($(this).data('pjaxDisable') === undefined && !href.match(/(https?)?\/\//) && href !== '#') {
       event.preventDefault();
 
       if (href !== undefined && href !== '' && location.href !== $(this).attr('href')) {

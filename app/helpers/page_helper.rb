@@ -74,13 +74,13 @@ module PageHelper
                 session[:website_return_to]
                 else
                 root_path(:locale => (::Refinery::I18n.default_frontend_locale if ::Refinery.i18n_enabled?))
-                end), {:'data-pjax' => 'false'}) do
+                end), {:'data-pjax-disable' => 'true'}) do
       link_to t('.switch_to_your_website_editor', site_bar_translate_locale_args),
       (if session.keys.map(&:to_sym).include?(:refinery_return_to) and session[:refinery_return_to].present?
        session[:refinery_return_to]
       else
         admin_root_path
-      end rescue admin_root_path), {:'data-pjax' => 'false'}
+      end rescue admin_root_path), {:'data-pjax-disable' => 'true'}
     end
   end
 

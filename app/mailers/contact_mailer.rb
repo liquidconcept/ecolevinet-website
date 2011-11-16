@@ -8,9 +8,9 @@ class ContactMailer < ActionMailer::Base
     @to_parents = to_parents
     #TODO replace n.couturier by secretariat@ecolevinet.ch
     if  @to_parents
-      mail(:to => @params[:email], :subject => "Demande de contact", :from => 'julien.henzelin@liquid-concept.ch')
+      mail(:to => @params[:email], :subject => "Demande de contact", :from => 'secretariat@ecolevinet.ch')
     else
-      mail(:to => 'julien.henzelin@liquid-concept.ch', :subject => "[Ecole Vinet] Demande de contact réf.: #{@timestamp}", :from => @params[:email])
+      mail(:to => 'secretariat@ecolevinet.ch', :subject => "[Ecole Vinet] Demande de contact réf.: #{@timestamp}", :from => @params[:email])
     end
 
   end

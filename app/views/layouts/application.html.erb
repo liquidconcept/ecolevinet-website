@@ -47,7 +47,8 @@
           </div>
 					<div id="form_contact">
             <%= form_tag({:controller => 'send', :action => 'demande_contact'}, :remote => true, :id => 'demande_contact') do -%>
-                <div class="float">
+                <div id="contact_message"></div>
+                <div id="fields" class="float">
                   <h2>Merci de prendre contact avec moi aux coordonnées suivantes: </h2>
                   <%= label_tag :name, "Nom, Prénom" %><br/>
                   <%= text_field_tag :name %>
@@ -58,7 +59,6 @@
                   <%= label_tag :email, "Adresse e-mail" %><br/>
                   <%= text_field_tag :email %><br />
                   <%= submit_tag 'Envoyer', :class => 'submit' %>
-                  <div id="contact_message"></div>
                 </div>
                 <div class="float">
                   <p><strong>Direction</strong> - <a href="mailto:direction@ecolevinet.ch">direction@ecolevinet.ch</a> </p><br/>
