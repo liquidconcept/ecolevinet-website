@@ -5,7 +5,7 @@
   
   <div class="<%='section_' + in_section(@page).id.to_s %>">
   <% @portfolio_entries.each do | portfolio | -%>
-  	<entrie id=" blog_post_<%= portfolio.id %>" class="portofolio_entrie">
+  	<article id=" blog_post_<%= portfolio.id %>" class="portofolio_entrie">
       <header>
         <h2><%= link_to portfolio.title, portfolio_path(portfolio)  %></h2>
       </header>
@@ -13,7 +13,7 @@
         <table>
           <tr>
             <td>
-              <%= link_to image_fu(portfolio.images.first, '420x300#',  {:class => "thumbnails_img"  }), portfolio_path(portfolio) %>
+              <%= link_to image_fu(portfolio.images.first, '420x300#',  {:class => "thumbnails_img"  }), portfolio_path(portfolio, :section_id => in_section(@page)) %>
             </td>
           </tr>
           <tr>
@@ -27,10 +27,10 @@
       </section>
       <footer>
         <p>
-          <%= link_to t('portfolio.read_more'), portfolio_path(portfolio) %>
+          <%= link_to t('portfolio.read_more'), portfolio_path(portfolio, :section_id => in_section(@page)) %>
         </p>
       </footer>
-    </entrie>
+    </article>
   <% end -%>
 </div>
 <% end -%>
@@ -40,7 +40,7 @@
   <h2>Toutes les galeries</h2>
   <ul>
     <% @portfolio_entries.each do | portfolio | -%>
-      <li class="clearfix"><%= link_to portfolio.title, portfolio_path(portfolio)  %></li>
+      <li class="clearfix"><%= link_to portfolio.title, portfolio_path(portfolio, :section_id => in_section(@page))  %></li>
     <% end -%>
   </ul>
 </div>
