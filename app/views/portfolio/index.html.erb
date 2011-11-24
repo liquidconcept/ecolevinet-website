@@ -1,47 +1,55 @@
 <% content_for :body_content_title do -%>
   Galeries
 <% end -%>
+
 <% content_for :body_content_left do -%>
-  
   <div class="<%='section_' + in_section(@page).id.to_s %>">
-  <% @portfolio_entries.each do | portfolio | -%>
-  	<article id=" blog_post_<%= portfolio.id %>" class="portofolio_entrie">
-      <header>
-        <h2><%= link_to portfolio.title, portfolio_path(portfolio)  %></h2>
-      </header>
-      <section class="clearfix">
-        <table>
-          <tr>
-            <td>
-              <%= link_to image_fu(portfolio.images.first, '420x300#',  {:class => "thumbnails_img"  }), portfolio_path(portfolio, :section_id => in_section(@page)) %>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <%= truncate(portfolio.body,
-                         :length => RefinerySetting.find_or_set(:portfolio_entrie_teaser_length, 250),
-                         :preserve_html_tags => true) %>
-            </td>
-          </tr>
-        </table>
-      </section>
-      <footer>
-        <p>
-          <%= link_to t('portfolio.read_more'), portfolio_path(portfolio, :section_id => in_section(@page)) %>
-        </p>
-      </footer>
-    </article>
-  <% end -%>
-</div>
+    <% @portfolio_entries.each do | portfolio | -%>
+      <article id=" blog_post_<%= portfolio.id %>" class="portofolio_entrie">
+        <header>
+          <h2><%= link_to portfolio.title, portfolio_path(portfolio)  %></h2>
+        </header>
+        <section class="clearfix">
+          <table>
+            <tr>
+              <td>
+                <%= link_to image_fu(portfolio.images.first, '420x300#',  {:class => "thumbnails_img"  }), portfolio_path(portfolio, :section_id => in_section(@page)) %>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <%= truncate(portfolio.body, :length => RefinerySetting.find_or_set(:portfolio_entrie_teaser_length, 250), :preserve_html_tags => true) %>
+              </td>
+            </tr>
+          </table>
+        </section>
+        <footer>
+          <p>
+            <%= link_to t('portfolio.read_more'), portfolio_path(portfolio, :section_id => in_section(@page)) %>
+          </p>
+        </footer>
+      </article>
+    <% end -%>
+  </div>
 <% end -%>
 
 <% content_for :body_content_right do -%>
-<div class="<%='section_' + in_section(@page).id.to_s %>">
-  <h2>Toutes les galeries</h2>
-  <ul>
-    <% @portfolio_entries.each do | portfolio | -%>
-      <li class="clearfix"><%= link_to portfolio.title, portfolio_path(portfolio, :section_id => in_section(@page))  %></li>
-    <% end -%>
-  </ul>
-</div>
+  <div class="<%='section_' + in_section(@page).id.to_s %>">
+    <h2>Toutes les galeries</h2>
+    <ul>
+      <% @portfolio_entries.each do | portfolio | -%>
+        <li class="clearfix"><%= link_to portfolio.title, portfolio_path(portfolio, :section_id => in_section(@page))  %></li>
+      <% end -%>
+    </ul>
+  </div>
 <% end -%>
+
+<%
+  sections = [
+    {:yield => :body_content_title, :fallback => page_title, :title => true},
+    {:yield => :body_content_left, :title => false},
+    {:yield => :body_content_right, :title => false}
+  ]
+-%>
+
+<%= render :partial => '/shared/content_page', :locals => {:sections => sections} -%>
