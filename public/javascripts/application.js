@@ -2,6 +2,17 @@ var undefined;
 
 $(document).ready(function() {
 
+  // init colorbox
+  function load_colorbox() {
+    $('a.gallery').colorbox({
+      current: "image {current} sur {total}",
+      previous: "précédente",
+      next: "suivante",
+      close: "fermer"
+    });
+  }
+  load_colorbox();
+
   // init scrollbar
   function load_Scrollbar() {
     if ($('.scrollable').length > 0){
@@ -106,6 +117,7 @@ $(document).ready(function() {
            $('#portfolios_container').append(data);
            // reload Scrollbar
            load_Scrollbar();
+           load_colorbox();
            //populate loaded pages
            p_navigation.loaded.push(p_navigation.index + 1)
          }
@@ -373,6 +385,7 @@ $('.event_check').live('mouseleave',
 
   $('body').bind('pjax:end', function() {
     load_Scrollbar();
+    load_colorbox();
     c_navigation.init();
     p_navigation.init();
   });

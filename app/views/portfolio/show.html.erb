@@ -5,9 +5,9 @@
       <%=  raw @portfolio_entry.body %><br/>
       <% @portfolio_entry.images.each_with_index do |image, index| -%>
         <% if @portfolio_entry.images.count == 1 %>
-          <%= link_to image_fu(image, '420x300#',  {:class => "thumbnails_img"  }), image.url ,  {:rel => "album_#{@portfolio_entry.id}"} %>
+          <%= link_to image_fu(image, '420x300#',  {:class => "thumbnails_img"  }), image.url ,  {:class => 'gallery', :rel => "album_#{@portfolio_entry.id}"} %>
         <% else %>
-          <%= link_to image_fu(image, '105x92#c',  {:class => "thumbnails_img"  }), image.url ,  {:rel => "album_#{@portfolio_entry.id}"} %>
+          <%= link_to image_fu(image, '105x92#c',  {:class => "thumbnails_img"  }), image.url ,  {:class => 'gallery', :rel => "album_#{@portfolio_entry.id}"} %>
         <% end %>
       <% end %>
     </div>
@@ -25,5 +25,3 @@
     </div>
   </div>
 </div>
-
-<% content_for :javascript_libraries, jquery_include_tags(:jquery_ui => false) %>
