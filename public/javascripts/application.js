@@ -2,6 +2,17 @@ var undefined;
 
 $(document).ready(function() {
 
+  // init colorbox
+  function load_colorbox() {
+    $('a.gallery').colorbox({
+      current: "image {current} sur {total}",
+      previous: "précédente",
+      next: "suivante",
+      close: "fermer"
+    });
+  }
+  load_colorbox();
+
   // init scrollbar
   function load_Scrollbar() {
     if ($('.scrollable').length > 0){
@@ -20,15 +31,6 @@ $(document).ready(function() {
   $('.block').live('mouseleave', function() {
     $(this).find('.layer').fadeIn('fast');
   });
-
-  // prettyphoto activation
-  function load_prettyPhoto() {
-    if ($("a[rel^='prettyPhoto']").length > 0) {
-      console.log('pp' + pp_alreadyInitialized);
-      $("a[rel^='prettyPhoto']").prettyPhoto({social_tools:false});
-    }
-  };
-  // load_prettyPhoto();
 
   // portfolio navigation initialization
   var portfolios = new Object();
@@ -113,10 +115,9 @@ $(document).ready(function() {
          success: function(data){
            $('#portfolios_container').css('width','+=420px');
            $('#portfolios_container').append(data);
-           // reload prettyPhoto
-           load_prettyPhoto();
            // reload Scrollbar
            load_Scrollbar();
+           load_colorbox();
            //populate loaded pages
            p_navigation.loaded.push(p_navigation.index + 1)
          }
@@ -384,15 +385,15 @@ $('.event_check').live('mouseleave',
 
   $('body').bind('pjax:end', function() {
     load_Scrollbar();
+    load_colorbox();
     c_navigation.init();
     p_navigation.init();
-    // load_prettyPhoto();
   });
 
-  $('body').delegate('a:not([rel^="prettyPhoto"]', 'click', function(event){
+  $('body').delegate('a', 'click', function(event){
     var href = $(this).attr('href');
 
-    if ($(this).data('pjaxDisable') === undefined && !href.match(/(https?)?\/\//) && href !== '#') {
+    if ($(this).data('pjaxDisable') !== 'true' && !href.match(/^(https?)?\/\//) && !href.match(/^\/system/) && !href.match(/^#/)) {
       event.preventDefault();
 
       if (href !== undefined && href !== '' && location.href !== $(this).attr('href')) {
