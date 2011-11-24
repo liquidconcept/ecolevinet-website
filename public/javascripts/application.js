@@ -389,10 +389,10 @@ $('.event_check').live('mouseleave',
     // load_prettyPhoto();
   });
 
-  $('body').delegate('a:not([rel^="prettyPhoto"]', 'click', function(event){
+  $('body').delegate('a', 'click', function(event){
     var href = $(this).attr('href');
 
-    if ($(this).data('pjaxDisable') === undefined && !href.match(/(https?)?\/\//) && href !== '#') {
+    if ($(this).data('pjaxDisable') !== 'true' && !href.match(/^(https?)?\/\//) && !href.match(/^\/system/) && !href.match(/^#/)) {
       event.preventDefault();
 
       if (href !== undefined && href !== '' && location.href !== $(this).attr('href')) {
