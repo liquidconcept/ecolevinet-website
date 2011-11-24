@@ -2,7 +2,7 @@
   <% portfolio_entry.images.each do |image| %>
     <div class="img_resize">
       <%= link_to image_fu(image, '105x92#c',  {:class => "thumbnails_img", :alt => portfolio_entry.title  }),
-        image.url ,  {:rel => "prettyPhoto[#{portfolio_entry.title.gsub(' ','')}]"} %>
+        image.url ,  {:rel => "album_#{portfolio_entry.id}"} %>
     </div>
   <% end %>
 </div>

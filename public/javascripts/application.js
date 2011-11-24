@@ -21,15 +21,6 @@ $(document).ready(function() {
     $(this).find('.layer').fadeIn('fast');
   });
 
-  // prettyphoto activation
-  function load_prettyPhoto() {
-    if ($("a[rel^='prettyPhoto']").length > 0) {
-      console.log('pp' + pp_alreadyInitialized);
-      $("a[rel^='prettyPhoto']").prettyPhoto({social_tools:false});
-    }
-  };
-  // load_prettyPhoto();
-
   // portfolio navigation initialization
   var portfolios = new Object();
   var p_navigation = {
@@ -113,8 +104,6 @@ $(document).ready(function() {
          success: function(data){
            $('#portfolios_container').css('width','+=420px');
            $('#portfolios_container').append(data);
-           // reload prettyPhoto
-           load_prettyPhoto();
            // reload Scrollbar
            load_Scrollbar();
            //populate loaded pages
@@ -386,7 +375,6 @@ $('.event_check').live('mouseleave',
     load_Scrollbar();
     c_navigation.init();
     p_navigation.init();
-    // load_prettyPhoto();
   });
 
   $('body').delegate('a', 'click', function(event){
