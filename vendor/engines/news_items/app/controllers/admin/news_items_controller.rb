@@ -9,7 +9,7 @@ module Admin
     def index
        search_all_news_items if searching?
 
-       @news_items = NewsItem.order('position ASC')
+       @news_items = NewsItem.order('created_at ASC')
        @news_items = @news_items.joins(:sections).where(:sections => {'id' => params['section_id'].to_i}) if params['section_id']
        @news_items = @news_items.paginate(:page => params[:page], :per_page => 10)
 

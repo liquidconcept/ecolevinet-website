@@ -393,7 +393,7 @@ $('.event_check').live('mouseleave',
   $('body').delegate('a', 'click', function(event){
     var href = $(this).attr('href');
 
-    if ($(this).data('pjaxDisable') !== 'true' && !href.match(/^(https?)?\/\//) && !href.match(/^\/system/) && !href.match(/^#/)) {
+    if (!$(this).data('pjaxDisable') && $(this).data('pjaxDisable') !== 'true' && !href.match(/^(https?)?\/\//) && !href.match(/^\/system/) && !href.match(/^#/)) {
       event.preventDefault();
 
       if (href !== undefined && href !== '' && location.href !== $(this).attr('href')) {
