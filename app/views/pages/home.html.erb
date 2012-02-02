@@ -8,9 +8,9 @@
       <% end %>
     </div>
   <% end %>
-  <% if @page.section.news_items.current.any? %>
+  <% if @page.section.news_items.current.limit(8).any? %>
     <ul class="infos">
-      <% @page.section.news_items.current.each do |news_item| %>
+      <% @page.section.news_items.current.limit(8).each do |news_item| %>
         <li>
           <h3><%= news_item.created_at.strftime('%d.%m.%Y') %> - <%= news_item.title %></h3>
           <p><%= news_item.heading %>
