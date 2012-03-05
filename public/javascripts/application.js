@@ -388,6 +388,9 @@ $('.event_check').live('mouseleave',
     load_colorbox();
     c_navigation.init();
     p_navigation.init();
+    if (typeof _gaq !== 'undefined') {
+      _gaq.push(['_trackPageview', window.location.pathname]);
+    }
   });
 
   $('body').delegate('a', 'click', function(event){
