@@ -9,7 +9,7 @@ module Admin
     def index
       search_all_events if searching?
 
-      @events = Event.order('position ASC')
+      @events = Event.order("(CASE WHEN start_date > '#{Time.zone.now.to_date}' THEN start_date ELSE end_date END) DESC")
       @events = @events.joins(:sections).where(:sections => {'id' => params['section_id'].to_i}) if params['section_id']
       @events = @events.paginate(:page => params[:page], :per_page => 10)
 
