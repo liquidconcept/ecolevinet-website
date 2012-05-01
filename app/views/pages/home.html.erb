@@ -4,7 +4,7 @@
     <div class="important">
       <% @page.section.news_items.hot.each do |news_item| %>
         <h3><%=raw  news_item.created_at.strftime('%d/%m/%y') %> - <%=raw news_item.title %></h3>
-        <p><%=raw news_item.heading %><br /><%= link_to 'En savoir plus' ,news_item_path(news_item) unless news_item.content.strip.gsub('^<p></p>$', '').gsub('<br />','').blank? %></p>
+        <div class="text"><%=raw news_item.heading %><br /><%= link_to 'En savoir plus' ,news_item_path(news_item) unless news_item.content.strip.gsub('^<p></p>$', '').gsub('<br />','').blank? %></div>
       <% end %>
     </div>
   <% end %>
@@ -12,12 +12,12 @@
     <ul class="infos">
       <% @page.section.news_items.current.limit(8).each do |news_item| %>
         <li>
-          <h3><%= news_item.created_at.strftime('%d.%m.%Y') %> - <%= news_item.title %></h3>
-          <p><%= news_item.heading %>
+          <h3><%= news_item.title %></h3>
+          <div class="text"><%=raw news_item.heading %>
           <% if !news_item.content.strip.gsub('^<p></p>$', '').gsub('<br />','').blank? %>
-            <span><%= link_to 'En savoir plus', news_item_path(news_item, :section_id => @page.section.id) %></span>
+            <span class="more"><%= link_to 'En savoir plus', news_item_path(news_item, :section_id => @page.section.id) %></span>
           <% end %>
-          </p>
+          </div>
         </li>
       <% end %>
     </ul>

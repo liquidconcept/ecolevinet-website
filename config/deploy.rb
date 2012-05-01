@@ -1,8 +1,8 @@
 # encoding: utf-8
 set :application, 'website'
-set :domain,      'www.ecolevinet.ch'
-set :server_name, '195.141.44.140'
-set :real_domain,  domain
+set :domain,      'ecolevinet.ch'
+set :server_name, '95.142.162.83'
+set :real_domain,  "www.#{domain}"
 
 set :scm,         :git
 set :repository,  'git@git.liquid-concept.ch:clients/ecole-vinet/website.git'
@@ -13,14 +13,12 @@ ssh_options[:forward_agent] = true
 default_run_options[:pty] = true
 default_environment['LC_CTYPE'] = 'en_US.UTF-8'
 
-set :user,        'f207235'
+set :user,        'webpublisher'
 set :deploy_via,  :remote_cache
-set :deploy_to,   '/hosting/customers/www.ecolevinet.ch'
+set :deploy_to,   "/var/www/#{domain}/#{application}"
 set :use_sudo,    false
 
-set :bundle_without,  [:development, :test, :guard]
-
-set :rvm_type, :user
+set :bundle_without,  [:development, :staging, :test, :guard]
 
 role :web, server_name                          # Your HTTP server, Apache/etc
 role :app, server_name                          # This may be the same as your `Web` server
@@ -38,7 +36,7 @@ end
 
 after 'deploy:update_code' do
   run "mkdir -p #{File.join(shared_path,'config')} && rm -f #{File.join(release_path,'config','database.yml')} && ln -s #{File.join(shared_path,'config','database.yml')} #{File.join(release_path,'config','database.yml')}"
-  run "mkdir -p #{File.join(shared_path,'private_folders', 'vinetprofs')} && rm -f #{File.join(release_path,'public','vinetprofs')} && ln -s #{File.join(shared_path,'private_folders','vinetprofs')} #{File.join(release_path,'public','vinetprofs')}"
+  run "mkdir -p #{File.join(shared_path,'vinetprofs')} && rm -f #{File.join(release_path,'public','vinetprofs')} && ln -s #{File.join(shared_path,'vinetprofs','vinetprofs')} #{File.join(release_path,'public','vinetprofs')}"
 end
 
 after 'deploy:update', 'deploy:cleanup'
