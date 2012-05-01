@@ -215,11 +215,50 @@ html{
           color:$white;
 					padding:3px;
 				}
-				p{
+				div{
           position:relative;
 					padding:3px 3px 15px 3px;
 					border:1px solid $dark_grey;
-          span {
+          em{
+            font-style:italic;	
+          }
+          strong{
+            font-weight:bold;
+          }
+          p, h2, h3, h4{
+            margin:0px 0px 15px 0px;
+          }
+          img{
+            display:none;
+          }
+          ul{
+            clear:both;
+            margin:0px 0px 15px 15px;
+            li{
+              list-style-type:square;
+              margin-bottom:5px;
+            }
+          }
+          ol{
+            clear:both;
+            margin:0px 0px 15px 22px;
+            li{
+              list-style-type:decimal;
+              margin-bottom:5px;
+            }
+          }
+          table{
+            margin-bottom:15px;
+            caption{
+              padding:5px;
+              font-style:italic;
+            }
+            td{
+              border:1px dotted $light_grey;
+              padding:5px;
+            }
+          }
+          span.more {
             display:block;
             height:15px;
             a {

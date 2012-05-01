@@ -39,8 +39,8 @@
 
           <div id='page_part_editors'>
               <% [:heading, :content].each do |part| %>
-                <div class='page_part wymeditor_like' id='<%= part %>'>
-                  <%=  f.text_area part, :rows => 10, :class => 'widest' -%>
+                <div class='page_part' id='<%= part %>'>
+                  <%=  f.text_area part, :rows => 10, :class => 'wymeditor widest' -%>
                 </div>
               <% end %>
           </div>
