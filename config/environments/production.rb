@@ -37,6 +37,11 @@ EcolevinetWebsite::Application.configure do
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
 
+  # disable verification for openssl
+  config.action_mailer.smtp_settings = {
+    :openssl_verify_mode => 'none'
+  }
+
   # Enable threaded mode
   # config.threadsafe!
 
