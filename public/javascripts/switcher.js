@@ -34,7 +34,6 @@ function change_slide(delay, index) {
 function start_slide() {
   var original_image = $('#section_1 > img').attr('src').toString();
   var original_text = $('#section_1 > .nav_text > h2 > a').text().toString();
-  console.log(original_text);
 
   if (($('.open').length <= 1) && (timer == null)) {
     $('#section_1 > .nav_text > p').show();
@@ -44,25 +43,28 @@ function start_slide() {
       height:$("#section_1 > .nav_text > h2 > p").outerHeight()
     },600);
 
-    $.getJSON('/system/switcher/slides.json', function(data) {
+    $.getJSON('/switcher/slides.json', function(data) {
       data.slides.unshift({"image" : original_image, "text" : original_text});
       slides = data.slides;
       delay = data.delay;
 
       var i = 1;
-    
       $('#section_1 > .nav_text > p').html('');
-      for (x in data.slides) {
-        $('#section_1 > .nav_text > p').append('<p id="' + x + '"></p>');
-      }
       $('#section_1 > .nav_text > p').append('<span class="text_background"></span>');
-      $('#section_1 > .nav_text > p > p:not(".current")').click(function() {
-        clearTimeout(timer);
-        change_slide(0, parseInt($(this).attr('id')));
-        clearTimeout(timer);
-      });
-      $('#section_1 > .nav_text > p > #0').attr("class", "current")
-      timer = setTimeout(function(){change_slide(delay, 1);}, delay);
+      
+      if (data.slides.length > 1) {
+        for (x in data.slides) {
+          $('#section_1 > .nav_text > p').append('<p id="' + x + '"></p>');
+        }
+        $('#section_1 > .nav_text > p > p:not(".current")').click(function() {
+          clearTimeout(timer);
+          change_slide(0, parseInt($(this).attr('id')));
+          clearTimeout(timer);
+        });
+        $('#section_1 > .nav_text > p > #0').attr("class", "current")
+        timer = setTimeout(function(){change_slide(delay, 1);}, delay);
+      }
+
     });
   }
 }
