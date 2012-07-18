@@ -8,9 +8,9 @@
       <% end %>
     </div>
   <% end %>
-  <% if @page.section.news_items.current.limit(8).any? %>
+  <% if @page.section.news_items.current.limit(5).any? %>
     <ul class="infos">
-      <% @page.section.news_items.current.limit(8).each do |news_item| %>
+      <% @page.section.news_items.current.limit(5 - @page.section.news_items.hot.count).each do |news_item| %>
         <li>
           <h3><%= news_item.title %></h3>
           <div class="text"><%=raw news_item.heading %>
