@@ -105,22 +105,32 @@ $(document).ready(function() {
 
     // Add a galery to the right
     if ( p_navigation.index > 0 &&
-        p_navigation.index + 1 < portfolios.length &&
+        p_navigation.index + 1 <= portfolios.length &&
           $.inArray(p_navigation.index + 1, p_navigation.loaded) == -1
        )
      {
-       $.ajax({
-         url: '/portfolio/' + portfolios[p_navigation.index+1]['portfolio_entry']['id'],
-         dataType: 'html',
-         success: function(data){
-           $('#portfolios_container').css('width','+=420px');
-           $('#portfolios_container').append(data);
-           // reload Scrollbar
-           load_Scrollbar();
-           load_colorbox();
-           //populate loaded pages
-           p_navigation.loaded.push(p_navigation.index + 1)
-         }
+      $.ajax({
+        url: $('#portfolio_switcher > a.target').attr('href'),
+        dataType: 'json',
+        success: function(data){
+          $('#portfolios_container').css('width','+=420px');
+          var id = data.portfolio_entry.id
+
+          if ($('div.portfolio[data-portfolio|="' + id + '"]').length == 0) {
+            var title = data.portfolio_entry.title
+            var gallery_html = '<div class="flash portfolio scrollable " data-portfolio="' + id + '">'
+            $.each(data.portfolio_entry.images, function(index, value) {
+              gallery_html += '<div class=img_resize><a href=' + value.url + ' class=gallery cboxElement rel=album_' + id + '><img alt=' + title + ' class=thumbnails_img  src=' + value.url + '></a></div>'
+            });
+            gallery_html += '</div>'
+            $('#portfolios_container').append(gallery_html);
+          }
+          // reload Scrollbar
+          load_Scrollbar();
+          load_colorbox();
+          //populate loaded pages
+          p_navigation.loaded.push(p_navigation.index + 1)
+        }
        })
      }
   }));
