@@ -1,5 +1,5 @@
 <div id="left_col">
-  <h2/>Actualités</h2>
+  <h2>Actualités</h2>
   <% if @page.section.news_items.hot.any? %>
     <div class="important">
       <% @page.section.news_items.hot.each do |news_item| %>
@@ -25,7 +25,7 @@
 </div>
 
 <div id="right_col">
-  <h2/>Contact</h2>
+  <h2>Contact</h2>
   <%= link_to(image_tag("google.jpg",:alt => "", :style => "border:1px solid #cecece;"),"http://maps.google.com/maps?f=q&source=embed&hl=en&geocode=&q=%C3%A9cole+vinet+lausanne&aq=&sll=37.0625,-95.677068&sspn=69.476188,177.451172&vpsrc=6&ie=UTF8&hq=%C3%A9cole+vinet&hnear=Lausanne,+Vaud,+Switzerland&cid=5096095572938173010&ll=46.519894,6.637373&spn=0.011812,0.018368&z=14&iwloc=A",{ :onClick => "window.open(this.href,'_blank');return false;"}) %>
   <br/>
   <h3>Ecole Vinet</h3>
