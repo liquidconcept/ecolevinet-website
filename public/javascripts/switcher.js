@@ -1,5 +1,7 @@
 var timer;
 var slides;
+var original_image;
+var original_text;
 
 function change_slide(delay, index) {
   var text = slides[index].text;
@@ -32,8 +34,6 @@ function change_slide(delay, index) {
 }
 
 function start_slide() {
-  var original_image = $('#section_1 > img').attr('src').toString();
-  var original_text = $('#section_1 > .nav_text > h2 > a').text().toString();
 
   if (($('.open').length <= 1) && (timer == null)) {
     $('#section_1 > .nav_text > p').show();
@@ -70,6 +70,8 @@ function start_slide() {
 }
 
 window.onload = function () {
+  original_image = $('#section_1 > img').attr('src').toString();
+  original_text = $('#section_1 > .nav_text > h2 > a').text().toString();
   start_slide();
   $('#menu > a').click(function(){setTimeout(function() {start_slide();}, 500)});
 };
