@@ -1,0 +1,7 @@
+{
+  "delay" : 7000,
+  "slides" : [
+  {"image" : "/system/switcher/images/A1785.jpeg", "text" : "test"},
+  {"image" : "/system/switcher/images/A3133.jpeg", "text" : "<strong>Neque porro</strong> quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."}
+  ]
+}

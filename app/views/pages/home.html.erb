@@ -1,16 +1,16 @@
 <div id="left_col">
-  <h2/>Actualités</h2>
+  <h2>Actualités</h2>
   <% if @page.section.news_items.hot.any? %>
     <div class="important">
       <% @page.section.news_items.hot.each do |news_item| %>
-        <h3><%=raw  news_item.created_at.strftime('%d/%m/%y') %> - <%=raw news_item.title %></h3>
+        <h3><%=raw news_item.title %></h3>
         <div class="text"><%=raw news_item.heading %><br /><%= link_to 'En savoir plus' ,news_item_path(news_item) unless news_item.content.strip.gsub('^<p></p>$', '').gsub('<br />','').blank? %></div>
       <% end %>
     </div>
   <% end %>
-  <% if @page.section.news_items.current.limit(8).any? %>
+  <% if @page.section.news_items.current.limit(5).any? %>
     <ul class="infos">
-      <% @page.section.news_items.current.limit(8).each do |news_item| %>
+      <% @page.section.news_items.current.limit(5 - @page.section.news_items.hot.count).each do |news_item| %>
         <li>
           <h3><%= news_item.title %></h3>
           <div class="text"><%=raw news_item.heading %>
@@ -25,7 +25,7 @@
 </div>
 
 <div id="right_col">
-  <h2/>Contact</h2>
+  <h2>Contact</h2>
   <%= link_to(image_tag("google.jpg",:alt => "", :style => "border:1px solid #cecece;"),"http://maps.google.com/maps?f=q&source=embed&hl=en&geocode=&q=%C3%A9cole+vinet+lausanne&aq=&sll=37.0625,-95.677068&sspn=69.476188,177.451172&vpsrc=6&ie=UTF8&hq=%C3%A9cole+vinet&hnear=Lausanne,+Vaud,+Switzerland&cid=5096095572938173010&ll=46.519894,6.637373&spn=0.011812,0.018368&z=14&iwloc=A",{ :onClick => "window.open(this.href,'_blank');return false;"}) %>
   <br/>
   <h3>Ecole Vinet</h3>
