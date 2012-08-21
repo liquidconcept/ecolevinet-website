@@ -13,9 +13,10 @@
                                                             request.env['HTTP_USER_AGENT'] !~ /MSIE/ and (theme ||= nil).blank?) %>
   <%= stylesheet_link_tag "home", :theme => theme if home_page? %>
   <%= stylesheet_link_tag "colorbox" %>
+  <%= stylesheet_link_tag "switcher" %>
 
   <%= yield :stylesheets %>
   <%= render :partial => '/shared/google_analytics' unless local_request? %>
 
-  <%= javascript_include_tag 'modernizr-2.0.6', 'jquery', 'jquery.pjax', 'jquery.scroll', 'jquery.colorbox', 'moment', 'jquery_ujs', 'lang/fr', 'application' %>
+  <%= javascript_include_tag 'modernizr-2.0.6', 'jquery', 'jquery.pjax', 'jquery.scroll', 'jquery.colorbox', 'moment', 'jquery_ujs', 'lang/fr', 'application', 'switcher' %>
 </head>

@@ -105,22 +105,32 @@ $(document).ready(function() {
 
     // Add a galery to the right
     if ( p_navigation.index > 0 &&
-        p_navigation.index + 1 < portfolios.length &&
+        p_navigation.index + 1 <= portfolios.length &&
           $.inArray(p_navigation.index + 1, p_navigation.loaded) == -1
        )
      {
-       $.ajax({
-         url: '/portfolio/' + portfolios[p_navigation.index+1]['portfolio_entry']['id'],
-         dataType: 'html',
-         success: function(data){
-           $('#portfolios_container').css('width','+=420px');
-           $('#portfolios_container').append(data);
-           // reload Scrollbar
-           load_Scrollbar();
-           load_colorbox();
-           //populate loaded pages
-           p_navigation.loaded.push(p_navigation.index + 1)
-         }
+      $.ajax({
+        url: $('#portfolio_switcher > a.target').attr('href'),
+        dataType: 'json',
+        success: function(data){
+          $('#portfolios_container').css('width','+=420px');
+          var id = data.portfolio_entry.id
+
+          if ($('div.portfolio[data-portfolio|="' + id + '"]').length == 0) {
+            var title = data.portfolio_entry.title
+            var gallery_html = '<div class="flash portfolio scrollable " data-portfolio="' + id + '">'
+            $.each(data.portfolio_entry.images, function(index, value) {
+              gallery_html += '<div class=img_resize><a href=' + value.url + ' class=gallery cboxElement rel=album_' + id + '><img alt=' + title + ' class=thumbnails_img  src=' + value.url + '></a></div>'
+            });
+            gallery_html += '</div>'
+            $('#portfolios_container').append(gallery_html);
+          }
+          // reload Scrollbar
+          load_Scrollbar();
+          load_colorbox();
+          //populate loaded pages
+          p_navigation.loaded.push(p_navigation.index + 1)
+        }
        })
      }
   }));
@@ -320,33 +330,35 @@ $('.event_check').live('mouseleave',
   //
 
   var slideSection = function(current_section_id, current_url) {
-    $('#section_container > div:not(#section_1)').each(function(index, el) {
-      var section_id = index + 2; // index start to 0, section start to 1 and fisrt section is skeeped
-      el = $(el);
+    if ($(':animated').length == 0) {
+      $('#section_container > div:not(#section_1)').each(function(index, el) {
+        var section_id = index + 2; // index start to 0, section start to 1 and fisrt section is skeeped
+        el = $(el);
 
-      // open section if needed
-      if (section_id <= current_section_id && !el.hasClass('open')) {
-        el.animate({left: '-=670'}, function() {
-          el.addClass('open');
-        });
-      // or close it
-      } else if (section_id > current_section_id && el.hasClass('open')) {
-        el.animate({left: '+=670'}, function() {
-          el.removeClass('open');
-        });
-      }
-
-      if (current_section_id === 1 || ($('#menu a.active').length !== 0 && current_section_id === 6)) {
-        $('#menu a').removeClass('active');
-        if ($('#menu a[href="'+ current_url +'"]').length === 0) {
-          $('#menu a:first-child').addClass('active');
-        } else {
-          $('#menu a[href="'+ current_url +'"]').addClass('active');
+        // open section if needed
+        if (section_id <= current_section_id && !el.hasClass('open')) {
+          el.animate({left: '-=670'}, function() {
+            el.addClass('open');
+          });
+        // or close it
+        } else if (section_id > current_section_id && el.hasClass('open')) {
+          el.animate({left: '+=670'}, function() {
+            el.removeClass('open');
+          });
         }
-      } else  {
-        $('#menu a').removeClass('active');
-      }
-    });
+
+        if (current_section_id === 1 || ($('#menu a.active').length !== 0 && current_section_id === 6)) {
+          $('#menu a').removeClass('active');
+          if ($('#menu a[href="'+ current_url +'"]').length === 0) {
+            $('#menu a:first-child').addClass('active');
+          } else {
+            $('#menu a[href="'+ current_url +'"]').addClass('active');
+          }
+        } else  {
+          $('#menu a').removeClass('active');
+        }
+      });
+    }
   }
 
   var getCurrentSectionID = function(current_url) {

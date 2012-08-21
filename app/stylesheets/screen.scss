@@ -192,7 +192,7 @@ html{
         font-weight:normal;
       }
 			.important{
-				width:265px;
+				width:405px;
 				padding:10px;
 				margin-bottom:5px;
 				text-align:center;
@@ -488,6 +488,7 @@ html{
 				padding-left:150px;
 				padding-right:150px;
 				font-size:16px;
+        line-height:19px;
 				p{
 					text-align:justify;
 				}
@@ -547,6 +548,9 @@ html{
 						color:$white;
 					}
 				}
+        .breadcrumb {
+          margin-bottom: 20px;
+        }
 				em{
 					font-style:italic;	
 				}
