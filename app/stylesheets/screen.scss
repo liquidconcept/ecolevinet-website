@@ -536,7 +536,7 @@ html{
 					float:right;
 				}
 			}
-			form{
+			.form_absence{
 				width:500px;
 				margin:auto;
 				h2{
@@ -551,11 +551,16 @@ html{
 				label{
 					font-style:italic;
 				}
+
+        input {
+          width: 494px;
+        }
+
 				.submit{
 					border:1px solid $grey;
 					margin-top:15px;
 					cursor:pointer;
-					width:507px;
+					width:500px;
 					height:30px;
 					background-color:nth($section_colors, 5);
 					color:$white;
