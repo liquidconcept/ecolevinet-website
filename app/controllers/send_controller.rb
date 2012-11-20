@@ -50,21 +50,6 @@ class SendController < ApplicationController
     @params = params
     @timestamp = DateTime.now.to_i
     
-    ContactMailer.demande_contact(@params,@timestamp,true).deliver
-    ContactMailer.demande_contact(@params,@timestamp,false).deliver
-
-    respond_to do |format|
-     format.js { render :text => "<p>Un message a été envoyé</p><p>au secrétariat de l'école</p>", :content_type => 'text/html'}
-    end
-
-  rescue Exception => exc
-    logger.error(" #{exc.message}")
-  end
-
-  def demande_contact_homepage
-    @params = params
-    @timestamp = DateTime.now.to_i
-    
     ContactMailer.demande_information(@params,@timestamp,true).deliver
     ContactMailer.demande_information(@params,@timestamp,false).deliver
 
