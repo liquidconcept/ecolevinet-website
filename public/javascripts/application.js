@@ -326,6 +326,14 @@ $('.event_check').live('mouseleave',
        $('#contact_message').html(data).fadeIn();
      });
 
+  // contact form accueil
+    //
+    $('#demande_contact_homepage').live('ajax:success',
+     function(event, data, status, xhr) {
+       $('.hide').css({visibility: 'hidden'});
+       $('#message_homepage').html(data).fadeIn();
+     });
+
   // MENU
   //
 

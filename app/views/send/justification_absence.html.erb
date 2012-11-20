@@ -15,6 +15,15 @@ Justification d’absence à la direction de l’établissement
 <%= label_tag :classe %><br/>
 <%= text_field_tag :classe %>
 <br />
+
+<%= label_tag 'Email d’un des parents' %><br />
+<%= email_field_tag :email %>
+<br />
+
+<%= label_tag 'Téléphone d’un des parents' %><br />
+<%= text_field_tag :phone %>
+<br />
+
 <p>Dates de l’absence </p>
 <p>
 du  
@@ -26,17 +35,9 @@ au
 <%= label_tag 'Date de fin' %><br/>
 <%= select_datetime DateTime.now, :prefix => :end_date %>
 </p>
+<p>Motif :</p>
 <p>
-Motif :
   <%= text_area_tag :motive,nil, :rows => 10,  :cols => 60 %>
-</p>
-<p>
-  <%= label_tag 'Email d’un des parents :' %>
-  <%= email_field_tag :email %>
-</p>
-<p>
-  <%= label_tag 'Téléphone d’un des parents :' %>
-  <%= text_field_tag :phone %>
 </p>
 
 <%= submit_tag 'Envoyer', :class => 'submit'%></p><br />

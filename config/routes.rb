@@ -10,11 +10,12 @@ EcolevinetWebsite::Application.routes.draw do
     end
   end
 
-  match 'send/demande_absence'        => 'send#demande_absence'
-  match 'send/justification_absence'  => 'send#justification_absence'
-  match 'send/resultat_demande'       => 'send#resultat_demande'
-  match 'send/resultat_justification' => 'send#resultat_justification'
-  match 'send/demande_contact'        => 'send#demande_contact'
+  match 'send/demande_absence'            => 'send#demande_absence'
+  match 'send/justification_absence'      => 'send#justification_absence'
+  match 'send/resultat_demande'           => 'send#resultat_demande'
+  match 'send/resultat_justification'     => 'send#resultat_justification'
+  match 'send/demande_contact'            => 'send#demande_contact'
+  match 'send/demande_contact_homepage'   => 'send#demande_contact_homepage'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
