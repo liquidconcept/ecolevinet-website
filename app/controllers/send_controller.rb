@@ -69,7 +69,7 @@ class SendController < ApplicationController
     ContactMailer.demande_information(@params,@timestamp,false).deliver
 
     respond_to do |format|
-     format.js { render :text => "<p>Un message a été envoyé au secrétariat de l'école</p>", :content_type => 'text/html'}
+     format.js { render :text => "<p>Un message a été envoyé au secrétariat de l'école</p><p>Ainsi qu'une copie sur votre mail.</p>", :content_type => 'text/html'}
     end
 
   rescue Exception => exc

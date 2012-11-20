@@ -23,7 +23,7 @@ class ContactMailer < ActionMailer::Base
     #TODO replace n.couturier by secretariat@ecolevinet.ch
     if  @to_parents
       if @params[:booklet] != nil  
-        # attachments['brochure_information.pdf'] = File.read('/public/pdf/brochure_information.pdf')
+        attachments['brochure_information.pdf'] = File.read("#{Rails.root}/public/pdf/brochure_information.pdf")
         mail(:to => @params[:email], :subject => "Demande d'information avec la brochure", :from => 'ludovic.turmel@liquid-concept.ch')
       else 
         mail(:to => @params[:email], :subject => "Demande d'information", :from => 'ludovic.turmel@liquid-concept.ch')
