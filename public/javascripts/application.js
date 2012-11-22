@@ -334,6 +334,11 @@ $('.event_check').live('mouseleave',
        $('#message_homepage').html(data).fadeIn();
      });
 
+    //disable button after the first click
+    $(".submit_form_info, .submit").one("click", function() {
+        $(this).click(function () { return false; });
+    });
+
   // MENU
   //
 

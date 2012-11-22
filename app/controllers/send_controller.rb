@@ -49,9 +49,8 @@ class SendController < ApplicationController
   def demande_contact
     @params = params
     @timestamp = DateTime.now.to_i
-    
-    ContactMailer.demande_information(@params,@timestamp,true).deliver
-    ContactMailer.demande_information(@params,@timestamp,false).deliver
+
+    Delayed::Job.enqueue MailingJob.new(@params, @timestamp)
 
     respond_to do |format|
      format.js { render :text => "<p>Un message a été envoyé au secrétariat de l'école</p><p>Ainsi qu'une copie sur votre mail.</p>", :content_type => 'text/html'}
@@ -60,5 +59,6 @@ class SendController < ApplicationController
   rescue Exception => exc
     logger.error(" #{exc.message}")
   end
-
 end
+
+

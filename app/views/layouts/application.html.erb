@@ -52,15 +52,15 @@
                 <h2>Demande d'information</h2>
                 <p>Contactez-nous sans engagement pour une visite, nous vos renseignerons avec plaisir :</p><br /> 
                 <%= label_tag :name, "Nom, Prénom" %><br/>
-                <%= text_field_tag :name %>
+                <%= text_field_tag :name, :required => "required" %>
                 <br />
                 <%= label_tag :phone, "No de téléphone" %><br/>
-                <%= text_field_tag :phone %>
+                <%= text_field_tag :phone, :required => "required" %>
                 <br />
                 <%= label_tag :email, "Adresse e-mail" %><br/>
-                <%= text_field_tag :email %><br />
+                <%= text_field_tag :email, :required => "required" %><br />
                 <%= check_box_tag :booklet %><span> Je désire recevoir la brochure de l'école</span><br />
-                <%= text_area_tag :message, '', :placeholder => 'Message', :cols => '24', :rows => '3' %>
+                <%= text_area_tag :message, '', :placeholder => 'Message', :cols => '24', :rows => '3', :required => "required" %>
                 <br />
                 <%= submit_tag 'Envoyer', :class => 'submit' %>
               </div>

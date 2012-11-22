@@ -40,14 +40,14 @@
   <p class='hide'>Contactez-nous sans engagement pour une visite, nous vos renseignerons avec plaisir :</p><br />
   <%= form_tag({:controller => 'send', :action => 'demande_contact'}, :remote => true, :id => 'demande_contact_homepage') do -%>
     <div class="hide" class="form_info_accueil">
-      <%= text_field_tag :name, '', :placeholder => "Nom & prénom" %>
+      <%= text_field_tag :name, '', :placeholder => "Nom & prénom", :required => "required" %>
       <br />
-      <%= text_field_tag :phone, '', :placeholder => "Téléphone" %>
+      <%= text_field_tag :phone, '', :placeholder => "Téléphone", :required => "required" %>
       <br />
-      <%= email_field_tag :email, '', :placeholder => "Email" %>
+      <%= email_field_tag :email, '', :placeholder => "Email", :required => "required" %>
       <br />
       <%= check_box_tag :booklet %><span>Je désire recevoir la brochure de l'école</span><br />
-      <%= text_area_tag :message, '', :placeholder => 'Message' %>
+      <%= text_area_tag :message, '', :placeholder => 'Message', :required => "required" %>
       <br />
       <%= submit_tag 'Envoyer', :class => 'submit_form_info' %>
     </div>

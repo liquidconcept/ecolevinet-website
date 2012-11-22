@@ -1,7 +1,7 @@
 # encoding: UTF-8
 class ContactMailer < ActionMailer::Base
 
-  def demande_information(params,timestamp,to_parents)
+  def demande_information(params, timestamp,to_parents)
 
     @params = params
     @timestamp = timestamp
@@ -10,7 +10,7 @@ class ContactMailer < ActionMailer::Base
     if  @to_parents
       if @params[:booklet] != nil  
         attachments['brochure_information.pdf'] = File.read("#{Rails.root}/public/pdf/brochure_information.pdf")
-        mail(:to => @params[:email], :subject => "Demande d'information avec la brochure", :from => 'ludovic.turmel@liquid-concept.ch')
+        mail(:to => @params[:email], :subject => "Demande d'information avec la brochure", :from => 'secretariat@ecolevinet.ch')
       else 
         mail(:to => @params[:email], :subject => "Demande d'information", :from => 'secretariat@ecolevinet.ch')
       end

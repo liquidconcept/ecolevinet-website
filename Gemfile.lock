@@ -65,6 +65,11 @@ GEM
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
       sass (~> 3.1)
+    delayed_job (3.0.4)
+      activesupport (~> 3.0)
+    delayed_job_active_record (0.3.3)
+      activerecord (>= 2.1.0, < 4)
+      delayed_job (~> 3.0)
     devise (1.3.4)
       bcrypt-ruby (~> 2.1.2)
       orm_adapter (~> 0.0.3)
@@ -234,6 +239,8 @@ DEPENDENCIES
   airbrake
   capistrano
   compass (>= 0.11.5)
+  delayed_job (~> 3.0.4)
+  delayed_job_active_record
   googlestaticmap
   growl
   guard
