@@ -1,4 +1,14 @@
 <div id="left_col">
+  <a href="/découvrir-vinet/en-savoir-plus/horaire-continu"><div class='button_accueil'><p><span>Horaires continu</span><br /> avec encadrement</p></div></a>
+  <a href="/découvrir-vinet/en-savoir-plus/devoirs-surveillés"><div class='button_accueil'><p><span>Devoirs surveillés</span></p></div></a>
+  <a href="/découvrir-vinet/en-savoir-plus/cours-danglais"><div class='button_accueil'><p><span>Cours d'anglais</span><br /> dès la 5ème année</p></div></a>
+  <a href="/découvrir-vinet/en-savoir-plus/repas-de-midi?section_id=2"><div class='button_accueil'><p><span>Repas de midi</span><br /> fourchette verte</p></div></a>
+  <hr class="clearboth" />
+  <div class='info_box'>
+    <p>L'Ecole Vinet est à dimension humaine idéalement située au coeur de Lausanne, proche de toutes 
+      commodités. Sa pédagogie utilisant, entre autre, les principes de la gestion mental (Antoine de La Garanderie) permet à l'élève d'être encouragé et soutenu afin de motvier à donner le meilleur de lui-même tout en respectant son individualité pour aboutir à sa réussite scolaire.</p><br />
+      <p>L'éducation dispensée repose sur des critères d'honnêteté, de travail et de respect.</p>
+  </div>
   <h2>Actualités</h2>
   <% if @page.section.news_items.hot.any? %>
     <div class="important">
@@ -8,9 +18,9 @@
       <% end %>
     </div>
   <% end %>
-  <% if @page.section.news_items.current.limit(5).any? %>
+  <% if @page.section.news_items.current.limit(3).any? %>
     <ul class="infos">
-      <% @page.section.news_items.current.limit(5 - @page.section.news_items.hot.count).each do |news_item| %>
+      <% @page.section.news_items.current.limit(3 - @page.section.news_items.hot.count).each do |news_item| %>
         <li>
           <h3><%= news_item.title %></h3>
           <div class="text"><%=raw news_item.heading %>
@@ -25,8 +35,24 @@
 </div>
 
 <div id="right_col">
-  <h2>Contact</h2>
-  <%= link_to(image_tag("google.jpg",:alt => "", :style => "border:1px solid #cecece;"),"http://maps.google.com/maps?f=q&source=embed&hl=en&geocode=&q=%C3%A9cole+vinet+lausanne&aq=&sll=37.0625,-95.677068&sspn=69.476188,177.451172&vpsrc=6&ie=UTF8&hq=%C3%A9cole+vinet&hnear=Lausanne,+Vaud,+Switzerland&cid=5096095572938173010&ll=46.519894,6.637373&spn=0.011812,0.018368&z=14&iwloc=A",{ :onClick => "window.open(this.href,'_blank');return false;"}) %>
+  <h2>Demande d'information</h2>
+  <div id="message_homepage"></div>
+  <p class='hide'>Contactez-nous sans engagement pour une visite, nous vos renseignerons avec plaisir :</p><br />
+  <%= form_tag({:controller => 'send', :action => 'demande_contact'}, :remote => true, :id => 'demande_contact_homepage') do -%>
+    <div class="hide" class="form_info_accueil">
+      <%= text_field_tag :name, '', :placeholder => "Nom & prénom", :required => "required" %>
+      <br />
+      <%= text_field_tag :phone, '', :placeholder => "Téléphone", :required => "required" %>
+      <br />
+      <%= email_field_tag :email, '', :placeholder => "Email", :required => "required" %>
+      <br />
+      <%= check_box_tag :booklet %><span>Je désire recevoir la brochure de l'école</span><br />
+      <%= text_area_tag :message, '', :placeholder => 'Message', :required => "required" %>
+      <br />
+      <%= submit_tag 'Envoyer', :class => 'submit_form_info' %>
+    </div>
+  <% end %>
+  <%= link_to(image_tag("google.jpg",:alt => "", :style => "border:1px solid #cecece; width: 300px;"),"http://maps.google.com/maps?f=q&source=embed&hl=en&geocode=&q=%C3%A9cole+vinet+lausanne&aq=&sll=37.0625,-95.677068&sspn=69.476188,177.451172&vpsrc=6&ie=UTF8&hq=%C3%A9cole+vinet&hnear=Lausanne,+Vaud,+Switzerland&cid=5096095572938173010&ll=46.519894,6.637373&spn=0.011812,0.018368&z=14&iwloc=A",{ :onClick => "window.open(this.href,'_blank');return false;"}) %>
   <br/>
   <h3>Ecole Vinet</h3>
   <p>Rue de l’Ecole-Supérieure 2<br />

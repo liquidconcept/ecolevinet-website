@@ -19,6 +19,8 @@ gem 'compass',      '>= 0.11.5'
 gem 'rack-pjax'
 gem 'jquery-rails'
 gem 'airbrake'
+gem "delayed_job", "~> 3.0.4"
+gem 'delayed_job_active_record'
 
 group :production do
   gem 'mysql2', '~> 0.2.7'
