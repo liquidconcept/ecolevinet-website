@@ -42,9 +42,38 @@ end
 after 'deploy:update', 'deploy:cleanup'
 after 'deploy:migrations', 'deploy:cleanup'
 
+before 'deploy:symlink', 'delayed_job:stop'
+after 'deploy:symlink', 'delayed_job:start'
+
 #
 # finish
 #
+
+namespace :delayed_job do
+  desc "Start delayed_job process"
+  task :start, :roles => :app do
+    bundle = fetch(:bundle, 'bundle')
+    rails_env = fetch(:rails_env, 'production')
+
+    run("cd #{current_path}; RAILS_ENV=#{rails_env} #{bundle} exec script/delayed_job start")
+  end
+
+  desc "Stop delayed_job process"
+  task :stop, :roles => :app do
+    bundle = fetch(:bundle, 'bundle')
+    rails_env = fetch(:rails_env, 'production')
+
+    run("cd #{current_path}; RAILS_ENV=#{rails_env} #{bundle} exec script/delayed_job stop; true")
+  end
+
+  desc "Restart delayed_job process"
+  task :restart, :roles => :app do
+    bundle = fetch(:bundle, 'bundle')
+    rails_env = fetch(:rails_env, 'production')
+
+    run("cd #{current_path}; RAILS_ENV=#{rails_env} #{bundle} exec script/delayed_job restart")
+  end
+end
 
 require './config/boot'
 require 'airbrake/capistrano'
