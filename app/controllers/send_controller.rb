@@ -47,13 +47,25 @@ class SendController < ApplicationController
   end
 
   def demande_contact
-    @params = params
+    @params = params.select {|k, v| %w(
+      booklet
+      email
+      name
+      phone
+      message
+    ).include?(k) }.with_indifferent_access
     @timestamp = DateTime.now.to_i
 
-    Delayed::Job.enqueue MailingJob.new(@params, @timestamp)
+    if @params[:email].empty?
+      respond_to do |format|
+       format.js { render :text => "<p>Votre demande ne peut pas être envoyée si vous n'indiquez pas un email.</p>", :content_type => 'text/html'}
+      end
+    else
+      Delayed::Job.enqueue MailingJob.new(@params, @timestamp)
 
-    respond_to do |format|
-     format.js { render :text => "<p>Un message a été envoyé au secrétariat de l'école</p><p>Ainsi qu'une copie sur votre mail.</p>", :content_type => 'text/html'}
+      respond_to do |format|
+       format.js { render :text => "<p>Un message a été envoyé au secrétariat de l'école</p><p>Ainsi qu'une copie sur votre mail.</p>", :content_type => 'text/html'}
+      end
     end
 
   rescue Exception => exc
