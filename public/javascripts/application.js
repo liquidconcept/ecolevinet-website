@@ -408,6 +408,10 @@ $('.event_check').live('mouseleave',
     $('#form_contact').unbind('click');
   });
 
+  $('#demande_contact_homepage, #demande_contact').on('submit', function() {
+    goog_report_conversion();
+  });
+
   $('body').bind('pjax:end', function() {
     load_Scrollbar();
     load_colorbox();
