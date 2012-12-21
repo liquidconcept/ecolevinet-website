@@ -64,12 +64,9 @@ class SendController < ApplicationController
       Delayed::Job.enqueue MailingJob.new(@params, @timestamp)
 
       respond_to do |format|
-       format.js { render :layout => false, :content_type => 'text/html' }
+       format.js { render :text => "<p>Un message a été envoyé au secrétariat de l'école</p><p>Ainsi qu'une copie sur votre mail.</p>", :content_type => 'text/html'}
       end
     end
-
-  rescue Exception => exc
-    logger.error(" #{exc.message}")
   end
 end
 

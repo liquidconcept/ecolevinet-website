@@ -335,8 +335,10 @@ $('.event_check').live('mouseleave',
      });
 
     //disable button after the first click
-    $(".submit_form_info, .submit").one("click", function() {
-        $(this).click(function () { return false; });
+    $('#demande_contact_homepage, #demande_contact').on('submit', function() {
+      $(this).find('[type=submit]').attr('disabled', true);
+      $(this).find('[type=submit]').attr('value', 'En traitement...');
+      goog_report_conversion();
     });
 
   // MENU
@@ -406,10 +408,6 @@ $('.event_check').live('mouseleave',
     }
 
     $('#form_contact').unbind('click');
-  });
-
-  $('#demande_contact_homepage, #demande_contact').on('submit', function() {
-    goog_report_conversion();
   });
 
   $('body').bind('pjax:end', function() {
