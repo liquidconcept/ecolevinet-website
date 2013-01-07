@@ -36,7 +36,7 @@
 <div id="right_col">
   <h2>Demande d'information</h2>
   <div id="message_homepage"></div>
-  <p class='hide'>Contactez-nous sans engagement pour une visite, nous vos renseignerons avec plaisir :</p><br />
+  <p class='hide'>Contactez-nous sans engagement pour une visite, nous vous renseignerons avec plaisir :</p><br />
   <%= form_tag({:controller => 'send', :action => 'demande_contact'}, :remote => true, :id => 'demande_contact_homepage') do -%>
     <div class="hide" class="form_info_accueil">
       <%= text_field_tag :name, '', :placeholder => "Nom & prénom", :required => "required" %>
