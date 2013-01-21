@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "Espace parents"
+AuthUserFile /var/www/ecolevinet.ch/website/current/public/parents/en-savoir-plus--4/espace-parents/.htpasswd
+Require valid-user
