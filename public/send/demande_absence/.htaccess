@@ -1,4 +1,4 @@
 AuthType Basic
 AuthName "Espace parents"
-AuthUserFile /var/www/ecolevinet.ch/website/current/public/shared/.htpasswd
+AuthUserFile /var/www/ecolevinet.ch/website/shared/.htpasswd
 Require valid-user
