@@ -2,6 +2,8 @@ var timer;
 var slides;
 var original_image;
 var original_text;
+var original_href;
+var original_hat;
 
 function change_slide(delay, index) {
   var text = slides[index].text;
@@ -34,13 +36,16 @@ function change_slide(delay, index) {
 }
 
 function start_slide() {
-
   if (($('.open').length <= 1) && (timer == null)) {
-    $('#section_1 > .nav_text > p').show();
-    $('#section_1 > .nav_text > h2').html('<p>' + original_text + '</p><span class="text_background"></span>');
-    $("#section_1 > .nav_text > h2 > p").show();
-    $("#section_1 > .nav_text > h2").animate({
-      height:$("#section_1 > .nav_text > h2 > p").outerHeight()
+    $('#section_1 > .nav_text > h2').html("<a href=" + original_href + ">" + original_text + "</a><span class='text_background'></span>");
+    $('#section_1 > .nav_text > p').html("<a href=" + original_href + ">" + original_hat + "</a><span class='text_background'></span>");
+    $("#section_1 > .nav_text > h2").show();
+    $("#section_1 > .nav_text > p").show();
+
+    var height = $("#section_1 > .nav_text > h2").outerHeight() + $("#section_1 > .nav_text > p").outerHeight();
+
+    $("#section_1 > .nav_text").animate({
+      height: height
     },600);
 
     $.getJSON('/switcher/slides.json', function(data) {
@@ -49,9 +54,6 @@ function start_slide() {
       delay = data.delay;
 
       var i = 1;
-      $('#section_1 > .nav_text > p').html('');
-      $('#section_1 > .nav_text > p').append('<span class="text_background"></span>');
-      
       if (data.slides.length > 1) {
         for (x in data.slides) {
           $('#section_1 > .nav_text > p').append('<p id="' + x + '"></p>');
@@ -72,6 +74,8 @@ function start_slide() {
 window.onload = function () {
   original_image = $('#section_1 > img').attr('src').toString();
   original_text = $('#section_1 > .nav_text > h2 > a').text().toString();
+  original_href = $('#section_1 > .nav_text > h2 > a').attr('href');
+  original_hat = $('#section_1 > .nav_text > p').text().toString();
   start_slide();
   $('#menu > a').click(function(){setTimeout(function() {start_slide();}, 500)});
 };
