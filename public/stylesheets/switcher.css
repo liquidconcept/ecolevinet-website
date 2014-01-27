@@ -1,40 +1,28 @@
-#section_1 > .nav_text > h2 {
+#section_1 > .nav_text {
   overflow: hidden;
-  height: 30px;
+  height: 0px;
+  left: 3px !important;
 }
-
-#section_1 > .nav_text > h2 > p {
-  display: block;
-  padding: 5px 10px 7px 5px;
-  color: inherit !important;
-  font-weight: bold;
-  font-size: 100% !important;
-  font: inherit;
-}
-
-#section_1 > .nav_text > p {
-  text-align: center;
-  height: 18px;
-  padding-top: 2px;
-} 
-
-#section_1 > .nav_text > p > p {
-  background: url(/images/switcher.png) no-repeat;
-  cursor: pointer;
-  display: inline-block !important;
-  margin-right: 30px;
-  padding-top: 2px;
-  overflow: hidden;
-  background-position: left 0px;
-  width: 14px;
-  height: 12px;
-} 
-
-#section_1 > .nav_text > p > p.current {
-  background-position: left -14px;
-  cursor: default;
-} 
 
 #section_1 > .nav_text > p > span.text_background {
   background-color: #649488 !important;
+}
+
+#section_1 > .nav_text > h2 {
+  display: block;
+  padding: 10px 10px 0px 10px;
+  color: inherit !important;
+  font-weight: bold;
+  font-size: 1em;
+  font: inherit;
+  cursor: pointer;
+}
+
+#section_1 > .nav_text > p {
+  text-align: left;
+  height: 18px;
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  cursor: pointer;
 }
