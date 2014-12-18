@@ -36,6 +36,7 @@ end
 
 after 'deploy:update_code' do
   run "mkdir -p #{File.join(shared_path,'config')} && rm -f #{File.join(release_path,'config','database.yml')} && ln -s #{File.join(shared_path,'config','database.yml')} #{File.join(release_path,'config','database.yml')}"
+  run "mkdir -p #{File.join(shared_path,'config')} && rm -f #{File.join(release_path,'config','settings.local.yml')} && ln -s #{File.join(shared_path,'config','settings.local.yml')} #{File.join(release_path,'config','settings.local.yml')}"
   run "mkdir -p #{File.join(shared_path,'vinetprofs')} && rm -f #{File.join(release_path,'public','vinetprofs')} && ln -s #{File.join(shared_path,'vinetprofs','vinetprofs')} #{File.join(release_path,'public','vinetprofs')}"
 end
 
