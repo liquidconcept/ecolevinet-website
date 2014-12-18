@@ -38,8 +38,15 @@ EcolevinetWebsite::Application.configure do
   # config.action_mailer.raise_delivery_errors = false
 
   # disable verification for openssl
+  config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :openssl_verify_mode => 'none'
+    address:              'smtp.mandrillapp.com',
+    port:                 587,                        # ports 587 and 2525 are also supported with STARTTLS
+    enable_starttls_auto: true,                       # detects and uses STARTTLS
+    authentication:       'login',                    # Mandrill supports 'plain' or 'login'
+    user_name:            Settings.mandrill.username,
+    password:             Settings.mandrill.password,
+    domain:               'liquid-concept.ch'         # your domain to identify your server when connecting
   }
 
   # Enable threaded mode
