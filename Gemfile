@@ -22,6 +22,8 @@ gem 'airbrake'
 gem "delayed_job", "~> 3.0.4"
 gem 'delayed_job_active_record'
 
+gem "rails_config"
+
 group :production do
   gem 'daemons'
   gem 'mysql2', '~> 0.2.7'

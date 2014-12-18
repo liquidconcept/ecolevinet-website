@@ -151,6 +151,8 @@ GEM
       activesupport (= 3.0.10)
       bundler (~> 1.0)
       railties (= 3.0.10)
+    rails_config (0.3.3)
+      activesupport (>= 3.0)
     railties (3.0.10)
       actionpack (= 3.0.10)
       activesupport (= 3.0.10)
@@ -253,6 +255,7 @@ DEPENDENCIES
   mysql2 (~> 0.2.7)
   pry
   rack-pjax
+  rails_config
   rb-fsevent
   refinerycms (~> 1.0.4)
   refinerycms-events (= 1.0)!
