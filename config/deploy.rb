@@ -5,7 +5,7 @@ set :server_name, '95.142.162.83'
 set :real_domain,  "www.#{domain}"
 
 set :scm,         :git
-set :repository,  'git@git.liquid-concept.ch:clients/ecole-vinet/website.git'
+set :repository,  'git@github.com:liquidconcept/ecolevinet-website.git'
 set :branch,      ENV['deploy_branch'] || 'production'
 
 ssh_options[:forward_agent] = true

@@ -33,7 +33,7 @@ class SendController < ApplicationController
     #serve parents page
     @page = Section.find(5).page
     @timestamp = DateTime.now.to_i
-    
+
     AbsenceMailer.demande_absence(@params,@timestamp,true).deliver
     AbsenceMailer.demande_absence(@params,@timestamp,false).deliver
 
@@ -56,7 +56,7 @@ class SendController < ApplicationController
     ).include?(k) }.with_indifferent_access
     @timestamp = DateTime.now.to_i
 
-    if @params[:email].empty?
+    if @params[:email].empty? || params[:email] !~ /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
       respond_to do |format|
        format.js { render :text => "<p>Votre demande ne peut pas être envoyée si vous n'indiquez pas un email.</p>", :content_type => 'text/html'}
       end
@@ -69,5 +69,3 @@ class SendController < ApplicationController
     end
   end
 end
-
-
