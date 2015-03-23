@@ -11,8 +11,12 @@ class SendController < ApplicationController
     #serve parents page
     @page = Section.find(5).page
     @timestamp = DateTime.now.to_i
-    AbsenceMailer.justification_absence(@params,@timestamp,false).deliver
-    AbsenceMailer.justification_absence(@params,@timestamp,true).deliver
+
+    # is a spam if not empty
+    if @params[:country].empty?
+      AbsenceMailer.justification_absence(@params,@timestamp,false).deliver
+      AbsenceMailer.justification_absence(@params,@timestamp,true).deliver
+    end
 
     respond_to do |format|
      format.html
@@ -34,8 +38,11 @@ class SendController < ApplicationController
     @page = Section.find(5).page
     @timestamp = DateTime.now.to_i
 
-    AbsenceMailer.demande_absence(@params,@timestamp,true).deliver
-    AbsenceMailer.demande_absence(@params,@timestamp,false).deliver
+    # is a spam if not empty
+    if @params[:country].empty?
+      AbsenceMailer.demande_absence(@params,@timestamp,true).deliver
+      AbsenceMailer.demande_absence(@params,@timestamp,false).deliver
+    end
 
     respond_to do |format|
      format.html
@@ -50,6 +57,7 @@ class SendController < ApplicationController
     @params = params.select {|k, v| %w(
       booklet
       email
+      country
       name
       phone
       message
@@ -61,7 +69,10 @@ class SendController < ApplicationController
        format.js { render :text => "<p>Votre demande ne peut pas être envoyée si vous n'indiquez pas un email.</p>", :content_type => 'text/html'}
       end
     else
-      Delayed::Job.enqueue MailingJob.new(@params, @timestamp)
+      # is a spam if not empty
+      if @params[:country].empty?
+        Delayed::Job.enqueue MailingJob.new(@params, @timestamp)
+      end
 
       respond_to do |format|
        format.js { render :text => "<p>Un message a été envoyé au secrétariat de l'école</p><p>Ainsi qu'une copie sur votre mail.</p>", :content_type => 'text/html'}

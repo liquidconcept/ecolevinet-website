@@ -45,6 +45,9 @@
       <br />
       <%= email_field_tag :email, '', :placeholder => "Email", :required => "required" %>
       <br />
+      <!-- do not remove this field -->
+      <%= text_field_tag :country, '', :placeholder => "Country", :class => "country" %>
+      <!--**************************-->
       <%= check_box_tag :booklet %><span>Je désire recevoir la brochure de l'école</span><br />
       <%= text_area_tag :message, '', :placeholder => 'Message', :required => "required" %>
       <br />
