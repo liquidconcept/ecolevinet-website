@@ -18,6 +18,12 @@
     <%= label_tag 'Téléphone d’un des parents :' %><br/>
     <%= text_field_tag :phone %>
   </p>
+  <!-- Do not remove this field -->
+  <p>
+    <%= label_tag :country, "Country", :class => "country"  %>
+    <%= text_field_tag :country, '', :class => "country" %>
+  </p>
+  <!--**************************-->
   <br />
   <p>Dates  de l’absence </p><br />
   <p>
@@ -41,4 +47,3 @@
   <p>Toute justification de demande de congé envoyée par le formulaire sera vérifiée par le secrétariat.</p>
 </div>
 <% end -%>
-

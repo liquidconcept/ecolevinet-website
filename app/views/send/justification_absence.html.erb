@@ -14,6 +14,11 @@
   <%= text_field_tag :classe %>
   <br />
 
+  <!-- Do not remove this field -->
+  <%= label_tag :country, "Country", :class => "country"  %>
+  <%= text_field_tag :country, '', :class => "country" %>
+  <!--**************************-->
+
   <%= label_tag 'Email d’un des parents' %><br />
   <%= email_field_tag :email %>
   <br />
@@ -24,12 +29,12 @@
 
   <p>Dates de l’absence </p>
   <p>
-  du  
+  du
     <%= label_tag 'Date de début' %><br/>
     <%= select_datetime DateTime.now, :prefix => :start_date %>
   </p>
   <p>
-  au  
+  au
   <%= label_tag 'Date de fin' %><br/>
   <%= select_datetime DateTime.now, :prefix => :end_date %>
   </p>

@@ -50,7 +50,7 @@
               <div id="contact_message"></div>
               <div id="fields" class="float">
                 <h2>Demande d'information</h2>
-                <p>Contactez-nous sans engagement pour une visite, nous vous renseignerons avec plaisir :</p><br /> 
+                <p>Contactez-nous sans engagement pour une visite, nous vous renseignerons avec plaisir :</p><br />
                 <%= label_tag :name, "Nom, Prénom" %><br/>
                 <%= text_field_tag :name, :required => "required" %>
                 <br />
@@ -59,6 +59,11 @@
                 <br />
                 <%= label_tag :email, "Adresse e-mail" %><br/>
                 <%= text_field_tag :email, :required => "required" %><br />
+                <br />
+                <!-- do not remove this hidden field -->
+                <%= label_tag :country, "Country", :class => "country"  %>
+                <%= text_field_tag :country, '', :placeholder => "Country", :class => "country" %>
+                <!--**********************************-->
                 <%= check_box_tag :booklet %><span> Je désire recevoir la brochure de l'école</span><br />
                 <%= text_area_tag :message, '', :placeholder => 'Message', :cols => '24', :rows => '3', :required => "required" %>
                 <br />
